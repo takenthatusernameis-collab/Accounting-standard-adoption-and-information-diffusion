@@ -1,0 +1,111 @@
+{
+  "campaign_id": "ACCTCLOCK",
+  "conflicts": [],
+  "notes": [],
+  "remote_source": null,
+  "schema_version": 1,
+  "steps": [
+    {
+      "attempts": 0,
+      "error": null,
+      "finished_at": "2026-10-21T22:45:07+00:00",
+      "id": "phase0-repo-hypothesis-audit",
+      "result": {
+        "artefacts": [
+          "research/hypothesis.md",
+          "research/data_manifest.md",
+          "research/decision_log.md"
+        ],
+        "dossier": "canonical hypothesis-factory dossier not reachable from this environment",
+        "outcome": "Repository contains only the protocol, the diagnostics ledger, and the workflow."
+      },
+      "started_at": null,
+      "status": "completed"
+    },
+    {
+      "attempts": 0,
+      "error": null,
+      "finished_at": "2026-10-21T22:45:07+00:00",
+      "id": "phase1-literature-novelty-audit",
+      "result": {
+        "artefacts": [
+          "research/source_ledger.csv"
+        ],
+        "key_counter_evidence": "PEAD decay, transaction-cost explanation, aggregation critique",
+        "outcome": "25 sources recorded with per-source verification status"
+      },
+      "started_at": null,
+      "status": "completed"
+    },
+    {
+      "attempts": 0,
+      "error": null,
+      "finished_at": "2026-10-21T22:45:07+00:00",
+      "id": "phase2-freeze-hypothesis-spec-prereg",
+      "result": {
+        "artefacts": [
+          "research/hypothesis.md",
+          "research/specification_v1.md",
+          "research/preregistration.md",
+          "research/prompt_changelog.md"
+        ],
+        "outcome": "Hypothesis v1.0, specification v1.0, preregistration v1.0 frozen before any return exists",
+        "primary_outcome": "transition-window repricing (H-B), two-sided"
+      },
+      "started_at": null,
+      "status": "completed"
+    },
+    {
+      "attempts": 0,
+      "error": "No market, filing, or accounting data in the repository; no licensed vendor access (CRSP/Compustat/Worldscope/IBES) in this environment; hypothesis-factory dossier unreachable.",
+      "finished_at": "2026-10-21T22:45:07+00:00",
+      "id": "phase3-data-acquisition",
+      "result": {
+        "artefacts": [
+          "research/data_manifest.md"
+        ],
+        "blocker": "data access",
+        "next_action": "resolve a data route or authorise the reduced-power open-data fallback"
+      },
+      "started_at": null,
+      "status": "failed"
+    },
+    {
+      "attempts": 0,
+      "error": null,
+      "finished_at": "2026-10-21T22:45:07+00:00",
+      "id": "phase4-primary-identification-test",
+      "result": {},
+      "started_at": null,
+      "status": "pending"
+    },
+    {
+      "attempts": 0,
+      "error": null,
+      "finished_at": "2026-10-21T22:45:07+00:00",
+      "id": "phase5-mandatory-falsification-checks",
+      "result": {},
+      "started_at": null,
+      "status": "pending"
+    },
+    {
+      "attempts": 0,
+      "error": null,
+      "finished_at": "2026-10-21T22:45:07+00:00",
+      "id": "phase6-metrics-and-reporting",
+      "result": {},
+      "started_at": null,
+      "status": "pending"
+    },
+    {
+      "attempts": 0,
+      "error": null,
+      "finished_at": "2026-10-21T22:45:07+00:00",
+      "id": "phase7-promotion-gates",
+      "result": {},
+      "started_at": null,
+      "status": "pending"
+    }
+  ],
+  "updated_at": "2026-10-21T22:45:07+00:00"
+}
