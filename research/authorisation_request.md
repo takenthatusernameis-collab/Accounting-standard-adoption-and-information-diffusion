@@ -1,124 +1,48 @@
-# ACCTCLOCK — maintainer authorisation request
+# ACCTCLOCK — Current operating decision record
 
-**Status: OPEN. No authorisation has been received.**
-Raised: 2026-10-22. Last touched: 2026-10-22 (session 5).
-The authoritative list is `research/data_acquisition_plan.md` §8.1; this file is the
-one-click-able form of that list. Every quote below is verbatim from §8.1.
+**Status: RESOLVED FOR RESEARCH EXECUTION — D-031 (2026-10-22).**  
+This file supersedes the previous open A1–A5 checklist as the current instruction. Historical request text from earlier campaign sessions is not a current authorization blocker.
 
-**One line.** The campaign cannot compute anything until the maintainer answers
-**A1** and **A2**. **A2 is zero-cost and highest-value.**
+## Binding directions
 
----
+| Decision | Direction now in force | What remains |
+|---|---|---|
+| **A1 — Market data** | **Paid-provider route selected:** Sharadar stock prices for US active and delisted listings; EODHD All World EOD for international venues and control jurisdictions. An already-held institutional CRSP/WRDS entitlement may be assessed but not assumed. | A usable account/API credential must be provisioned by the account holder. Do not buy, subscribe, accept paid terms, auto-renew or incur charges from an agent. Verify live plan scope, checkout cost, and cancellation terms before purchase. |
+| **A2 — Public evidence** | **Authorized:** read-only collection of public SEC EDGAR, regulator/OAM and issuer filings, EUR-Lex, IFRS Foundation, FASB, ECB FX, World Bank WGI and other named primary sources. | Follow published access terms, rate limits, and source-specific licensing. Do not defeat access controls. Record failed retrievals honestly. |
+| **A3 — Cache and repository policy** | **Confirmed:** raw source files and price payloads stay outside the working tree, default `~/.cache/acctclock`; commit code, provenance manifests, hashes and only non-restricted derived aggregates. | No vendor-licensed raw data in Git. Secrets must stay in a secret store or environment variables. |
+| **A4 — Panel scope** | **Confirmed:** use the registered panel-membership rule, never hand-pick or drop jurisdictions to produce a preferred result. Preserve the frozen specification and audit rule. | Resolve stale artifact counts by regenerating/reconciling from committed code and the dated, hashed candidate universe before feasibility conclusions. |
+| **A5 — PH-1** | **Feasibility audit authorized.** Collect only what is needed to establish coverage, independent-cluster counts, treatment/control counts, data quality, and cost/terminal-return coverage before outcome inspection. | The one-time PH-1 outcome analysis is allowed only if all preregistered gates pass. Otherwise report inconclusive/parked and do not open outcome returns. |
+| **Spend and account access** | The provider route is selected; **no subscription purchase or paid API request is authorized by this record alone**. | No accounts, checkouts, API usage that could create billable usage, or unbounded spend by an agent. If a user-provisioned plan/credential is available and its quota/charges are known, the bounded API client can be enabled explicitly. |
+| **Trading** | Research only. | No broker connection, order routing, paper/live deployment, or trading workflow. |
 
-## A1 — Market data  *(entirely outstanding)*
+## Selected providers and official documentation
 
-> **Options.** (a) authorise **Sharadar/Nasdaq Data Link** (~$30/mo) + **EODHD**
-> (~$20/mo); (b) point the pipeline at an existing **CRSP/WRDS** entitlement;
-> (c) no paid data.
->
-> **Consequence if refused or unanswered.** (a)/(b) unblock the full v1.1 design.
-> (c) leaves the panel at **≈ 8 clusters**, below the ≥12 minimum → **inconclusive
-> by construction**, and the survivorship-filtered price panel fires **kill
-> condition 9** by construction, with a bias *against* the hypothesis (the
-> low-information-quality arm is disproportionately dropped).
+**US price/delisted listing leg:** [Sharadar Stock Prices](https://sharadar.com/docs/stocks) and [API authentication](https://sharadar.com/docs/auth). The provider's documentation describes daily OHLCV for active and delisted US public stocks and a history back to December 1997. This does not itself prove CRSP-style terminal/delisting-return completeness; that field must be checked.
 
-**Answer needed:** (a), (b) or (c). If (b), name the entitlement and its vintage
-coverage; the panel's jurisdictions are outside the EU/UK/US and a US-only
-entitlement does not cover them.
+**International and matched-control price leg:** [EODHD All World plans](https://eodhd.com/pricing) and [historical EOD API](https://eodhd.com/financial-apis/api-for-historical-data-and-volumes). The current public plan page lists All World EOD at US$19.99/month (personal use); the actual exchange/symbol coverage, delisted history, usage terms and required fields must be verified on the subscribed plan. Older delisted records may have EOD-only coverage.
 
-## A2 — Public harvesting  *(entirely outstanding)*
+The campaign's older estimate of roughly US$30/month for Sharadar plus US$19.99/month for EODHD is **provisional**, not a current verified Sharadar quote or a spending limit. Before any checkout, the account holder must verify the actual current price, required coverage, renewal, cancellation and licence terms. The agent must never upgrade to a higher tier or annual plan silently.
 
-> **Options.** authorise read-only harvesting of **SEC EDGAR**, **FCA NSM/RNS**, the
-> named **national OAMs**, **EUR-Lex**, the **IFRS Foundation** profiles, the
-> **FASB** pages, **ECB FX**, **World Bank WGI**.
->
-> **Consequence if refused or unanswered.** **Highest-value and zero-cost.** Without
-> it there is no T-R, no T-RI, no state variable and no restated comparative, and
-> the test cannot start at all.
+## Credentials and bounded use
 
-**Answer needed:** yes / no, and if yes, whether it is unconditional or limited to a
-named subset of the list.
+- `SHARADAR_API_KEY` — provider credential for Sharadar.
+- `EODHD_API_TOKEN` — provider credential for EODHD.
+- `ACCTCLOCK_ENABLE_PAID_DATA=1` — required explicit opt-in for the repository's paid API adapter.
+- Never paste API secrets into ChatGPT, issues, commits, manifests or logs. Provision them directly in the execution environment or its secret store.
+- Raw downloads are cached outside the repo and manifests must redact secrets.
+- Smoke-test one US symbol and one international symbol, manually verify schema and adjustments, then measure coverage on delisted securities and matched controls before considering bulk acquisition.
+- If the selected feed lacks required terminal/delisting returns, do not impute zero or silently drop the issuer. Record the missingness; test a documented permitted reconstruction or stop the primary test.
 
-## A3 — Repository policy for harvested files
+## Scientific gates remain binding
 
-> **Options.** (a) default — cache outside the repository, commit only code,
-> manifests and hashes; (b) a named-source exception.
->
-> **Consequence if refused or unanswered.** The default (a) is already in force
-> (D-015). (b) requires a per-source ruling recorded as a new decision.
+The user has selected a paid-provider route and authorized a feasibility audit; that does **not** waive the frozen thresholds. The primary campaign's minimum of 12 independent adoption/jurisdiction clusters and 200 treatment firms remains in force. A firm count cannot substitute for independent clusters. The latest registered PH-1 assessment expects roughly 4–8 clusters, below the 12-cluster minimum, so the arm is likely to be inconclusive unless a strictly pre-outcome feasibility audit demonstrates otherwise. Do not lower thresholds, peek at returns, treat EU member states as independent cohorts, or amend the frozen preregistration in place.
 
-**Answer needed:** confirm (a), or name the source and the exception. Nothing is
-waiting on this; (a) is the working default.
+## Current status
 
-## A4 — Panel scope confirmation
-
-> **Options.** (a) confirm the registered panel rule; (b) restrict to Stratum A
-> only; (c) the frozen EU/UK/US universe.
->
-> **Consequence if refused or unanswered.** (b) gives ≈ 8 clusters → **inconclusive
-> by construction**. (c) is **not executable** (D-009). The panel is registered by
-> rule and **must not be narrowed after the feasibility audit begins** (D-016).
-
-**Answer needed:** (a), (b) or (c).
-**Note.** `research/panel_v1.1.csv` now exists: 434 rows — 8 complete Stratum A
-events and 426 Stratum B candidate rows derived by rule from the dated IFRS
-Foundation profile snapshot of 2026-10-22. The Stratum B rows carry
-`in_registered_panel = pending`, because three of the five conditions of the rule
-(a day-level legal instrument, a filing route publishing an acceptance *timestamp*,
-and price coverage) cannot be verified until A1 and A2 land. **A4 (a) is needed to
-convert those rows to true or false before the feasibility audit begins**, which is
-the point at which the rule becomes binding.
-
-## A5 — Prospective holdout
-
-> **Options.** confirm that **PH-1** may be registered as v1.2 before the first
-> IFRS 18 report is published.
->
-> **Consequence if refused or unanswered.** Without PH-1 the campaign has **no
-> promotable test at all**, only an evidential one.
-
-**Answer needed:** yes / no.
-**Note.** `research/hypothesis_v1.2.md`, `research/specification_v1.2.md` and
-`research/preregistration_v1.2.md` are now **written and registered** (2026-10-22),
-ahead of the first IFRS 18 report in the 2027 interim reporting season. The
-registration is in place; the confirmation is still required for the arm to be
-*run* under the protocol's promotion gate. A further **v1.3** was registered the
-same day (D-029), which admits Saudi Arabia on a uniform T-PRE interval rule and
-restates the cluster arithmetic as **≈ 4–8** cohorts — still below the ≥12
-minimum, so the arm is expected to be inconclusive by construction whatever A1
-and A2 return.
-
----
-
-## The consequence of silence, stated plainly
-
-1. The panel stays at **≈ 8 clusters** (Stratum A only), **below the ≥12 minimum**,
-   and the primary estimand is **inconclusive by construction** — not "no effect",
-   but "cannot be estimated".
-2. **Kill condition 9 fires by construction**, because the survivorship-filtered
-   price panel drops the low-information-quality arm disproportionately. The bias
-   runs **against** the hypothesis, so a parked campaign under A1(c) is not a
-   neutral outcome.
-3. The campaign remains **PARKED — not validated, not rejected**, with **no
-   outcome-period return ever computed or inspected**.
-
-## What has *already* been done without authorisation
-
-So that the request is honest about the state of the repository, everything below
-was built and verified **offline**, with **no paid data pull**, **no filing-archive
-harvest**, and **no GitHub Actions run**:
-
-- the SEC EDGAR acquirer, the SGML acceptance-time parser, the manifest writer and
-  the cache layout are **implemented and unit-tested** (`scripts/sec_edgar.py`,
-  `scripts/sec_acceptance.py`, `scripts/data_manifest.py`, `scripts/data_cache.py`;
-  48 new tests, 115 in total, all passing);
-- the two named date gaps are **closed** from primary sources (EV-103, EV-201,
-  and the missing EV-202 row added);
-- `research/panel_v1.1.csv` is **materialised**;
-- v1.2 is **registered** for PH-1.
-
-## When an answer arrives
-
-Record it as a new decision (**D-017** onward) in `research/decision_log.md`,
-quoting the maintainer's instruction with its date and its exact scope, then run
-the trigger sequence in `research/data_acquisition_plan.md` §8.2.
+- Paid provider direction: **selected**.
+- Public primary-source harvesting: **authorized** within access terms/rate limits.
+- Raw-cache policy and registered panel rule: **confirmed**.
+- PH-1 feasibility audit: **authorized**.
+- Provider subscription / credentials: **not provisioned or confirmed here**.
+- Paid API request, bulk filing harvest, return analysis, backtest and trading: **not performed by this update**.
+- Strategy status: **PARKED — not validated, not rejected**.
