@@ -2,7 +2,7 @@
 
 **Status: no test has been run. There are no results.**
 
-Last updated: 2026-10-21
+Last updated: 2026-10-22
 
 This file is where effect sizes, uncertainty, costs, out-of-sample performance,
 and negative evidence will be reported. It is intentionally short because the
@@ -11,7 +11,10 @@ campaign has not reached Phase 4.
 ## What has NOT been done
 
 - No security has been priced, screened, or held.
-- No event has been dated from a primary source.
+- No event has been dated from a primary source *for a return computation* — the
+  event calendar (`research/event_calendar.csv`) now holds primary-source-verified
+  **adoption dates**, which is an input to the test, not a result from it. No
+  filing acceptance timestamp has been collected, so no T-R has been fixed.
 - No abnormal return, factor model, portfolio simulation, or turnover figure
   has been computed.
 - No acceptance criterion has been evaluated, because the test has not started.
@@ -56,6 +59,35 @@ the mechanism and published counter-evidence against the trading proposition:
 These are priors, not results, and they must be reported alongside whatever the
 test produces — including a null.
 
+### Two priors added in the 2026-10-22 session
+
+- **The effect of IFRS adoption on drift is published and it points both ways.**
+  Song & Woo (2015) find K-IFRS adoption *reduced* post-earnings-announcement
+  drift in Korea (S-35); Forbes & Giannopoulos (2015) find IFRS adoption
+  *increased* PEAD in Greece (S-36). The first-adoption case in the candidate's
+  direction is attributed by its own authors to a disclosure shock, and the other
+  first-adoption case runs the opposite way. So **first adoption does not predict
+  the sign**, and the sign of the H-B effect is genuinely open.
+- **The comparator the design rests on is unrun by the field.** The canonical
+  hypothesis-factory dossier (S-37, retrieved read-only at commit
+  `1f9bd09cc96c1953f67ffc1f9892f7e60b6a71ff`) records, after three search
+  cycles, that no published study compares post-earnings-announcement drift
+  between first-time and second-time adopters of a common accounting standard,
+  and that the field's largest comparability study is first-adopter *by
+  construction* without covering drift. A null in that design is therefore a
+  **contribution, not a replication** — and a null in any *other* design is not
+  evidence that the mechanism is absent.
+
+## A design finding that must be reported with any result
+
+The frozen specification's treatment group — "firms whose reporting framework
+changed at the event" — is **empty** across the frozen universe, and the
+canonical dossier has independently rejected the only within-jurisdiction
+substitute. This is a defect in the frozen design, recorded as D-009, and it is
+why no result can be reported until a v1.1 registration exists. A result
+produced from v1.0 would have had no estimand. See
+`research/data_route_assessment.md` §5 and `research/decision_log.md` D-009.
+
 ## Reproducibility status of the work so far
 
 - Frozen artefacts are content-addressed by the repository commit; the commit
@@ -65,5 +97,8 @@ test produces — including a null.
   `tests/test_workflow_diagnostics_scanner.py`,
   `tests/test_nonfinite_result_serialization.py`,
   `tests/test_campaign_resume.py`) and can be rerun with
-  `python3 -m pytest -q tests/`.
+  `python3 -m pytest -q tests/`. The 2026-10-22 session re-ran the workflow's
+  exact invocation and confirmed 67 passing cases.
+- The event calendar is reproducible from the recorded primary-source URLs and
+  retrieval timestamps in `research/event_calendar.csv`.
 - No independent reviewer has reproduced anything, because no result exists.

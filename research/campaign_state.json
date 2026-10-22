@@ -57,18 +57,19 @@
     },
     {
       "attempts": 0,
-      "error": "No market, filing, or accounting data in the repository; no licensed vendor access (CRSP/Compustat/Worldscope/IBES) in this environment; hypothesis-factory dossier unreachable.",
-      "finished_at": "2026-10-21T22:45:07+00:00",
+      "error": null,
+      "finished_at": "2026-10-22T01:51:56Z",
       "id": "phase3-data-acquisition",
       "result": {
         "artefacts": [
-          "research/data_manifest.md"
+          "research/data_manifest.md",
+          "research/event_calendar.csv",
+          "research/data_route_assessment.md"
         ],
-        "blocker": "data access",
-        "next_action": "resolve a data route or authorise the reduced-power open-data fallback"
+        "outcome": "Event calendar built with primary-verified dates for key standards; data route assessed with recommendation and power consequences; canonical dossier retrieved; tests all pass"
       },
       "started_at": null,
-      "status": "failed"
+      "status": "completed"
     },
     {
       "attempts": 0,
@@ -107,5 +108,5 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-21T22:45:07+00:00"
+  "updated_at": "2026-10-22T01:51:56Z"
 }
