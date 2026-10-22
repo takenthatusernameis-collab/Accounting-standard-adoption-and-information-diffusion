@@ -1,7 +1,11 @@
 {
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
-  "notes": [],
+  "notes": [
+    "2026-10-22: v1.1 registered (hypothesis, specification, preregistration). The design blocker (D-009) is cleared; v1.0 files are byte-identical and unedited.",
+    "2026-10-22: the retrospective panel has NO post-2019 T-A, so its chronological holdout is EMPTY; declared in advance with the consequence fixed (D-014). The promotable test is the prospective holdout arm PH-1, which needs a v1.2 registration before the first IFRS 18 report is published.",
+    "2026-10-22: data execution is blocked on maintainer authorisation A1-A5 (research/data_acquisition_plan.md section 8). No outcome-period return has been computed or inspected."
+  ],
   "remote_source": null,
   "schema_version": 1,
   "steps": [
@@ -40,17 +44,24 @@
     {
       "attempts": 0,
       "error": null,
-      "finished_at": "2026-10-21T22:45:07+00:00",
+      "finished_at": "2026-10-22T02:26:09+00:00",
       "id": "phase2-freeze-hypothesis-spec-prereg",
       "result": {
-        "artefacts": [
+        "artefacts_v1_0": [
           "research/hypothesis.md",
           "research/specification_v1.md",
-          "research/preregistration.md",
-          "research/prompt_changelog.md"
+          "research/preregistration.md"
         ],
-        "outcome": "Hypothesis v1.0, specification v1.0, preregistration v1.0 frozen before any return exists",
-        "primary_outcome": "transition-window repricing (H-B), two-sided"
+        "artefacts_v1_1_registered_2026_10_22": [
+          "research/hypothesis_v1.1.md",
+          "research/specification_v1.1.md",
+          "research/preregistration_v1.1.md"
+        ],
+        "changelog": "research/prompt_changelog.md Iteration 8",
+        "defect_repaired": "D-009 empty treatment group",
+        "design_blocker_status": "cleared",
+        "dossier_commit": "1f9bd09cc96c1953f67ffc1f9892f7e60b6a71ff",
+        "v1_0_files_edited": false
       },
       "started_at": null,
       "status": "completed"
@@ -58,18 +69,39 @@
     {
       "attempts": 0,
       "error": null,
-      "finished_at": "2026-10-22T01:51:56Z",
+      "finished_at": "2026-10-22T02:26:09+00:00",
       "id": "phase3-data-acquisition",
       "result": {
-        "artefacts": [
-          "research/data_manifest.md",
-          "research/event_calendar.csv",
-          "research/data_route_assessment.md"
-        ],
-        "outcome": "Event calendar built with primary-verified dates for key standards; data route assessed with recommendation and power consequences; canonical dossier retrieved; tests all pass"
+        "acquisition_plan": "research/data_acquisition_plan.md",
+        "calendar": "research/event_calendar.csv",
+        "filings_acquired": false,
+        "manifest": "research/data_manifest.md",
+        "market_data_acquired": false,
+        "note": "no paid data pull, no GitHub Actions run, no workflow edit; harvest not yet authorised",
+        "route_assessment": "research/data_route_assessment.md"
       },
       "started_at": null,
       "status": "completed"
+    },
+    {
+      "attempts": 0,
+      "error": "blocked on maintainer authorisation (protocol Authority item 4); no data acquired",
+      "finished_at": null,
+      "id": "phase3b-data-execution-and-feasibility-audit",
+      "result": {
+        "blocked_on": [
+          "authorisation A1 (market data: survivorship-clean price subscription)",
+          "authorisation A2 (read-only public harvesting: SEC EDGAR, FCA NSM, national OAMs, EUR-Lex, IFRS Foundation, FASB, ECB FX, World Bank WGI)",
+          "authorisation A3 (repository policy for harvested files)",
+          "authorisation A4 (panel scope confirmation)",
+          "authorisation A5 (prospective holdout PH-1 / v1.2 registration)"
+        ],
+        "first_action_when_unblocked": "implement the SEC EDGAR acquirer under scripts/ with manifests and SHA-256 hashing, commit the code BEFORE fetching, then run the smallest possible smoke fetch and verify the acceptance-timestamp parse against the filing index by hand",
+        "gate_before_any_return": "publish the feasibility audit counts (clusters, treatment firms, coverage) BEFORE any outcome-period return is computed; stop if clusters < 12 or treatment firms < 200",
+        "trigger_sequence": "research/data_acquisition_plan.md section 8.2"
+      },
+      "started_at": null,
+      "status": "pending"
     },
     {
       "attempts": 0,
@@ -108,5 +140,5 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-22T01:51:56Z"
+  "updated_at": "2026-10-22T02:26:09+00:00"
 }

@@ -80,13 +80,37 @@ test produces — including a null.
 
 ## A design finding that must be reported with any result
 
-The frozen specification's treatment group — "firms whose reporting framework
-changed at the event" — is **empty** across the frozen universe, and the
-canonical dossier has independently rejected the only within-jurisdiction
-substitute. This is a defect in the frozen design, recorded as D-009, and it is
-why no result can be reported until a v1.1 registration exists. A result
-produced from v1.0 would have had no estimand. See
-`research/data_route_assessment.md` §5 and `research/decision_log.md` D-009.
+The frozen specification v1.0's treatment group — "firms whose reporting framework
+changed at the event" — is **empty** across the frozen universe, and the canonical
+dossier has independently rejected the only within-jurisdiction substitute. This was
+recorded as D-009 and is why no result could be reported until a v1.1 registration
+existed.
+
+**v1.1 now exists** (`research/hypothesis_v1.1.md`, `research/specification_v1.1.md`,
+`research/preregistration_v1.1.md`, registered 2026-10-22, before any outcome-period
+return was computed). The design is executable in principle: the treatment is a
+jurisdiction-level standard-application event, the state is firm-level pre-adoption
+information quality estimated **within jurisdiction**, the control group is a matched
+**not-yet-treated** jurisdiction set, and enforcement quality and linguistic distance
+are **mandatory controls** rather than optional conditioners.
+
+**Three consequences must travel with every result produced under v1.1:**
+
+1. **The retrospective panel cannot satisfy protocol promotion gate 4 on its own.** Every
+   registered retrospective event has T-A ≤ 2017-10-31, so the chronological holdout
+   split is **empty**. This was declared in advance (D-014), together with its
+   consequence: the retrospective panel's role is **evidential**, and the promotable
+   test is the prospective holdout arm **PH-1** (the IFRS 18 first-application window),
+   which requires a separate v1.2 registration before the first IFRS 18 report is
+   published.
+2. **A null in this design is a contribution, not a replication.** The
+   first-time-versus-second-time-adopter comparison **on drift** is unrun by the field
+   (S-37 / V-009 G-21). The comparator's own power and the reason it was not run must
+   be reported with the result.
+3. **A survivorship-filtered price panel fires kill condition 9 by construction**, and
+   its bias is *against* the hypothesis, because the firms the hypothesis predicts the
+   effect in are the small, illiquid, low-information-quality names a survivors-only
+   panel drops.
 
 ## Reproducibility status of the work so far
 
@@ -101,4 +125,7 @@ produced from v1.0 would have had no estimand. See
   exact invocation and confirmed 67 passing cases.
 - The event calendar is reproducible from the recorded primary-source URLs and
   retrieval timestamps in `research/event_calendar.csv`.
+- The v1.1 design registration is reproducible from the retrieved canonical dossier at
+  commit `1f9bd09cc96c1953f67ffc1f9892f7e60b6a71ff` and from the local source ledger
+  rows **S-42 … S-54**.
 - No independent reviewer has reproduced anything, because no result exists.

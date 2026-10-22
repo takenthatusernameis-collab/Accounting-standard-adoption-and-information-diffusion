@@ -1,0 +1,380 @@
+# ACCTCLOCK — Data Acquisition Plan
+
+Written: 2026-10-22
+Author: Worker session 4 of the ACCTCLOCK loop.
+Governing design: `research/specification_v1.1.md` (v1.1),
+`research/preregistration_v1.1.md` (v1.1).
+Companion: `research/data_route_assessment.md` (route comparison and authorisation
+request, §6.5).
+
+Status: **Plan. Not executed.** Nothing has been downloaded, purchased, or committed.
+No paid data pull has been made, no GitHub Actions run has been started, and no
+outcome-period return has been computed or inspected.
+
+---
+
+## 1. What this document is, and what it is not
+
+The v1.1 registration in this session made the design **executable in principle**. This
+document makes the **data side** of that execution concrete: the exact sources, the file
+layout, the hashing and manifest scheme, the caching policy, the rate limits, and — the
+part that actually blocks the campaign — **the explicit authorisation decisions that a
+maintainer must make before a single byte is fetched**.
+
+It is a plan, not an acquisition. Section 8 is the gate.
+
+## 2. What the v1.1 design requires, mapped to data
+
+| Design element | Data needed | Why it is not optional |
+|---|---|---|
+| **T-R** (first full report under the standard) | Filing **acceptance timestamp in UTC** | The primary exit timestamp and the end of the transition window. A fiscal-period end is not a public timestamp and cannot be traded against. |
+| **T-RI** (first interim report under the standard) | Filing acceptance timestamp in UTC | The **pre-emption window** — a kill signal, not a null. |
+| **T-A / T-E** (adoption announcement, effective date) | The jurisdiction's legal instrument | The primary entry timestamp and the start of the transition window. Already partly satisfied by `research/event_calendar.csv`. |
+| **Affected-firm list knowable ex ante** | The instrument's scope definition + a point-in-time security master | V-009 ambiguity 6: the binding data constraint. |
+| **Pre-adoption information quality** | The firm's **last annual report published before T-A**, as originally filed | The primary state. A normalised vendor feed substitutes the latest restated figure, which is look-ahead. |
+| **Mechanical accounting-change magnitude** | The **restated comparatives** inside the firm's own first report under the standard | The CH-2 test; must be quantified on every primary statement the standard changes. |
+| **Transition-window abnormal return** | Daily prices **with delisted securities retained** | A survivorship-filtered panel biases the estimate *against* the hypothesis: the firms the hypothesis predicts the effect in (low information quality, small, illiquid) are exactly the names a survivors-only panel drops. Kill condition 9 fires. |
+| **Mandatory controls** | Enforcement quality (WGI) and the linguistic-distance measure | V-009 Cycle-52 item 2 and Cycle-113 item 1: mandatory, and not claimable as the campaign's own. |
+| **Matched control jurisdictions** | Prices, filings and identifiers for not-yet-treated jurisdictions | The DDD's counterfactual. |
+
+## 3. Caching and repository policy (default position)
+
+**Default: cache everything outside the repository. Commit only code, manifests and
+hashes.** This is the safe default because licence and terms differ per source and
+redistribution rights differ per vendor.
+
+```
+$ACCTCLOCK_CACHE/                     # default: ~/.cache/acctclock  (outside the repo)
+  raw/                                # immutable, write-once
+    sec_edgar/                        # submissions, filing index, raw SGML headers
+    oam/<jurisdiction>/               # per-OAM raw pulls
+    ifrs_calendar/                   # IFRS Foundation jurisdiction profiles, snapshots
+    eurlex/                           # OJ instruments (PDF/HTML)
+    prices/<vendor>/                  # vendor extracts
+    fx/                               # ECB reference rates
+    wgi/                              # World Bank WGI extracts
+    linguistic/                       # official-language status sources
+  derived/                            # reproducible transforms of raw/
+    filings/                          # parsed acceptance timestamps, XBRL facts
+    panel_v1.1.csv                    # the registered panel, with T-A / T-E per event
+    prices_panel/                     # point-in-time price panel
+    identifiers/                      # firm <-> security <-> venue crosswalk
+  manifests/                          # JSON manifests + hashes (see §5)
+```
+
+**What may be committed to the repository:**
+
+| Artefact | Committed? | Notes |
+|---|---|---|
+| Acquisition and parsing **code** | **Yes** | `scripts/` — deterministic, reviewable, no data. |
+| **Manifests** (source, URL, retrieval time, HTTP status, bytes, SHA-256) | **Yes** | `research/manifests/` — this is the provenance record. |
+| **Hashes** of every raw file | **Yes** | in the manifest; the file itself stays in the cache. |
+| **Derived aggregates** (the panel file, coverage counts, filing counts per event) | **Yes, if they contain no vendor-licensed content** | e.g. `research/panel_v1.1.csv` — event ids, dates, counts. |
+| **Raw vendor price extracts, raw filings, identifier masters** | **No (default)** | Only with an explicit maintainer ruling that redistribution is permitted. |
+| **Any file containing vendor-restricted content** | **No** | No exception. |
+
+**Trigger for revisiting the default:** a maintainer ruling recorded in
+`research/decision_log.md` as a new decision (D-0xx), stating that a specific named
+source may be committed. The ruling is per-source and never blanket.
+
+## 4. File layout and record schemas
+
+### 4.1 Raw-file naming (deterministic, re-derivable)
+
+```
+raw/sec_edgar/<cik>/<accession-nodashes>/<form>.txt        # complete submission text file
+raw/sec_edgar/<cik>/<accession-nodashes>/index.json        # filing index (acceptance date-time, form type, period)
+raw/sec_edgar/<cik>/submissions.json                       # submissions JSON (CIK history; NOT used for the acceptance time)
+raw/oam/<jurisdiction>/<yyyy>/<filing-id>/<original-document>   # original as published
+raw/eurlex/celex-<celex>.html
+raw/prices/<vendor>/<instrument>-daily-<yyyy>.csv
+```
+
+### 4.2 Derived record schemas
+
+**Filing table** (`derived/filings/filings.csv`):
+
+| Column | Type | Rule |
+|---|---|---|
+| `filing_id` | str | Source-native identifier (accession number / OAM id) |
+| `jurisdiction` | str | ISO-ish code; `US`, `UK`, `EU`, `TR`, … |
+| `cik_or_local_id` | str | Firm identifier in the source's namespace |
+| `firm_id_internal` | str | Crosswalk key assigned by this pipeline (see §4.3) |
+| `form_type` | str | 10-K / 10-Q / 20-F / annual report / interim report … |
+| `period_end` | date | Fiscal period end. **Never used as a trading timestamp.** |
+| `acceptance_datetime_utc` | ISO-8601 | **The only usable timestamp.** |
+| `acceptance_datetime_source` | str | `sgml_header` \| `oam_field` — provenance of the parse |
+| `is_first_full_under_standard` | bool | Derived; recorded with the derivation rule id |
+| `is_first_interim_under_standard` | bool | Derived |
+| `standard_id` | str | `IFRS15`, `IFRS16`, `IFRS9`, `ASC606`, `ASC842`, `ASU201601` |
+| `source_url` | str | Exact URL fetched |
+| `retrieved_utc` | ISO-8601 | Retrieval timestamp |
+| `content_sha256` | hex | SHA-256 of the raw document bytes |
+
+**Panel table** (`derived/panel_v1.1.csv`) — the registered panel of
+`research/specification_v1.1.md` §1.1, one row per (standard, jurisdiction):
+
+| Column | Rule |
+|---|---|
+| `event_id` | `EV-*`, matching `research/event_calendar.csv` |
+| `standard_id`, `jurisdiction`, `stratum` | Stratum ∈ {A, B} per the specification |
+| `T_A`, `T_E` | Adoption announcement and effective dates, primary-sourced |
+| `T_A_source_url`, `T_E_source_url` | Primary source of each date |
+| `date_conflict` | Free text; empty if none. **A conflict is recorded, never silently resolved** (D-011) |
+| `affected_firm_scope_rule` | How the affected-firm list is determined ex ante |
+| `filing_route` | Which OAM/regulator route, and whether it publishes a **time** |
+| `price_venue_set` | Venues expected to be covered |
+| `in_registered_panel` | bool — set **before** the feasibility audit and never changed afterwards |
+| `coverage_notes` | Post-audit notes |
+
+**Price table** (`derived/prices_panel/prices.csv`): date, internal security id, venue,
+close, volume, currency, `is_delisted_last_observation`, `delisting_return_vendor`,
+`corporate_action_adjusted` (bool), source.
+
+**Identifier crosswalk** (`derived/identifiers/crosswalk.csv`): internal firm id,
+security id, venue, cik/local id, valid-from, valid-to, name history.
+
+### 4.3 Identifier discipline
+
+- The internal `firm_id` is assigned by the pipeline, never taken from a vendor's
+  "permanent" id without a validity interval.
+- Every security carries a **valid-from / valid-to** interval so that a name change or
+  a merger does not silently split a firm.
+- Clustering is at the **firm** level; multiple share classes are separate securities
+  but one firm (as in v1.0 §5).
+
+## 5. Manifest and hashing scheme
+
+Every fetched artefact produces one manifest entry:
+
+```json
+{
+  "source_id": "SEC_EDGAR_SUBMISSION",
+  "url": "https://www.sec.gov/Archives/edgar/data/.../0000320193-18-000123.txt",
+  "method": "GET",
+  "http_status": 200,
+  "content_type": "text/plain",
+  "bytes": 8123456,
+  "sha256": "<hex>",
+  "retrieved_utc": "2026-10-22T00:00:00Z",
+  "user_agent": "acctclock-research <contact> (contact required by SEC policy)",
+  "local_path": "raw/sec_edgar/320193/000032019318000123/10-K.txt",
+  "parser_version": "sec_acceptance_parser@1.0.0",
+  "notes": "acceptance datetime parsed from the SGML header ACCEPTANCE-DATETIME field"
+}
+```
+
+Rules:
+
+1. **SHA-256 over the raw bytes as received**, before any transformation. The hash is
+   of the *file*, not of the parsed rows.
+2. Manifests are append-only JSONL, one file per source, committed to the repository.
+3. A fetch that fails is recorded as a **failed retrieval** with the HTTP status and
+   the exception text — never as an absence.
+4. Parsers are versioned; a parser change invalidates the derived layer and requires a
+   re-run, which is recorded.
+5. The **availability lag** measurement (the SEC states there is no timestamp for when
+   content first becomes available on sec.gov — S-31) is produced by the pipeline as a
+   coverage report: the distribution of (first observed retrieval time − acceptance
+   time) for re-fetched documents. The lag is **measured, never assumed**.
+
+## 6. Source-by-source acquisition specifications
+
+### 6.1 SEC EDGAR (United States) — `data.sec.gov` and `www.sec.gov/Archives`
+
+- **Authorisation required:** §8 item 2 (read-only harvesting).
+- **Compliance:** SEC requires a **declared User-Agent** identifying the requester and
+  a contact address, and caps traffic at **10 requests per second**. The pipeline uses
+  **≤ 2 requests/second** with a token bucket, and honours `Retry-After`.
+- **Acceptance timestamp:** parsed from the **raw SGML header**
+  (`ACCEPTANCE-DATETIME`, `HHMMSS` **Eastern**), converted to UTC using the US
+  daylight-saving offset for that date. The `data.sec.gov` submissions JSON field is
+  **not** used for the acceptance time, because it has been documented to mix UTC and
+  Eastern clock (S-41).
+- **What to fetch:** the submissions JSON per CIK (identifier history), the filing index
+  for each periodic report, and the complete submission text file for the reports that
+  define T-R, T-RI, the state variables, and the restated comparatives.
+- **Scope control:** fetch by CIK for the identified universe, not by full-index
+  scanning. The universe itself comes from the panel's affected-firm rule, so the
+  EDGAR work does not require an unbounded crawl.
+
+### 6.2 FCA National Storage Mechanism / RNS (United Kingdom)
+
+- **Authorisation required:** §8 item 2.
+- **What must be verified before use (an open gap, recorded in
+  `research/event_calendar.csv` EV-201):** the day-level **UK endorsement instrument**
+  date for IFRS 15 and IFRS 16 (the UK Endorsement Board approval and the FRC
+  instrument), and whether the NSM/RNS route publishes a **filing time** and not only a
+  date. A date without a time cannot produce T-R.
+- **Note:** the UK is registered in Stratum A but its T-A values are **not yet
+  primary-verified**. The panel file must carry `date_conflict` / an explicit
+  unverified marker for those rows until the instrument is fetched.
+
+### 6.3 National OAMs and regulators (Stratum B, and EU member-state routes)
+
+- **Authorisation required:** §8 item 2, per OAM.
+- **Candidate routes named in `research/data_route_assessment.md` §6.1:** KAP (Türkiye),
+  Saudi Exchange / CMA (Tadawul), SECP (Pakistan), the Croatian HANFA system, EGX
+  (Egypt), and the ESMA ESEF filings via national OAMs for the EU member states.
+- **Per-OAM verification pass required before any bulk fetch:** (a) does the route
+  publish a **time** (not only a date); (b) what timezone is it in; (c) does it serve
+  the **original** filing document or only a rendered version; (d) what the terms of use
+  permit. A route failing (a) is recorded as **date-only** and its events are flagged;
+  a date-only route cannot supply T-R and its events are excluded from the primary
+  estimate with the exclusion counted.
+- **Rate limits:** each OAM's own stated limit applies and is recorded in the manifest
+  schema as `rate_limit_note`. Where no limit is published, the pipeline defaults to
+  **1 request/second** and a descriptive User-Agent.
+
+### 6.4 Standard-setter and legislative sources (calendar)
+
+- IFRS Foundation jurisdiction profiles (S-47) — the **panel membership authority**.
+  A **dated snapshot** of the profile pages is taken and committed with its hash,
+  because the profiles are updated on an ongoing basis and the panel must be
+  reproducible.
+- EUR-Lex — the EU endorsement instruments (S-27, S-28, S-29) as the primary source
+  for the EU T-A dates.
+- FASB project pages / news releases / ASU index (S-33, S-34) for the US T-A dates.
+  Note the recorded gap: `research/event_calendar.csv` EV-103 (ASU 2016-01) has an
+  **unverified day-level issuance date** and must be fetched before that event is used.
+- The **UK Endorsement Board / FRC** instruments for the UK (see §6.2).
+- Each jurisdiction's own adoption instrument for Stratum B.
+
+### 6.5 Prices — the one paid dependency
+
+- **Preferred (authorisation required):** **Sharadar / Nasdaq Data Link** (~$30/month
+  personal tier; CRSP-grade daily prices with point-in-time membership and delisted
+  names) for US and global coverage, and **EODHD** (~$20/month; delisted included on
+  all paid tiers) for UK and selected EU venues. If the maintainer holds a **CRSP
+  Global + Compustat / WRDS** seat, use it — it is free to this campaign and strictly
+  better.
+- **Requirement, not a preference:** the price source must cover **delisted securities
+  and supply a vendor delisting return**, and must cover the venues of the **control
+  jurisdictions**. A source that covers only the treated venues is not sufficient,
+  because the DDD's counterfactual needs not-yet-treated jurisdictions with the same
+  coverage.
+- **Free fallback (Stooq / Yahoo / Tiingo / Alpha Vantage) is rejected** for the
+  primary estimate: measured coverage of a delisted cohort was ~41% on free stooq, and
+  the missing names are disproportionately small and illiquid — the treatment arm.
+- **Cost:** ~$50/month at retail tiers. **This is a paid data pull and requires the
+  protocol's Authority item 4 authorisation.**
+
+### 6.6 FX, enforcement and linguistic distance
+
+| Item | Source | Cost | Notes |
+|---|---|---|---|
+| Daily FX | ECB reference rates (frankfurter / ECB SDW) | Free | Same-day; the conservative column adds 10 bps. |
+| Enforcement quality | World Bank **Worldwide Governance Indicators** | Free | Annual; **revised**, not vintage. The revision caveat is stated in every report; a sensitivity to ±1-year variants is pre-registered. |
+| Linguistic distance | The published measure in **S-44**; fallback = an ordinal distance-from-English scale from UN/ISO 639 official-language status, English-official at 0 | Free | The fallback is registered in `research/specification_v1.1.md` §3.5 so the design is executable if the published index cannot be reproduced from its source. **Which source is used must be recorded before the holdout is opened.** |
+
+### 6.7 Analyst data
+
+**Treated as unavailable** (S-25). The v1.1 design is executable without it: analyst
+coverage enters only as a matching variable and as a pre-registered secondary proxy,
+both conditional on licence availability.
+
+## 7. Verification and integrity checks (run before the feasibility audit)
+
+1. **Hash verification:** every raw file's SHA-256 is re-verified against the manifest
+   on each run; a mismatch aborts the pipeline.
+2. **Timestamp sanity:** acceptance datetimes must be (a) after the issuer's period
+   end, (b) within a plausible filing-lag distribution for the jurisdiction and form
+   type, (c) not in the future relative to the retrieval time. Violations are quarantined
+   and counted, not silently fixed.
+3. **Future-leak scan:** for every field used as a pre-event variable, assert that its
+   source filing's acceptance time is **< the decision timestamp** of the event in
+   which it is used. This is the automated form of the point-in-time rule.
+4. **Restatement isolation:** each accounting value is stored with the acceptance time
+   of the filing it came from, so the point-in-time vintage is selectable and later
+   restatements remain available as separate vintages.
+5. **Delisting retention:** assert that every firm in the pre-event universe either has
+   price data through the end of its event window **or** a vendor delisting return.
+   A firm with neither is counted as a **coverage failure**, and the count is reported.
+6. **Coverage matrix:** counts by event, jurisdiction, year, treatment leg, liquidity
+   bucket and split — the input to the preregistration's feasibility audit (§5).
+
+## 8. Authorisation checklist — the actual gate
+
+**Nothing in §6 may be executed until the maintainer answers §8.1 and §8.2.**
+"No answer" is not authorisation. The protocol's Authority item 4 forbids paid data
+pulls and side-effecting runs without explicit authorisation, and this repository's
+token cannot grant it.
+
+### 8.1 Decisions required
+
+| # | Decision | Options | Consequence |
+|---|---|---|---|
+| **A1** | **Market data** | (a) authorise **Sharadar/Nasdaq Data Link** (~$30/mo) + **EODHD** (~$20/mo); (b) point the pipeline at an existing **CRSP/WRDS** entitlement; (c) **no paid data** — authorise the reduced-power fallback in §9 | (a)/(b) unblock the full v1.1 design. (c) makes the primary estimand **inconclusive by construction** (preregistration §5.3) and triggers kill condition 9. |
+| **A2** | **Public harvesting** | authorise read-only harvesting of **SEC EDGAR**, the **FCA NSM/RNS**, the named **national OAMs**, **EUR-Lex**, the **IFRS Foundation** profiles, the **FASB** pages, **ECB FX** and **World Bank WGI** | Required for T-R, T-RI, the state variables and the restated comparatives. **This is the highest-value and zero-cost authorisation.** |
+| **A3** | **Repository policy for harvested files** | (a) default — cache outside the repository, commit only code, manifests and hashes; (b) named-source exception | (a) is the default; (b) requires a per-source ruling recorded as a new decision. |
+| **A4** | **Panel scope confirmation** | (a) confirm the registered panel of `research/specification_v1.1.md` §1.1 (Stratum A + Stratum B by rule); (b) restrict to Stratum A only; (c) restrict to the frozen EU/UK/US universe | (b) reduces expected clusters to ≈8, **below the ≥12 minimum** → primary estimand inconclusive by construction. (c) is the v1.0 universe and is **not executable** (D-009). **The panel is registered by rule and should not be changed after the feasibility audit begins.** |
+| **A5** | **Prospective holdout** | confirm that **PH-1** (the IFRS 18 first-application window, 2027 interim reporting season) may be registered as v1.2 before the first IFRS 18 report is published | PH-1 is the only genuinely prospective, untamable holdout available to this campaign. |
+
+### 8.2 When authorisation arrives — the trigger sequence
+
+1. **Record the authorisation** as a new decision in `research/decision_log.md` (D-0xx)
+   quoting the maintainer's instruction, with the date and the exact scope granted.
+2. **Set the cache root** (`$ACCTCLOCK_CACHE`) and confirm it is **outside** the
+   repository working tree; verify with `git status` that no raw file appears.
+3. **Implement the acquirer** under `scripts/` with the manifests and hashing of §5,
+   plus the integrity checks of §7. Commit the code **before** fetching.
+4. **Run the smallest possible smoke fetch** (one CIK, one filing, one price symbol)
+   and verify the manifest, the hash and the acceptance-timestamp parse against the
+   filing index by hand.
+5. **Expand in the registered order:** panel file first (it fixes the universe), then
+   filings, then prices, then the control jurisdictions, then the mandatory control
+   series.
+6. **Run the feasibility audit** (preregistration §5) and **publish its counts before
+   any return is computed.**
+7. Only then may any outcome-period return be computed, and only under the frozen
+   test order.
+
+### 8.3 What is explicitly NOT requested and NOT done
+
+- No paid pull has been made in this session, and none will be made without A1.
+- No GitHub Actions run has been started, and none will be started without explicit
+  authorisation (the protocol's Authority item 4).
+- No new upstream repository has been written to. The canonical dossier was read
+  read-only, and no upstream file was modified.
+- `.github/workflows/main.yml` remains unmodified (D-006).
+
+## 9. The fallback (Route c), scoped under the v1.1 design
+
+If **A1(c)** is chosen — no paid data — the panel collapses to **US (EDGAR) + UK (FCA
+NSM) + EU-27 (national OAMs, treated as one application cohort)**, and the registered
+Stratum B is unavailable because free survivorship-clean price coverage does not exist
+for those venues.
+
+| Quantity | Fallback value | Consequence |
+|---|---|---|
+| Independent clusters | ≈ **8** (EU IFRS 15/9/16 as one cohort per standard, UK IFRS 15/16, US ASC 606/842/ASU 2016-01) | **Below the ≥12 pre-registered minimum** → the primary estimand is **inconclusive by construction** (preregistration §5.3). |
+| Treatment firms | likely ≥ 200 in the EU/US legs | Firm count does **not** substitute for cluster count: treatment is assigned at jurisdiction level, so the EU's single application date is one cluster. |
+| Price panel | survivorship-filtered | **Kill condition 9 fires by construction**, and the bias is *against* the hypothesis (the low-information-quality arm is disproportionately dropped). |
+| Conclusions that remain reachable | the descriptive event-study path; the **announcement/anticipation check** (CH-1); the **pre-emption window** (W-PRE, kill signal); the **H-C / PEAD** secondary; a direction-and-magnitude replication of the published conflict between **S-35** (K-IFRS reduced PEAD in Korea) and **S-36** (IFRS increased PEAD in Greece) | These are reported and explicitly not claimed as validation. |
+| Conclusions that do **not** remain reachable | any promotion claim; any statement that the effect exists or does not exist; any portfolio-level net-return claim | A survivor-filtered cost estimate is not an institutional cost estimate. |
+
+**The fallback is registered as a decision, not chosen silently by a data accident.** If
+it is used, the primary result is reported as **inconclusive by construction**, with the
+count of 8 clusters and the survivorship bias stated in every table.
+
+## 10. Cost and effort summary
+
+| Item | Cost | Effort | Blocking? |
+|---|---|---|---|
+| SEC EDGAR acquirer + SGML acceptance parser | free | 1–2 days | **Yes — the primary spine** |
+| OAM acquirers (per jurisdiction) | free | 1 day each | Yes for Stratum B |
+| UK endorsement instrument verification + NSM time verification | free | 0.5 day | Yes for the UK rows |
+| Price subscription | ~$50/month (retail) | 0.5 day | **Yes — the one paid dependency** |
+| IFRS Foundation profile snapshot | free | 0.5 day | Yes for the panel |
+| EUR-Lex / FASB primary-date verification | free | 0.5 day | Yes for T-A |
+| WGI + FX + linguistic distance | free | 0.5 day | Yes for the mandatory controls |
+| Identifier crosswalk | free | 2–3 days | Yes |
+
+## 11. Reproducibility
+
+Every artefact in `derived/` must be reproducible from `raw/` plus the committed code,
+by re-running the pipeline with the same parser versions. The pipeline must be
+re-runnable **offline** from the cache: no step may require a live network call unless
+it is the acquisition step itself. The pipeline's own output must be deterministic
+given the same cache, so that an independent reviewer can re-derive the panel, the
+coverage matrix and the feasibility-audit counts without a single re-fetch.

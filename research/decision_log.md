@@ -251,3 +251,198 @@ to the H-A announcement window, so a silently resolved date conflict is a
 look-ahead channel.
 
 **Reverses if.** Never. This is a permanent integrity rule.
+
+---
+
+## D-012 — 2026-10-22 — Register v1.1 with a jurisdiction-level treatment and a within-jurisdiction firm-level state; build **no** adopter partition
+
+**Context.** D-009 established that the v1.0 treatment definition yields an empty
+treatment group. Two candidate repairs existed: (a) a **firm-level binary partition** of
+first-time adopters against second-time adopters, and (b) a **jurisdiction-level
+application event** with staggered timing and a firm-level state estimated *within*
+jurisdiction. The canonical dossier (D-008) forbids (a): V-009 Cycle-56 amendment
+item 1 and the Cycle-111 correction notice state that first-time adopters apply IFRS as
+a single package, so the partition "degenerates into the historical first-time-versus-
+second-time IFRS comparison the literature has already populated" (S-35, S-36), and
+Cycle-56 item 3 rejects the within-jurisdiction early-versus-mandatory contrast because
+the treatment arm is voluntary and self-selected and the diffusion clock has no window
+to run. Option (b) is consistent with the dossier's own frozen conceptual rules
+("Event universe: adoption events of new accounting standards … covering affected firms
+in the adopting jurisdiction"; "Position: long affected firms with low pre-adoption
+information quality … from the announcement date to the first full post-adoption
+reporting date") and with V-009 Cycle-52 amendment item 1, which requires the
+candidate's state to be firm-level and to "retain identifying power **within** a
+jurisdiction".
+
+**Decision.** Register **v1.1** of the hypothesis, specification and preregistration
+(`research/hypothesis_v1.1.md`, `research/specification_v1.1.md`,
+`research/preregistration_v1.1.md`) in which:
+
+- the **treatment** is a jurisdiction-level standard-application event — a firm is
+  treated from the jurisdiction's adoption announcement if it is in the affected-firm
+  list (knowable ex ante) and applies the standard from the effective date;
+- the **state** is firm-level pre-adoption information quality (absolute discretionary
+  accruals, within-jurisdiction median split), estimated **within jurisdiction**;
+- the **counterfactual** is a matched **not-yet-treated** jurisdiction group, matched
+  on size, industry, liquidity, momentum, market-to-book, analyst coverage and
+  **fiscal-period-end proximity** (so the control transition window has the same length
+  as the treated one);
+- **no group A / group B partition is built** and none is presented as pre-registered;
+  the **UK early-adopter cohort is excluded from treatment**; and **no published
+  firm-level repeat-adopter flag is treated as available** (V-009 Cycle-110, R-058).
+
+The v1.0 files are **not edited**; the change is registered as a new version in
+`research/prompt_changelog.md` (Iteration 8).
+
+**Rationale.** (a) is the design the dossier has closed, for a stated reason that
+applies to the retrospective instance exactly as it does to the IFRS 18 instance.
+(b) satisfies every binding amendment: firm-level state with within-jurisdiction
+identifying power (Cycle-52 item 1), a non-empty and ex-ante-knowable affected-firm
+list (V-009 ambiguity 6), a transition-window claim (Cycle-58 item 2), and a design
+that identifies from **timing**, not from a partition. It also avoids the power trap
+the v1.0 universe created: treatment assigned at jurisdiction level means firm count
+is not a substitute for cluster count.
+
+**Reverses if.** The feasibility audit shows the registered panel cannot reach the
+≥12-cluster minimum **and** a pre-registered, dossier-compliant alternative treatment
+definition is registered as v1.2 with the same reasoning recorded. It does not reverse
+by returning to a group A / group B partition.
+
+---
+
+## D-013 — 2026-10-22 — Enforcement quality and linguistic distance are mandatory controls, imposed in three parts; the campaign claims only the within-jurisdiction residual
+
+**Context.** v1.0 §3 treated enforcement quality as an *optional competing conditioner*
+to be interacted with the state. V-009 Cycle-52 amendment item 2 makes enforcement and
+linguistic distance **mandatory conditioning controls** ("fixed ex ante, applied to every
+arm"), and states that the candidate's claim becomes "the **within-jurisdiction,
+firm-level residual** after those controls are imposed"; the candidate "may not claim"
+the enforcement effect as its own, because it is published (S-43, S-44, S-52). Cycle-113
+amendment item 1 promotes institutional enforcement quality from "available" to
+"mandatory" and makes the enforcement-conditioned comparator a **control requirement
+and not a falsification**. The Cycle-52 pass/fail additions are: a result that
+survives only because the country-level controls are omitted is a **fail**, and the
+within-jurisdiction estimate must be shown separately from the pooled one.
+
+**Decision.** v1.1 makes both controls mandatory and imposes them in three registered
+parts:
+
+1. the **primary** within-jurisdiction estimate uses jurisdiction fixed effects and
+   jurisdiction-specific linear time trends, so both controls are absorbed and cannot
+   drive the estimate;
+2. the **pooled** jurisdiction-level estimate is reported **with** the controls imposed
+   and **without** them, the latter as the mandated ablation (b) — and a pooled result
+   that exists only without the controls is a **fail** (kill condition 11);
+3. the within-jurisdiction estimate is **reported within pre-registered enforcement-
+   quality and linguistic-distance strata**, with an interaction test, and acceptance
+   requires that **no single stratum carries the whole effect**.
+
+The withdrawn ablation (d) ("replace the enforcement regime with trade invoicing share
+or another country characteristic") is **not reinstated**: it is now the control, and
+replacing it with a further country characteristic would test nothing.
+
+**Rationale.** The controls are jurisdiction-constant, so in a within-jurisdiction
+specification they are absorbed rather than estimated. Part 3 exists precisely so that
+the imposition is operative and visible rather than an artefact of the fixed effects:
+without it, "the controls are imposed" would be unverifiable from the output. Part 2
+implements the dossier's fail rule directly.
+
+**Reverses if.** A maintainer of the factory repository states that V-009 is not
+binding on validator repositories, or amends the Cycle-52 / Cycle-113 controls.
+
+---
+
+## D-014 — 2026-10-22 — Declare the retrospective panel's holdout empty in advance, and register a prospective holdout arm
+
+**Context.** v1.0's chronological split was defined on T-R. In v1.1 the decision
+timestamp is T-A, and **every registered retrospective event has T-A ≤ 2017-10-31**
+(`research/event_calendar.csv`). There is therefore **no event with T-A on or after
+2019-01-01**, and the "untouched holdout" split would be empty. The protocol's Phase 7
+gate 4 requires results to survive a pre-registered out-of-sample test, and v1.0's
+preregistration §4 already set the precedent that a small holdout is "inconclusive by
+construction".
+
+**Decision.**
+
+1. The splits are re-anchored on **T-A** (Development: T-A < 2016-01-01; Validation:
+   T-A ∈ [2016-01-01, 2019-01-01]; Untouched holdout: T-A ≥ 2019-01-01).
+2. The **emptiness of the retrospective holdout is declared in advance**, together with
+   its consequence: acceptance criterion 3 is expected to be **unevaluable**, and
+   **the retrospective panel cannot by itself satisfy protocol promotion gate 4**. The
+   retrospective panel's registered role is **evidential** — does the transition-window
+   state contrast exist, at what size, and does it survive the mandatory controls.
+3. **PH-1**, a prospective holdout arm on the **IFRS 18 first-application window** (the
+   2027 interim reporting season, periods ending 30 June 2027), is registered in
+   `research/preregistration_v1.1.md`. Its outcome lies in the future and cannot be
+   inspected before it occurs. It **requires a separate v1.2 registration filed before
+   the first IFRS 18 report is published** (V-009 Cycle-56 amendment item 4), and it
+   is registered here with the pre-registered cycle split: the 2026 interim reporting
+   season carries the pre-adoption disclosure (the pre-emption kill-signal window) and
+   the 2027 interim season carries the first IFRS 18 reports (the outcome).
+4. The retrospective panel is nevertheless a **genuine** holdout in the operational
+   sense, because **no outcome-period return has ever been computed in this
+   repository**; the chronological ordering is a real ordering of information for the
+   validator. This does not upgrade the retrospective panel to a promotable design.
+
+**Rationale.** Discovering an empty holdout after the specification was frozen and the
+data bought would be a look-ahead channel of exactly the kind the protocol forbids.
+Declaring it now forces the honest conclusion — the retrospective panel is evidential,
+and the promotable test is prospective — and makes PH-1 a concrete, dated commitment
+rather than a hope.
+
+**Reverses if.** A registered panel event with T-A on or after 2019-01-01 is added
+under the panel membership rule before the feasibility audit begins.
+
+---
+
+## D-015 — 2026-10-22 — Cache raw data outside the repository by default; commit only code, manifests and hashes
+
+**Context.** The data route is a regulator/issuer filing spine plus one paid price
+subscription. Licence and terms of use differ per source, and redistribution rights
+differ per vendor, so committing raw harvests or vendor extracts to the repository is
+a per-source legal question that the campaign cannot answer for itself.
+
+**Decision.** The default is: **raw files live in a cache outside the repository
+working tree** (`$ACCTCLOCK_CACHE`, default `~/.cache/acctclock`); the repository
+receives **code**, **manifests** (source, URL, method, HTTP status, bytes, SHA-256,
+retrieval timestamp, parser version), **hashes**, and **derived aggregates that carry
+no vendor-licensed content** (the panel file, coverage counts). A per-source exception
+requires an explicit maintainer ruling recorded as a new decision in this log. The
+acquisition plan (`research/data_acquisition_plan.md` §3, §5) fixes the naming, the
+schemas and the manifest format, and requires that a failed retrieval be recorded as a
+failed retrieval rather than as an absence.
+
+**Rationale.** This is the same discipline as D-011 applied to data instead of dates:
+the provenance record must be complete and committed, while the material stays where
+the licence puts it. It also keeps the repository small enough for the controller to
+checkpoint, and makes the pipeline re-runnable offline from the cache.
+
+**Reverses if.** A maintainer rules that a specific named source may be committed to
+the repository.
+
+---
+
+## D-016 — 2026-10-22 — The panel membership rule is frozen before the feasibility audit and must not be narrowed afterwards
+
+**Context.** The v1.1 panel has two strata: Stratum A (content-change events in the EU,
+UK and US) and Stratum B (framework-change events, i.e. first-time IFRS adopters,
+admitted **by rule**). The realised size of Stratum B depends on price and filing
+coverage, which are unknown until the data is acquired. Preregistration §5.2 predicts
+≈8 clusters for Stratum A and ≈20–40 for Stratum B, with the total above the ≥12
+minimum only if Stratum B realises.
+
+**Decision.** The panel membership rule (`research/specification_v1.1.md` §1.1) and the
+stratum split are **frozen at registration**. The feasibility audit **reports** the
+realised counts and **stops** if the counts fall below the pre-registered minimums
+(≥12 clusters, ≥200 treatment firms), in which case the primary estimand is
+**inconclusive by construction**. **The panel may not be narrowed, widened or
+re-weighted after the feasibility audit begins** in order to reach the minimums; a
+different panel requires a new registered version.
+
+**Rationale.** A panel that is adjusted until it reaches a power threshold is a panel
+selected on the outcome. The rule fixes the selection criterion in advance — including
+the part of it (Stratum B) that may turn out to be unobtainable — and the honest
+consequence (inconclusive) is pre-registered alongside it.
+
+**Reverses if.** The maintainer changes the panel scope **before** the feasibility
+audit begins, under authorisation item A4 of `research/data_acquisition_plan.md` §8.1.

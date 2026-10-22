@@ -296,6 +296,16 @@ Scoped concretely, as `research/data_manifest.md` §5 requires:
 
 ### 6.5 Exact authorisation requested
 
+> **Status as of 2026-10-22 (re-checked in the v1.1 registration session):** item **3**
+> (design registration) has been **carried out** — v1.1 exists and is registered — but
+> it remains an item on the list because a maintainer confirmation is still required
+> for any **scope** change to the registered panel. Item **4** (scope ruling) has been
+> **superseded by the registered panel rule** in `research/specification_v1.1.md` §1.1
+> and is now reduced to a confirmation (authorisation item A4). Items **1** and **2** are
+> **still entirely outstanding**. The full, operational form of this list, with the
+> trigger sequence that runs once an answer is received, is
+> **`research/data_acquisition_plan.md` §8**.
+
 From the maintainer, one of the following, plus two design decisions:
 
 1. **Market data (preferred):** authorisation to subscribe to **Sharadar / Nasdaq
@@ -345,3 +355,71 @@ From the maintainer, one of the following, plus two design decisions:
 
 Nothing in this document is a result about the hypothesis. No outcome-period
 return was computed, inspected, or simulated in this session.
+
+---
+
+## 8. Re-check after the v1.1 registration (2026-10-22)
+
+This section records what changed in the data route as a consequence of the v1.1
+registration, and what did not.
+
+### 8.1 What the v1.1 design changed in the data requirements
+
+| v1.0 requirement | v1.1 requirement | Effect on the route |
+|---|---|---|
+| Prices for the EU/UK/US universe only | Prices for the **registered panel**, including the Stratum B first-time-framework-adopter venues, **and** for the matched **not-yet-treated control jurisdictions** | The price source must cover **control** jurisdictions as well as treated ones. A source that covers only the treated venues is not sufficient. This widens the requirement stated in §6.1 without changing its price. |
+| T-R as the entry timestamp | **T-A** as the entry timestamp, **T-R** as the exit, and **T-RI** as the pre-emption timestamp | **Unchanged in kind**: the public-filing route is still the only source of all three, and the paid price feed still does not supply any of them. The route recommendation of D-010 stands. |
+| The affected-firm list for the EU/UK/US | The affected-firm list for the **registered panel**, plus each jurisdiction's own scope rule | The IFRS Foundation jurisdiction profiles (S-47) move from "a calendar source" to the **panel membership authority**. Still free and primary. |
+| "Firms whose reporting framework changed" | Firms in the jurisdiction's affected-firm list applying the standard from T-E | The affected-firm list becomes **ex-ante knowable** for the first time in this campaign's history. This is the requirement that was previously unmet, and it is now met **by design**, not by data. |
+| — | **Restated comparatives** inside the first report under the standard (the mechanical accounting-change magnitude, CH-2) | Still supplied by the public-filing route; it adds no new source requirement. |
+| — | Enforcement quality (WGI) and the linguistic-distance measure | **Free**, non-blocking, but **mandatory**: the design is not executable without them. Their assembly is now on the critical path. |
+
+### 8.2 What did not change
+
+- **The route recommendation stands.** The regulator/issuer filing route remains the
+  spine, and the survivorship-clean price subscription remains its one paid dependency
+  (D-010). No new paid dependency was introduced by v1.1.
+- **The fallback stands and is now precisely quantified.** Under the v1.1 design the
+  fallback panel is **US + UK + EU-27**, giving **≈ 8 independent clusters** (the EU is
+  one application cohort per standard because all member states share one application
+  date), which is **below the ≥12 minimum**. The primary estimand is therefore
+  **inconclusive by construction** — a rule now frozen in
+  `research/preregistration_v1.1.md` §5.3 rather than asserted after the fact.
+  The reachable results under the fallback are the descriptive event-study path, the
+  announcement/anticipation check, the pre-emption window, the H-C / PEAD secondary, and
+  the direction-and-magnitude replication of the published conflict between S-35 and
+  S-36.
+- **No authorisation has been received.** Items A1 (market data) and A2 (public
+  harvesting) are entirely outstanding; A3 (repository policy), A4 (panel scope) and
+  A5 (prospective holdout) await confirmation. The trigger sequence is in
+  `research/data_acquisition_plan.md` §8.2.
+- **No paid data pull, no GitHub Actions run and no workflow edit** occurred in this
+  session.
+
+### 8.3 One new, named verification dependency
+
+v1.1 pins the **adoption announcement clock** to the jurisdiction's legal adoption
+instrument, with the standard-setter issuance date as a secondary window. Two
+verification gaps follow, both already recorded in `research/event_calendar.csv` and
+both now **on the critical path** rather than incidental:
+
+1. **EV-201 / EV-202 — the day-level UK endorsement instrument date** for IFRS 15 and
+   IFRS 16. Without it the UK rows cannot enter the registered panel with a
+   primary-verified T-A.
+2. **EV-103 — the day-level ASU 2016-01 issuance date** in the United States.
+
+Both are free to fetch and are part of the §6.4 acquisition specification.
+
+### 8.4 A note on the dossier's own instance
+
+The canonical dossier's live instance is **IFRS 18**, and its prospective arm A is
+**not runnable on current evidence** (the 2026 season's quantification rate is 0 of 13
+on a convenience sample; the ESMA-supervised population rate is not yet published —
+S-49, S-50, S-51). v1.1 therefore **does not use arm A**, and instead registers its
+retrospective analogue: the **pre-emption window** around the first disclosure of the
+accounting break at the firm's first interim report under the standard
+(`research/specification_v1.1.md` §4.3). The retrospective standards carried **no
+mandated pre-adoption impact disclosure**, so the structural pre-emption channel that
+dominates the IFRS 18 instance is **absent** from the v1.1 panel — a difference that is
+registered so that the pre-emption arm is evaluated on its own merits rather than
+assumed to have fired.

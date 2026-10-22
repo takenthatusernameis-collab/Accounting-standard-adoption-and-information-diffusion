@@ -149,13 +149,97 @@ next session must register `research/hypothesis.md` v1.1,
 this changelog **before** any return is computed. v1.0 is never overwritten
 (`research/specification_v1.md`, preamble).
 
+## 2026-10-22 — Iteration 8: the design revision is **registered** as v1.1
+
+**Problem.** The frozen v1.0 design could not be executed: its treatment definition
+("firms whose reporting framework changed at the event") produced an **empty** treatment
+group across the frozen EU/UK/US universe, so the primary estimand was undefined
+(D-009, ledger E-010). The canonical dossier independently rejected the only
+within-universe substitute — the UK early-adopter cohort — as an identification, and
+forbade a group A / group B first-time-vs-second-time partition for a single-package
+IFRS adoption. The campaign therefore had no executable estimand, and no amount of
+data acquisition could change that.
+
+**Change.** **v1.1 of the hypothesis, the specification and the preregistration is
+registered**, in new files. `research/hypothesis.md`, `research/specification_v1.md` and
+`research/preregistration.md` v1.0 are **byte-identical to their previous versions** and
+are not edited in place.
+
+| New artefact | What it registers |
+|---|---|
+| `research/hypothesis_v1.1.md` | The **transition-window** claim: the drift between the adoption announcement and the firm's first full report under the new standard, with the firm-level pre-adoption information quality as the state, identified **within jurisdiction**, two-sided. Three kill conditions added (country-level artefact; pre-emption consumed; state adds nothing after costs). |
+| `research/specification_v1.1.md` | The **executable treatment**: a jurisdiction-level standard-application event with a registered panel membership rule, a not-yet-treated matched control group matched on fiscal-period-end proximity, the mandatory country-level controls and the three-part way they are *imposed*, the announcement → first-full-report entry/exit rule, the pre-emption kill-signal window, the mechanical-magnitude attribution across all three primary statements, and the clarification of the v1.0 benchmark-window wording defect. |
+| `research/preregistration_v1.1.md` | Splits re-anchored on the decision timestamp **T-A**; the **retrospective panel's empty holdout declared in advance** with its consequence fixed (the retrospective panel cannot satisfy protocol gate 4 on its own); the **prospective holdout arm PH-1** registered; the feasibility, cluster-count, power and stopping rules frozen so that a short panel cannot later justify a design change; the claimed published reading pre-registered. |
+| `research/data_acquisition_plan.md` | The data side of execution: sources, file layout, record schemas, manifest and SHA-256 scheme, cache location **outside** the repository, rate limits, per-OAM verification pass, and the explicit authorisation checklist with a trigger sequence. |
+| `research/source_ledger.csv` | 13 new rows, **S-42 … S-54**: the dossier sources that v1.1 relies on, each carrying its dossier identifier and an honest verification status. |
+
+**Design choices and their grounds (all recorded in `research/decision_log.md`):**
+
+1. **Treatment = jurisdiction-level standard application, not a firm-level adopter
+   partition.** A binary first-time-vs-second-time partition is what V-009's
+   Cycle-56 item 1 and the Cycle-111 correction notice forbid, because a single-package
+   adoption collapses it into the historical comparison the literature has already
+   populated (S-35, S-36). The design identifies the effect from **staggered
+   application timing** and a **within-jurisdiction firm-level state contrast** instead.
+2. **The state contrast is the campaign's own claim; the country-level effects are
+   not.** Enforcement quality (S-43, S-52) and linguistic distance (S-44) are
+   **published conditioners** and enter as mandatory controls, with the rule that a
+   result surviving only when they are omitted is a **fail** (V-009 Cycle-52 item 2;
+   Cycle-113 item 1).
+3. **The claimed reading is the discontinuity-at-adoption reading** (S-42); the
+   comparability-as-driver reading is a descriptive control, and a null under the
+   claimed reading is not a kill of the other (V-009 Cycle-52 item 3).
+4. **The transition window is the primary window; the v1.0 post-first-report window
+   is demoted to a descriptive control** (V-009 Cycle-58 item 2).
+5. **The pre-emption window is registered as a kill signal, not a null** (V-009
+   Cycle-113 items 2 and 4; Cycle-114 item 2), in its retrospective analogue: the
+   first disclosure of the accounting break at the firm's first interim report.
+6. **The IFRS 18 prospective arm A is not used.** Its state cannot be constructed for
+   the retrospective panel (those standards carried no mandated pre-adoption impact
+   disclosure), and its G-33 dependency is unmet (2026 quantification rate 0 of 13 on a
+   convenience sample; the ESMA-supervised population rate not yet published —
+   S-50, S-51, S-49).
+
+**Hypothesis or acceptance criteria altered?** **Yes — this is a new registered version,
+and it is registered BEFORE any outcome-period return exists.** No threshold, cost,
+window length, acceptance criterion or kill condition was loosened. The acceptance
+criteria are carried forward unchanged and two are added: acceptance criterion 8 (the
+within-jurisdiction estimate exists and survives the mandatory country-level controls)
+and the explicit declaration that the retrospective panel has an **empty** holdout.
+The v1.0 acceptance thresholds (|mean| ≥ 0.5% per event, ≥12 independent events, ≥200
+treatment firms, break-even ≥ 2× the conservative cost, leave-one-event-out <50%) are
+unchanged.
+
+**Known weaknesses carried forward, now sharpened.**
+
+- The **EU contributes one timing cohort**, not 27 independent clusters, because all
+  EU member states share one application date. This is stated in advance so it cannot
+  later be discovered as a power surprise.
+- The expected cluster count (≈28–48) depends on Stratum B's **coverage**, which
+  depends on the price and filing routes for the first-time-adopter jurisdictions. If
+  Stratum B does not realise, the count falls to ≈8 and the primary estimand is
+  **inconclusive by construction**. The rule is frozen in advance.
+- The retrospective panel **cannot satisfy protocol promotion gate 4 on its own**; the
+  genuinely prospective holdout is **PH-1** (the IFRS 18 first-application window),
+  which requires a separate v1.2 registration before the first IFRS 18 report is
+  published.
+
 ## Next iteration (reserved)
 
 The next prompt improvement must address the highest-value unresolved question.
-As of this entry, that question is **no longer the data route** — the data route
-is now assessed, a route is recommended and an authorisation request is on the
-table (`research/data_route_assessment.md` §6.5). The highest-value unresolved
-question is the **registered design revision (v1.1)** described in Iteration 7,
-because until it exists the campaign has no executable estimand, and no amount of
-data acquisition changes that. A prompt iteration that merely rewords the
-hypothesis without resolving that decision is not progress.
+As of this entry, the **design** question is resolved: v1.1 is registered, executable in
+principle, and compliant with every binding dossier amendment. The highest-value
+unresolved question is now the **data and authorisation** question: the v1.1 panel
+cannot be assembled until the maintainer answers the authorisation checklist in
+`research/data_acquisition_plan.md` §8 (A1 market data, A2 public harvesting, A3
+repository policy, A4 panel scope, A5 prospective holdout).
+
+Two secondary questions are also now open and are **named** so they are not lost:
+(i) the **day-level UK endorsement instrument date** and whether the UK route publishes a
+filing **time** (T-R needs a time), and (ii) the **day-level ASU 2016-01 issuance
+date**, both recorded as verification gaps in `research/event_calendar.csv`; and (iii)
+whether the published linguistic-distance measure (S-44) can be reproduced exactly from
+its source, or whether the registered fallback scale must be used.
+
+A prompt iteration that merely rewords the hypothesis without resolving one of those
+questions is not progress.
