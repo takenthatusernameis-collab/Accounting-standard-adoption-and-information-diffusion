@@ -1,0 +1,85 @@
+country,official_language,published_ld
+Argentina,Spanish,0.342
+Australia,English,0.000
+Bahamas,English,0.000
+Bahrain,Arabic,0.490
+Bangladesh,Bengali,0.583
+Barbados,English,0.000
+Belarus,Russian,0.308
+Benin,French,0.346
+Bermuda,English,0.000
+Bolivia,Spanish,0.342
+Bosnia and Herzegovina,"Bosnian, Croatian, Serbian",0.367
+Brazil,Portuguese,0.288
+Burkina Faso,French,0.346
+Canada,"English, French",0.173
+Chile,Spanish,0.342
+China,Chinese,0.467
+Colombia,Spanish,0.342
+Costa Rica,Spanish,0.342
+Croatia,Croatian,0.367
+Cuba,Spanish,0.342
+Dominican Republic,Spanish,0.342
+Ecuador,Spanish,0.342
+Egypt,Arabic,0.490
+El Salvador,Spanish,0.342
+Fiji,English,0.000
+Ghana,English,0.000
+Guatemala,Spanish,0.342
+Guyana,English,0.000
+Haiti,"French, Haitian Creole",0.423
+Honduras,Spanish,0.342
+Hong Kong,"Chinese, English",0.234
+India,"English, Hindi",0.207
+Indonesia,Indonesian,0.471
+Israel,"Arabic, Hebrew",0.440
+Ivory Coast,French,0.346
+Jamaica,English,0.000
+Japan,Japanese,0.590
+Jordan,Arabic,0.490
+Kazakhstan,"Kazakh, Russian",0.488
+Kenya,"English, Swahili",0.254
+Kuwait,Arabic,0.490
+Kyrgyzstan,"Kyrgyz, Russian",0.308
+Laos,Lao,0.429
+Lebanon,Arabic,0.490
+Malawi,English,0.000
+Malaysia,"English, Malay",0.376
+Mali,French,0.346
+Mauritius,English,0.000
+Mexico,Spanish,0.342
+Moldova,Romanian,0.293
+Morocco,"Arabic, Tamazight",0.490
+Mozambique,Portuguese,0.288
+Nepal,Nepali,0.567
+New Zealand,English,0.000
+Nicaragua,Spanish,0.342
+Niger,French,0.346
+Oman,Arabic,0.490
+Pakistan,"English, Urdu",0.222
+Panama,Spanish,0.342
+Papua New Guinea,"English, Tok-Pisin",0.282
+Paraguay,"Paraguayan Guaraní, Spanish",0.482
+Peru,Spanish,0.342
+Philippines,"English, Filipino",0.300
+Qatar,Arabic,0.490
+Russia,Russian,0.308
+Saudi Arabia,Arabic,0.490
+Singapore,"Chinese, English, Malay, Tamil",0.464
+South Africa,"Afrikaans, Ndebele, Northern Sotho, Setswana, Southern Sotho, Swati, Tsonga, Venda, Xhosa, Zulu, English",0.156
+South Korea,Korean,0.507
+Sri Lanka,"Sinhala, Tamil",0.552
+Switzerland,"French, German, Italian",0.305
+Syria,Arabic,0.490
+Tanzania,Swahili,0.507
+Thailand,Thai,0.482
+Togo,French,0.346
+Trinidad and Tobago,English,0.000
+Tunisia,Arabic,0.490
+Türkiye,Turkish,0.534
+United Arab Emirates,Arabic,0.490
+United States,English,0.000
+Uruguay,Spanish,0.342
+Venezuela,Spanish,0.342
+Zambia,English,0.000
+Zimbabwe,English,0.000

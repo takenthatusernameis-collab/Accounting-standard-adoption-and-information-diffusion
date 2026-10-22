@@ -853,3 +853,273 @@ is computed and before the holdout opens, is what keeps the control ex ante.
 Ethnologue vintage they used, or the maintainer supplies an existing entitlement to
 both, in which case the primary measure is restored for the jurisdictions it covers
 and the fallback remains in force for the rest, with the split recorded.
+
+## D-024 — 2026-10-22 — The published linguistic-distance index is reproducible at the *language* level from open inputs; the residual blocker is the jurisdiction-level official-language list, not the algorithm
+
+**Context.** D-023 recorded three obstacles to reproducing the published measure
+(S-44) panel-wide: a licensed and unversioned official-language list, a manual
+merge, and the article's own 84-country sample. It also recorded that the article
+was unreachable from this environment (Springer returned a client challenge), so
+the operationalisation had been read from the publisher's indexed text rather than
+from the typeset article.
+
+**What is now established, from primary sources.** The article is **open access**
+and **reachable** (S-83); its §3.3 states the operationalisation exactly as D-023
+recorded it — for each official language, compare its **192 WALS characteristics**
+with their English equivalents, 0 where shared and 1 where not, and average over a
+country's official languages — and its **Table 1** publishes the resulting value
+for each of its 84 sample countries. Recomputing the index from **WALS 2020.6**
+(S-80) with the declared rule — a parameter is compared when both languages carry
+a value for it, shared when their value sets intersect, and a language's score is
+the share of its compared parameters not shared with English — reproduces the
+published **per-language** values to within about 0.01: Bengali **0.583** against a
+published 0.583, Japanese **0.597** against 0.590, Korean **0.507** against 0.507,
+Spanish **0.342** against 0.342, Russian **0.308** against 0.308, Thai **0.482**
+against 0.482, Turkish **0.541** against 0.534.
+
+**Decision.** D-023's conclusion is **refined, not reversed**, and the refinement is
+recorded rather than applied silently. The published measure's **algorithm and
+language-level values are reproducible from open, dated, hashed inputs**; what is
+**not** reproducible panel-wide is the **jurisdiction-level official-language
+list**, because it comes from a licensed and unversioned commercial database whose
+vintage the paper does not archive. The registered fallback therefore stands
+(selected by the pre-registered condition, which is met), and it is now
+**implementable from open sources** rather than merely specified in the abstract.
+The claim in D-023 that the article was unreachable is **superseded**: it was a
+property of that session's network path, not of the source.
+
+**Consequence for the design.** The fallback is not a crude substitute for the
+published measure; it is a recomputation of the same quantity over an open
+official-language input, and its agreement with the published measure can be
+**measured** rather than asserted. That measurement is D-028.
+
+**Boundary.** Nothing here is an outcome, an effect, or a claim about any
+security. The linguistic-distance measure is a **published conditioner** and a
+**mandatory control** (v1.1 §3.5), never this campaign's own effect.
+
+## D-025 — 2026-10-22 — A boilerplate paragraph parsed as a jurisdiction is removed from the candidate universe, by rule and with a test, and the panel rule itself is not narrowed
+
+**Context.** The Stratum B candidate universe is derived by rule from the dated
+IFRS Foundation jurisdiction-profile snapshot of 2026-10-22 (D-018, D-020). Reading
+the derived file back, one of its 142 "jurisdictions" is the **disclaimer
+paragraph** printed on the IFRS Foundation's index page — "The information in these
+profiles is for general guidance only and may change from time to time …" — which the
+snapshot parser had taken for a place name. It carried three rows (one per
+standard), all `pending`, all pointing at Australia's profile URL, so no admitted
+event, no date and no T-A was affected.
+
+**Decision.** The artefact is **removed** from `research/panel_v1.1.csv` (three
+rows) and from the PH-1 panel (`research/panel_v1.2.csv` is rebuilt), and the
+builder now **rejects** any candidate name that is not a place name — more than
+eight words, or more than sixty characters — so the artefact cannot recur
+(`scripts/build_panel.py`, `is_plausible_jurisdiction`, with a unit test). The
+candidate universe is therefore **141** jurisdictions.
+
+**What this is not.** It is **not** a narrowing of the panel, and D-016 is not
+triggered: no jurisdiction was dropped by hand, the panel rule is untouched, the
+feasibility audit has not begun, and the item removed was never a jurisdiction at
+all. It is a data-quality correction of a parsing artefact, applied to both panel
+files so that they share one universe, and it is recorded here rather than made
+silently.
+
+**Effect on the arm.** None on the estimand, the window, the thresholds or the
+cluster arithmetic: the removed row carried an empty T-A and was `pending`.
+
+## D-026 — 2026-10-22 — Two further IFRS 18 adoption instruments are primary-verified, two jurisdictions are recorded as attempted and not verified, and the panel-scope question about local equivalents is referred to the maintainer
+
+**Context.** Condition 2 of the PH-1 membership rule asks for a **legal instrument
+making IFRS 18 mandatory**, with a **day-level** date. D-022 pinned three
+jurisdictions. This session located and verified two more, and recorded two
+attempts that did not succeed.
+
+**Verified, from primary sources, and independently re-fetched before use.**
+
+- **Singapore** — the Accounting Standards Committee of ACRA issued **SFRS(I) 18**
+  on **2024-10-04**; the announcement names the standard and the date, and the
+  standard applies to annual reporting periods beginning on or after 2027-01-01
+  (S-76). Mandatory character: a standard-setter issuance given legal force by the
+  Companies Act (Cap. 50) and the SGX Mainboard Rulebook, which require listed
+  issuers to apply SFRS(I).
+- **Brazil** — **Resolução CVM nº 237, de 23 de dezembro de 2025**; Article 1 makes
+  CPC 51 (aligned to IFRS 18) mandatory for the "companhias abertas", and Article 3
+  brings it into force on 2027-01-01 for financial years beginning on or after that
+  date (S-77). Mandatory character: a **direct legal instrument** of the securities
+  regulator under Lei 6.404/1976 art. 177 and Lei 6.385/1976 art. 22.
+
+**Attempted and NOT verified — recorded, not inferred.**
+
+- **Hong Kong SAR** — the HKICPA's own HKFRS 18 page states the effective date
+  (financial periods beginning on or after 1 January 2027), but the retrieved page
+  does not carry the **issuance** date, so **T-A is left empty** (S-78).
+- **South Africa** — the route is incorporation by reference: the Companies Act
+  Regulations refer directly to "IFRS as issued from time to time by the IASB", so
+  there is **no dated local instrument** and **T-A is left empty** (S-79).
+
+**Decision.** The two verified instruments are added to the PH-1 panel with their
+day-level dates and their date conflicts. The two unverified jurisdictions stay
+**pending** with empty dates, and the attempts are recorded here so that the
+absence is visible rather than looking like an oversight.
+
+**A scope question this decision does not settle.** Jurisdictions such as
+**Australia** (AASB 18) and **Japan** (the ASBJ's IFRS 18 statement) mandate IFRS
+18 through their **own local equivalents** and are therefore genuine IFRS 18
+application events for their listed firms — but they are **not** on the IFRS
+Foundation's list of jurisdictions that apply IFRS as issued by the IASB, which is
+what the registered candidate universe is derived from. **Adding them would be a
+panel-scope change**, which is the maintainer's ruling under **A4**
+(`research/authorisation_request.md`), and it would require a further registered
+version. It is therefore **referred, not decided**, and it is not done silently
+here. Note that the application date would be common to those jurisdictions
+(2027-01-01), so the scope change would add jurisdictions but not timing variation.
+
+## D-027 — 2026-10-22 — The UK National Storage Mechanism's live search could not be completed; the time-of-day behaviour is evidenced from the FCA's own served application code, and condition 4 stays UNVERIFIED
+
+**Context.** D-021 recorded that the FCA NSM publishes a filing **date**, not a
+time, on the evidence of the published glossary and the Investor User Guide, and
+that the NSM search API answered HTTP 403, leaving the condition **unverified**
+rather than false. The handoff asked for **one** NSM search for a known annual
+financial report, with the response and the CSV export inspected for time-of-day.
+
+**What this session established.** The FCA's public pages and the NSM **front-end
+application bundle** are reachable with a browser user agent, and the bundle
+defines the NSM data model: a column list of `{"name": "Filing Date/Time", "id":
+"submitted_date"}` and `{"name": "Publication Date/Time", "id":
+"publication_date"}`, a date-time formatter with the format **"dd/MM/yyyy HH:mm"**,
+and a CSV export whose field list carries the same two fields (S-85). The NSM's
+**own data model therefore carries a time to the minute** for both filing and
+publication.
+
+**What still could not be done.** Every **API** path on `data.fca.org.uk`
+(`/api/search`, `/api/nsm/search`, `/api/nsm/announcements`, …) answers **HTTP 403
+AccessDenied** from this environment, with and without browser headers, so **no
+live search response and no CSV export could be retrieved or inspected**. The
+condition is therefore **still UNVERIFIED**, not verified by inference from the
+bundle.
+
+**Decision.** The time-of-day question is answered from the FCA's own served code
+and recorded as such — a **primary source**, dated and hashed — while the
+verification the handoff asked for is recorded as **not completed**, with the
+reason. **Consequence for the design: unchanged.** The UK remains viable for PH-1
+(a prospective event can be timed under a current timestamp regime), and the two
+**retrospective** UK events remain untimeable for the reason D-021 gives.
+
+**Boundary.** A failed retrieval is a failed retrieval. It is not an absence, and
+it is not a pass.
+
+## D-028 — 2026-10-22 — The fallback linguistic-distance scale is registered: construction rule, official-language inputs, five ordinal categories with fixed boundaries, and a measured concordance with the published measure
+
+**Context.** D-023 selected the registered fallback ordinal scale and left its
+**category boundaries unenumerated**, to be added by dated decision before the
+holdout is opened. D-024 established that the fallback is computable from open
+inputs.
+
+**Decision — the scale is registered as follows.**
+
+1. *Construction.* English reference = the WALS record `eng`; a WALS parameter is
+   compared when both languages carry a value for it; a compared parameter is
+   **shared** when the two value sets intersect; a language's **friction score** is
+   the share of its compared parameters not shared with English; a language's score
+   is the **median** over the WALS records carrying its ISO 639-3 code that reach
+   **30** compared parameters, with a **macrolanguage** scored from the WALS
+   records of the individual languages belonging to it (SIL ISO 639-3 macrolanguage
+   table); a jurisdiction's score is the **simple mean** over its official
+   languages; a jurisdiction whose official-language set is exactly {English}
+   scores **0**; a jurisdiction with an official language that cannot be scored is
+   **not scored at all** and is named in the report, because a mean over a subset
+   is not comparable with the other jurisdictions.
+2. *Official-language inputs.* The published measure's own list (S-44 Table 1)
+   for the jurisdictions it covers, and **Unicode CLDR 48.2.0** for the rest,
+   restricted to `official` status (`official_regional` is excluded: CLDR uses it
+   for languages official in part of a territory only, such as Welsh in the United
+   Kingdom, which is not the national status the published measure uses). The
+   source used is recorded **per jurisdiction**.
+3. *Categories.* **LD-0** = official-language set exactly {English}; **LD-1** =
+   (0, 0.255]; **LD-2** = (0.255, 0.342]; **LD-3** = (0.342, 0.482]; **LD-4** =
+   (0.482, 1]. The boundaries are the published measure's own quartiles over its
+   84-country sample (S-44 Table 2, Panel A), fixed now, on a **published
+   distribution**, not on this campaign's unassembled panel and not on any outcome.
+4. *Validation requirement and measured result.* The fallback must rank
+   jurisdictions in the same order as the published measure where the published
+   measure gives a value. Measured: **Spearman 0.9776** over 80 of the 84 published
+   rows (Pearson 0.9933), **Spearman 0.9704** restricted to the 61 rows that are
+   also panel jurisdictions, and **Spearman 0.8226** for the sensitivity that uses
+   the CLDR list throughout. The four published rows that cannot be scored at all
+   (Haiti, Kazakhstan, Papua New Guinea, South Africa) are reported as
+   **unmatched**, never as zeros.
+5. *Artefacts.* `research/linguistic_distance_v1.csv` (141 panel jurisdictions, 129
+   scored), `research/linguistic_concordance.md` (the validation report),
+   `research/linguistic_s44_table1.csv` (the published fixture used for it),
+   `research/manifests/linguistic_sources.jsonl` (the dated, hashed provenance of
+   every source), `scripts/linguistic_distance.py` and
+   `scripts/build_linguistic_distance.py` (the implementation, deterministic and
+   offline), `tests/test_linguistic_distance.py` (18 unit tests).
+
+**Why the boundaries are anchored on the published quartiles.** The fallback stands
+in for a measure whose distribution is published. Fixing the cut-points on that
+published distribution keeps the ordinal scale comparable with the measure it
+replaces, and it is the one anchor that is available **now**, before the panel is
+assembled and before any outcome exists. The cost is stated plainly: the bands are
+calibrated to a published distribution, and the agreement statistics are therefore
+**partly** a property of that calibration — which is exactly why the **continuous**
+recomputation is also reported, and why the CLDR-list sensitivity is published
+alongside.
+
+**Boundary.** The scale is a **published conditioner** and a **mandatory control**,
+never this campaign's own effect. Its concordance is a validation of a control and
+is not an outcome.
+
+## D-029 — 2026-10-22 — The Saudi T-PRE question is settled by admission with a uniform interval rule, and the amendment is registered as v1.3 before the holdout can be opened
+
+**Context.** D-022 pinned Saudi Arabia's T-A at 2024-12-26 (the SOCPA adoption)
+and recorded the consequence: CMA_N_4083 requires a preliminary assessment of the
+expected impact of initial application in approved financial statements for
+periods beginning on or after 2026-04-01, which — with T-A at 2024-12-26 — falls
+**inside** the Saudi transition window rather than before it. `research/specification_v1.2.md`
+§2 then required the disclosure to "precede T-A for the pre-emption window to be
+well defined", while `research/specification_v1.1.md` §4.3 defines the pre-emption
+window as **[T-A, T-PRE]** — an interval that is non-empty precisely when T-PRE is
+**after** T-A. The two rules cannot both hold, and the open question they created
+("exclude the Saudi row on the T-PRE ground, or admit it with a separately
+specified T-PRE rule") had to be settled **before** the holdout is opened and
+without inspecting an outcome.
+
+**Decision.** Two changes, registered together as **v1.3**.
+
+1. *The interval condition replaces the inconsistent precondition.* T-PRE is the
+   acceptance timestamp of the firm's **first disclosure of the expected IFRS 18
+   impact** under the regime that applies to it. The pre-disclosure window
+   **[T-A, T-PRE]** is well defined **if and only if T-A < T-PRE < T-R**. Where a
+   jurisdiction has no such disclosure before T-R, its pre-emption arm is reported
+   as **not applicable** and it is **named** in the report — never as a null, a
+   pass or a zero. The rule applies uniformly to every jurisdiction.
+2. *Saudi Arabia is admitted to PH-1.* Its mandated disclosure falls inside its
+   transition window, so its pre-disclosure window is **[2024-12-26, the acceptance
+   timestamp of the firm's first CMA-mandated impact disclosure]**, a non-empty
+   interval, and the pre-emption kill signal and the pre-/post-disclosure
+   decomposition are both computable there. The alternative — excluding the Saudi
+   row — would have removed the only cohort outside the EU and the United Kingdom
+   without changing the primary estimand, which does not depend on the
+   pre-disclosure anchor, at a moment when the arm is already expected to fall
+   below its cluster minimum.
+
+**A correction made at the same time.** `research/preregistration_v1.2.md` §5.2
+stated that "the IFRS 18 instruments converge on one application date". Their
+**application** dates do converge (2027-01-01); their **T-A** dates do not: the
+five primary-verified instruments span **seventeen months** — Singapore 2024-10-04,
+Saudi Arabia 2024-12-26, the United Kingdom 2025-12-10, Brazil 2025-12-23, the
+European Union 2026-02-13. The statement is corrected in v1.3 because it is a
+**design input** to the feasibility audit, and leaving a falsified statement in a
+registered document would corrupt the audit. The cluster arithmetic is restated as
+**≈ 4–8**, still below the ≥12 minimum, so the consequence fixed in v1.2 §5.3 is
+unchanged.
+
+**Why now, and not later.** A pre-registration is worth exactly what its timing is
+worth. Every element fixed here — the Saudi rule, the pre-disclosure window's
+definition, the linguistic-distance choice, the anchors, the cluster arithmetic —
+is fixed **before** the first IFRS 18 report can be published (the 2027 interim
+reporting season, July–August 2027) and **without** any outcome-period return
+having been computed or inspected in this repository at any point. After that
+date, none of it may be changed in place.
+
+**Boundary.** Nothing here licenses a result. The campaign remains **PARKED — not
+validated, not rejected**, and the arms remain blocked on **A1** and **A2**.

@@ -15,8 +15,9 @@ conditions, checked in order, and every check is recorded:
 
 **Conditions 3 to 5 are unverified for every jurisdiction**, because condition 3
 depends on the membership snapshot, condition 4 on the A2 authorisation and
-condition 5 on the A1 authorisation. **Condition 2 is verified for three
-jurisdictions only.** Every row therefore carries
+condition 5 on the A1 authorisation. **Condition 2 is verified for five
+jurisdictions only** (European Union, United Kingdom, Saudi Arabia, Singapore,
+Brazil). Every row therefore carries
 ``in_registered_panel = pending``, which is the three-state discipline of
 ``research/specification_v1.1.md`` §4.2: ``true`` / ``false`` / ``pending``.
 
@@ -26,8 +27,8 @@ file, which are themselves derived from
 ``research/manifests/ifrs_jurisdiction_profiles.jsonl`` (S-58). Both panel files
 are therefore built from **one vintage**, as the handoff requires.
 
-The three verified instruments are **primary sources**, quoted in
-``research/decision_log.md`` (D-022):
+The verified instruments are **primary sources**, quoted in
+``research/decision_log.md`` (D-022 and D-026):
 
 * **European Union** — Commission Regulation (EU) 2026/338; date of endorsement
   **2026-02-13**, date of publication in the Official Journal **2026-02-16**;
@@ -43,6 +44,20 @@ The three verified instruments are **primary sources**, quoted in
   Board's decision on **early adoption** during 2026, not the instrument making
   IFRS 18 mandatory. Both dates are recorded and the conflict is written into the
   row's own ``date_conflict`` field; it is never silently resolved (D-011).
+* **Singapore** — the Accounting Standards Committee of ACRA issued **SFRS(I) 18**
+  on **2024-10-04**, applying to annual reporting periods beginning on or after
+  2027-01-01; listed issuers apply SFRS(I) under the SGX Mainboard Rulebook.
+* **Brazil** — **Resolucao CVM no 237, de 23 de dezembro de 2025**, whose Article 1
+  makes CPC 51 (aligned to IFRS 18) mandatory for the listed companies and whose
+  Article 3 brings it into force on 2027-01-01.
+
+**Hong Kong and South Africa are recorded as *attempted and not verified*, not as
+verified.** Hong Kong's HKICPA page states the effective date (financial periods
+beginning on or after 2027-01-01) but the retrieved page does not carry the
+issuance date, so T-A is left empty. South Africa's route is incorporation by
+reference ("IFRS as issued from time to time by the IASB"), which has no dated
+local instrument, so T-A is left empty. Both attempts are recorded in
+``research/decision_log.md`` (D-026).
 
 The builder is deterministic and takes no network access.
 """
@@ -129,9 +144,54 @@ IFRS18_INSTRUMENTS: dict[str, dict[str, str]] = {
             "Mechanism publishes a filing DATE, not a time (decision D-021)."
         ),
     },
-    "Saudi Arabia": {
-        "t_a": "2024-12-26",
+    "Singapore": {
+        "t_a": "2024-10-04",
         "date_conflict": (
+            "Two Singapore dates, both primary-verified and both recorded: the Accounting "
+            "Standards Committee (ASC) of ACRA issued SFRS(I) 18 on 2024-10-04, and the standard "
+            "applies to annual reporting periods beginning on or after 2027-01-01. T-A is the "
+            "issuance date, 2024-10-04, because the v1.1 event clock defines T-A as the "
+            "jurisdictional legal-adoption date. The ASC issued FRS 118 in the same announcement "
+            "for entities that do not apply SFRS(I); the listed-company instrument is SFRS(I) 18, "
+            "because the SGX Mainboard Rulebook requires listed issuers to apply SFRS(I)."
+        ),
+        "source_url": "https://www.acra.gov.sg/news-events/news-announcements/833/",
+        "coverage_notes": (
+            "Condition 2 VERIFIED. ACRA announcement of 2024-10-04: the Accounting Standards "
+            "Committee issued SFRS(I) 18 Presentation and Disclosure in Financial Statements, "
+            "applying to annual reporting periods beginning on or after 2027-01-01. Mandatory "
+            "character: a standard-setter issuance given legal force by the Companies Act (Cap. 50) "
+            "and the SGX Mainboard Rulebook, which require listed issuers to apply SFRS(I). "
+            "Source ledger S-76. Conditions 3, 4 and 5 remain unverified: the SGX filing route's "
+            "publication of an acceptance TIMESTAMP is not yet checked."
+        ),
+    },
+    "Brazil": {
+        "t_a": "2025-12-23",
+        "date_conflict": (
+            "Two Brazil dates, both primary-verified and both recorded: Resolucao CVM no 237 is "
+            "dated 23 December 2025, and the Resolution enters into force on 1 January 2027, "
+            "applying to financial years beginning on or after that date. T-A is the publication "
+            "date of the instrument, 2025-12-23. The earlier date of the CPC pronouncement itself "
+            "(the Comite de Pronunciamentos Contabeis, a non-governmental body) is not T-A, because "
+            "the Resolution is the instrument that makes it mandatory for listed companies."
+        ),
+        "source_url": (
+            "https://conteudo.cvm.gov.br/legislacao/resolucoes/anexos/200/resol237.htm"
+        ),
+        "coverage_notes": (
+            "Condition 2 VERIFIED. Resolucao CVM no 237, de 23 de dezembro de 2025, approves the "
+            "Comite de Pronunciamentos Contabeis pronouncement CPC 51 (Presentation and Disclosure "
+            "in Financial Statements, aligned to IFRS 18) and its Article 1 makes it mandatory for "
+            "the 'companhias abertas' (listed companies); Article 3 brings it into force on 1 "
+            "January 2027 for financial years beginning on or after that date. Mandatory "
+            "character: a direct legal instrument of the securities regulator (CVM) under Lei "
+            "6.404/1976 art. 177 and Lei 6.385/1976 art. 22. Source ledger S-77. Conditions 3, 4 "
+            "and 5 remain unverified."
+        ),
+    },
+    "Saudi Arabia": {
+        "t_a": "2024-12-26",        "date_conflict": (
             "OPEN CONFLICT, RECORDED AND NOT RESOLVED. Two Saudi instruments bear on IFRS 18 and "
             "they are NOT the same kind of instrument. (a) The Saudi Organization for Chartered "
             "and Professional Accountants (SOCPA) adopted IFRS 18 for application in the Kingdom "
@@ -176,6 +236,28 @@ def _strip(text: str) -> str:
     return " ".join((text or "").split())
 
 
+#: A jurisdiction name is a place name. The longest name in the candidate
+#: universe is "St Vincent And The Grenadines" (five words); the IFRS
+#: Foundation index page also carries a boilerplate disclaimer paragraph, and the
+#: 2026-10-22 snapshot parsed that paragraph as if it were a jurisdiction
+#: (decision D-025). The filter below rejects any name that is not a place name,
+#: so the artefact cannot recur.
+MAX_JURISDICTION_WORDS = 8
+MAX_JURISDICTION_CHARS = 60
+
+
+def is_plausible_jurisdiction(name: str) -> bool:
+    """True when a candidate name can be a jurisdiction and not page boilerplate."""
+    text = _strip(name)
+    if not text:
+        return False
+    if len(text.split()) > MAX_JURISDICTION_WORDS:
+        return False
+    if len(text) > MAX_JURISDICTION_CHARS:
+        return False
+    return True
+
+
 def load_candidate_jurisdictions(panel_v1_1_path: Path) -> list[dict[str, str]]:
     """Read the candidate universe from the Stratum B rows of ``panel_v1.1.csv``.
 
@@ -193,6 +275,8 @@ def load_candidate_jurisdictions(panel_v1_1_path: Path) -> list[dict[str, str]]:
                 continue
             jurisdiction = _strip(row.get("jurisdiction", ""))
             if not jurisdiction or jurisdiction in seen:
+                continue
+            if not is_plausible_jurisdiction(jurisdiction):
                 continue
             seen[jurisdiction] = {
                 "jurisdiction": jurisdiction,
@@ -289,3 +373,30 @@ def write_panel(rows: Iterable[dict[str, str]], path: Path) -> int:
             writer.writerow({column: row.get(column, "") for column in PANEL_COLUMNS})
             count += 1
     return count
+
+
+def main(argv: list[str] | None = None) -> int:
+    """Rebuild the PH-1 panel file from the registered candidate universe."""
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--panel-v1-1",
+        default="research/panel_v1.1.csv",
+        help="the retrospective panel file whose Stratum B rows define the universe",
+    )
+    parser.add_argument(
+        "--out", default="research/panel_v1.2.csv", help="the PH-1 panel file to write"
+    )
+    args = parser.parse_args(argv)
+    candidates = load_candidate_jurisdictions(Path(args.panel_v1_1))
+    rows = build_rows(candidates)
+    count = write_panel(rows, Path(args.out))
+    verified = sum(1 for row in rows if row["T_A"])
+    print(f"wrote {count} rows to {args.out}")
+    print(f"candidate jurisdictions: {len(candidates)}; condition-2 verified: {verified}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

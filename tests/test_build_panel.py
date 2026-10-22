@@ -16,6 +16,7 @@ from scripts.build_panel import (  # noqa: E402
     IFRS18_INSTRUMENTS,
     PANEL_COLUMNS,
     build_rows,
+    is_plausible_jurisdiction,
     load_candidate_jurisdictions,
     write_panel,
 )
@@ -31,7 +32,29 @@ def test_candidate_universe_is_one_row_per_jurisdiction():
     candidates = _candidates()
     names = [c["jurisdiction"] for c in candidates]
     assert len(names) == len(set(names)), "duplicate jurisdictions in the candidate universe"
-    assert len(names) == 142
+    assert len(names) == 141
+
+
+def test_page_boilerplate_is_not_a_jurisdiction():
+    boilerplate = (
+        "The information in these profiles is for general guidance only and may change from time "
+        "to time. You should not act on the information in the profiles, and you should obtain "
+        "specific professional advice to before making any decisions or taking any action."
+    )
+    assert is_plausible_jurisdiction(boilerplate) is False
+    assert is_plausible_jurisdiction("Saudi Arabia") is True
+    assert is_plausible_jurisdiction("St Vincent And The Grenadines") is True
+    assert is_plausible_jurisdiction("") is False
+
+
+def test_verified_instruments_are_the_five_primary_verified_jurisdictions():
+    assert set(IFRS18_INSTRUMENTS) == {
+        "European Union",
+        "United Kingdom",
+        "Saudi Arabia",
+        "Singapore",
+        "Brazil",
+    }
 
 
 def test_panel_v1_2_schema_matches_panel_v1_1():
@@ -51,6 +74,8 @@ def test_verified_instruments_carry_day_level_dates():
     assert rows["European Union"]["T_A"] == "2026-02-13"
     assert rows["United Kingdom"]["T_A"] == "2025-12-10"
     assert rows["Saudi Arabia"]["T_A"] == "2024-12-26"
+    assert rows["Singapore"]["T_A"] == "2024-10-04"
+    assert rows["Brazil"]["T_A"] == "2025-12-23"
     for jurisdiction in IFRS18_INSTRUMENTS:
         assert rows[jurisdiction]["T_E"] == "2027-01-01"
 

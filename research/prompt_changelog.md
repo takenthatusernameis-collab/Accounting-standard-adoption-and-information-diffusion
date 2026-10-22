@@ -417,3 +417,10 @@ panel condition (j) for events after 3 November 2025 — D-021.
 
 A prompt iteration that merely rewords the hypothesis without resolving one of those
 questions is not progress.
+
+
+## Iteration 11 (2026-10-22, session 5d)
+
+**What changed.** D-029 settled the Saudi Arabia T-PRE question by admitting the Saudi row with a uniform interval rule: the pre-disclosure window [T-A, T-PRE] is well defined if and only if T-A < T-PRE < T-R, where T-PRE is the acceptance timestamp of the firm's first disclosure of the expected IFRS 18 impact under the applicable regime; if no such disclosure exists before T-R, the pre-emption arm is reported as not applicable (named), never null/pass/zero. The decision was registered as v1.3. The preregistration_v1.2.md statement that "the IFRS 18 instruments converge on one application date" was corrected (application dates converge to 2027-01-01 but T-A dates span 17 months: Singapore 2024-10-04, Saudi Arabia 2024-12-26, UK 2025-12-10, Brazil 2025-12-23, EU 2026-02-13), restating cluster arithmetic as ~4-8 (still below ≥12). All fixes made before first IFRS 18 report; no outcome data inspected.
+
+**Why.** Resolved the remaining named design question without looking at outcomes, in accordance with preregistration discipline.

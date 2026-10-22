@@ -1,0 +1,142 @@
+jurisdiction,territory,official_languages_iso639_3,official_language_source,ld_score,ld_category,missing_languages,wals_records_considered,note
+Albania,AL,sqi,Unicode CLDR 48.2.0 (strict official status),0.355556,LD-3,,1,Complete.
+Anguilla,AI,eng,Unicode CLDR 48.2.0 (strict official status),0.000000,LD-0,,1,Complete.
+Antigua And Barbuda,AG,eng,Unicode CLDR 48.2.0 (strict official status),0.000000,LD-0,,1,Complete.
+Argentina,AR,spa,S-44 Table 1 (published list),0.341935,LD-2,,1,Complete.
+Armenia,AM,hye,Unicode CLDR 48.2.0 (strict official status),0.525000,LD-4,,1,Complete.
+Austria,AT,deu,Unicode CLDR 48.2.0 (strict official status),0.308725,LD-2,,1,Complete.
+Azerbaijan,AZ,aze,Unicode CLDR 48.2.0 (strict official status),0.608696,LD-4,,2,Complete.
+Bahamas,BS,eng,S-44 Table 1 (published list),0.000000,LD-0,,1,Complete.
+Bahrain,BH,ara,S-44 Table 1 (published list),0.498252,LD-4,,6,Complete.
+Barbados,BB,eng,S-44 Table 1 (published list),0.000000,LD-0,,1,Complete.
+Bangladesh,BD,ben,S-44 Table 1 (published list),0.583333,LD-4,,1,Complete.
+Belarus,BY,rus,S-44 Table 1 (published list),0.307692,LD-2,,1,Complete.
+Belgium,BE,deu fra nld,Unicode CLDR 48.2.0 (strict official status),0.319195,LD-2,,3,Complete.
+Benin,BJ,fra,S-44 Table 1 (published list),0.352564,LD-3,,1,Complete.
+Bhutan,BT,dzo,Unicode CLDR 48.2.0 (strict official status),,LD-NA,dzo,0,No official language could be scored against the WALS feature set.
+Bosnia And Herzegovina,BA,bos hrv srp,Unicode CLDR 48.2.0 (strict official status),0.383333,LD-3,,3,Complete.
+Botswana,BW,eng tsn,Unicode CLDR 48.2.0 (strict official status),,LD-NA,tsn,1,"NOT SCORED: 1 of 2 official language(s) have no WALS record with at least 30 compared features, so the jurisdiction mean would not be comparable with the other jurisdictions. The jurisdiction is excluded from the stratification and the exclusion is recorded; no value is imputed."
+Brazil,BR,por,S-44 Table 1 (published list),0.288136,LD-2,,1,Complete.
+Bulgaria,BG,bul,Unicode CLDR 48.2.0 (strict official status),0.309524,LD-2,,1,Complete.
+Burkina Faso,BF,fra,S-44 Table 1 (published list),0.352564,LD-3,,1,Complete.
+Cambodia,KH,khm,Unicode CLDR 48.2.0 (strict official status),0.530435,LD-4,,1,Complete.
+Cameroon,CM,eng fra,Unicode CLDR 48.2.0 (strict official status),0.176282,LD-1,,2,Complete.
+Canada,CA,eng fra,S-44 Table 1 (published list),0.176282,LD-1,,2,Complete.
+Central African Republic,CF,fra sag,Unicode CLDR 48.2.0 (strict official status),0.440282,LD-3,,2,Complete.
+Chad,TD,ara fra,Unicode CLDR 48.2.0 (strict official status),0.425408,LD-3,,7,Complete.
+Chile,CL,spa,S-44 Table 1 (published list),0.341935,LD-2,,1,Complete.
+China,CN,zho,S-44 Table 1 (published list),0.467105,LD-3,,3,Complete.
+Colombia,CO,spa,S-44 Table 1 (published list),0.341935,LD-2,,1,Complete.
+Comoros,KM,ara fra wni zdj,Unicode CLDR 48.2.0 (strict official status),,LD-NA,wni zdj,7,"NOT SCORED: 2 of 4 official language(s) have no WALS record with at least 30 compared features, so the jurisdiction mean would not be comparable with the other jurisdictions. The jurisdiction is excluded from the stratification and the exclusion is recorded; no value is imputed."
+Costa Rica,CR,spa,S-44 Table 1 (published list),0.341935,LD-2,,1,Complete.
+Croatia,HR,hrv,S-44 Table 1 (published list),0.383333,LD-3,,1,Complete.
+Cyprus,CY,ell tur,Unicode CLDR 48.2.0 (strict official status),0.464901,LD-3,,2,Complete.
+Czechia,CZ,ces,Unicode CLDR 48.2.0 (strict official status),0.379310,LD-3,,1,Complete.
+Democratic Republic Of Congo,CD,fra,Unicode CLDR 48.2.0 (strict official status),0.352564,LD-3,,1,Complete.
+Denmark,DK,dan,Unicode CLDR 48.2.0 (strict official status),0.210526,LD-1,,1,Complete.
+Dominica,DM,eng,Unicode CLDR 48.2.0 (strict official status),0.000000,LD-0,,1,Complete.
+Dominican Republic,DO,spa,S-44 Table 1 (published list),0.341935,LD-2,,1,Complete.
+Ecuador,EC,spa,S-44 Table 1 (published list),0.341935,LD-2,,1,Complete.
+Equatorial Guinea,GQ,fra por spa,Unicode CLDR 48.2.0 (strict official status),0.327545,LD-2,,3,Complete.
+Estonia,EE,est,Unicode CLDR 48.2.0 (strict official status),0.333333,LD-2,,1,Complete.
+Eswatini,SZ,eng ssw,Unicode CLDR 48.2.0 (strict official status),,LD-NA,ssw,1,"NOT SCORED: 1 of 2 official language(s) have no WALS record with at least 30 compared features, so the jurisdiction mean would not be comparable with the other jurisdictions. The jurisdiction is excluded from the stratification and the exclusion is recorded; no value is imputed."
+Ethiopia,ET,amh,Unicode CLDR 48.2.0 (strict official status),0.549451,LD-4,,1,Complete.
+European Union,EU,,Unicode CLDR 48.2.0 (strict official status),,LD-NA,,0,Supranational bloc with no single official-language set. The linguistic-distance control is absorbed within the bloc and the jurisdiction carries no jurisdiction-level value; it is recorded as not applicable rather than assigned a number.
+Fiji,FJ,eng,S-44 Table 1 (published list),0.000000,LD-0,,1,Complete.
+Finland,FI,fin swe,Unicode CLDR 48.2.0 (strict official status),0.278048,LD-2,,2,Complete.
+France,FR,fra,Unicode CLDR 48.2.0 (strict official status),0.352564,LD-3,,1,Complete.
+Gabon,GA,fra,Unicode CLDR 48.2.0 (strict official status),0.352564,LD-3,,1,Complete.
+Georgia,GE,kat,Unicode CLDR 48.2.0 (strict official status),0.558621,LD-4,,1,Complete.
+Germany,DE,deu,Unicode CLDR 48.2.0 (strict official status),0.308725,LD-2,,1,Complete.
+Ghana,GH,eng,S-44 Table 1 (published list),0.000000,LD-0,,1,Complete.
+Greece,GR,ell,Unicode CLDR 48.2.0 (strict official status),0.389262,LD-3,,1,Complete.
+Grenada,GD,eng,Unicode CLDR 48.2.0 (strict official status),0.000000,LD-0,,1,Complete.
+Guinea,GN,fra,Unicode CLDR 48.2.0 (strict official status),0.352564,LD-3,,1,Complete.
+Guinea Bissau,GW,por,Unicode CLDR 48.2.0 (strict official status),0.288136,LD-2,,1,Complete.
+Guyana,GY,eng,S-44 Table 1 (published list),0.000000,LD-0,,1,Complete.
+Hong Kong Sar,HK,zho eng,S-44 Table 1 (published list),0.233553,LD-1,,4,Complete.
+Hungary,HU,hun,Unicode CLDR 48.2.0 (strict official status),0.427632,LD-3,,1,Complete.
+Iceland,IS,isl,Unicode CLDR 48.2.0 (strict official status),0.315789,LD-2,,1,Complete.
+Indonesia,ID,ind,S-44 Table 1 (published list),0.470588,LD-3,,1,Complete.
+Iran,IR,fas,Unicode CLDR 48.2.0 (strict official status),0.535211,LD-4,,1,Complete.
+Ireland,IE,eng gle,Unicode CLDR 48.2.0 (strict official status),0.196078,LD-1,,2,Complete.
+Israel,IL,ara heb,S-44 Table 1 (published list),0.444161,LD-3,,7,Complete.
+Italy,IT,ita,Unicode CLDR 48.2.0 (strict official status),0.259259,LD-2,,1,Complete.
+Jamaica,JM,eng,S-44 Table 1 (published list),0.000000,LD-0,,1,Complete.
+Jordan,JO,ara,S-44 Table 1 (published list),0.498252,LD-4,,6,Complete.
+Kazakhstan,KZ,kaz rus,S-44 Table 1 (published list),,LD-NA,kaz,1,"NOT SCORED: 1 of 2 official language(s) have no WALS record with at least 30 compared features, so the jurisdiction mean would not be comparable with the other jurisdictions. The jurisdiction is excluded from the stratification and the exclusion is recorded; no value is imputed."
+Kenya,KE,eng swa,S-44 Table 1 (published list),0.257042,LD-2,,2,Complete.
+Kuwait,KW,ara,S-44 Table 1 (published list),0.498252,LD-4,,6,Complete.
+Kyrgyzstan,KG,kir rus,S-44 Table 1 (published list),0.378846,LD-3,,2,Complete.
+Latvia,LV,lav,Unicode CLDR 48.2.0 (strict official status),0.404762,LD-3,,1,Complete.
+Liechtenstein,LI,deu,Unicode CLDR 48.2.0 (strict official status),0.308725,LD-2,,1,Complete.
+Lithuania,LT,lit,Unicode CLDR 48.2.0 (strict official status),0.437500,LD-3,,1,Complete.
+Luxembourg,LU,deu fra ltz,Unicode CLDR 48.2.0 (strict official status),,LD-NA,ltz,2,"NOT SCORED: 1 of 3 official language(s) have no WALS record with at least 30 compared features, so the jurisdiction mean would not be comparable with the other jurisdictions. The jurisdiction is excluded from the stratification and the exclusion is recorded; no value is imputed."
+Macedonia,MK,mkd,Unicode CLDR 48.2.0 (strict official status),0.236842,LD-1,,1,Complete.
+Malawi,MW,eng,S-44 Table 1 (published list),0.000000,LD-0,,1,Complete.
+Malaysia,MY,eng msa,S-44 Table 1 (published list),0.235294,LD-1,,4,Complete.
+Maldives,MV,div,Unicode CLDR 48.2.0 (strict official status),,LD-NA,div,0,No official language could be scored against the WALS feature set.
+Mali,ML,fra,S-44 Table 1 (published list),0.352564,LD-3,,1,Complete.
+Malta,MT,eng mlt,Unicode CLDR 48.2.0 (strict official status),0.268293,LD-2,,2,Complete.
+Mauritius,MU,eng,S-44 Table 1 (published list),0.000000,LD-0,,1,Complete.
+Mexico,MX,spa,S-44 Table 1 (published list),0.341935,LD-2,,1,Complete.
+Moldova,MD,ron,S-44 Table 1 (published list),0.292683,LD-2,,1,Complete.
+Mongolia,MN,mon,Unicode CLDR 48.2.0 (strict official status),0.550725,LD-4,,1,Complete.
+Montenegro,ME,srp,Unicode CLDR 48.2.0 (strict official status),0.383333,LD-3,,1,Complete.
+Montserrat,MS,eng,Unicode CLDR 48.2.0 (strict official status),0.000000,LD-0,,1,Complete.
+Morocco,MA,ara tzm,S-44 Table 1 (published list),0.543244,LD-4,,7,Complete.
+Myanmar,MM,mya,Unicode CLDR 48.2.0 (strict official status),0.606061,LD-4,,1,Complete.
+Namibia,NA,eng,Unicode CLDR 48.2.0 (strict official status),0.000000,LD-0,,1,Complete.
+Nepal,NP,nep,S-44 Table 1 (published list),0.583333,LD-4,,1,Complete.
+Netherlands,NL,nld,Unicode CLDR 48.2.0 (strict official status),0.296296,LD-2,,1,Complete.
+New Zealand,NZ,eng,S-44 Table 1 (published list),0.000000,LD-0,,1,Complete.
+Nicaragua,NI,spa,S-44 Table 1 (published list),0.341935,LD-2,,1,Complete.
+Niger,NE,fra,S-44 Table 1 (published list),0.352564,LD-3,,1,Complete.
+Nigeria,NG,eng yor,Unicode CLDR 48.2.0 (strict official status),0.242857,LD-1,,2,Complete.
+Norway,NO,nno nob nor,Unicode CLDR 48.2.0 (strict official status),0.257576,LD-2,,3,Complete.
+Oman,OM,ara,S-44 Table 1 (published list),0.498252,LD-4,,6,Complete.
+Pakistan,PK,eng urd,S-44 Table 1 (published list),0.222222,LD-1,,2,Complete.
+Palestine,PS,ara,Unicode CLDR 48.2.0 (strict official status),0.498252,LD-4,,6,Complete.
+Panama,PA,spa,S-44 Table 1 (published list),0.341935,LD-2,,1,Complete.
+Papua New Guinea,PG,eng tpi,S-44 Table 1 (published list),,LD-NA,tpi,1,"NOT SCORED: 1 of 2 official language(s) have no WALS record with at least 30 compared features, so the jurisdiction mean would not be comparable with the other jurisdictions. The jurisdiction is excluded from the stratification and the exclusion is recorded; no value is imputed."
+Peru,PE,spa,S-44 Table 1 (published list),0.341935,LD-2,,1,Complete.
+Philippines,PH,eng fil,S-44 Table 1 (published list),0.292857,LD-2,,2,Complete.
+Poland,PL,pol,Unicode CLDR 48.2.0 (strict official status),0.337079,LD-2,,1,Complete.
+Portugal,PT,por,Unicode CLDR 48.2.0 (strict official status),0.288136,LD-2,,1,Complete.
+Qatar,QA,ara,S-44 Table 1 (published list),0.498252,LD-4,,6,Complete.
+Republic Of The Congo,CG,fra,Unicode CLDR 48.2.0 (strict official status),0.352564,LD-3,,1,Complete.
+Romania,RO,ron,Unicode CLDR 48.2.0 (strict official status),0.292683,LD-2,,1,Complete.
+Russia,RU,rus,S-44 Table 1 (published list),0.307692,LD-2,,1,Complete.
+Rwanda,RW,eng fra kin,Unicode CLDR 48.2.0 (strict official status),0.313600,LD-2,,3,Complete.
+Saudi Arabia,SA,ara,S-44 Table 1 (published list),0.498252,LD-4,,6,Complete.
+Senegal,SN,fra,Unicode CLDR 48.2.0 (strict official status),0.352564,LD-3,,1,Complete.
+Serbia,RS,srp,Unicode CLDR 48.2.0 (strict official status),0.383333,LD-3,,1,Complete.
+Sierra Leone,SL,eng,Unicode CLDR 48.2.0 (strict official status),0.000000,LD-0,,1,Complete.
+Singapore,SG,zho eng msa tam,S-44 Table 1 (published list),0.396761,LD-3,,8,Complete.
+Slovakia,SK,slk,Unicode CLDR 48.2.0 (strict official status),,LD-NA,slk,0,No official language could be scored against the WALS feature set.
+Slovenia,SI,slv,Unicode CLDR 48.2.0 (strict official status),0.232558,LD-1,,1,Complete.
+South Africa,ZA,afr nde nso tsn sot ssw ts ve xho zul eng,S-44 Table 1 (published list),,LD-NA,afr nso tsn ssw ts ve xho zul,3,"NOT SCORED: 8 of 11 official language(s) have no WALS record with at least 30 compared features, so the jurisdiction mean would not be comparable with the other jurisdictions. The jurisdiction is excluded from the stratification and the exclusion is recorded; no value is imputed."
+South Korea,KR,kor,S-44 Table 1 (published list),0.507042,LD-4,,1,Complete.
+Spain,ES,spa,Unicode CLDR 48.2.0 (strict official status),0.341935,LD-2,,1,Complete.
+Sri Lanka,LK,sin tam,S-44 Table 1 (published list),0.558009,LD-4,,2,Complete.
+St Kitts And Nevis,KN,eng,Unicode CLDR 48.2.0 (strict official status),0.000000,LD-0,,1,Complete.
+St Lucia,LC,eng,Unicode CLDR 48.2.0 (strict official status),0.000000,LD-0,,1,Complete.
+St Vincent And The Grenadines,VC,eng,Unicode CLDR 48.2.0 (strict official status),0.000000,LD-0,,1,Complete.
+Sweden,SE,swe,Unicode CLDR 48.2.0 (strict official status),0.194805,LD-1,,1,Complete.
+Switzerland,CH,fra deu ita,S-44 Table 1 (published list),0.306849,LD-2,,3,Complete.
+Syria,SY,ara,S-44 Table 1 (published list),0.498252,LD-4,,6,Complete.
+Chinese Taipei,TW,hak nan zho,Unicode CLDR 48.2.0 (strict official status),,LD-NA,nan,4,"NOT SCORED: 1 of 3 official language(s) have no WALS record with at least 30 compared features, so the jurisdiction mean would not be comparable with the other jurisdictions. The jurisdiction is excluded from the stratification and the exclusion is recorded; no value is imputed."
+Tanzania,TZ,swa,S-44 Table 1 (published list),0.514085,LD-4,,1,Complete.
+Thailand,TH,tha,S-44 Table 1 (published list),0.482014,LD-4,,1,Complete.
+Togo,TG,fra,S-44 Table 1 (published list),0.352564,LD-3,,1,Complete.
+Trinidad And Tobago,TT,eng,Unicode CLDR 48.2.0 (strict official status),0.000000,LD-0,,1,Complete.
+Turkiye,TR,tur,S-44 Table 1 (published list),0.540541,LD-4,,1,Complete.
+Uganda,UG,eng swa,Unicode CLDR 48.2.0 (strict official status),0.257042,LD-2,,2,Complete.
+Ukraine,UA,ukr,Unicode CLDR 48.2.0 (strict official status),0.250000,LD-1,,1,Complete.
+United Arab Emirates,AE,ara,S-44 Table 1 (published list),0.498252,LD-4,,6,Complete.
+United Kingdom,GB,eng,Unicode CLDR 48.2.0 (strict official status),0.000000,LD-0,,1,Complete.
+Uruguay,UY,spa,S-44 Table 1 (published list),0.341935,LD-2,,1,Complete.
+Uzbekistan,UZ,uzb,Unicode CLDR 48.2.0 (strict official status),0.576271,LD-4,,2,Complete.
+Venezuela,VE,spa,S-44 Table 1 (published list),0.341935,LD-2,,1,Complete.
+Zambia,ZM,eng,S-44 Table 1 (published list),0.000000,LD-0,,1,Complete.
+Zimbabwe,ZW,eng,S-44 Table 1 (published list),0.000000,LD-0,,1,Complete.
