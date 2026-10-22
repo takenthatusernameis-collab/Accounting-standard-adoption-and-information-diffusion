@@ -1213,3 +1213,66 @@ validated, not rejected**, and the arms remain blocked on **A1** and **A2**.
 **Why this matters more than a number.** The decisive quantity is now **identified and bounded**: it is the number of jurisdictions that issue their own dated IFRS 18 instrument, and it is a **handful**, not a hundred. Two named tasks dominate it — the remaining local-equivalent jurisdictions (South Korea, Pakistan, Sri Lanka, Myanmar, Nepal, Chinese Taipei, Mongolia, Bhutan, Israel) and the EU member-state carve-out check. Both are **read-only** work that needs no authorisation, and both are queued in the handoff.
 
 **Boundary.** Nothing here licenses a result. The campaign remains **PARKED — not validated, not rejected**, the arms remain blocked on **A1** and **A2**, no outcome-period return has been computed or inspected in this repository at any point, and no registered threshold was moved.
+
+
+## D-035 — 2026-10-22 — Two parallel research lines are reconciled: the upstream identifiers keep their numbers and the local line's colliding identifiers move to the next free range
+
+**Context.** The previous worker session (session 96) ended because bounded remote checkpoint persistence failed. The cause was not a network, credential or permission fault. Two research lines had been committed to the same repository concurrently, from two different runners, and both had appended to the same three append-only ledgers: the upstream line committed **D-031** (paid-provider route) and **D-032** (free-only route), **E-023, E-024, E-025** (provider-adapter rows) and **S-86 … S-90** (provider documentation), while the local line independently committed **D-031** and **D-032** (condition-2 verification for four further jurisdictions; the timing-cohort gate restatement), **E-023** (the same verification) and **S-86 … S-94** (nine IFRS 18 instrument sources). The two lines share an identical prefix — the decision log to D-030, the experiment ledger to E-022 and the source ledger to S-85 — and then diverge.
+
+**Why the persistence failed.** The controller reconciles by fetching the default branch and running `git rebase --autostash origin/main`. The rebase stops on the three append-only ledgers, where both sides appended at the same position with the same identifiers, and the controller aborts and retries the identical rebase. Every retry produces the identical conflict, so the bounded retry budget is consumed and the session ends with the work unpushed. The failure was in the *content*, not in the transport: the fetch and the push path were healthy throughout.
+
+**Decision.** Reconcile by content, once, by hand, and let the identifiers themselves carry the provenance.
+
+1. **The upstream identifiers are the published ones and keep their numbers.** `D-031`, `D-032`, `E-023`, `E-024`, `E-025`, `S-86` … `S-90` are unchanged in `research/decision_log.md`, `research/experiment_ledger.csv` and `research/source_ledger.csv`. They are referenced from the upstream handoff, the protocol file and `research/campaign_state.json`, and they record two explicit maintainer instructions. Renumbering them would corrupt published references.
+2. **The local line's identifiers move to the next free numbers, and every cross-reference to them moves with them:** `D-031 → D-033`, `D-032 → D-034`, `E-023 → E-026`, and `S-86 … S-94 → S-91 … S-99` (a uniform shift of five). The mapping is applied inside the local text only, so a source that the local line cites as `S-89` is now `S-94`, and the panel row, the retrieval manifest (`source_id` and `local_path`), the panel builder, `research/specification_v1.4.md` and `research/preregistration_v1.4.md` all cite the same new number. **No source, decision or ledger entry was dropped, merged away or rewritten in substance**: the local line's content is present in full under the new identifiers.
+3. **Both lines' content is retained in full.** The decision log now reads D-001 … D-034 with no duplicate identifier; the experiment ledger E-001 … E-026 with no duplicate identifier; the source ledger S-001 … S-99 with no duplicate identifier. The upstream's paid-route decision D-031 and its superseding free-only decision D-032 remain in force, and the local line's condition-2 work now stands as D-033 and D-034.
+4. **The upstream's free-only route (D-032) governs the data route.** The local line is silent on the data route, so there is no conflict of substance to resolve, only of identifier.
+5. **The merged artefacts are re-verified from committed code.** `scripts/build_panel.py` regenerates `research/panel_v1.2.csv` **byte-identically** (141 rows, 10 condition-2 verified, 131 pending with an empty T_A), which is the check that the renumbering did not break the panel's internal consistency. The test suite is **173 passing, 0 failing**.
+
+**Preservation.** Nothing was reset or discarded. The original local commit `9093ba4da2bc7488bb5204b758447ef8e1df4e91` is preserved verbatim at the branch `backup/session-96-local-ahead` and at the tag `backup/session-96-local-ahead-9093ba4`, and the complete pre-reconciliation state is preserved in the recovery bundle `/home/runner/work/_temp/kilo-recovery-39764994369-1.bundle` (verified) and in the additional bundle written by this session before the rebase. The reconciliation itself is a **rebase**, not a history rewrite: the upstream commits are byte-identical, and `origin/main` is an ancestor of the reconciled tip, so the push is a fast-forward.
+
+**Reverses if.** A later maintainer decision requires the local line's original identifiers — that is, if any external citation already names `D-031`/`D-032`/`S-86`…`S-94` as the *jurisdiction-verification* decisions rather than the *data-route* decisions. In that case a further dated decision renumbers again and records the ambiguity; nothing in the repository depends on the current mapping being permanent, and the pre-reconciliation bundle preserves the unmapped form.
+
+**Boundary.** Nothing here licenses a result and nothing here changes a registered design. The campaign remains **PARKED — not validated, not rejected**, no outcome-period return has been computed or inspected, no threshold, acceptance criterion, panel rule or registered date was moved, and no registered version was edited in place.
+
+
+## D-036 — 2026-10-22 — Repair the pre-existing upstream defect in the paid-provider redaction test (the redacted marker is percent-encoded in the manifest URL)
+
+**Context.** The merged test suite failed one test: `tests/test_price_provider_client.py::test_end_to_end_cache_and_manifest_use_redacted_url`. **This failure was pre-existing on the upstream line and was not introduced by the reconciliation** — it was reproduced on `origin/main` at `538a19a` in an isolated worktree before any change was made (upstream: 1 failed, 167 passed; after the reconciliation: 1 failed, 172 passed). The upstream's D-032 archive of the paid route (`66e8263`) rewrote `research/paid_data_route_execution.md` but left `scripts/price_provider_client.py` and its test in the tree, and the test was left failing.
+
+**Diagnosis.** The redaction itself is **correct and unchanged**: `_provider_request_url` builds the manifest URL with `urllib.parse.urlencode`, so the literal marker is percent-encoded and the manifest carries `api_token=%5BREDACTED%5D`. The credential value never reaches the manifest. The test asserted the *raw* substring `"[REDACTED]" in manifest_text`, which can never match a percent-encoded query value; the sibling unit test `test_provider_urls_redact_credentials_in_manifest_form` already asserts the same property correctly, via `parse_qs(urlparse(redacted).query)["api_token"] == ["[REDACTED]"]`.
+
+**Decision.** Repair the end-to-end test to use the same idiom as its sibling — read the manifest record's URL and assert on the parsed query — rather than on a raw substring. The asserted property is unchanged and is not weakened: the credential is still required to be absent from the whole manifest text, and the redacted value is still required to be exactly `[REDACTED]` in the parsed query.
+
+**Scope boundary.** This is a **test-assertion repair only**. It changes no adapter behaviour, no manifest format, no research artefact, no registered date and no threshold. The paid-provider adapter remains **inert and out of scope** under D-032: it still requires an explicit `ACCTCLOCK_ENABLE_PAID_DATA=1` and a provisioned credential, the paid paths are still not to be invoked, and no provider request, purchase, subscription or credential was made. The repair exists so that the suite is a usable signal for the next agent rather than permanently red on a defect that is not theirs.
+
+**Reverses if.** The upstream line's successor decides instead to remove the paid-provider adapter and its test outright under D-032, in which case this repair is simply reverted along with them.
+
+**Boundary.** Nothing here licenses a result. The campaign remains **PARKED — not validated, not rejected**, and no outcome-period return has been computed or inspected.
+
+
+## D-037 — 2026-10-22 — The panel counts in the handoff were stale by three sessions and are reconciled against the committed files
+
+**Context.** D-032's successor instruction asked the next agent to "reconcile current panel/handoff/state counts" and warned against "carrying forward conflicting row counts". This session did that reconciliation by parsing the committed CSV files rather than by reading the figures quoted in prose.
+
+**Finding.** The counts quoted in the handoff, in `research/campaign_state.json` and in the session-5 commit message for **three sessions** were **stale**, and one of them was the cause of a non-trivial misreading of the panel.
+
+| Quantity | Figure carried in the prose | Figure in the committed file |
+|---|---|---|
+| `research/panel_v1.1.csv` data rows | 434 | **431** |
+| Stratum A rows (complete, primary-sourced, `in_registered_panel = true`) | 8 | **8** (EV-001, EV-002, EV-003, EV-101, EV-102, EV-103, EV-201, EV-202) |
+| Stratum B candidate rows | 426 | **423** |
+| Candidate jurisdictions | 142 | **141** |
+| `research/panel_v1.2.csv` data rows | 142 | **141** |
+
+**Why the prose is stale, and why the files are right.** The panel was materialised at `c688e0a` with 434 rows, of which 426 were Stratum B. At `1afb6e9` — a later checkpoint on the same day — **three** Stratum B rows were removed. Those three were **not** jurisdictions: they were the IFRS Foundation index page's **boilerplate disclaimer** ("The information in these profiles is for general guidance only…") scraped as if it were a jurisdiction name, which produced one spurious row each for IFRS 15, IFRS 16 and IFRS 9. Removing them was a **data-quality correction, not a narrowing**, and it also removed one spurious jurisdiction, which is why the jurisdiction count falls from 142 to **141**. The committed files have carried **431 / 423 / 141** ever since `1afb6e9`; the prose figures were never updated to follow.
+
+**Decision.** The committed files are authoritative and the prose is corrected: **431 rows in `panel_v1.1.csv` (8 Stratum A + 423 Stratum B over 141 jurisdictions) and 141 rows in `panel_v1.2.csv`**. The handoff, `research/campaign_state.json` and this decision state the corrected figures. `research/panel_v1.2.csv` was rebuilt from committed code and reproduces **byte-identically** at 141 rows, and its jurisdiction set is **exactly equal** to the Stratum B jurisdiction set of `panel_v1.1.csv`, so the two panel files do share one vintage and one candidate universe.
+
+**D-016 is not triggered.** No jurisdiction was dropped by hand, the panel rule is untouched, the feasibility audit has not begun, and the candidate universe is still read back out of `panel_v1.1.csv` by `scripts/build_panel.py`. Nothing was removed from the panel in this session; the three rows in question were removed four sessions earlier, as a correction of a scraping artefact.
+
+**Also reconciled.** The Stratum B `membership_screen` values in the committed file are **411** `listed-ifrs-required` and **12** `review-required` — the "138 screened in, 4 unresolved" figure in the older prose refers to the **170-profile IFRS Foundation snapshot** (a different, earlier count of the *profile* screen), not to the panel's own rows, and the two must not be conflated.
+
+**Reverses if.** A rebuild of the panel from the same snapshot and the same committed builder produces a different count, in which case the builder and the file disagree and the file must be regenerated by the builder rather than edited.
+
+**Boundary.** Nothing here licenses a result, no panel row was added or removed in this session, no membership condition was changed, and no outcome-period return was computed or inspected.

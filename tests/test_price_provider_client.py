@@ -149,7 +149,10 @@ def test_end_to_end_cache_and_manifest_use_redacted_url(tmp_path: Path):
     assert path.is_relative_to(cache)
     assert not path.is_relative_to(repo)
     manifest_text = (cache / "manifests" / "prices.jsonl").read_text()
-    assert "[REDACTED]" in manifest_text
+    # the redaction marker is percent-encoded in the query string, so it is read
+    # back through the parsed query rather than matched as a raw substring
+    manifest_url = json.loads(manifest_text.splitlines()[0])["url"]
+    assert parse_qs(urlparse(manifest_url).query)["api_token"] == ["[REDACTED]"]
     assert "do-not-log-me" not in manifest_text
     assert "do-not-log-me" in observed["url"]
     assert observed["timeout"] == 30
