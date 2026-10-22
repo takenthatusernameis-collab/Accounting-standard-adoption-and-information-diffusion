@@ -1,12 +1,13 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-22 (Worker session 5g)
+**Last updated:** 2026-10-22 (Worker session 5j)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
-the *promotable test is registered*, and **all three named verification gaps are now
-closed or determined from primary sources**. The *data and authorisation* blocker is
-still open, and it is the only thing that blocks the campaign.
+the *promotable test is registered* (v1.2, amended by v1.3), and **all three named
+verification gaps are now closed or determined from primary sources**. The *data and
+authorisation* blocker is still open, and it is the only thing that blocks the
+campaign. **No outcome-period return has ever been computed or inspected.**
 **Machine-readable state:** `research/campaign_state.json` — next step is
 `phase3b-data-execution-and-feasibility-audit` (pending, blocked on authorisation).
 
