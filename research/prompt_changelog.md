@@ -446,3 +446,12 @@ questions is not progress.
 **Hypothesis and acceptance criteria altered?** No. Frozen v1.0–v1.3 research specifications and their thresholds remain unchanged. The pre-outcome feasibility report still needs to show ≥12 independent clusters, ≥200 treatment firms, acceptable coverage, point-in-time integrity and a valid terminal/delisting-return rule. The expected PH-1 count (~4–8 clusters) remains a material feasibility risk; the test must stop as inconclusive if gates fail.
 
 **Still open.** Actual account access/API credentials; empirical verification of selected plans' exchange-level coverage and terminal-return semantics; actual execution of offline tests in the repo; public filing-acquisition coverage; reconciliation of state/handoff/panel counts; the frozen statistical feasibility gate. The campaign remains **PARKED — not validated, not rejected**.
+
+
+## Iteration 14 — 2026-10-22 — Harden provider response handling and record network-environment failure
+
+**What changed.** Removed the request's gzip/deflate Accept-Encoding header because the urllib client does not currently implement response decompression; the client now requests parseable JSON/CSV content, and its offline test source asserts the request headers. Two minimal sample-key smoke attempts (Sharadar public test key and EODHD demo pattern) were tried on tiny AAPL date ranges; both failed before HTTP with this terminal's DNS resolution error. The failed retrievals are documented in research/manifests/price_provider_smoke_attempts.jsonl and experiment entry E-025.
+
+**Why.** Do not let a compressed payload reach a parser that assumes uncompressed JSON/CSV, and do not misclassify a local DNS failure as a vendor/API rejection. Use a network-enabled execution environment for the next bounded test.
+
+**Hypothesis or acceptance criteria altered?** No. The price client is still untested in a live-capable environment; new offline tests have not been run in this session. No vendor response was received, no market data were inspected, no paid API request or purchase occurred, and no outcome-period return was computed or inspected. The ≥12 independent-cluster / ≥200 treatment-firm gates and PH-1 once-only discipline remain unchanged. The campaign remains **PARKED — not validated, not rejected**.
