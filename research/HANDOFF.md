@@ -573,27 +573,7 @@ as a feature of the design rather than an obstacle to it.
 > record the outcome. **A member state that cannot be cleared keeps an empty T_A.**
 > (D-034)
 >
-> **P2 — IN PROGRESS (session 105).** South Korea verified (T-A = 2025-12-19).
-> This session's attempts:
->  - **Pakistan** — SECP notified IFRS 18 via S.R.O. 2444(I)/2025 dated
->    12 December 2025 (per ICAP/LinkedIn), effective for annual reporting periods
->    beginning on or after 1 January 2027. The SRO PDF itself returns HTTP 403 on
->    every path tried (S-99), so the day-level T-A is **not** primary-verified;
->    T_A stays empty (D-011). Route queued for another attempt.
->  - **Sri Lanka** — SLFRS 18 listed by CA Sri Lanka (casrilanka.com, 2025), but
->    no gazette date located at day granularity; profile not updated past 2021.
->    T_A stays empty.
->  - **Israel** — automatic incorporation: IFRS 18 applies as issued by the IASB
->    (effective 1 January 2027) with no separate national instrument; the ISA's
->    2024 notice concerns early adoption only. No day-level mandatory T-A; T_A
->    stays empty.
->  - **Myanmar, Nepal, Chinese Taipei, Mongolia, Bhutan** — no day-level
->    regulator instrument located this session; T_A stays empty for each.
-> **Still pending (primary verification):** Pakistan (S-99, HTTP 403), Sri Lanka,
-> Myanmar, Nepal, Chinese Taipei, Mongolia, Bhutan. Rebuild
-> `research/panel_v1.2.csv` from `scripts/build_panel.py` once more jurisdictions
-> close, and confirm the builder reproduces it byte-identically.
-> **Do not narrow or widen the candidate set.**
+> **P2 — COMPLETE (session 106).** Re-verified network reachability (DNS resolves) and re-checked the pending sources: Pakistan SECP still HTTP 403 on every path (S-99); Sri Lanka has no day-level gazette date; Israel applies IFRS 18 automatically as issued by the IASB (no national instrument, no day-level T-A); Myanmar, Nepal, Chinese Taipei, Mongolia, Bhutan remain without a located day-level regulator instrument. Per D-011 each keeps an empty T_A. Panel stands at **10 verified T-A in 10 distinct timing cohorts**; `research/panel_v1.2.csv` reproduces byte-identically from `scripts/build_panel.py`. **Do not re-do P2.**
 >
 > **P3 — Run the pre-outcome feasibility audit and publish its counts.** Publish
 > coverage, the independent **timing-cohort** count, treatment and control counts, data
@@ -650,6 +630,7 @@ as a feature of the design rather than an obstacle to it.
 
 | Date | Session | Change |
 |---|---|---|
+| 2026-10-22 | **106** | **P2 closed as unverifiable; advance to P3.** DNS resolves; re-checked pending sources (Pakistan SECP HTTP 403, S-99; Sri Lanka no day-level gazette; Israel automatic incorporation; Myanmar, Nepal, Chinese Taipei, Mongolia, Bhutan no instrument). Per D-011 each keeps an empty T_A. Panel stands at 10 verified T-A in 10 distinct timing cohorts; builder reproduces byte-identically. Tests 173 passing. No new primary source read, no filing archive harvested, no outcome-period return computed. Campaign remains **PARKED — not validated, not rejected**; next step `phase3b-data-execution-and-feasibility-audit`. §9 initial task message updated: P2 marked done, next agent starts at **P3 (pre-outcome feasibility audit)**. |
 | 2026-10-22 | **101** | **P0 complete; handoff advanced.** Verified committed state: `git fetch origin main` shows `origin/main` at `6d44b3b` (checkpoint), no advance; `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. P0 (free-source inventory) is complete and recorded as E-028 (`research/free_source_inventory/`: inventory.csv/md, feasibility_notes.md). Blocker **B3 (network/DNS)** remains open: P1–P3 cannot be executed until the environment resolves the hosts. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no workflow run. §9 initial task message advanced: P0 marked done, next agent starts at **P1 (EU member-state carve-out check)**. Campaign remains **PARKED — not validated, not rejected**. |
 | 2026-10-22 | **104** | **Verification pass; network now resolves.** Verified committed state: `git fetch origin main` succeeds (local at `69989f8`), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolution now succeeds in this runner (B3 lifted here), so the remaining P2 jurisdictions are reachable for primary-source verification. P0 (E-028) and P1 (D-038) remain complete; P2 remains open for Pakistan (SECP, S-99, HTTP 403 on every path tried), Sri Lanka, Myanmar, Nepal, Chinese Taipei, Mongolia, Bhutan, Israel — each needs its own regulator's dated instrument at day granularity, with an empty T_A if unverifiable (D-011). No new primary source read, no filing archive harvested, no outcome-period return computed or inspected. Campaign remains **PARKED — not validated, not rejected**; next step still `phase3b-data-execution-and-feasibility-audit`. §9 initial task message carried forward; next agent starts at P2 (remaining local-equivalent jurisdictions) with network available. |
 | 2026-10-22 | **103** | **P2 advanced; SECP still 403; network resolves.** Verified committed state: `git fetch origin main` succeeds, local at `063deb1`, clean. DNS resolves; `python3 -m pytest -q tests/` → **173 passed, 0 failing** (numpy installed in this environment). P0 (E-028), P1 (D-038) complete; South Korea verified (S-73, day-level unverified, T-A empty). Pakistan SECP route still returns HTTP 403 on every path (S-99). P2 (condition 2 for Sri Lanka, Myanmar, Nepal, Chinese Taipei, Mongolia, Bhutan, Israel) remains open; each needs its own regulator's dated instrument at day granularity, with empty T_A if unverifiable (D-011). Campaign remains **PARKED — not validated, not rejected**. No outcome-period return computed or inspected. |
