@@ -1,3 +1,5 @@
+> **Superseded route note (D-032, 2026-10-22):** This assessment's paid-provider prices and recommendations are historical context only. The active instruction is free-only: do not purchase, trial, call, or provision paid data services. Use the official/public-source inventory and measure actual free-source coverage. The research gates and data-integrity requirements below remain binding.
+
 # ACCTCLOCK — Data Route Assessment
 
 Written: 2026-10-22
