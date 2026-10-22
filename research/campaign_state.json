@@ -199,7 +199,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-22T13:55:00Z",
+  "updated_at": "2026-10-22T14:55:00Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -213,7 +213,7 @@
     "public_read_only_harvesting": "permitted under each source's own terms, rate limits and attribution requirements; raw data cached outside the repository, with only code, manifests, hashes and non-licensed aggregates committed",
     "data_quality_caveat": "No-cost access does not waive the data-quality checks. Candidate free price sources are NOT presumed complete, especially for delisted securities and terminal returns. Free-source insufficiency must be reported honestly; it does not justify lowering the frozen gates or asserting completeness.",
     "feasibility_gate": "publish coverage, the independent timing-cohort count, treatment and control counts and the terminal-return audit before any outcome-period return is computed; require at least 12 independent timing cohorts and 200 treatment firms, and report the estimand as inconclusive by construction if the gate fails",
-    "execution_status": "The two concurrently committed research lines have been reconciled (D-035): upstream identifiers keep their numbers, the session-96 identifiers are D-033/D-034, E-026 and S-91 to S-99, and both lines' content is retained in full. research/panel_v1.2.csv regenerates byte-identically from committed code with 10 condition-2 verified in 10 distinct timing cohorts. The test suite is 173 passing, 0 failing. No source inventory, feasibility audit or outcome-period return has been run.",
+    "execution_status": "The two concurrently committed research lines have been reconciled (D-035): upstream identifiers keep their numbers, the session-96 identifiers are D-033/D-034, E-026 and S-91 to S-99, and both lines' content is retained in full. research/panel_v1.2.csv regenerates byte-identically from committed code with 10 condition-2 verified in 10 distinct timing cohorts. The test suite is 173 passing, 0 failing. P0 (free-source inventory) is complete: research/free_source_inventory/ holds the dated, terms-checked candidate inventory (E-028); delisted/terminal-return coverage remains unverified. No feasibility audit or outcome-period return has been run.",
     "no_actions": [
       "subscription purchase",
       "paid API request",
