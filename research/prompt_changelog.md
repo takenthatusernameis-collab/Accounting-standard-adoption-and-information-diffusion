@@ -455,3 +455,14 @@ questions is not progress.
 **Why.** Do not let a compressed payload reach a parser that assumes uncompressed JSON/CSV, and do not misclassify a local DNS failure as a vendor/API rejection. Use a network-enabled execution environment for the next bounded test.
 
 **Hypothesis or acceptance criteria altered?** No. The price client is still untested in a live-capable environment; new offline tests have not been run in this session. No vendor response was received, no market data were inspected, no paid API request or purchase occurred, and no outcome-period return was computed or inspected. The ≥12 independent-cluster / ≥200 treatment-firm gates and PH-1 once-only discipline remain unchanged. The campaign remains **PARKED — not validated, not rejected**.
+
+
+## 2026-10-22 — Iteration 7: D-032 free-only route and bottleneck removal
+
+**Change.** Prompt advanced to v1.2. D-032 supersedes D-031's paid-provider direction. All active instructions now prohibit paid vendors, subscriptions, payment-linked trials, paid API calls, purchases, and asking the user to provision paid credentials. The next agent should immediately inventory lawful free sources, reconcile panel counts, run offline tests only where an actual repository environment exists, and execute a pre-outcome feasibility audit. Legacy paid-route documentation is explicitly marked superseded.
+
+**Bottlenecks removed.** No repeated A1–A5 questions, no waiting for paid credentials, and no vendor checkout decision. Independent public-source discovery and code/test audit can proceed immediately.
+
+**Safeguards unchanged.** Frozen hypotheses and preregistrations, ≥12 independent clusters, ≥200 treatment firms, the no-outcome-peeking gate, source terms/rate limits, delisted-security/terminal-return checks, and research-only/no-live-trading boundaries remain binding. Free-source insufficiency must be reported honestly; it does not justify lowering gates or fabricating completeness.
+
+**Hypothesis or acceptance criteria altered?** No. Only the data-access route and operating instructions changed; no outcome data were opened and no performance claim is made.
