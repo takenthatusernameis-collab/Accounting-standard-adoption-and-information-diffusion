@@ -14,13 +14,9 @@ Status: **D-031 route selected; acquisition not yet executed.** The repo now con
 
 ## 1. What this document is, and what it is not
 
-The v1.1 registration in this session made the design **executable in principle**. This
-document makes the **data side** of that execution concrete: the exact sources, the file
-layout, the hashing and manifest scheme, the caching policy, the rate limits, and — the
-part that actually blocks the campaign — **the explicit authorisation decisions that a
-maintainer must make before a single byte is fetched**.
+The v1.1 registration made the research design executable in principle. This document specifies source routes, cache layout, hashes/manifests, rate limits and validation requirements. D-031 has resolved the earlier A1–A5 operating decisions: read-only public collection is authorized, and the paid-provider route is selected. Remaining gates are operational (provisioned price-data access/credentials, source/coverage validation) and scientific (the frozen feasibility thresholds), not repeated authorization questions.
 
-It is a plan, not an acquisition. Section 8 is the gate.
+This remains an acquisition plan, not evidence that data have been acquired or the hypothesis tested. Section 8 is the current bounded execution sequence.
 
 ## 2. What the v1.1 design requires, mapped to data
 
@@ -181,7 +177,7 @@ Rules:
 
 ### 6.1 SEC EDGAR (United States) — `data.sec.gov` and `www.sec.gov/Archives`
 
-- **Authorisation required:** §8 item 2 (read-only harvesting).
+- **Current direction (D-031):** read-only acquisition is authorized under SEC access policies; no bulk harvest before a bounded smoke check.
 - **Compliance:** SEC requires a **declared User-Agent** identifying the requester and
   a contact address, and caps traffic at **10 requests per second**. The pipeline uses
   **≤ 2 requests/second** with a token bucket, and honours `Retry-After`.
@@ -199,7 +195,7 @@ Rules:
 
 ### 6.2 FCA National Storage Mechanism / RNS (United Kingdom)
 
-- **Authorisation required:** §8 item 2.
+- **Current direction (D-031):** public-source acquisition is authorized subject to the route's access terms and timestamp/coverage checks.
 - **What must be verified before use (an open gap, recorded in
   `research/event_calendar.csv` EV-201):** the day-level **UK endorsement instrument**
   date for IFRS 15 and IFRS 16 (the UK Endorsement Board approval and the FRC
@@ -211,7 +207,7 @@ Rules:
 
 ### 6.3 National OAMs and regulators (Stratum B, and EU member-state routes)
 
-- **Authorisation required:** §8 item 2, per OAM.
+- **Current direction (D-031):** public-source acquisition is authorized per route, subject to access terms, a pre-fetch timestamp/format/terms assessment, and rate limits.
 - **Candidate routes named in `research/data_route_assessment.md` §6.1:** KAP (Türkiye),
   Saudi Exchange / CMA (Tadawul), SECP (Pakistan), the Croatian HANFA system, EGX
   (Egypt), and the ESMA ESEF filings via national OAMs for the EU member states.
