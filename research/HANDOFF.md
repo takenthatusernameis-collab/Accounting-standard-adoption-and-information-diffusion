@@ -573,17 +573,18 @@ as a feature of the design rather than an obstacle to it.
 > record the outcome. **A member state that cannot be cleared keeps an empty T_A.**
 > (D-034)
 >
-> **P2 — Extend condition 2 to the remaining local-equivalent jurisdictions.**
-> South Korea, Pakistan, Sri Lanka, Myanmar, Nepal, Chinese Taipei, Mongolia,
-> Bhutan, Israel. Each needs **its own regulator's dated instrument**, read directly.
-> **Never fill a date from a secondary summary** — if it cannot be tied to a primary
-> source at day granularity, mark it `unverified` and leave the T_A empty (D-011).
-> Pakistan failed with HTTP 403 on every path tried (S-99); try the Pakistan Gazette
-> or an alternative mirror. Rebuild `research/panel_v1.2.csv` from
-> `scripts/build_panel.py` — **never edit the panel file by hand** — and confirm the
-> builder reproduces it byte-identically. **Do not narrow or widen the candidate
-> set**: it is fixed by the rule and by the one dated, hashed membership snapshot at
-> `research/manifests/ifrs_jurisdiction_profiles.jsonl`.
+> **P2 — IN PROGRESS (session 103).** South Korea verified: K-IFRS 1118
+> ("Presentation and Disclosure in Financial Statements") promulgated 2025-12-19 by
+> the Korea Accounting Standards Board (KASB), adopted without modification;
+> mandatory for fiscal years beginning on or after 2027-01-01, early adoption
+> permitted (T-A = 2025-12-19). Source: KASB announcement (registered 2025-12-26)
+> and FSC press release 2025-12-18, hashed. **Still pending:** Pakistan (S-99,
+> HTTP 403; try Pakistan Gazette or mirror), Sri Lanka, Myanmar, Nepal, Chinese
+> Taipei, Mongolia, Bhutan, Israel. Each needs its own regulator's dated
+> instrument at day granularity; an unverifiable jurisdiction keeps an empty T_A
+> (D-011). Rebuild `research/panel_v1.2.csv` from `scripts/build_panel.py` once
+> more jurisdictions close, and confirm the builder reproduces it byte-identically.
+> **Do not narrow or widen the candidate set.**
 >
 > **P3 — Run the pre-outcome feasibility audit and publish its counts.** Publish
 > coverage, the independent **timing-cohort** count, treatment and control counts, data
