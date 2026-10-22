@@ -423,3 +423,18 @@ mandated pre-adoption impact disclosure**, so the structural pre-emption channel
 dominates the IFRS 18 instance is **absent** from the v1.1 panel — a difference that is
 registered so that the pre-emption arm is evaluated on its own merits rather than
 assumed to have fired.
+
+
+## 9. Current route decision D-031 (2026-10-22) — supersedes the old fallback recommendation
+
+**Current direction:** paid providers are selected to address the price-history bottleneck. The earlier §6.5 recommendation and §8.2 free fallback remain as historical analysis, but do not cause the agent to ask for A1–A5 again.
+
+- **US active/delisted daily prices:** Sharadar Stock Prices / SEP. The vendor documents active and delisted US stock coverage and history to December 1997: https://sharadar.com/docs/stocks. API access is described at https://sharadar.com/docs/auth.
+- **International and controls:** EODHD All World historical EOD. Current public plan page lists US$19.99/month for the personal All World EOD plan; verify exact symbol/venue/delisted coverage and checkout terms before purchase: https://eodhd.com/pricing and https://eodhd.com/financial-apis/api-for-historical-data-and-volumes. EODHD's delisted endpoint documents its per-exchange delisted-symbol workflow: https://eodhd.com/financial-apis/delisted-stock-companies-data-2.
+- **Existing institutional access:** test for an already-held CRSP/WRDS entitlement only where available; do not assume one or create new accounts to check it.
+- **Spend boundary:** route selected is not a purchase authorization. No agent may enter payment details, start a subscription, accept contract terms, silently select an annual plan, or incur unspecified charges. The account holder must provision plan access and credentials. The prior ~$30/month Sharadar estimate is provisional; the combined ~$50/month estimate is not a current verified quote.
+- **Implementation:** scripts/price_provider_client.py and tests/test_price_provider_client.py provide a guarded, offline-testable adapter. The paid fetch flag must be explicitly enabled and credentials must be injected from the execution environment, not chat/Git. Manifests redact credentials; raw data stays outside Git.
+- **Acceptance, not assumption:** for both treated and not-yet-treated control jurisdictions, verify inactive/delisted securities, ticker changes, split/dividend adjustments, coverage, original dates, and terminal/delisting-return semantics. An adjusted-close series is not proof of a CRSP-style delisting return. If that gap cannot be solved under an auditable rule, fail the primary price gate rather than drop securities or impute zero.
+- **Work in parallel:** public source/filing collection is authorized read-only under published terms and rate limits and should proceed without waiting for paid credentials.
+- **Frozen inference:** the minimum of 12 independent adoption clusters and 200 treatment firms remains fixed. PH-1 is still expected at roughly 4–8 clusters, so it remains likely inconclusive unless the pre-outcome feasibility audit actually passes. No return analysis before the audit; no threshold lowering, no treating EU-27 as 27 independent cohorts, and no edits to frozen preregistration files.
+- **Current state:** route selected and code added, but no provider credentials, paid request, purchase, bulk filing harvest, backtest or outcome-return inspection occurred in this update. Strategy remains **PARKED — not validated, not rejected**.
