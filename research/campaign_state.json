@@ -4,7 +4,13 @@
   "notes": [
     "2026-10-22: v1.1 registered (hypothesis, specification, preregistration). The design blocker (D-009) is cleared; v1.0 files are byte-identical and unedited.",
     "2026-10-22: the retrospective panel has NO post-2019 T-A, so its chronological holdout is EMPTY; declared in advance with the consequence fixed (D-014). The promotable test is the prospective holdout arm PH-1, which needs a v1.2 registration before the first IFRS 18 report is published.",
-    "2026-10-22: data execution is blocked on maintainer authorisation A1-A5 (research/data_acquisition_plan.md section 8). No outcome-period return has been computed or inspected."
+    "2026-10-22: data execution is blocked on maintainer authorisation A1-A5 (research/data_acquisition_plan.md section 8). No outcome-period return has been computed or inspected.",
+    "2026-10-22: the read-only EDGAR acquirer, the SGML acceptance-time parser, the manifest writer and the cache layout are now IMPLEMENTED and unit-tested (scripts/sec_edgar.py, scripts/sec_acceptance.py, scripts/data_manifest.py, scripts/data_cache.py; 48 new tests, 115 total, all passing, zero network calls in the suite). The acquirer was exercised only against synthetic fixtures; no filing archive was harvested (E-015).",
+    "2026-10-22: BOTH named date gaps are CLOSED and one row was ADDED. EV-201 (IFRS 15, UK) is primary-verified against SI 2015/980 (made 26 March 2015, in force 6 April 2015; regulation 2(2) gives the 1 January 2016 mandatory date and the 1 January 2015 early-application arm). EV-103 (ASU 2016-01) is primary-verified with the day-level issuance date 2016-01-05 and its effective date is CORRECTED: the previously recorded public-business-entity date 2018-12-15 belongs to ASU 2016-02 (EV-102), so EV-103 moves ONE YEAR EARLIER to a first affected fiscal year start of 2018-01-01 (decision D-016). EV-202 (IFRS 16, UK) was added as a row, with the note that the UK needed no new instrument and that its T-A is inherited from the EU endorsement (E-016).",
+    "2026-10-22: the registered panel is MATERIALISED as research/panel_v1.1.csv (434 rows: 8 complete Stratum A events, 426 Stratum B candidate rows over 142 jurisdictions), with the membership derived BY RULE from a dated, hashed snapshot of the 170 IFRS Foundation jurisdiction profiles; the snapshot manifest (171 records with SHA-256) is committed at research/manifests/ifrs_jurisdiction_profiles.jsonl. Every Stratum B row carries in_registered_panel = pending, because three of the five rule conditions cannot be verified until A1 and A2 land. Decisions D-018 and D-020 (E-017).",
+    "2026-10-22: v1.2 is REGISTERED for the prospective holdout arm PH-1 (research/hypothesis_v1.2.md, research/specification_v1.2.md, research/preregistration_v1.2.md), before the first IFRS 18 report can be published in the 2027 interim reporting season. Four things are settled in advance, all narrowings: the IFRS 18 adopter-type contrast is settled in the negative (S-54); the pre-emption arm becomes the real thing via the mandated IAS 8.30/.31 pre-adoption impact disclosure (S-49); the expected cluster count is BELOW the minimum and the consequence is fixed as inconclusive-by-construction; the reporting discipline is once-only. Decision D-019 (E-018).",
+    "2026-10-22: the maintainer authorisation request is now a single concrete file, research/authorisation_request.md, quoting the five decisions and their consequences verbatim from data_acquisition_plan section 8.1 and stating the consequence of silence plainly (panel stays at approximately 8 clusters, below the 12 minimum; primary estimand inconclusive by construction; kill condition 9 fires by construction with the bias running AGAINST the hypothesis). No paid data pull, no filing-archive harvest, no GitHub Actions run, .github/workflows/main.yml unmodified (E-019).",
+    "2026-10-22: STILL OPEN - (a) whether the UK filing route publishes a filing TIME and not only a date (T-R needs a timestamp; the FCA NSM API host answered HTTP 403 from this environment); (b) the day-level IFRS 18 adoption instrument date per admitted jurisdiction, the UK Endorsement Board's IFRS 18 decision date first; (c) the linguistic-distance choice (published measure if exactly reproducible, else the registered fallback ordinal scale) must be recorded before the holdout opens; (d) research/panel_v1.2.csv (the PH-1 panel file) does not yet exist and must be written before the PH-1 feasibility audit begins."
   ],
   "remote_source": null,
   "schema_version": 1,
@@ -44,7 +50,7 @@
     {
       "attempts": 0,
       "error": null,
-      "finished_at": "2026-10-22T02:26:09+00:00",
+      "finished_at": "2026-10-22T03:20:00+00:00",
       "id": "phase2-freeze-hypothesis-spec-prereg",
       "result": {
         "artefacts_v1_0": [
@@ -57,11 +63,17 @@
           "research/specification_v1.1.md",
           "research/preregistration_v1.1.md"
         ],
-        "changelog": "research/prompt_changelog.md Iteration 8",
+        "changelog": "research/prompt_changelog.md Iteration 8 (v1.1) and Iteration 9 (v1.2 / PH-1)",
         "defect_repaired": "D-009 empty treatment group",
         "design_blocker_status": "cleared",
         "dossier_commit": "1f9bd09cc96c1953f67ffc1f9892f7e60b6a71ff",
-        "v1_0_files_edited": false
+        "v1_0_files_edited": false,
+        "artefacts_v1_2_registered_2026_10_22": [
+          "research/hypothesis_v1.2.md",
+          "research/specification_v1.2.md",
+          "research/preregistration_v1.2.md"
+        ],
+        "ph1_status": "registered on 2026-10-22, before the first IFRS 18 report can be published; narrower and weaker than the retrospective panel by construction (decision D-019)"
       },
       "started_at": null,
       "status": "completed"
@@ -69,7 +81,7 @@
     {
       "attempts": 0,
       "error": null,
-      "finished_at": "2026-10-22T02:26:09+00:00",
+      "finished_at": "2026-10-22T03:20:00+00:00",
       "id": "phase3-data-acquisition",
       "result": {
         "acquisition_plan": "research/data_acquisition_plan.md",
@@ -77,8 +89,13 @@
         "filings_acquired": false,
         "manifest": "research/data_manifest.md",
         "market_data_acquired": false,
-        "note": "no paid data pull, no GitHub Actions run, no workflow edit; harvest not yet authorised",
-        "route_assessment": "research/data_route_assessment.md"
+        "note": "no paid data pull, no filing-archive harvest, no GitHub Actions run, no workflow edit; harvest not yet authorised",
+        "route_assessment": "research/data_route_assessment.md",
+        "panel": "research/panel_v1.1.csv",
+        "panel_rows": 434,
+        "manifests": "research/manifests/ifrs_jurisdiction_profiles.jsonl",
+        "acquirer": "scripts/sec_edgar.py, scripts/sec_acceptance.py, scripts/data_manifest.py, scripts/data_cache.py (implemented and unit-tested; no network call made)",
+        "date_gaps_closed": "EV-103 (primary-verified, effective date corrected), EV-201 (primary-verified), EV-202 (row added)"
       },
       "started_at": null,
       "status": "completed"
@@ -96,9 +113,15 @@
           "authorisation A4 (panel scope confirmation)",
           "authorisation A5 (prospective holdout PH-1 / v1.2 registration)"
         ],
-        "first_action_when_unblocked": "implement the SEC EDGAR acquirer under scripts/ with manifests and SHA-256 hashing, commit the code BEFORE fetching, then run the smallest possible smoke fetch and verify the acceptance-timestamp parse against the filing index by hand",
+        "first_action_when_unblocked": "the acquirer is already implemented and tested; on authorisation, commit the code path, set ACCTCLOCK_USER_AGENT, run the smallest possible smoke fetch and verify the acceptance-timestamp parse against the filing index by hand before any bulk run",
         "gate_before_any_return": "publish the feasibility audit counts (clusters, treatment firms, coverage) BEFORE any outcome-period return is computed; stop if clusters < 12 or treatment firms < 200",
-        "trigger_sequence": "research/data_acquisition_plan.md section 8.2"
+        "trigger_sequence": "research/data_acquisition_plan.md section 8.2",
+        "also_outstanding": [
+          "the UK filing route's timestamp field (T-R needs a time, not only a date)",
+          "the day-level IFRS 18 adoption instrument date per admitted jurisdiction, UKEB first",
+          "the linguistic-distance measure choice, recorded before the holdout opens",
+          "research/panel_v1.2.csv (the PH-1 panel file), written before the PH-1 feasibility audit"
+        ]
       },
       "started_at": null,
       "status": "pending"
@@ -140,5 +163,5 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-22T02:26:09+00:00"
+  "updated_at": "2026-10-22T03:20:00+00:00"
 }

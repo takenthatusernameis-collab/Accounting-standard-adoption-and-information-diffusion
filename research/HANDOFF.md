@@ -1,10 +1,11 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-22 (Worker session 4)
+**Last updated:** 2026-10-22 (Worker session 5)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
-**Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared.
-The *data and authorisation* blocker is open.
+**Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared
+and the *promotable test is now registered*. The *data and authorisation* blocker is
+still open, and it is the only thing that blocks the campaign.
 **Machine-readable state:** `research/campaign_state.json` — next step is
 `phase3b-data-execution-and-feasibility-audit` (pending, blocked on authorisation).
 
@@ -12,27 +13,51 @@ The *data and authorisation* blocker is open.
 
 ## 1. Read this first
 
-The single most important change since the last handoff: **the campaign now has an
-executable design.** Until this session, the frozen v1.0 specification's treatment
-group was **empty** across the frozen EU/UK/US universe (D-009), so no result could
-have been computed even if all the data had been available. **v1.1 of the hypothesis,
-specification and preregistration is now registered**, before any outcome-period return
-exists in this repository.
+Three things changed in this session, and one of them is a correction.
 
-The v1.0 files are **byte-identical and unedited**; verify with
-`git diff -- research/hypothesis.md research/specification_v1.md research/preregistration.md`
+1. **The acquirer now exists.** The EDGAR acquisition path was prose in
+   `research/data_acquisition_plan.md`; it is now **implemented and unit-tested** in
+   `scripts/`, against synthetic fixtures, with **zero network calls** in the test
+   suite. When authorisation arrives, the pipeline runs from committed code.
+2. **The panel now exists as a file.** `research/panel_v1.1.csv` — 434 rows, derived
+   **by rule** from a dated, hashed snapshot of the membership authority, with every
+   Stratum B row marked `pending` because three of the five rule conditions cannot be
+   verified until A1 and A2 land.
+3. **The promotable test is registered.** v1.2 (`hypothesis_v1.2.md`,
+   `specification_v1.2.md`, `preregistration_v1.2.md`) registers the prospective
+   holdout arm **PH-1** on the IFRS 18 first-application window, **before the first
+   IFRS 18 report can be published**.
+
+**And one correction, which matters:** the **ASU 2016-01 event (EV-103) moves one
+year earlier**. The event calendar previously carried a public-business-entity
+effective date of 2018-12-15; the ASU's own text says **2017-12-15** (and
+2018-12-15 for all other entities). The 2018-12-15 date belongs to **ASU 2016-02**
+(EV-102) — the two rows had been conflated. `first_affected_fiscal_year_start` moves
+from 2019-01-01 to **2018-01-01**. Decision **D-016**; the row's own `notes` and
+`date_conflict` fields record the change. **No outcome-period return has ever been
+computed or inspected, so nothing downstream is affected.**
+
+The v1.0 and v1.1 files are **byte-identical and unedited**; verify with
+`git diff -- research/hypothesis.md research/specification_v1.md research/preregistration.md
+research/hypothesis_v1.1.md research/specification_v1.1.md research/preregistration_v1.1.md`
 (expect empty output).
 
 | Artefact | What it is |
 |---|---|
-| `research/hypothesis_v1.1.md` | The registered claim: the **transition-window** state contrast, two-sided, with three new kill conditions. |
-| `research/specification_v1.1.md` | The **executable** design: treatment, panel rule, controls, windows, costs, acceptance criteria. |
-| `research/preregistration_v1.1.md` | Splits, cluster and power rules, test order, stopping rule, reporting commitments. |
-| `research/data_acquisition_plan.md` | The data side of execution, including the **authorisation checklist that is now the gate**. |
-| `research/decision_log.md` | D-012 … D-016 record the new decisions. |
-| `research/prompt_changelog.md` | Iteration 8 records the registration and what it changed. |
-| `research/source_ledger.csv` | **S-42 … S-54** added: the dossier sources v1.1 relies on, each with its dossier identifier. |
-| `research/experiment_ledger.csv` | **E-014** records this session. |
+| `scripts/sec_acceptance.py` | The SGML acceptance-time parser: `ACCEPTANCE-DATETIME` (`YYYYMMDDHHMMSS`, Eastern) → UTC, with the two daylight-saving transition days handled explicitly. |
+| `scripts/data_cache.py` | The cache layout of the acquisition plan §3, plus the guard that refuses a cache root inside the repository (D-015). |
+| `scripts/data_manifest.py` | The append-only JSONL manifest, SHA-256 over the raw bytes, and failed retrievals recorded as failed retrievals. |
+| `scripts/sec_edgar.py` | The acquirer: submissions JSON, filing index, complete submission text; declared User-Agent; ≤ 2 requests/second; `Retry-After` honoured. |
+| `tests/test_sec_acceptance.py` and 3 more | **48 new tests**; **115** in total, all passing, zero network calls. |
+| `research/panel_v1.1.csv` | The registered panel, materialised: 8 Stratum A events + 426 Stratum B candidate rows. |
+| `research/manifests/ifrs_jurisdiction_profiles.jsonl` | The dated snapshot manifest: 171 records with URL, HTTP status, bytes, **SHA-256** and retrieval timestamp. |
+| `research/event_calendar.csv` | EV-103 primary-verified and **corrected**; EV-201 primary-verified; **EV-202 added**. |
+| `research/authorisation_request.md` | The authorisation request, one-click-able, with the five decisions quoted verbatim. |
+| `research/hypothesis_v1.2.md`, `research/specification_v1.2.md`, `research/preregistration_v1.2.md` | **PH-1 registered.** v1.0 and v1.1 untouched. |
+| `research/decision_log.md` | **D-017 … D-020** record this session's decisions. |
+| `research/prompt_changelog.md` | **Iteration 9** records what changed and why. |
+| `research/source_ledger.csv` | **S-55 … S-59** added: SI 2015/980, the EFRAG Endorsement Status Report, FASB ASU 2016-01, the IFRS profile snapshot, the FRC's FRS 102 (March 2018). **59 sources.** |
+| `research/experiment_ledger.csv` | **E-015 … E-019** record this session. **20 rows.** |
 
 ## 2. What is verified (with sources)
 
@@ -57,15 +82,49 @@ The v1.0 files are **byte-identical and unedited**; verify with
   - the claim is **pre-registered as a transition-window effect**, and steady-state
     comparability is a **descriptive control** only (Cycle-52 item 3; Cycle-58 item 2);
   - the **pre-emption arm is registered as a kill signal, not a null** (Cycle-113 items 2
-    and 4; Cycle-114 item 2);
-  - the **IFRS 18 arm A is not used** — its G-33 dependency is unmet (2026 quantification
-    rate 0 of 13 on a convenience sample; the ESMA-supervised population rate not yet
-    published; S-49, S-50, S-51) and its state cannot be constructed for a retrospective
-    panel that carried no mandated pre-adoption impact disclosure.
-- **The tests still pass**: `python3 -m pytest -q tests/` → **67 passed** (re-run this
+    and 4; Cycle-114 item 2).
+- **v1.2 is compliant too, and its narrowings are recorded as narrowings** (D-019):
+  - the **IFRS 18 adopter-type contrast is settled in advance, in the negative**
+    (S-54: the instruments converge on one application date and first-time IFRS
+    adopters apply the IFRSs "all at once"), so PH-1 is a **narrower and weaker** test
+    than the retrospective panel, and is registered as such;
+  - the **pre-emption arm becomes the real thing** for PH-1, because IFRS 18 carries a
+    **mandated** IAS 8.30/.31 pre-adoption impact disclosure (S-49), giving a real
+    pre-disclosure anchor **T-PRE**;
+  - the **expected cluster count is stated in advance and is below the minimum**
+    (≈3–10 against ≥12), with the consequence fixed as **inconclusive by
+    construction**, and inference fixed in advance to the jurisdiction-level
+    randomisation test and the wild-cluster bootstrap;
+  - the **once-only reporting rule** is fixed: a peek voids the arm, and a voided arm
+    is reported as void, never as a null.
+- **The tests still pass**: `python3 -m pytest -q tests/` → **115 passed** (re-run this
   session, same command as the workflow).
+- **The date gaps are closed from primary sources** (D-016):
+  - **EV-201 (IFRS 15, UK)** — the UK legal instrument is **The Companies,
+    Partnerships and Groups (Accounts and Reports) Regulations 2015 (SI 2015/980)**,
+    made **26 March 2015**, in force **6 April 2015**. Regulation 2(2) gives the
+    mandatory date (financial years beginning on or after **1 January 2016**) and the
+    directors' early-application arm (financial years beginning on or after
+    **1 January 2015**). Fetched from legislation.gov.uk in session (S-55).
+  - **EV-202 (IFRS 16, UK)** — **row added**. The UK required **no new** adoption
+    instrument for IFRS 16: the standing SI 2015/980 requirement applies
+    "international accounting standards adopted pursuant to the IAS Regulation", and
+    IFRS 16 became EU-adopted on 2017-10-31, so the first affected UK financial years
+    begin on or after **1 January 2019**. The T-A is therefore **inherited from the
+    EU**, and the row says so — it is a weaker anchor than EV-201's.
+  - **EV-103 (ASU 2016-01)** — issuance **2016-01-05**, effective-date paragraph
+    quoted verbatim, and the date **corrected** (D-016). Read through the search
+    provider's rendering because a direct fetch of fasb.org returns HTTP 403 in this
+    environment; corroborated independently by the FASB's own ASU 2018-03 (S-57).
+- **The panel is materialised and its membership is auditable** (D-018). A dated,
+  hashed snapshot of the **170** IFRS Foundation jurisdiction profiles was taken on
+  2026-10-22; the screen classifies **138** jurisdictions as IFRS-required for listed
+  domestic public companies, **28** as not, and leaves **4 unresolved** (Bhutan,
+  China, the European Union, Morocco). Every retained row carries the profile URL, the
+  **SHA-256** of the page as retrieved, the retrieval timestamp, the profile's own
+  "last updated" date and the raw status text.
 - **No outcome-period return has been computed or inspected.** No paid data pull, no
-  GitHub Actions run, no workflow edit, no upstream commit.
+  filing-archive harvest, no GitHub Actions run, no workflow edit, no upstream commit.
 
 ## 3. The design, in one paragraph
 
@@ -82,14 +141,19 @@ low-minus-high state contrast across the **transition window [T-A, T-R]**. The *
 is at the adoption announcement, the **exit** at the firm's own first full report under
 the standard. Full detail: `research/specification_v1.1.md` §§1–7.
 
-## 4. The registered panel
+## 4. The registered panel — now a file
 
-| Stratum | Content | Expected clusters |
+`research/panel_v1.1.csv` has **434 rows** in the schema of
+`research/specification_v1.1.md` §4.2, plus additive columns carrying the evidence for
+each membership decision (`membership_screen`, `profile_url`, `profile_sha256`,
+`profile_retrieved_utc`, `profile_last_updated`, `status_text`).
+
+| Stratum | Rows | Status |
 |---|---|---|
-| **A — content change** (primary) | EU IFRS 15 / 9 / 16; UK IFRS 15 / 16; US ASC 606 / 842 / ASU 2016-01 | ≈ **8** |
-| **B — framework change** (secondary) | first-time IFRS adopters, admitted **by rule** from the IFRS Foundation jurisdiction profiles (S-47) | ≈ **20–40** |
-| **C — placebo** | placebo standards, placebo jurisdictions, random-date calendars, unaffected splits | n/a |
-| **D — excluded** | jurisdictions with a voluntary early-adopter cohort (UK IFRS 15 early adopters) — excluded from treatment per Cycle-56 item 3 | n/a |
+| **A — content change** (primary) | **8** (EV-001, EV-002, EV-003, EV-101, EV-102, EV-103, EV-201, EV-202) | **complete and primary-sourced**; `in_registered_panel = true` |
+| **B — framework change** (secondary) | **426** candidate rows over **142** jurisdictions (138 screened in, 4 unresolved) | `in_registered_panel = **pending**` — three of the five rule conditions need A1 and A2 |
+| **C — placebo** | built at run time from the same rule | n/a |
+| **D — excluded** | UK IFRS 15 early adopters, excluded from treatment per Cycle-56 item 3 | n/a |
 
 **The EU is one timing cohort, not 27 clusters**, because all EU member states share one
 application date. This is stated in advance so it cannot later be discovered as a power
@@ -104,16 +168,15 @@ surprise (`research/preregistration_v1.1.md` §5.2).
    retrospective event has T-A ≤ 2017-10-31, so no event falls in the post-2019 split.
    This is declared in advance together with its consequence: **the retrospective panel
    cannot satisfy protocol promotion gate 4 on its own**; its role is **evidential**.
-   The promotable test is the prospective holdout arm **PH-1** (the IFRS 18
-   first-application window, the 2027 interim reporting season), which requires a
-   **v1.2 registration filed before the first IFRS 18 report is published**
-   (`research/preregistration_v1.1.md` §4.1 and §4; D-014).
+   The promotable test is the prospective holdout arm **PH-1**, now **registered** as
+   v1.2 (D-019).
 
 ## 5. What is blocked, and the exact decision needed
 
 **Nothing in the data plan may be executed until the maintainer answers.** The
-authoritative list is `research/data_acquisition_plan.md` §8.1, and the trigger
-sequence that runs the moment an answer arrives is §8.2.
+authoritative list is `research/data_acquisition_plan.md` §8.1, the one-click-able form
+is **`research/authorisation_request.md`**, and the trigger sequence that runs the
+moment an answer arrives is §8.2.
 
 | # | Decision | Options | Consequence if refused or unanswered |
 |---|---|---|---|
@@ -125,21 +188,33 @@ sequence that runs the moment an answer arrives is §8.2.
 
 **No authorisation has been received.** Items A1 and A2 are entirely outstanding.
 
+**A4 now has a concrete object.** The 426 pending Stratum B rows in
+`research/panel_v1.1.csv` are what A4 (a) converts to true or false, one by one, as
+A1 and A2 land. Under A4 (b) the panel falls to 8 rows and the primary estimand is
+inconclusive by construction.
+
 ## 6. Named verification gaps now on the critical path
 
-Both are free to fetch, and both are recorded in `research/event_calendar.csv`:
+Two of the three named in the previous handoff are **closed** (EV-201/EV-202 and
+EV-103 — see §2). What remains:
 
-1. **EV-201 / EV-202 — the day-level UK endorsement instrument date** for IFRS 15 and
-   IFRS 16 (`verification_status: partially-verified`). Without it the UK rows cannot
-   enter the panel with a primary-verified T-A. **Also** to be checked: whether the UK
-   route publishes a filing **time**, not only a date — T-R requires a timestamp.
-2. **EV-103 — the day-level ASU 2016-01 issuance date** in the United States
-   (`verification_status: unverified`).
-
-A third, smaller one: whether the published linguistic-distance measure (**S-44**) can
-be reproduced exactly from its source, or whether the registered fallback ordinal scale
-must be used (`research/specification_v1.1.md` §3.5). **The choice must be recorded
-before the holdout is opened.**
+1. **Whether the UK filing route publishes a filing TIME and not only a date — T-R
+   requires a timestamp.** The FCA National Storage Mechanism API host answered
+   **HTTP 403** to every request from this environment on 2026-10-22, so the published
+   field list could not be read here. The documentation entry point
+   `https://data.fca.org.uk/` is reachable. **Next action:** read the published NSM
+   field list and record whether `publication_date` is a timestamp or a date; if it is
+   a date, find the field that carries the acceptance time, or record that the UK
+   route **cannot** supply T-R. This is recorded on EV-201 and EV-202 and in
+   `research/panel_v1.1.csv`.
+2. **The day-level IFRS 18 adoption instrument date per admitted jurisdiction** —
+   the **UK Endorsement Board's IFRS 18 decision record first**. Needed for the PH-1
+   panel file (`research/panel_v1.2.csv`), which does not yet exist and **must be
+   written before the PH-1 feasibility audit begins**.
+3. **Whether the published linguistic-distance measure (S-44) can be reproduced
+   exactly from its source**, or whether the registered fallback ordinal scale must be
+   used (`research/specification_v1.1.md` §3.5). **The choice must be recorded before
+   the holdout is opened.**
 
 ## 7. Integrity rules that carry forward
 
@@ -149,7 +224,8 @@ before the holdout is opened.**
 - **The panel, the window, the thresholds, the exit rules, the cost table and the
   acceptance criteria are frozen.** A change means a **new registered version** in
   `research/prompt_changelog.md`, never an edit in place.
-- **v1.0 and v1.1 are both immutable.** Edit neither.
+- **v1.0 and v1.1 are both immutable.** Edit neither. v1.2 is likewise immutable once
+  registered.
 - **A failed retrieval is recorded as a failed retrieval**, never as an absence.
 - **The date that maximises a return is never selected**; date conflicts are recorded,
   not resolved (D-011).
@@ -161,41 +237,61 @@ before the holdout is opened.**
   (protocol Authority item 4). `.github/workflows/main.yml` remains unmodified (D-006).
 - **Raw data is cached outside the repository**; only code, manifests, hashes and
   non-licensed aggregates are committed (D-015).
+- **A date correction is a decision, not an edit.** When a primary source contradicts a
+  recorded date, the row is corrected, the conflict is written into the row's own
+  fields, and a decision is logged (D-016 is the precedent).
 
 ## 8. Protocol compliance this session
 
 - The canonical protocol v1.0 is **unchanged**. It was read and its requirements were
   met; where the protocol and the dossier differ in emphasis, the dossier governs the
   *design* and the protocol governs the *process*.
-- Phase 2 (freeze) is complete and now carries **two registered versions**; Phase 3
-  (data) has its **plan** complete and its **execution** blocked; Phases 4–7 remain
-  pending and cannot start without data.
-- `research/results.md` still reports **no results**, and the 67 automated tests still
+- Phase 2 (freeze) is complete and now carries **three registered versions**; Phase 3
+  (data) has its **plan complete**, its **acquirer implemented and tested**, its **date
+  gaps closed** and its **panel materialised**, and its **execution blocked**; Phases
+  4–7 remain pending and cannot start without data.
+- `research/results.md` still reports **no results**, and the 115 automated tests still
   pass.
+- **What was done without authorisation, and why it is recorded as a decision (D-020).**
+  A one-off, dated, hashed snapshot of the **170 public IFRS Foundation jurisdiction
+  profile pages** plus the index page was taken, for the **single purpose of
+  determining the panel membership** — which the P3 task required and which the
+  membership rule names as its authority. The judgement is that this is read-only
+  inspection of public documents for a membership determination, **not** the A2
+  filing-archive harvest. **No filing archive was harvested, no price vendor was
+  contacted, no FX or WGI series was pulled, and the acquirer was exercised only
+  against synthetic fixtures.** The raw pages are cached outside the repository; only
+  the manifest is committed. If the maintainer rules that the snapshot itself needed
+  A2, `research/panel_v1.1.csv` is withdrawn and rebuilt after authorisation.
 
 ---
 
 ## 9. Initial task message for the next agent
 
 > You are the next agent in the ACCTCLOCK research loop. Read, in order:
-> `AGENTS.md`, `research/HANDOFF.md` (this file), `research/campaign_state.json`,
+> `research/HANDOFF.md` (this file), `research/campaign_state.json`,
 > `research/ACCTCLOCK_iteratively_improving_validation_prompt.md` (protocol v1.0),
 > then `research/hypothesis_v1.1.md`, `research/specification_v1.1.md`,
 > `research/preregistration_v1.1.md`, `research/data_acquisition_plan.md`,
-> `research/decision_log.md`, `research/prompt_changelog.md`, `research/event_calendar.csv`,
-> `research/data_route_assessment.md` §8, and `research/experiment_ledger.csv`.
+> `research/authorisation_request.md`, `research/decision_log.md`,
+> `research/prompt_changelog.md`, `research/event_calendar.csv`,
+> `research/data_route_assessment.md` §8, `research/experiment_ledger.csv`, and
+> `research/hypothesis_v1.2.md` / `research/specification_v1.2.md` /
+> `research/preregistration_v1.2.md` (the registered PH-1 arm).
+> There is no `AGENTS.md` in this repository; the protocol file is the governing
+> document.
 >
-> **State on arrival.** v1.1 of the hypothesis, specification and preregistration is
-> **registered**; the design blocker (D-009, empty treatment group) is **cleared**; the
-> v1.0 files are byte-identical and unedited; the canonical dossier was retrieved
-> read-only at commit `1f9bd09cc96c1953f67ffc1f9892f7e60b6a71ff` and was **not
-> modified**; 54 sources are in the ledger (S-42…S-54 added this session);
-> `research/experiment_ledger.csv` has 15 rows (E-014 is the latest); the test suite is
-> **67 passing**; **no outcome-period return has ever been computed or inspected**.
-> The campaign is **PARKED — not validated, not rejected**. The next step in
-> `research/campaign_state.json` is
-> `phase3b-data-execution-and-feasibility-audit`, **pending and blocked on maintainer
-> authorisation**.
+> **State on arrival.** v1.1 (retrospective panel) and v1.2 (**PH-1**, the prospective
+> holdout) are **both registered**; the design blocker (D-009) is cleared and the
+> promotable test is now fixed in advance; the v1.0 and v1.1 files are byte-identical
+> and unedited; the canonical dossier was retrieved read-only at commit
+> `1f9bd09cc96c1953f67ffc1f9892f7e60b6a71ff` and was **not modified**; **59** sources
+> are in the ledger (S-55…S-59 added this session); `research/experiment_ledger.csv`
+> has **20** rows (E-019 is the latest); the test suite is **115 passing**; **no
+> outcome-period return has ever been computed or inspected**. The campaign is
+> **PARKED — not validated, not rejected**. The next step in
+> `research/campaign_state.json` is `phase3b-data-execution-and-feasibility-audit`,
+> **pending and blocked on maintainer authorisation**.
 >
 > **Your job, in priority order.**
 >
@@ -203,93 +299,75 @@ before the holdout is opened.**
 > compute anything until the maintainer answers `research/data_acquisition_plan.md`
 > §8.1 items **A1** (market data) and **A2** (read-only public harvesting), and
 > confirms **A3** (repository policy), **A4** (panel scope) and **A5** (prospective
-> holdout). Make the request concrete and one-click-able: quote the five decisions and
-> their consequences verbatim from §8.1, state plainly that A2 is zero-cost and
-> highest-value, and state the consequence of silence — the panel stays at ≈ 8 clusters,
-> the primary estimand is inconclusive by construction, and kill condition 9 fires by
-> construction. If an answer arrives, **record it as a new decision (D-0xx) in
+> holdout). `research/authorisation_request.md` is now the one-click-able form of the
+> request: it quotes the five decisions and their consequences verbatim from §8.1,
+> states plainly that A2 is zero-cost and highest-value, and states the consequence of
+> silence — the panel stays at ≈ 8 clusters, the primary estimand is inconclusive by
+> construction, and kill condition 9 fires by construction with the bias running
+> *against* the hypothesis. **Keep that file current** (it now also has to point at
+> the 426 pending Stratum B rows in `research/panel_v1.1.csv` as the object of A4).
+> If an answer arrives, **record it as a new decision (D-021 onward) in
 > `research/decision_log.md`** quoting the maintainer's instruction with its date and
 > exact scope, then run the trigger sequence in §8.2.
 >
-> **P1 — Build the acquirer offline, with no network access and no data.** This is
-> genuinely unblocked and it is the thing that will be needed the moment authorisation
-> arrives. Implement under `scripts/` (and commit tests under `tests/`):
-> (i) the **SEC EDGAR** acquirer — submissions JSON per CIK, the filing index per
-> periodic report, and the complete submission text file — with the declared
-> User-Agent, a token bucket capped at **≤ 2 requests/second**, and `Retry-After`
-> honoured; (ii) the **SGML acceptance-time parser** — read `ACCEPTANCE-DATETIME`
-> (`HHMMSS`, **Eastern**) from the raw SGML header and convert to UTC using the US
-> daylight-saving offset for that date, and **do not** use the `data.sec.gov`
-> submissions JSON field for the acceptance time (it mixes UTC and Eastern; S-31, S-32,
-> S-41); (iii) the **manifest writer** — source, URL, method, HTTP status, bytes,
-> **SHA-256 over the raw bytes**, retrieval timestamp, User-Agent, local path,
-> parser version, and a failed retrieval recorded as a failed retrieval; (iv) the
-> **cache layout** of §3 with the cache root **outside** the repository working tree.
-> Every parser must be unit-tested against **synthetic fixtures in the repository** —
-> including a DST-boundary case, a 23-hour and a 25-hour day, a missing
-> `ACCEPTANCE-DATETIME`, and a midnight boundary — so the pipeline is verifiable with
-> **zero** network calls. `python3 -m pytest -q tests/` must still pass.
+> **P1 — Close the three remaining named gaps in §6 of this handoff.** All three are
+> free to fetch and none of them needs A2 for a *single document*:
+> (a) **the UK filing timestamp** — read the FCA NSM's published field list and record
+> whether the UK route publishes an acceptance **time** or only a date; T-R needs a
+> timestamp, and if the UK route cannot supply one, that is a finding that belongs in
+> the UK rows, not a silence; (b) **the day-level IFRS 18 adoption instrument date**
+> per admitted jurisdiction, the **UK Endorsement Board's IFRS 18 decision record
+> first**; (c) **the linguistic-distance choice** — whether the published measure
+> (S-44) can be reproduced exactly or the registered fallback ordinal scale must be
+> used (`research/specification_v1.1.md` §3.5). **(c) must be recorded before the
+> holdout is opened.** Record each result in `research/event_calendar.csv`,
+> `research/source_ledger.csv` and `research/decision_log.md`, exactly as the existing
+> rows are recorded, and **never fill a date from a secondary summary** — if it cannot
+> be tied to a primary source, mark it `unverified` and leave it open.
 >
-> **P2 — Close the two named date gaps.** Fetch the **day-level UK endorsement
-> instrument date** for IFRS 15 and IFRS 16 (EV-201 / EV-202) and the **day-level
-> ASU 2016-01 issuance date** (EV-103) from their **primary** sources — the UK
-> Endorsement Board / FRC instrument and the FASB's own page — and record them in
-> `research/event_calendar.csv` with the source URL, the source type, the retrieval
-> timestamp and the verification status, exactly as the existing rows are recorded. Also
-> record whether the UK route publishes a filing **time** or only a date, because T-R
-> requires a timestamp. If a date cannot be tied to a primary source, mark it
-> `unverified` and leave it open; **never fill it from a secondary summary**.
+> **P2 — Write `research/panel_v1.2.csv`, the PH-1 panel file.** The PH-1 arm is
+> registered but its panel is not enumerated. It must exist **before the PH-1
+> feasibility audit begins**, with one row per (IFRS 18, jurisdiction) admitted by the
+> rule in `research/specification_v1.2.md` §1.1, the same schema and the same
+> three-state `in_registered_panel` discipline as `research/panel_v1.1.csv`, and the
+> same additive evidence columns. The three jurisdictions with a dated instrument at
+> registration time are the EU, the UK and Saudi Arabia; every other jurisdiction the
+> rule admits must be screened against the **same** dated, hashed membership snapshot
+> already committed at `research/manifests/ifrs_jurisdiction_profiles.jsonl`, so the
+> two panel files are built from one vintage.
 >
-> **Scope note for P2, so you do not stall on it.** These are **single-document
-> primary-source reads in the same class as the calendar work already accepted** — the
-> previous session fetched the SEC webmaster FAQ, the SEC PDS dissemination spec, the
-> EUR-Lex instruments and the IFRS jurisdiction profiles directly (recorded in
-> `research/data_route_assessment.md` §7). What requires **A2** is a *bulk or
-> systematic* harvest of the filing archives, not the retrieval of one primary document
-> to verify one date. If you judge any particular fetch to exceed that line, stop and
-> ask rather than assuming either way, and record what you did and why.
->
-> **P3 — Write `research/panel_v1.1.csv`.** Materialise the registered panel of
-> `research/specification_v1.1.md` §1.1 into the file format of §4.2, with one row per
-> (standard, jurisdiction), the `in_registered_panel` flag, the `date_conflict` column,
-> and the source URL for every date. Membership comes from the **frozen rule**, not from
-> which jurisdictions happen to have prices. Stratum B's membership comes from the
-> IFRS Foundation jurisdiction profiles (S-47); take a **dated snapshot** with its hash
-> because the profiles are updated on an ongoing basis.
->
-> **P4 — Register v1.2 for the prospective holdout PH-1.** The IFRS 18
-> first-application window is the only genuinely prospective, untamable holdout
-> available to this campaign, and **it must be filed before the first IFRS 18 report is
-> published** (the 2027 interim reporting season, July–August 2027). Write
-> `research/hypothesis_v1.2.md`, `research/specification_v1.2.md` and
-> `research/preregistration_v1.2.md` as a **new registered version**, leaving v1.0 and
-> v1.1 untouched, with the pre-registered cycle split: the **2026 interim reporting
-> season** carries the pre-adoption disclosure (the pre-emption kill-signal window) and
-> the **2027 interim season** carries the first IFRS 18 reports (the outcome). It must
-> build **no group A / group B partition** and must **not** use the IFRS 18 arm A.
-> Register it in `research/prompt_changelog.md` as Iteration 9 and in
-> `research/experiment_ledger.csv` as E-015.
->
-> **P5 — Only if A1 and A2 have been granted:** begin the acquisition in the order the
+> **P3 — Only if A1 and A2 have been granted:** begin the acquisition in the order the
 > plan fixes — **panel file first** (it fixes the universe), then filings, then prices,
 > then the control jurisdictions, then the mandatory control series (WGI and the
 > linguistic-distance measure) — and **publish the feasibility audit's counts before any
 > outcome-period return is computed**. If the counts fall below ≥ 12 clusters or ≥ 200
 > treatment firms, **stop** and report the estimand as inconclusive by construction.
+> The acquirer is already implemented and tested, so the first act is to set
+> `ACCTCLOCK_USER_AGENT`, run **one** filing end-to-end, and verify the parsed
+> acceptance timestamp against the filing index **by hand** before any bulk run.
+>
+> **P4 — Optional, and only if it does not touch a frozen artefact:** tighten the
+> acquirer. It is written to be extended, not finished. Two specific gaps worth
+> closing when convenient: an **availability-lag measurement** (the acquisition plan
+> §5 rule 5 asks for the delay between a filing's acceptance and its first appearance
+> on the source's public interface, and it is not yet instrumented), and a
+> **re-fetch verifier** that re-reads a random sample of cached artefacts and
+> re-hashes them against the manifest. Both are additive; neither may change a
+> registered date.
 >
 > **Rules that are not negotiable.**
 > - **No outcome-period return before the feasibility audit's counts are published.**
-> - **Do not edit v1.0 or v1.1 in place.** A design change is a new registered version
->   in `research/prompt_changelog.md`.
+> - **Do not edit v1.0, v1.1 or v1.2 in place.** A design change is a new registered
+>   version in `research/prompt_changelog.md`.
 > - **Do not narrow the panel after the feasibility audit begins** (D-016).
 > - **No paid data pull and no GitHub Actions run without explicit authorisation**
 >   (protocol Authority item 4). `.github/workflows/main.yml` stays unmodified.
 > - **Do not modify the upstream dossier repository.** It is read-only.
 > - **Cache raw data outside the repository**; commit only code, manifests, hashes and
 >   non-licensed aggregates.
-> - Record **every** failed retrieval as a failed retrieval, and every date conflict as
->   an open conflict.
-> - Run `python3 -m pytest -q tests/` and report the count (67 at handover).
+> - **Record every failed retrieval as a failed retrieval**, and every date conflict
+>   as an open conflict. A date correction is a **decision**, not a silent edit.
+> - Run `python3 -m pytest -q tests/` and report the count (**115** at handover).
 > - Keep `research/results.md` reporting **no results** until a test has actually been
 >   run. A blocked campaign is not a result, and a null is a result only when it comes
 >   from a test that ran.
@@ -304,6 +382,7 @@ before the holdout is opened.**
 
 | Date | Session | Change |
 |---|---|---|
+| 2026-10-22 | 5 | **Acquirer built and tested** (`scripts/sec_edgar.py`, `scripts/sec_acceptance.py`, `scripts/data_manifest.py`, `scripts/data_cache.py`; 48 new tests, 115 total, zero network calls). **Both named date gaps closed** and **EV-202 added**; **EV-103's effective date corrected** — the ASU 2016-01 event moves **one year earlier** (D-016). **Panel materialised** as `research/panel_v1.1.csv` (434 rows) from a dated, hashed IFRS Foundation profile snapshot, manifest committed (D-018, D-020). **v1.2 registered for PH-1** (D-019). Authorisation request rewritten as a one-click-able file. Decisions D-017…D-020; changelog Iteration 9; ledger rows E-015…E-019; source ledger S-55…S-59. |
 | 2026-10-22 | 4 | **v1.1 registered** (hypothesis, specification, preregistration); `research/data_acquisition_plan.md` written; source ledger extended to 54 entries (S-42…S-54); decisions D-012…D-016; changelog Iteration 8; ledger row E-014; campaign state gains `phase3b-data-execution-and-feasibility-audit`. The design blocker is cleared; the data/authorisation blocker is open. |
 | 2026-10-22 | 3 | Canonical dossier retrieved read-only; binding constraints recorded (D-008); event calendar built (14 events); data route assessed (D-010). |
 | 2026-10-22 | 2 | Literature audit; v1.0 hypothesis, specification and preregistration frozen. |

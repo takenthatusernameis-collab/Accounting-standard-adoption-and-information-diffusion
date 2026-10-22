@@ -100,9 +100,16 @@ are **mandatory controls** rather than optional conditioners.
    registered retrospective event has T-A ≤ 2017-10-31, so the chronological holdout
    split is **empty**. This was declared in advance (D-014), together with its
    consequence: the retrospective panel's role is **evidential**, and the promotable
-   test is the prospective holdout arm **PH-1** (the IFRS 18 first-application window),
-   which requires a separate v1.2 registration before the first IFRS 18 report is
-   published.
+   test is the prospective holdout arm **PH-1** (the IFRS 18 first-application window).
+   **PH-1 is now registered as v1.2** (`research/hypothesis_v1.2.md`,
+   `research/specification_v1.2.md`, `research/preregistration_v1.2.md`, 2026-10-22),
+   before the first IFRS 18 report can be published, and **four things about it are
+   settled in advance, all of them narrowings** (D-019): the IFRS 18 adopter-type
+   contrast is settled in the negative; the pre-emption arm becomes the real thing via
+   the mandated IAS 8.30/.31 pre-adoption impact disclosure; the **expected** cluster
+   count is ≈3–10 against a ≥12 minimum, so the PH-1 primary estimand is expected to
+   be **inconclusive by construction**; and the reporting discipline is once-only.
+   **Registering PH-1 does not unblock anything and licenses no result.**
 2. **A null in this design is a contribution, not a replication.** The
    first-time-versus-second-time-adopter comparison **on drift** is unrun by the field
    (S-37 / V-009 G-21). The comparator's own power and the reason it was not run must
@@ -116,13 +123,17 @@ are **mandatory controls** rather than optional conditioners.
 
 - Frozen artefacts are content-addressed by the repository commit; the commit
   that introduces them is recorded in `research/experiment_ledger.csv`.
-- The infrastructure is covered by 67 automated tests
+- The infrastructure is covered by 115 automated tests
   (`tests/test_controller_progress_accounting.py`,
   `tests/test_workflow_diagnostics_scanner.py`,
   `tests/test_nonfinite_result_serialization.py`,
-  `tests/test_campaign_resume.py`) and can be rerun with
+  `tests/test_campaign_resume.py`, plus the acquisition-pipeline tests
+  `tests/test_sec_acceptance.py`, `tests/test_data_cache.py`,
+  `tests/test_data_manifest.py` and `tests/test_sec_edgar.py`) and can be rerun with
   `python3 -m pytest -q tests/`. The 2026-10-22 session re-ran the workflow's
-  exact invocation and confirmed 67 passing cases.
+  exact invocation and confirmed 115 passing cases; the 48 acquisition-pipeline cases
+  make **zero network calls**, because the transport is injected and the rate limiter
+  runs on an injected clock.
 - The event calendar is reproducible from the recorded primary-source URLs and
   retrieval timestamps in `research/event_calendar.csv`.
 - The v1.1 design registration is reproducible from the retrieved canonical dossier at

@@ -224,6 +224,96 @@ unchanged.
   which requires a separate v1.2 registration before the first IFRS 18 report is
   published.
 
+## 2026-10-22 — Iteration 9: the acquirer is built, the named date gaps are closed, the panel is materialised, and v1.2 is registered
+
+**Problem.** Three things stood between the campaign and an executable data phase.
+(i) The EDGAR acquirer existed only as prose in `research/data_acquisition_plan.md`;
+nothing was implemented, so the moment authorisation arrived the pipeline would have
+had to be written from scratch and the acceptance-time parse would have been
+unverified. (ii) Two named verification gaps sat on the critical path — the day-level
+UK endorsement instrument date for IFRS 15 and IFRS 16, and the day-level ASU 2016-01
+issuance date — and a registered event (EV-202) had no row in the calendar at all.
+(iii) The registered panel of `research/specification_v1.1.md` §1.1 existed as a *rule*
+but not as a *file*, so the panel's membership could not be frozen, audited or handed
+to an acquirer. Separately, the campaign's only promotable test — the prospective
+holdout arm PH-1 — had no registered version, and the protocol requires it to be
+registered before the first IFRS 18 report can be published.
+
+**Change.** All four are now done. No frozen artefact was edited in place.
+
+| Artefact | What it registers |
+|---|---|
+| `scripts/sec_acceptance.py` | The SGML acceptance-time parser. `ACCEPTANCE-DATETIME` (`YYYYMMDDHHMMSS`, Eastern) read from the raw SGML header and converted to UTC with the US daylight-saving offset **in effect at that local wall time**. The spring-forward **23-hour** day and the fall-back **25-hour** day are handled explicitly: a nonexistent local time is quarantined, an ambiguous local time is quarantined **with both candidate UTC readings recorded**, and neither is ever silently resolved or defaulted. The submissions-JSON `acceptanceDateTime` field is refused as a source (S-41). |
+| `scripts/data_cache.py` | The cache layout and the repository-policy guard (D-015): raw data is cached **outside** the working tree, and a cache root inside the repository is refused before any write. |
+| `scripts/data_manifest.py` | The append-only JSONL retrieval manifest, the SHA-256 over the **raw bytes as received**, and the rule that a failed retrieval is recorded **as a failed retrieval** with its HTTP status and exception text, never as an absence. |
+| `scripts/sec_edgar.py` | The EDGAR acquirer: the submissions JSON per CIK (identifier history only), the filing index per periodic report, and the complete submission text file; a declared User-Agent that the acquirer **refuses to run without**; a rate limiter capped at **2 requests per second**; `Retry-After` honoured with a bounded retry budget; every retrieval, successful or not, written to the manifest. |
+| `tests/test_sec_acceptance.py`, `tests/test_data_cache.py`, `tests/test_data_manifest.py`, `tests/test_sec_edgar.py` | **48 new tests** against synthetic fixtures, including the DST spring-forward and fall-back cases, the 23-hour and 25-hour days, a missing `ACCEPTANCE-DATETIME`, a malformed value, a midnight boundary, a rate-limiter assertion, a `Retry-After` assertion and a failed-retrieval assertion. The suite makes **zero network calls**. Total: **115 passing** (67 before). |
+| `research/event_calendar.csv` | **Two gaps closed and one row added.** EV-103 (ASU 2016-01) is now primary-verified with the day-level issuance date **2016-01-05** and the ASU's own effective-date sentence — and its effective date is **corrected**: it previously carried 2018-12-15 for public business entities and 2019-12-15 for all other entities, both one year late, and `first_affected_fiscal_year_start` was 2019-01-01; the ASU's own text gives 2017-12-15 and 2018-12-15 respectively, and the 2018-12-15 date previously recorded belongs to ASU 2016-02 (EV-102). **The ASU 2016-01 event therefore moves one year earlier.** EV-201 (IFRS 15, UK) is now primary-verified with the day-level UK legal instrument — **SI 2015/980, made 26 March 2015, in force 6 April 2015**, regulation 2(2) giving the 1 January 2016 mandatory date and the 1 January 2015 early-application arm. **EV-202 (IFRS 16, UK) is added as a row**, with the note that the UK needed no new instrument for IFRS 16 and that its T-A is therefore *inherited* from the EU endorsement. |
+| `research/panel_v1.1.csv` | The registered panel **materialised**: 434 rows — 8 complete Stratum A events and 426 Stratum B candidate rows derived **by rule** from a dated, hashed snapshot of the 170 IFRS Foundation jurisdiction profiles. The Stratum B rows carry `in_registered_panel = pending` because three of the five rule conditions cannot be verified until A1 and A2 land. |
+| `research/manifests/ifrs_jurisdiction_profiles.jsonl` | The snapshot manifest: 171 records with the URL, HTTP status, byte count, **SHA-256** and retrieval timestamp of every page. The profiles are updated on an ongoing basis, which is exactly why the snapshot is dated and hashed. |
+| `research/authorisation_request.md` | The authorisation request in one-click-able form: the five decisions and their consequences quoted verbatim from `research/data_acquisition_plan.md` §8.1, the statement that A2 is zero-cost and highest-value, and the consequence of silence stated plainly. |
+| `research/hypothesis_v1.2.md`, `research/specification_v1.2.md`, `research/preregistration_v1.2.md` | **PH-1 registered** as the prospective holdout arm on the IFRS 18 first-application window, **before the first IFRS 18 report can be published**. The retrospective panel is untouched. |
+| `research/source_ledger.csv` | 5 new rows, **S-55 … S-59**: SI 2015/980, the EFRAG Endorsement Status Report, FASB ASU 2016-01, the IFRS Foundation profile snapshot and the FRC's FRS 102 (March 2018). |
+
+**Design choices and their grounds (all recorded in `research/decision_log.md`):**
+
+1. **The acceptance time is parsed from the raw SGML header, never from the
+   submissions JSON.** The registered design pins it there, and the submissions field
+   has been documented to mix UTC and Eastern clock readings (S-41).
+2. **A daylight-saving transition stamp is quarantined, not resolved.** A local time
+   that does not exist cannot be converted; a local time that happens twice has two
+   correct answers and the header does not say which. Both are recorded and counted,
+   per `research/data_acquisition_plan.md` §7 rule 2.
+3. **The filing index is the SEC's `index-headers.json` payload**, cached at the
+   plan's path `raw/sec_edgar/<cik>/<accession-nodashes>/index.json`; the manifest
+   records the exact URL that produced it, and the index's acceptance stamp is used
+   only as a **cross-check** against the SGML header, with the header authoritative.
+4. **The Stratum B panel is derived by rule from the membership authority, and the
+   residual uncertainty is recorded rather than decided.** The screen classifies 138
+   jurisdictions as IFRS-required for listed domestic public companies, 28 as not, and
+   **4 as unresolved** (Bhutan, China, the European Union, Morocco); the 4 are carried
+   in the panel with the screen labelled `review-required` and `in_registered_panel =
+   pending`, because a rule that cannot decide a case must not guess one.
+5. **PH-1 settles the IFRS 18 adopter-type contrast in advance, in the negative.**
+   The IFRS 18 instruments converge on one application date and first-time IFRS
+   adopters apply the IFRSs "all at once" (S-54), so the contrast degenerates. PH-1
+   is therefore a **narrower and weaker** test than the retrospective panel, and is
+   registered as such. It is registered anyway because a narrower honest test fixed in
+   advance is worth more than a broader one fixed afterwards.
+6. **PH-1's expected cluster count is stated in advance, below the minimum.**
+   ≈3–10 clusters against a ≥12 minimum, so the PH-1 primary estimand is expected to
+   be **inconclusive by construction**. The rule is frozen so that a short arm cannot
+   later be used to justify a design change, and the honest consequence — an
+   evidential retrospective panel and **no promotable test** — is recorded now rather
+   than discovered later.
+
+**Hypothesis or acceptance criteria altered?** **Yes — this is a new registered
+version (v1.2), and it is registered BEFORE any outcome-period return exists, and
+before the first IFRS 18 report can be published.** No threshold, cost, window length,
+acceptance criterion or kill condition was loosened; the thirteen v1.1 kill conditions
+are carried forward unchanged and two are added (the once-only reporting rule and the
+arm-specific ≥12-cluster / ≥200-firm minima). The v1.0 and v1.1 files are
+**byte-identical to their previous versions** and are not edited in place.
+
+**Known weaknesses carried forward, now sharpened.**
+
+- **The ASU 2016-01 event moved one year earlier** (decision D-016). Any statement
+  made before this entry that placed the event in 2019 is superseded by the event
+  calendar. No return has ever been computed, so nothing downstream is affected.
+- **The UK IFRS 16 T-A is inherited, not national.** The UK required no new adoption
+  instrument for IFRS 16, so the "UK adoption instrument date" is the EU endorsement
+  date. It is a weaker anchor than EV-201's and is flagged as such in the calendar.
+- **Whether the UK filing route publishes a filing *time* is still open.** The FCA
+  National Storage Mechanism API host answered HTTP 403 to every request from this
+  environment, so the published field list could not be read here. T-R needs a
+  timestamp, so this must be settled before any UK firm can be timed.
+- **The PH-1 panel is not yet enumerated** (`research/panel_v1.2.csv` does not exist)
+  and the day-level IFRS 18 adoption instrument date per jurisdiction is not pinned;
+  the UK Endorsement Board's IFRS 18 decision date is the first concrete task.
+- **The linguistic-distance choice (published measure vs the registered fallback
+  ordinal scale) is still unresolved** and must be recorded before the holdout opens.
+
+
 ## Next iteration (reserved)
 
 The next prompt improvement must address the highest-value unresolved question.

@@ -1,0 +1,28 @@
+{
+  "directory": {
+    "item": [
+      {
+        "last-modified": "2024-01-16T16:31:02.000Z",
+        "name": "synthetic-20231231.htm",
+        "type": "file",
+        "size": "1048576"
+      }
+    ],
+    "name": "0000000000-24-000001",
+    "parent-dir": "edgar/data/0000000000"
+  },
+  "headers": {
+    "accession-number": "0000000000-24-000001",
+    "filing-date": "2024-01-16",
+    "acceptance-datetime": "20240116163025",
+    "act": "1934 Act",
+    "file-number": "001-00000",
+    "film-number": "24000001",
+    "form": "10-K",
+    "type": "10-K",
+    "period": "20231231",
+    "is-xbrl": "1",
+    "is-inline-xbrl": "1",
+    "size": "1048576"
+  }
+}

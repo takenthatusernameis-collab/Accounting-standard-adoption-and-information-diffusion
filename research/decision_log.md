@@ -446,3 +446,195 @@ consequence (inconclusive) is pre-registered alongside it.
 
 **Reverses if.** The maintainer changes the panel scope **before** the feasibility
 audit begins, under authorisation item A4 of `research/data_acquisition_plan.md` §8.1.
+
+---
+
+## D-017 — 2026-10-22 — The ASU 2016-01 effective date in the event calendar is corrected; the event moves one year earlier
+
+**Context.** `research/event_calendar.csv` row EV-103 (ASU 2016-01, United States) was
+recorded in the previous session with `verification_status: unverified`, a month-level
+issuance date of 2016-01, and the effective date "Public business entities, NFP conduit
+bond obligors and EBP: fiscal years beginning after 2018-12-15, including interim
+periods within those fiscal years. All other entities: fiscal years beginning after
+2019-12-15." — with `first_affected_fiscal_year_start` 2019-01-01 and an explicit note
+that the row was **not usable as a dated event**.
+
+**Decision.** EV-103 is corrected to the ASU's own words. The issuance date is
+**2016-01-05**; the effective date is *"For public business entities, the amendments in
+this Update are effective for fiscal years beginning after December 15, 2017, including
+interim periods within those fiscal years. For all other entities including
+not-for-profit entities and employee benefit plans within the scope of Topics 960
+through 965 on plan accounting, the amendments in this Update are effective for fiscal
+years beginning after December 15, 2018, and interim periods within fiscal years
+beginning after December 15, 2019."*; and `first_affected_fiscal_year_start` is
+**2018-01-01**. The verification status becomes primary-verified. The prior row was
+**one year late for both tiers**; the 2018-12-15 date it carried for public business
+entities is the date that belongs to ASU 2016-02 (EV-102), and the two rows had been
+conflated.
+
+**Rationale.** A registered event with a wrong date is worse than an unregistered one,
+because the wrong date looks like a fact. The correction is made against the standard
+setter's own document text, is corroborated independently by the FASB's own ASU 2018-03
+("On January 5, 2016, the FASB issued Accounting Standards Update No. 2016-01"), and is
+recorded in the row's own `notes` and `date_conflict` fields so that the change is
+visible to any later reader rather than silently applied. **No outcome-period return
+has ever been computed or inspected, so nothing downstream is affected by the shift.**
+The same session records the consequence for the pre-emption window: because ASU
+2018-03 deferred the interim periods of public business entities whose fiscal years
+begin between 15 December 2017 and 15 June 2018 to interim periods beginning after
+15 June 2018, and calendar-year filers fall inside that window, the first affected
+**interim** report under ASU 2016-01 is the Q3 2018 Form 10-Q, not Q1 2018.
+
+**Reverses if.** A primary source contradicts the ASU's own text.
+
+---
+
+## D-018 — 2026-10-22 — The registered panel is materialised as a file, and its Stratum B membership is derived by rule from a dated, hashed snapshot of the membership authority
+
+**Context.** The panel existed as a *rule* in `research/specification_v1.1.md` §1.1 but
+not as a *file*, so membership could not be frozen, audited, or handed to an acquirer.
+D-016 requires the rule to be frozen **before** the feasibility audit begins. The
+membership authority named by the rule is the IFRS Foundation's jurisdiction profiles
+(S-47), a living directory that is updated on an ongoing basis, so any use of it must
+be dated and hashed or it is not evidence.
+
+**Decision.** `research/panel_v1.1.csv` is created with the schema of
+`research/specification_v1.1.md` §4.2, plus additive columns that carry the evidence
+for each membership decision (`membership_screen`, `profile_url`, `profile_sha256`,
+`profile_retrieved_utc`, `profile_last_updated`, `status_text`). It contains **434
+rows**: **8 complete Stratum A events** (EV-001, EV-002, EV-003, EV-101, EV-102,
+EV-103, EV-201, EV-202) and **426 Stratum B candidate rows** (one per standard per
+jurisdiction) derived by rule from a dated snapshot of the **170** IFRS Foundation
+jurisdiction profiles retrieved on 2026-10-22. The snapshot's manifest — URL, HTTP
+status, byte count, SHA-256 and retrieval timestamp for all 171 pages — is committed
+at `research/manifests/ifrs_jurisdiction_profiles.jsonl`.
+
+**Every Stratum B row carries `in_registered_panel = pending`**, not `true`. Three of
+the five conditions of the §1.1 rule cannot be verified until authorisation A1 (price
+coverage) and A2 (read-only harvesting) land: the jurisdiction's day-level legal
+adoption instrument, a filing route that publishes an acceptance *timestamp* rather
+than only a date, and point-in-time price coverage including delisted firms. The
+screen itself is a recorded rule applied to the profile's own status answer, and it
+classifies **138** jurisdictions as IFRS-required for listed domestic public companies,
+**28** as not, and leaves **4 unresolved** (Bhutan, China, the European Union,
+Morocco). The 4 unresolved are **carried in the panel** with the screen labelled
+`review-required` and `in_registered_panel = pending`, because a rule that cannot
+decide a case must not guess one.
+
+**Rationale.** The rule is applied to the authority, not to the jurisdictions that
+happen to have prices; the screen is auditable because the raw profile text and the
+page hash sit beside each row; the pending state is honest, and it is what makes the
+membership decision *revisitable* once the outstanding conditions are checked, rather
+than a guess frozen today. The `date_conflict` and `coverage_notes` fields carry the
+reason for every pending row.
+
+**Consequence for the maintainer.** Authorisation item **A4** of
+`research/data_acquisition_plan.md` §8.1 now has a concrete object to act on: the
+pending Stratum B rows in `research/panel_v1.1.csv`. Under A4 (a) — confirm the
+registered rule — the rows convert to true or false as A1 and A2 land. Under A4 (b) —
+Stratum A only — the panel falls to **8 rows**, below the ≥12 minimum, and the primary
+estimand is **inconclusive by construction** (D-016). A4 (c) is not executable (D-009).
+
+**Reverses if.** A maintainer rules under A4 before the feasibility audit begins; the
+panel is then rewritten as a new registered version, never edited in place.
+
+---
+
+## D-019 — 2026-10-22 — The prospective holdout arm PH-1 is registered as v1.2, before the first IFRS 18 report can be published
+
+**Context.** The retrospective panel's chronological holdout is **EMPTY** — every
+registered retrospective event has T-A ≤ 2017-10-31 — declared in advance with its
+consequence fixed (D-014). The promotable test is therefore the prospective arm PH-1
+on the IFRS 18 first-application window, and V-009 Cycle-56 amendment item 4 requires
+it to be registered **before the outcome can occur**. The first IFRS 18 reports will
+be the 2027 interim reporting season, periods ending 30 June 2027, published
+July–August 2027 (S-48, S-54).
+
+**Decision.** `research/hypothesis_v1.2.md`, `research/specification_v1.2.md` and
+`research/preregistration_v1.2.md` are **registered on 2026-10-22**. They add one arm
+and change **no** element of v1.1: the retrospective panel, its membership rule, its
+event clock, its treatment, state, controls, windows, benchmark, estimand, costs,
+thresholds and acceptance criteria are untouched, and the thirteen v1.1 kill conditions
+are carried forward unchanged.
+
+**Four things are settled in advance, and each is a narrowing, never a loosening:**
+
+1. **The IFRS 18 adopter-type contrast is settled in the negative.** The IFRS 18
+   endorsement instruments converge on one application date, and jurisdictions that
+   adopt IFRS for the first time in the IFRS 18 era apply the IFRSs "all at once"
+   (S-54), so a first-time-versus-second-time contrast degenerates and is **not
+   built**. PH-1 is therefore a **narrower and weaker** test than the retrospective
+   panel, and is registered as such rather than presented as a like-for-like
+   replication.
+2. **The pre-emption arm becomes the real thing.** IFRS 18 carries a **mandated**
+   pre-adoption impact disclosure under IAS 8 paragraphs 30 and 31, required of
+   issuers by ESMA's public statement (S-49). The retrospective panel could only
+   register an *analogue* of the pre-emption arm because the retrospective standards
+   carried no such disclosure. For PH-1 the pre-disclosure anchor **T-PRE** is a
+   first-class timestamp, and a significant drift in it is a **kill signal, not a
+   null**.
+3. **The expected cluster count is stated in advance, and it is below the minimum.**
+   ≈3–10 independent clusters against a ≥12 minimum, so the PH-1 primary estimand is
+   expected to be **inconclusive by construction**. The rule is frozen so that a short
+   arm cannot later be used to justify a design change, and the honest consequence —
+   an evidential retrospective panel and **no promotable test** — is recorded now
+   rather than discovered later. Because the cluster count is expected to be small,
+   the **jurisdiction-level randomisation test and the wild-cluster bootstrap** are
+   fixed in advance as PH-1's primary inference.
+4. **The reporting discipline is fixed once.** The PH-1 result is reported **once**; a
+   peek voids the arm and a voided arm is reported as void, never as a null.
+
+**Rationale.** The value of a prospective holdout is entirely in its being fixed
+before the outcome exists, and that is the one thing an agent can still do while the
+data is blocked. Registering PH-1 does **not** unblock anything and licenses no
+result; it removes the possibility that the test will be designed after the fact. The
+narrowings above are recorded as narrowings, so that a future reader cannot mistake
+PH-1 for a stronger test than it is.
+
+**Reverses if.** The maintainer declines authorisation item **A5**
+(`research/data_acquisition_plan.md` §8.1), in which case PH-1 is not run and the
+campaign has an evidential retrospective panel and no promotable test — which is
+itself the honest consequence and is reported as such.
+
+---
+
+## D-020 — 2026-10-22 — The IFRS Foundation profile snapshot is taken as a panel-membership determination, under the read-only-inspection allowance, and the boundary is recorded
+
+**Context.** The panel rule of `research/specification_v1.1.md` §1.1 makes the IFRS
+Foundation jurisdiction profiles the **membership authority** (S-47), and authorisation
+item **A2** of `research/data_acquisition_plan.md` §8.1 lists "the IFRS Foundation
+profiles" among the sources whose read-only harvesting requires authorisation. The
+scope note attached to the previous session's task drew the line at "a bulk or
+systematic harvest of the filing archives", and instructed that any fetch judged to
+exceed it should be stopped and asked about rather than assumed.
+
+**Decision.** A **one-off, dated, hashed snapshot of the 170 jurisdiction profile pages
+plus the index page** was taken on 2026-10-22, at a request spacing of about one per
+0.7 seconds, for the **single purpose of determining the panel membership**. This is
+recorded as a decision so that the judgement is visible rather than buried in a tool
+run. **The justification is that it is read-only inspection of public documents for
+the membership determination only, it is not a filing-archive harvest, it carries no
+licence cost and no load-bearing consequence for any third party, and the
+pre-registration task that required it — materialise the panel from the membership
+authority and take a dated snapshot with its hash — cannot be satisfied any other
+way.** The raw pages were cached **outside** the repository working tree (D-015); only
+the manifest with the URLs, HTTP statuses, byte counts, SHA-256 digests and retrieval
+timestamps is committed.
+
+**What was NOT done, and remains unauthorised.** No filing archive was harvested. No
+SEC EDGAR, FCA NSM/RNS or national OAM filing was fetched. No price vendor, FX
+series or WGI series was pulled. No paid data was bought. No GitHub Actions run was
+started, and `.github/workflows/main.yml` was not modified (D-006). **The A2
+authorisation is still outstanding in full for the filing and price routes, and the
+acquirer built in this session was exercised only against synthetic fixtures with an
+injected transport, so that no network call was made by any test.**
+
+**Rationale.** The alternative was to leave the panel unmaterialised and to hand the
+maintainer a rule with no object attached, which is a strictly worse state. Recording
+the judgement as a decision, with the boundary spelled out, is what keeps the
+authorisation gate meaningful: the maintainer can read exactly what was fetched, from
+where, how fast, and with what hash, and can rule on it.
+
+**Reverses if.** The maintainer rules that the profile snapshot itself required A2, in
+which case `research/panel_v1.1.csv` is withdrawn and the panel is rebuilt after
+authorisation.

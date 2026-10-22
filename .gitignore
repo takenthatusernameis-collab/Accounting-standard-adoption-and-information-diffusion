@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Raw harvested data must stay outside the repository (decision D-015).
+# The runtime guard in scripts/data_cache.py refuses to write inside the
+# working tree; these entries are a second line of defence.
+raw/
+data_cache/
+acctclock_cache/
+*.raw
