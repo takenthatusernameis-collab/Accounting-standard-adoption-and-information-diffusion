@@ -15,9 +15,9 @@ conditions, checked in order, and every check is recorded:
 
 **Conditions 3 to 5 are unverified for every jurisdiction**, because condition 3
 depends on the membership snapshot, condition 4 on the A2 authorisation and
-condition 5 on the A1 authorisation. **Condition 2 is verified for ten
+condition 5 on the A1 authorisation. **Condition 2 is verified for eleven
 jurisdictions** (European Union, United Kingdom, Saudi Arabia, Singapore,
-Brazil, New Zealand, Malaysia, Hong Kong SAR, Indonesia, Philippines). Every row
+Brazil, New Zealand, Malaysia, Hong Kong SAR, Indonesia, Philippines, Bhutan). Every row
 therefore carries ``in_registered_panel = pending``, which is the three-state
 discipline of ``research/specification_v1.1.md`` §4.2: ``true`` / ``false`` /
 ``pending``.
@@ -500,32 +500,6 @@ IFRS18_INSTRUMENTS: dict[str, dict[str, str]] = {
             "as a separate event, not as T-A. Application for financial reporting periods beginning "
             "on or after 2027-01-01. Source ledger S-61 (SOCPA) and S-62 (CMA). Conditions 3, 4 and 5 remain unverified, and the T-PRE "
             "consequence in the date_conflict field is unresolved by design."
-        ),
-    },
-    "Australia": {
-        "t_a": "2024-06-07",
-        "date_conflict": (
-            "Two Australian dates, both primary-verified and both recorded, and they are NOT "
-            "the same day. (a) The AASB's own standard text carries 'Dated 7 June 2024' as the "
-            "issue date, and the AASB Action Alert No. 231 (re the 6-7 June 2024 Board meeting) "
-            "lists AASB 18 with issue date 7 June 2024. (b) The AASB news page announcing the "
-            "standard is dated Friday, 14 June 2024, which is the date the announcement was "
-            "published, not the date the standard was issued. T-A is the issue date of the "
-            "instrument that makes the standard mandatory, 2024-06-07, per the v1.1 event clock."
-        ),
-        "source_url": (
-            "https://www.aasb.gov.au/news/new-standard-aasb-18-issued/ ; "
-            "https://www.aasb.gov.au/media/xuujgash/231-actionalert.pdf"
-        ),
-        "coverage_notes": (
-            "Condition 2 VERIFIED. The Australian Accounting Standards Board made Accounting "
-            "Standard AASB 18 Presentation and Disclosure in Financial Statements under section "
-            "334 of the Corporations Act 2001; the standard text itself is dated 7 June 2024 and "
-            "applies to for-profit entities (other than superannuation entities applying AASB 1056) "
-            "for annual reporting periods beginning on or after 1 January 2027, with earlier "
-            "application permitted. This is a statutory instrument, not a voluntary early-adoption "
-            "decision, so Australia is not excluded by condition 4. Source ledger S-105 (AASB news "
-            "page) and S-106 (AASB Action Alert No. 231). Conditions 3, 4 and 5 remain unverified."
         ),
     },
     "Bhutan": {

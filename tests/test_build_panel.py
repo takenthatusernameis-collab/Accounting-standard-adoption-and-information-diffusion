@@ -56,7 +56,7 @@ def test_page_boilerplate_is_not_a_jurisdiction():
     assert is_plausible_jurisdiction("") is False
 
 
-def test_verified_instruments_are_the_ten_primary_verified_jurisdictions():
+def test_verified_instruments_are_the_eleven_primary_verified_jurisdictions():
     assert set(IFRS18_INSTRUMENTS) == {
         "European Union",
         "United Kingdom",
@@ -68,6 +68,7 @@ def test_verified_instruments_are_the_ten_primary_verified_jurisdictions():
         "Malaysia",
         "Hong Kong Sar",
         "Indonesia",
+        "Bhutan",
     }
 
 
@@ -99,6 +100,7 @@ def test_verified_instruments_carry_day_level_dates():
     assert rows["Malaysia"]["T_A"] == "2024-06-14"
     assert rows["Hong Kong Sar"]["T_A"] == "2024-07-09"
     assert rows["Indonesia"]["T_A"] == "2025-05-28"
+    assert rows["Bhutan"]["T_A"] == "2026-09-09"
     for jurisdiction in IFRS18_INSTRUMENTS:
         assert rows[jurisdiction]["T_E"] == "2027-01-01"
 
@@ -128,6 +130,7 @@ def test_date_conflicts_are_recorded_not_resolved():
     assert "2026-06-30" in rows["Saudi Arabia"]["date_conflict"]
     assert "2025-12-12" in rows["United Kingdom"]["date_conflict"]
     assert "2026-02-16" in rows["European Union"]["date_conflict"]
+    assert "2026-09-09" in rows["Bhutan"]["date_conflict"]
 
 
 def test_event_ids_are_unique_and_sequential():
@@ -204,11 +207,12 @@ def test_a_standing_reference_profile_does_not_exclude_an_instrument():
     assert rows["Saudi Arabia"]["T_A"] == "2024-12-26"
 
 
-def test_distinct_timing_cohort_count_is_ten():
+def test_distinct_timing_cohort_count_is_eleven():
     """The gate quantity for the feasibility audit is the number of DISTINCT
     timing cohorts, not the number of jurisdictions. This test pins the count so
     that a change in it has to be a deliberate act."""
     rows = build_rows(_candidates())
     cohorts = {row["timing_cohort"] for row in rows if row["timing_cohort"]}
-    assert len(cohorts) == 10
+    assert len(cohorts) == 11
     assert "2026-02-13" in cohorts
+    assert "2026-09-09" in cohorts
