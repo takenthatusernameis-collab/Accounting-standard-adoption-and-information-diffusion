@@ -111,7 +111,7 @@
           "authorisation A2 (read-only public harvesting: SEC EDGAR, FCA NSM, national OAMs, EUR-Lex, IFRS Foundation, FASB, ECB FX, World Bank WGI)",
           "authorisation A3 (repository policy for harvested files)",
           "authorisation A4 (panel scope confirmation)",
-          "authorisation A5 (prospective holdout PH-1 / v1.2 registration)"
+          "authorisation A5 (confirmation that the registered PH-1 / v1.2 arm may be RUN; the registration itself was completed on 2026-10-22 and was not treated as self-authorisation)"
         ],
         "first_action_when_unblocked": "the acquirer is already implemented and tested; on authorisation, commit the code path, set ACCTCLOCK_USER_AGENT, run the smallest possible smoke fetch and verify the acceptance-timestamp parse against the filing index by hand before any bulk run",
         "gate_before_any_return": "publish the feasibility audit counts (clusters, treatment firms, coverage) BEFORE any outcome-period return is computed; stop if clusters < 12 or treatment firms < 200",

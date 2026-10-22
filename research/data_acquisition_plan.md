@@ -310,6 +310,24 @@ token cannot grant it.
 | **A4** | **Panel scope confirmation** | (a) confirm the registered panel of `research/specification_v1.1.md` §1.1 (Stratum A + Stratum B by rule); (b) restrict to Stratum A only; (c) restrict to the frozen EU/UK/US universe | (b) reduces expected clusters to ≈8, **below the ≥12 minimum** → primary estimand inconclusive by construction. (c) is the v1.0 universe and is **not executable** (D-009). **The panel is registered by rule and should not be changed after the feasibility audit begins.** |
 | **A5** | **Prospective holdout** | confirm that **PH-1** (the IFRS 18 first-application window, 2027 interim reporting season) may be registered as v1.2 before the first IFRS 18 report is published | PH-1 is the only genuinely prospective, untamable holdout available to this campaign. |
 
+**Status of §8.1 as of 2026-10-22 (session 5).** The table above is the request **as
+issued**; it is reproduced verbatim in `research/authorisation_request.md` and in the
+handoff, and it is **not edited in place**. Two of its rows have since moved:
+
+- **A5 is partially discharged.** The **registration** it asks for has been performed:
+  v1.2 (`research/hypothesis_v1.2.md`, `research/specification_v1.2.md`,
+  `research/preregistration_v1.2.md`) was registered on 2026-10-22, before the first
+  IFRS 18 report can be published (decision D-019). What remains is the maintainer's
+  **confirmation that the registered arm may be *run*** under the protocol's promotion
+  gate. Registration was not treated as self-authorisation.
+- **A4 now has a concrete object.** `research/panel_v1.1.csv` exists — 434 rows, 8
+  complete Stratum A events and 426 Stratum B candidate rows over 142 jurisdictions —
+  derived by rule from a dated, hashed snapshot of the IFRS Foundation jurisdiction
+  profiles. A4 (a) is what converts those 426 rows from `pending` to `true` or
+  `false`, one by one, as A1 and A2 land.
+
+**A1, A2 and A3 are entirely outstanding.**
+
 ### 8.2 When authorisation arrives — the trigger sequence
 
 1. **Record the authorisation** as a new decision in `research/decision_log.md` (D-0xx)

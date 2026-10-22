@@ -184,7 +184,7 @@ moment an answer arrives is §8.2.
 | **A2** | **Public harvesting** | authorise read-only harvesting of **SEC EDGAR**, **FCA NSM/RNS**, the named **national OAMs**, **EUR-Lex**, the **IFRS Foundation** profiles, the **FASB** pages, **ECB FX**, **World Bank WGI** | **Highest-value and zero-cost.** Without it there is no T-R, no T-RI, no state variable and no restated comparative, and the test cannot start at all. |
 | **A3** | **Repository policy for harvested files** | (a) default — cache outside the repository, commit only code, manifests and hashes; (b) a named-source exception | The default (a) is already in force (D-015). (b) requires a per-source ruling recorded as a new decision. |
 | **A4** | **Panel scope confirmation** | (a) confirm the registered panel rule; (b) restrict to Stratum A only; (c) the frozen EU/UK/US universe | (b) gives ≈ 8 clusters → **inconclusive by construction**. (c) is **not executable** (D-009). The panel is registered by rule and **must not be narrowed after the feasibility audit begins** (D-016). |
-| **A5** | **Prospective holdout** | confirm that **PH-1** may be registered as v1.2 before the first IFRS 18 report is published | Without PH-1 the campaign has **no promotable test at all**, only an evidential one. |
+| **A5** | **Prospective holdout** | **the registration is done** (v1.2, 2026-10-22, D-019) — what remains is the confirmation that the registered **PH-1** arm may be *run* | Without a runnable PH-1 the campaign has **no promotable test at all**, only an evidential one. |
 
 **No authorisation has been received.** Items A1 and A2 are entirely outstanding.
 
