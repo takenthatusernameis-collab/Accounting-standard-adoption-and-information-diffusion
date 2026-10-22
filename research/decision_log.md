@@ -1154,3 +1154,16 @@ validated, not rejected**, and the arms remain blocked on **A1** and **A2**.
 **Result boundary.** This decision does not claim that data acquisition or a backtest is complete. No subscription was purchased, no paid API request or bulk public filing harvest was made, no workflow was run, no outcome-period return was computed/inspected, and no trade was made.
 
 **Reverses if.** Provider documentation/coverage shows the selected route cannot legally or technically satisfy the registered point-in-time and terminal-return requirements; in that case record the failure and report the primary test as infeasible rather than silently substituting a survivor-only feed.
+
+
+## D-032 — 2026-10-22 — Use free and lawful public sources only; supersede paid-provider route
+
+**Context.** The maintainer explicitly requested removing bottlenecks and directing the research away from paid services. D-031 had selected Sharadar and EODHD as candidate paid providers but no purchase or paid API request had occurred. The public-source sample requests previously attempted failed before HTTP due to local DNS resolution failure.
+
+**Decision.** Supersede D-031 wherever it proposes paid-provider use. Use only genuinely free, lawful public sources and no-cost software. Do not purchase subscriptions, start payment-linked trials, make paid API calls, ask the user to buy or provision paid access, or bypass access controls or rate limits. Keep the frozen research gates unchanged. Run independent free-source discovery, panel reconciliation, and available offline tests without waiting on user re-authorization.
+
+**Rationale.** Removing the paid access dependency eliminates a financial and credential bottleneck. It does not eliminate the scientific data requirements: event-level coverage, point-in-time identifiers, delisted-security retention, corporate actions, and terminal/delisting returns must still be demonstrated. Candidate free feeds are not presumed complete. If lawful free data cannot satisfy the frozen design, quantify the shortfall and park the affected return test rather than weakening the preregistration.
+
+**Reverses if.** Only a new explicit maintainer decision changes the free-only requirement. Until then, paid services remain out of scope.
+
+**Research design altered?** No. No outcome-period returns were opened; no strategy performance claim is made.
