@@ -1137,3 +1137,20 @@ validated, not rejected**, and the arms remain blocked on **A1** and **A2**.
 **Effect on the arm.** The verified T-A set now spans **sixteen months** (New Zealand 2024-05-23 → EU 2026-02-13) across six cohorts, against the five previously verified which spanned fourteen months. The cluster arithmetic restated in v1.3 as **≈ 4–8** is unchanged in substance: six cohorts is still below the ≥12 minimum, so the consequence fixed in v1.2 §5.3 — the PH-1 primary estimand is **inconclusive by construction** — is unchanged. No outcome-period return has been computed or inspected, and no registered date was edited in place.
 
 **Reverses if.** A primary source shows NZ IFRS 18 was issued on a different day, or a KASB source carrying a day-level issuance date for K-IFRS 1118 is located — in which case the row is corrected by a further dated decision with the conflict written into the row's own fields, exactly as D-016 and D-022 did.
+
+
+## D-031 — 2026-10-22 — Select paid-provider route and authorize public-source and pre-outcome feasibility work
+
+**Context.** The maintainer instructed: “Remove all the bottlenecks and direct against paid services.” The active data blocker was the lack of sufficiently complete daily prices, particularly for delisted securities, while the previous A1–A5 request kept the campaign waiting for repeated decisions.
+
+**Decision.** Interpret the instruction as selecting a paid-provider data route and removing prior A1–A5 decision waits for research operations. Select (i) Sharadar Stock Prices / SEP for US active and delisted daily-price data and (ii) EODHD All World historical EOD for international and matched-control venues. Public read-only harvesting is authorized under each source's terms/rate limits. The registered panel rule and external-cache policy are confirmed. A PH-1 pre-outcome feasibility audit is authorized.
+
+**Spend/credential boundary.** This decision selects providers but does not let an agent buy a subscription, create accounts, accept terms, enter payment details, incur unspecified charges, or use credentials not provisioned for this work. The account holder must verify checkout terms/prices and provide credentials directly to an execution environment. The new adapter is disabled unless ACCTCLOCK_ENABLE_PAID_DATA=1 and an appropriate provider key is present; secrets must never be committed, logged, manifested in clear text, or pasted into chat.
+
+**Required operation.** Run bounded offline tests in the actual repository environment; reconcile the current panel/state counts; continue public-source collection in parallel; then test provider coverage on a small sample before any bulk request. Explicitly verify delisted names and terminal/delisting-return semantics. A provider's adjusted-close field is not automatically a valid delisting return.
+
+**Scientific boundary unchanged.** Preregistered minimums remain ≥12 independent adoption/jurisdiction clusters and ≥200 treatment firms. Current PH-1 expectations are ~4–8 clusters; if the actual pre-outcome feasibility audit fails the frozen gates or cannot support a valid terminal-return calculation, stop before outcome inspection and record inconclusive-by-construction. Do not lower thresholds, peek at the once-only PH-1 outcome, treat EU member states as independent cohorts, or edit the frozen preregistrations v1.0–v1.3 in place.
+
+**Result boundary.** This decision does not claim that data acquisition or a backtest is complete. No subscription was purchased, no paid API request or bulk public filing harvest was made, no workflow was run, no outcome-period return was computed/inspected, and no trade was made.
+
+**Reverses if.** Provider documentation/coverage shows the selected route cannot legally or technically satisfy the registered point-in-time and terminal-return requirements; in that case record the failure and report the primary test as infeasible rather than silently substituting a survivor-only feed.
