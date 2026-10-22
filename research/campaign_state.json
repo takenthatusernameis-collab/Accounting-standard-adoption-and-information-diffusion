@@ -3,6 +3,7 @@
   "conflicts": [],
   "notes": [
     "2026-10-22 (session 116): verification pass. Local at d3dcf27, clean; pytest 173 passed. P0-P3 complete; PARKED — not validated, not rejected. Gates: 11 cohorts < 12 required, 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. E-032 recorded; handoff §9 updated.",
+    "2026-10-22 (session 117): verification pass. Local at 26f2eaa, clean; pytest 173 passed. P0-P3 complete; PARKED — not validated, not rejected. Gates: 11 cohorts < 12 required, 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. §9 carried forward.",
     "2026-10-22 (session 112): verification pass. Local at 280ee1d, clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. No new primary source, no filing harvest, no outcome-period return. Campaign PARKED — not validated, not rejected; next step phase3b-data-execution-and-feasibility-audit; starts at P3. P0/E-028, P1/D-038 done; P2 done (10 verified T-A in 10 cohorts). B3 lifted; remaining unverified keep empty T_A per D-011.",
     "2026-10-22: the retrospective panel has NO post-2019 T-A, so its chronological holdout is EMPTY; declared in advance with the consequence fixed (D-014). The promotable test is the prospective holdout arm PH-1, which needs a v1.2 registration before the first IFRS 18 report is published.",
     "2026-10-22: data execution is blocked on maintainer authorisation A1-A5 (research/data_acquisition_plan.md section 8). No outcome-period return has been computed or inspected.",
