@@ -6,15 +6,15 @@ Governing design: `research/specification_v1.1.md` (v1.1),
 `research/preregistration_v1.1.md` (v1.1).
 Companion: `research/data_route_assessment.md` (route comparison and D-031 current decision).
 
-Status: **D-031 route selected; acquisition not yet executed.** The repo now contains a guarded paid-provider client and offline tests. No paid data was purchased or fetched; no public filing archive was harvested; no workflow run started; no outcome-period return has been computed or inspected.
+Status: **D-032 free-only route selected; acquisition not yet executed.** The repo contains a legacy guarded paid-provider client that is now out of scope. No paid data was purchased or fetched; no public filing archive was harvested; no workflow run started; no outcome-period return has been computed or inspected.
 
-**Current instruction:** public read-only harvesting is authorized subject to source terms/rate limits, and the selected paid route is Sharadar for US stocks plus EODHD All World for international venues. This supersedes the earlier requirement to wait for separate A1–A5 user responses. A paid request still requires user-provisioned credentials, an explicit adapter flag and known quota/charges; an agent must not buy a subscription or spend money. Keep raw files outside the repository. See research/paid_data_route_execution.md and research/authorisation_request.md.
+**Current instruction (D-032):** use free, lawful public sources only. All paid-provider choices in earlier versions are superseded. Do not buy, trial, call, or request credentials for paid services; do not ask the user to provision paid access. Public read-only harvesting is authorized subject to terms/rate limits. Inventory official filing, standards-setter, regulator, OAM, exchange, open-government, and candidate free price sources. Keep raw files outside the repository when redistribution rights are unclear. See research/data_route_assessment.md and research/HANDOFF.md.
 
 ---
 
 ## 1. What this document is, and what it is not
 
-The v1.1 registration made the research design executable in principle. This document specifies source routes, cache layout, hashes/manifests, rate limits and validation requirements. D-031 has resolved the earlier A1–A5 operating decisions: read-only public collection is authorized, and the paid-provider route is selected. Remaining gates are operational (provisioned price-data access/credentials, source/coverage validation) and scientific (the frozen feasibility thresholds), not repeated authorization questions.
+The v1.1 registration made the research design executable in principle. This document specifies source routes, cache layout, hashes/manifests, rate limits and validation requirements. D-032 has resolved the route decision: free public collection only; no paid access or repeated authorization questions. Remaining work is source discovery, lawful access, coverage validation, and the frozen scientific feasibility thresholds.
 
 This remains an acquisition plan, not evidence that data have been acquired or the hypothesis tested. Section 8 is the current bounded execution sequence.
 
