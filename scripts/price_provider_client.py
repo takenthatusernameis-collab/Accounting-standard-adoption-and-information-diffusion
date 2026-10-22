@@ -280,7 +280,7 @@ def acquire_price_history(
     layout = build_layout(**kwargs).ensure()
     request = urllib.request.Request(
         actual_url,
-        headers={"User-Agent": USER_AGENT, "Accept-Encoding": "gzip, deflate"},
+        headers={"User-Agent": USER_AGENT, "Accept": "application/json, text/csv, */*"},
         method="GET",
     )
 
