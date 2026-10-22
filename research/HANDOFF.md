@@ -533,8 +533,8 @@ as a feature of the design rather than an obstacle to it.
 > `research/specification_v1.4.md`, `research/preregistration_v1.4.md` (the registered
 > PH-1 arm), `research/specification_v1.1.md` (the design, §§1–7),
 > `research/data_acquisition_plan.md`, `research/data_route_assessment.md`,
-> `research/decision_log.md` (D-001 … D-038), `research/prompt_changelog.md`
-> (Iteration 19 is the most recent), `research/event_calendar.csv`,
+> `research/decision_log.md` (D-001 … D-038), `research/prompt_changelog.md`,
+> `research/event_calendar.csv`,
 > `research/experiment_ledger.csv`, `research/source_ledger.csv`,
 > `research/authorisation_request.md`, and `research/results.md`.
 > There is no `AGENTS.md` in this repository; the protocol file is the governing
@@ -546,107 +546,68 @@ as a feature of the design rather than an obstacle to it.
 > the v1.0 and v1.1 files are byte-identical and unedited; the canonical dossier was
 > retrieved read-only at commit `1f9bd09cc96c1953f67ffc1f9892f7e60b6a71ff` and was
 > **not modified**; the source ledger holds **99** sources (S-01 … S-99); the decision
-> log holds **D-001 … D-038**; the experiment ledger holds **32** rows (E-000 … E-031);
+> log holds **D-001 … D-038**; the experiment ledger holds **33** rows (E-000 … E-032);
 > `research/panel_v1.1.csv` holds **431** rows and `research/panel_v1.2.csv` holds
 > **141** rows, of which **11** carry a primary-verified day-level T-A in **11 distinct
-> timing cohorts** (the 10 from P2 plus Bhutan 2026-09-09, added in session 115 after
-> removing a dangling Australia reference from `scripts/build_panel.py`); the test suite
-> is **173 passed, 0 failing**; and **no outcome-period return has ever been computed
-> or inspected**. P3 (pre-outcome feasibility audit) is **complete**:
+> timing cohorts** (Bhutan added in session 115); the test suite is **173 passed, 0 failing**;
+> and **no outcome-period return has ever been computed or inspected**. P3 (pre-outcome feasibility audit) is **complete**:
 > `phase3b-data-execution-and-feasibility-audit` is **finished** with outcome
-> **inconclusive_by_construction** (experiment ledger row E-029). The prior agent task
-> (report the park honestly) is **complete**: experiment ledger row E-030 and changelog
-> Iteration 18 record the park. Session 115 fixed a test inconsistency (removed a
-> dangling `Australia` entry from `IFRS18_INSTRUMENTS` in `scripts/build_panel.py` that
-> was not in the `panel_v1.1.csv` candidate universe; Bhutan remains as the 11th
-> verified jurisdiction); test suite re-verified at **173 passed, 0 failing**.
+> **inconclusive_by_construction** (experiment ledger row E-029). The park is reported
+> honestly (E-030, E-032). Session 116 verified state matches this handoff.
 > `current_instruction` = **D-032 (free-only route)**.
 >
 > **FIRST — check whether the remote has moved.** Two runners can push here.
 > Run `git fetch origin main` and `git log --oneline origin/main -5` **before** you
 > commit anything. If the remote has advanced and your work appends to
 > `research/decision_log.md`, `research/experiment_ledger.csv` or
-> `research/source_ledger.csv`, the rebase **will** conflict — that is exactly what
-> ended the previous session. Resolve it the way D-035 did: **the published
-> identifiers keep their numbers, yours take the next free numbers**, and record the
-> mapping as a dated decision.
+> `research/source_ledger.csv`, the rebase **will** conflict — resolve it the way
+> D-035 did: **the published identifiers keep their numbers, yours take the next free
+> numbers**, and record the mapping as a dated decision.
 >
-> **Your job, in priority order.**
+> **Your task (priority order).**
 >
-> **P0 — DONE (session 100, E-028).** Free-source inventory complete
-> (`research/free_source_inventory/`). Delisted/terminal-return coverage remains unverified.
-> **Do not re-do P0.**
+> **P0–P3 — DONE.** Free-source inventory (E-028), EU carve-out closed (D-038), condition-2
+> verification complete for verified set (11 cohorts), pre-outcome feasibility audit done
+> (E-029). **Do not re-do these phases.**
 >
-> **P1 — DONE (session 101–104, D-038).** EU member-state carve-out check closed:
-> no member state holds a permanent derogation; all 27 join the 2026-02-13 cohort.
-> **Do not re-do P1.**
+> **Remaining gate blockers (must all be satisfied to open PH-1 / compute outcomes).**
+> 1. **Timing cohorts:** Need **≥ 12 independent timing cohorts**. Currently **11** verified
+>    (need **+1 more** condition-2 jurisdiction with a day-level IFRS 18 instrument from its
+>    own regulator, hashed; if unverifiable keep empty T_A per D-011). Candidates with no
+>    located instrument: Pakistan (SECP HTTP 403, S-99), Sri Lanka, Myanmar, Nepal,
+>    Chinese Taipei, Mongolia, Israel, South Korea (announced Dec 2025 month-level only),
+>    Thailand (outside arm on T-E ground - 2028 effective). Check primary sources only.
+> 2. **Treatment firms:** Need **≥ 200 admitted treatment firms**. Currently **0 admitted**
+>    (all 141 PH-1 rows pending; conditions 3–5 unverified). This requires firm-level data
+>    that has not been acquired.
+> 3. **Delisted/terminal returns:** Establish coverage for delisted securities and terminal
+>    returns from **free sources only** (Stooq blocked by anti-bot challenge, Yahoo terms-prohibited/unreliable;
+>    empirical evidence required, not presumption).
 >
-> **P2 — COMPLETE (sessions 104–106, plus session 115 Bhutan verification).** Network
-> reachability re-verified; remaining local-equivalent jurisdictions checked (Pakistan
-> SECP HTTP 403, S-99; Sri Lanka, Myanmar, Nepal, Chinese Taipei, Mongolia, Israel have
-> no located day-level instrument; each keeps an empty T_A per D-011). Panel stands at
-> **11 verified T-A in 11 distinct timing cohorts**. **Do not re-do P2.**
->
-> **P3 — COMPLETE (session 106, E-029, Iteration 17).** Pre-outcome feasibility audit
-> executed under D-032 (free-only route). EDGAR acquirer run end-to-end against one live
-> filing (AAPL 10-K 0000320193-25-000079; ACCEPTANCE-DATETIME parsed to
-> 2025-10-31T10:01:26Z). Stooq free price source returns a JavaScript anti-bot
-> challenge (no data); Yahoo Finance is terms-prohibited/unreliable; delisted/
-> terminal-return coverage is **not established** (B2 open). Committed panel counts
-> (authoritative, D-037): panel_v1.2.csv 141 rows / 11 verified T-A in 11 distinct
-> timing cohorts (2024-05-10 to 2026-09-09), all rows pending; panel_v1.1.csv 431 rows
-> (8 Stratum A true, 423 Stratum B pending). Frozen gates: 11 cohorts < 12 required and
-> 0 admitted treatment firms < 200 required -> **both FAIL**. Primary estimand reported
-> **inconclusive by construction**; no outcome-period return computed or inspected;
-> PH-1 **not opened**. Recorded as experiment ledger row E-029 and changelog Iteration
-> 17; campaign_state.json phase3b marked finished.
->
-> **Park reported honestly (session 113–114, E-030, Iteration 18).** P0–P3 are all done,
-> and the campaign is reported as parked rather than advanced. The frozen gates fail —
-> **11 verified timing cohorts < 12 required**, **0 admitted treatment firms < 200 required**
-> — and free delisted/terminal-return price coverage is not established (Stooq JavaScript
-> anti-bot challenge; Yahoo Finance terms-prohibited/unreliable). Even reaching 12 cohorts
-> would **not** satisfy the ≥200 treatment-firm gate, which requires unacquired firm-level data.
-> **No outcome-period return has been computed or inspected**, and **PH-1 has not been opened**.
-> **Do not re-do the park report.**
->
-> **What remains.** To unblock the campaign you would need to verify **+1 more
-> condition-2 jurisdiction** (day-level IFRS 18 instrument, from its own regulator,
-> hashed, empty T_A if unverifiable per D-011) to reach 12 cohorts, **AND** establish
-> treatment firms ≥ 200 **AND** terminal/delisting returns from free sources.
-> **Do not compute or inspect any outcome-period return, and do not open PH-1, unless
-> all gates pass.** If you cannot advance the gates, report the park honestly and do
-> not narrow the panel or lower the gates (D-016).
->
-> **Rules that are not negotiable.**
-> - **No outcome-period return before the feasibility audit's counts are published.**
-> - **Do not edit v1.0, v1.1, v1.2, v1.3 or v1.4 in place.** A design change is a new
->   registered version in `research/prompt_changelog.md`.
+> **Rules (non-negotiable).**
+> - **No outcome-period return before the feasibility audit's counts are published and all gates pass.**
+> - **Do not edit v1.0, v1.1, v1.2, v1.3 or v1.4 in place.** Design changes require a new registered version in `research/prompt_changelog.md`.
 > - **Do not narrow the panel after the feasibility audit begins** (D-016).
-> - **No paid services of any kind, and no GitHub Actions run** (D-032; protocol
->   Authority item 4). `.github/workflows/main.yml` stays unmodified.
-> - **Do not modify the upstream dossier repository.** It is read-only.
-> - **Cache raw data outside the repository**; commit only code, manifests, hashes and
->   non-licensed aggregates.
-> - **Record every failed retrieval as a failed retrieval**, and every date conflict as
->   an open conflict. **A date correction is a decision, not a silent edit**; so is a
->   count correction (D-037) and so is an identifier renumbering (D-035).
-> - **Parse the committed files for their counts; never carry a quoted row count
->   forward.**
-> - Run `python3 -m pytest -q tests/` and report the count (**173** at handover).
-> - Keep `research/results.md` reporting **no results** until a test has actually
->   been run. A blocked campaign is not a result, and a null is a result only when it
->   comes from a test that ran.
+> - **Free-only route (D-032):** No paid services, no GitHub Actions runs, `.github/workflows/main.yml` stays unmodified.
+> - **No modifying the upstream dossier repository** (read-only).
+> - **Cache raw data outside the repo;** commit only code, manifests, hashes and non-licensed aggregates.
+> - **Record failed retrievals as failed retrievals;** date conflicts as conflicts. Count corrections are decisions (D-037).
+> - **Parse committed files for counts;** never trust quoted row counts.
+> - Run `python3 -m pytest -q tests/` and report the count.
+> - Keep `research/results.md` reporting **no results** until a test has actually run.
 >
 > **Finish by** updating `research/HANDOFF.md`, `research/campaign_state.json`,
-> `research/experiment_ledger.csv` and `research/prompt_changelog.md`, and by leaving a
-> **clear initial task message for the next agent** in the handoff.
+> `research/experiment_ledger.csv` and `research/prompt_changelog.md`, and leaving a
+> **clear initial task message for the next agent** in the handoff. If gates cannot be
+> advanced, report the park honestly and do **not** compute outcomes or open PH-1.
+
 ---
 
 ## 10. Change log for this handoff
 
 | Date | Session | Change |
 |---|---|---|
+| 2026-10-22 | **116** | **Verification pass.** `git fetch origin main` shows `origin/main` at `d3dcf27` (remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0–P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established (Stooq JS anti-bot challenge, Yahoo terms-prohibited/unreliable). Verified set: 11 condition-2 jurisdictions in 11 distinct timing cohorts (Bhutan added in session 115). No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected. §9 initial task message updated for the next agent. Experiment ledger row E-032 and changelog Iteration 20 record this session. |
 | 2026-10-22 | **115** | **Test-fix pass.** Removed a dangling `Australia` entry from `IFRS18_INSTRUMENTS` in `scripts/build_panel.py` (Australia is not in the `panel_v1.1.csv` candidate universe; it caused `KeyError: 'Australia'` and an extra cohort count in `test_build_panel.py`). Bhutan remains as the 11th verified condition-2 jurisdiction. Verified set is now **11** condition-2 verified jurisdictions in **11** distinct timing cohorts (2024-05-10 to 2026-09-09). `panel_v1.2.csv` regenerates byte-identically from committed code. `python3 -m pytest -q tests/` → **173 passed, 0 failing**. Campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. §9 initial task message rewritten for the next agent. Experiment ledger row E-031 and changelog Iteration 19 record this session. |
 | 2026-10-22 | **114** | **Verification pass.** `git fetch origin main` shows `origin/main` at `0c9ba27` (no advance; remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing** (per prior sessions). DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (10 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established (Stooq JS anti-bot challenge, Yahoo terms-prohibited/unreliable). No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected. Prior agent task (park reported honestly, E-030, Iteration 18) complete. §9 initial task message updated. |
 | 2026-10-22 | **112** | **Verification pass.** `git log --oneline -1` at `280ee1d` (kilo checkpoint commits); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. No new primary source read, no filing archive harvested, no outcome-period return computed or inspected. Campaign remains **PARKED — not validated, not rejected**; next step still `phase3b-data-execution-and-feasibility-audit`; next agent starts at **P3 (pre-outcome feasibility audit)**. §9 initial task message carried forward. DNS resolves; re-checked pending sources (Pakistan SECP HTTP 403, S-99; Sri Lanka no day-level gazette; Israel automatic incorporation; Myanmar, Nepal, Chinese Taipei, Mongolia, Bhutan no instrument). Per D-011 each keeps an empty T_A. Panel stands at **10 verified T-A in 10 distinct timing cohorts**; builder reproduces byte-identically. |
