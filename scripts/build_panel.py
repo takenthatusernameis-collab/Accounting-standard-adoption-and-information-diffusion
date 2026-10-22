@@ -15,11 +15,12 @@ conditions, checked in order, and every check is recorded:
 
 **Conditions 3 to 5 are unverified for every jurisdiction**, because condition 3
 depends on the membership snapshot, condition 4 on the A2 authorisation and
-condition 5 on the A1 authorisation. **Condition 2 is verified for six
+condition 5 on the A1 authorisation. **Condition 2 is verified for ten
 jurisdictions** (European Union, United Kingdom, Saudi Arabia, Singapore,
-Brazil, New Zealand). Every row therefore carries
-``in_registered_panel = pending``, which is the three-state discipline of
-``research/specification_v1.1.md`` §4.2: ``true`` / ``false`` / ``pending``.
+Brazil, New Zealand, Malaysia, Hong Kong SAR, Indonesia, Philippines). Every row
+therefore carries ``in_registered_panel = pending``, which is the three-state
+discipline of ``research/specification_v1.1.md`` §4.2: ``true`` / ``false`` /
+``pending``.
 
 The candidate universe is taken from the **same dated, hashed membership
 snapshot** that produced ``research/panel_v1.1.csv`` — the Stratum B rows of that
@@ -50,17 +51,56 @@ The verified instruments are **primary sources**, quoted in
 * **Brazil** — **Resolucao CVM no 237, de 23 de dezembro de 2025**, whose Article 1
   makes CPC 51 (aligned to IFRS 18) mandatory for the listed companies and whose
   Article 3 brings it into force on 2027-01-01.
+* **New Zealand** — **NZ IFRS 18**, issued on **2024-05-23** by the NZ Accounting
+  Standards Board under section 12(a) of the Financial Reporting Act 2013;
+  mandatory date 2027-01-01.
+* **Philippines** — **PFRS 18**, adopted by the Financial and Sustainability
+  Reporting Standards Council on **2024-05-10**; the Philippine Accounting
+  Standards are prescribed for listed companies by the Securities and Exchange
+  Commission under SRC Rule 68.
+* **Malaysia** — **MFRS 18**, issued on **2024-06-14** by notice of the Malaysian
+  Accounting Standards Board under subsection 7(1) of the Financial Reporting Act
+  1997 and regulation 3 of the Financial Reporting (Publication of Approved
+  Accounting Standards) Regulations 1999; mandatory date 2027-01-01.
+* **Hong Kong SAR** — **HKFRS 18**, issued on **2024-07-09** by the HKICPA's
+  Financial Reporting Standards Committee; mandatory date 2027-01-01.
+* **Indonesia** — **PSAK 118**, ratified on **2025-05-28** by the Indonesian
+  Accounting Standards Board (DSAK IAI) as the Indonesian equivalent of IFRS 18;
+  mandatory date 2027-01-01.
 
-**Hong Kong, South Africa and South Korea are recorded as *attempted and not
-verified*, not as verified.** Hong Kong's HKICPA page states the effective date
-(financial periods beginning on or after 2027-01-01) but the retrieved page does
-not carry the issuance date, so T-A is left empty. South Africa's route is
-incorporation by reference ("IFRS as issued from time to time by the IASB"),
-which has no dated local instrument, so T-A is left empty. South Korea's K-IFRS
-No. 1118 was established and announced in December 2025, but no source consulted
-carries a day-level issuance date, so T-A is left empty rather than inferred from
-the month. All three attempts are recorded in ``research/decision_log.md``
-(D-026 and D-030) and in ``research/source_ledger.csv`` (S-73).
+**Pakistan, Sri Lanka and Thailand are recorded as *attempted and not verified*,
+not as verified.** Pakistan's SECP issued S.R.O. 2444(I)/2025 of 2025-12-12
+notifying IFRS 18, but every path on ``secp.gov.pk`` answers **HTTP 403** from
+this environment, so the instrument itself could not be read and the date is not
+tied to a primary source at day level; it therefore stays empty under D-011.
+Sri Lanka's Institute of Chartered Accountants lists SLFRS 18 among its 2025
+standards, but no day-level issuance date was located. Thailand's TFAC page is
+primary-verified for the *effective date* — TFRS 18 applies to periods beginning
+on or after **1 January B.E. 2571 (1 January 2028)** — but its announcement
+column is empty in the retrieved rendering and the Thai text of the standard
+itself is not machine-extractable here, so no day-level T-A was pinned; the
+distinct application date is recorded because it puts Thailand **outside** the
+arm's 2027-01-01 first-application window.
+
+**The route columns are triage, not membership.** ``profile_route_hint`` reads the
+*reporting framework* recorded in the IFRS Foundation jurisdiction profile and
+``timing_cohort`` records the cohort a row would join if it is admitted. Neither
+is a determination, and the panel's own data contains the counterexample that
+proves it: Brazil's profile says only "Required." yet the CVM issued a dated
+IFRS 18 resolution; Saudi Arabia's profile records the IFRS Accounting Standards
+yet SOCPA issued a dated adoption resolution; South Korea's profile records
+"adopted IFRS Accounting Standards" yet the KASB issued K-IFRS 1118. A
+standing-reference profile therefore does **not** exclude a jurisdiction from
+having its own dated instrument, and no jurisdiction is excluded on this basis.
+
+**South Africa and South Korea are recorded as *attempted and not verified*, not
+as verified.** South Africa's route is incorporation by reference ("IFRS as issued
+from time to time by the IASB"), which has no dated local instrument, so T-A is
+left empty. South Korea's K-IFRS No. 1118 was established and announced in
+December 2025, but no source consulted carries a day-level issuance date, so T-A
+is left empty rather than inferred from the month. Both attempts are recorded in
+``research/decision_log.md`` (D-026 and D-030) and in
+``research/source_ledger.csv`` (S-73).
 
 The builder is deterministic and takes no network access.
 """
@@ -92,6 +132,100 @@ PANEL_COLUMNS: tuple[str, ...] = (
     "profile_last_updated",
     "status_text",
 )
+
+#: The PH-1 panel file carries two **additive** evidence columns on top of the
+#: retrospective panel's schema (``research/specification_v1.1.md`` §4.2). They
+#: are evidence about the row, not new membership conditions:
+#:
+#: * ``profile_route_hint`` — the *reporting framework* the dated IFRS Foundation
+#:   jurisdiction profile records for the jurisdiction, read by the fixed rule in
+#:   :func:`classify_profile_route`. It is a **triage prior**: it says where to
+#:   look for an IFRS 18 instrument, and it is **not** a determination of
+#:   membership. The panel's own data carries the counterexamples that prove it
+#:   (Brazil, Saudi Arabia and South Korea each have a dated national instrument
+#:   although their profiles do not name a national equivalent).
+#: * ``timing_cohort`` — the cohort the row would join if it were admitted: the
+#:   verified T-A date, the EU cohort date for the member states that apply the
+#:   EU-endorsed IFRS directly, or empty where no cohort is known yet.
+PH1_EXTRA_COLUMNS: tuple[str, ...] = ("profile_route_hint", "timing_cohort")
+
+PH1_COLUMNS: tuple[str, ...] = PANEL_COLUMNS + PH1_EXTRA_COLUMNS
+
+#: The 27 member states of the European Union, as they are named in the dated
+#: IFRS Foundation membership snapshot (S-58). The profile text is **identical**
+#: for the 27 member states and for the three EEA/EFTA states that apply the
+#: EU-endorsed IFRS (Norway, Iceland, Liechtenstein), so the two groups cannot be
+#: told apart from the profile text and are told apart here, by name.
+EU_MEMBER_STATES: frozenset[str] = frozenset(
+    {
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czechia",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+    }
+)
+
+#: The EEA/EFTA states whose profile text is identical to the member states'
+#: but whose route to the EU-endorsed IFRS runs through their **own**
+#: incorporation instrument, so their T-A is a separate question.
+EEA_EFTA_STATES: frozenset[str] = frozenset({"Iceland", "Liechtenstein", "Norway"})
+
+#: The EU cohort's T-A: the date of endorsement of Commission Regulation (EU)
+#: 2026/338 (S-60). Every member state applies the endorsed standard through it.
+EU_COHORT_T_A = "2026-02-13"
+
+#: Profile markers for a jurisdiction whose framework is a **national
+#: equivalent** of the IFRS Accounting Standards rather than the IFRS Accounting
+#: Standards as issued by the IASB. These are the jurisdictions that issue their
+#: own dated standard-setter instrument and can therefore carry their own T-A.
+NATIONAL_EQUIVALENT_MARKERS: tuple[str, ...] = (
+    "mfrs",
+    "pfrs",
+    "tfrs",
+    "sak indonesia",
+    "psak",
+    "hkfrs",
+    "nz ifrs",
+    "k-ifrs",
+    "nfrs",
+    "slfrs",
+    "myanmar financial reporting standards",
+    "thai financial reporting standards",
+    "ifrs accounting standards as endorsed by the fsc",
+)
+
+#: Profile markers for a jurisdiction whose framework is the IFRS Accounting
+#: Standards **as adopted by the European Union**.
+EU_ADOPTED_MARKERS: tuple[str, ...] = ("as adopted by the eu",)
+
+ROUTE_EU_MEMBER = "eu_member_state"
+ROUTE_EEA_EFTA = "eea_efta_own_instrument"
+ROUTE_NATIONAL_EQUIVALENT = "national_equivalent_profile"
+ROUTE_STANDING_REFERENCE = "standing_reference_profile"
+ROUTE_NO_STATUS_TEXT = "no_profile_status_text"
 
 STANDARD_ID = "IFRS 18"
 STRATUM = "A"
@@ -219,6 +353,123 @@ IFRS18_INSTRUMENTS: dict[str, dict[str, str]] = {
             "acceptance TIMESTAMP is not yet checked."
         ),
     },
+    "Philippines": {
+        "t_a": "2024-05-10",
+        "date_conflict": (
+            "Two Philippine dates, both recorded rather than merged: the Financial and "
+            "Sustainability Reporting Standards Council (FSRSC) adopted PFRS 18 "
+            "Presentation and Disclosure in Financial Statements on 2024-05-10, and the "
+            "Professional Regulatory Board of Accountancy adopted it into the Philippine "
+            "Accounting Standards by Resolution No. 38, series of 2024, dated 2024-05-29. "
+            "T-A is the FSRSC adoption date, 2024-05-10, because the FSRSC is the standard "
+            "setter and its adoption is the instrument that makes the standard part of the "
+            "Philippine reporting framework, the same rule that was applied to Singapore's "
+            "SFRS(I) 18 and Malaysia's MFRS 18. The Board of Accountancy resolution's own "
+            "PDF could not be retrieved in this session (the request failed, and is recorded "
+            "as a failed retrieval), so 2024-05-29 rests on a secondary rendering and is "
+            "recorded as a conflict rather than used as T-A (D-011)."
+        ),
+        "source_url": "http://www.pfsrsc.org/government-organization-our-standards",
+        "coverage_notes": (
+            "Condition 2 VERIFIED. The Financial and Sustainability Reporting Standards "
+            "Council's own standards page records PFRS 18 Presentation and Disclosure in "
+            "Financial Statements with 'Date adopted by FSRSC: May 10, 2024' and an effective "
+            "date of January 1, 2027. Mandatory character: the Securities and Exchange "
+            "Commission prescribes the financial reporting framework for corporations under "
+            "the Revised Securities Regulation Code Rule 68, and the Philippine Accounting "
+            "Standards are issued by the Professional Regulatory Board of Accountancy under "
+            "the Accountancy Act. "
+            "Source ledger S-94. Conditions 3, 4 and 5 remain unverified: the SEC filing "
+            "route's publication of an acceptance TIMESTAMP is not yet checked."
+        ),
+    },
+    "Malaysia": {
+        "t_a": "2024-06-14",
+        "date_conflict": (
+            "Two Malaysian dates are recorded rather than merged: the Malaysian Accounting "
+            "Standards Board gave notice of the issuance of MFRS 18 on 2024-06-14 (the notice "
+            "is signed by the Chairman and dated 14 June 2024), and MFRS 18 applies to annual "
+            "reporting periods beginning on or after 1 January 2027. T-A is the notice date, "
+            "2024-06-14, because the v1.1 event clock defines T-A as the jurisdictional "
+            "legal-adoption date and the notice is the instrument. The MASB's own standards "
+            "list records the same issue date, 14 June 2024, for MFRS 18 and 1 January 2027 "
+            "as its applicable date; the two primary sources agree."
+        ),
+        "source_url": (
+            "https://www.masb.org.my/pdf.php?file_path=pdf_file&pdf=20240614_Notice+ENG_Clean.pdf"
+        ),
+        "coverage_notes": (
+            "Condition 2 VERIFIED. The Malaysian Accounting Standards Board's NOTICE - "
+            "ISSUANCE OF MASB APPROVED ACCOUNTING STANDARD, issued under subsection 7(1) of "
+            "the Financial Reporting Act 1997 (Act 558) and regulation 3 of the Financial "
+            "Reporting (Publication of Approved Accounting Standards) Regulations 1999, gives "
+            "notice of MFRS 18 Presentation and Disclosure in Financial Statements, applies "
+            "it to financial statements required to be prepared or lodged under any law "
+            "administered by the Securities Commission Malaysia, and is dated 14 June 2024. "
+            "MFRS 18 applies for annual reporting periods beginning on or after 1 January "
+            "2027. Source ledger S-91 (notice) and S-98 (the MASB standards list). "
+            "Conditions 3, 4 and 5 remain unverified: the Bursa Malaysia filing route's "
+            "publication of an acceptance TIMESTAMP is not yet checked."
+        ),
+    },
+    "Hong Kong Sar": {
+        "t_a": "2024-07-09",
+        "date_conflict": (
+            "Two Hong Kong dates are recorded rather than merged: the HKICPA's Financial "
+            "Reporting Standards Committee approved the issuance of HKFRS 18 at its meeting "
+            "of 31 May 2024, and the committee's own minutes carry the post-meeting note "
+            "'HKFRS 18 together with the consequential amendments to other HKFRSs and the "
+            "updated HK-Int 5 were issued on 9 July 2024'. T-A is the issuance date, "
+            "2024-07-09, because the v1.1 event clock defines T-A as the jurisdictional "
+            "legal-adoption date and the issuance is that event; the approval meeting of "
+            "31 May 2024 is recorded as the earlier step in the same process. The earlier "
+            "attempt on this jurisdiction (D-026, source S-78) had read only the HKICPA's "
+            "HKFRS 18 web page, which states the effective date but not the issuance date, "
+            "and left T-A empty; the committee's own minutes now carry the day."
+        ),
+        "source_url": (
+            "https://www.hkicpa.org.hk/-/media/HKICPA-Website/New-HKICPA/Standards-and-"
+            "regulation/SSD/03_Our-views/Minutes-and-Meeting-Summaries/FRSC/20240531283.pdf"
+        ),
+        "coverage_notes": (
+            "Condition 2 VERIFIED. The minutes of the 283rd meeting of the HKICPA's Financial "
+            "Reporting Standards Committee, held on 31 May 2024 and signed by the Chairman on "
+            "9 July 2024, record the Committee's approval of the issuance of HKFRS 18 and the "
+            "post-meeting note that HKFRS 18 was issued on 9 July 2024. HKFRS 18 applies to "
+            "financial periods beginning on or after 1 January 2027. Mandatory character: the "
+            "HKICPA issues HKFRS for the purposes of the Companies Ordinance (Cap. 622) and "
+            "the HKEX Listing Rules require issuers to prepare financial statements that "
+            "comply with HKFRS. Source ledger S-92. Conditions 3, 4 and 5 remain unverified: "
+            "the HKEX filing route's publication of an acceptance TIMESTAMP is not yet checked."
+        ),
+    },
+    "Indonesia": {
+        "t_a": "2025-05-28",
+        "date_conflict": (
+            "Two Indonesian dates are recorded rather than merged: the Indonesian Accounting "
+            "Standards Board (DSAK IAI) ratified PSAK 118 Presentation and Disclosure in "
+            "Financial Statements on 28 May 2025, and the exposure draft that preceded it "
+            "(DE PSAK 118) was approved on 26 November 2024. T-A is the ratification date, "
+            "2025-05-28, because the v1.1 event clock defines T-A as the jurisdictional "
+            "legal-adoption date and the ratified standard is the instrument that makes "
+            "IFRS 18 mandatory for Indonesian reporting entities; 2024-11-26 is the "
+            "exposure draft and is recorded as an earlier step, not as the adoption."
+        ),
+        "source_url": (
+            "https://web.iaiglobal.or.id/assets/files/file_sak/DSAK%20Terkini%20Volume%207%202025.pdf"
+        ),
+        "coverage_notes": (
+            "Condition 2 VERIFIED. The DSAK IAI's own summary bulletin, DSAK Terkini Volume "
+            "07/XII/2025, records that on 28 May 2025 DSAK IAI ratified PSAK 118 Presentation "
+            "and Disclosure in Financial Statements, which refers to IFRS 18 Presentation and "
+            "Disclosure in Financial Statements and takes effect on 1 January 2027. Mandatory "
+            "character: Indonesian national accounting standards (SAK Indonesia) bind the "
+            "listed companies supervised by the Financial Services Authority (OJK), whose "
+            "financial statements must be prepared in accordance with SAK Indonesia. Source "
+            "ledger S-93. Conditions 3, 4 and 5 remain unverified: the IDX filing route's "
+            "publication of an acceptance TIMESTAMP is not yet checked."
+        ),
+    },
     "Saudi Arabia": {
         "t_a": "2024-12-26",
         "date_conflict": (
@@ -288,6 +539,37 @@ def is_plausible_jurisdiction(name: str) -> bool:
     return True
 
 
+def classify_profile_route(jurisdiction: str, status_text: str) -> str:
+    """Classify the reporting framework the dated jurisdiction profile records.
+
+    The rule is fixed and deterministic:
+
+    1. no status text in the profile → ``no_profile_status_text``;
+    2. the text says the IFRS Accounting Standards **as adopted by the EU** →
+       ``eu_member_state`` for the 27 member states, and
+       ``eea_efta_own_instrument`` for the EEA/EFTA states, whose route runs
+       through their own incorporation instrument;
+    3. the text names a **national equivalent** framework → ``national_equivalent_profile``;
+    4. anything else → ``standing_reference_profile``.
+
+    This is a **triage prior, not a determination**. The panel's own data
+    contains the counterexamples: Brazil's profile says only "Required." and
+    Saudi Arabia's records the IFRS Accounting Standards, yet both have dated
+    national instruments (CVM Resolution 237; the SOCPA resolution). A
+    standing-reference profile therefore never excludes a jurisdiction.
+    """
+    text = _strip(status_text).lower()
+    if not text:
+        return ROUTE_NO_STATUS_TEXT
+    if any(marker in text for marker in EU_ADOPTED_MARKERS):
+        if jurisdiction in EEA_EFTA_STATES:
+            return ROUTE_EEA_EFTA
+        return ROUTE_EU_MEMBER
+    if any(marker in text for marker in NATIONAL_EQUIVALENT_MARKERS):
+        return ROUTE_NATIONAL_EQUIVALENT
+    return ROUTE_STANDING_REFERENCE
+
+
 def load_candidate_jurisdictions(panel_v1_1_path: Path) -> list[dict[str, str]]:
     """Read the candidate universe from the Stratum B rows of ``panel_v1.1.csv``.
 
@@ -335,6 +617,7 @@ def build_row(
     t_a = _strip(instrument.get("t_a", ""))
     scope = candidate.get("status_text", "")
     verified = bool(instrument)
+    route = classify_profile_route(jurisdiction, scope)
 
     if verified:
         coverage = instrument.get("coverage_notes", "")
@@ -344,6 +627,40 @@ def build_row(
             f"IFRS 18 instrument verified; affected class per the instrument. "
             f"Profile extent of IFRS application: {scope}"
         )
+        cohort = t_a
+    elif route == ROUTE_EU_MEMBER:
+        coverage = (
+            "PH-1 CANDIDATE, RULE-DERIVED, NOT YET ADMITTED. The profile records the IFRS "
+            "Accounting Standards as adopted by the EU, so this jurisdiction is in the EU "
+            "TIMING COHORT and would join the cohort dated 2026-02-13 (Commission Regulation "
+            "(EU) 2026/338). Condition 2 is NOT yet verified for this row: the member-state "
+            "carve-out check is OUTSTANDING (member states with a permanent derogation from "
+            "particular endorsed standards), so T_A is left EMPTY rather than inherited "
+            "silently. Conditions 4 and 5 are unverified pending A2 and A1."
+        )
+        date_conflict = ""
+        source_url = candidate.get("profile_url", "")
+        scope_rule = (
+            f"IFRS 18 affected-firm list NOT yet determined for this jurisdiction. "
+            f"Profile extent of IFRS application: {scope}"
+        )
+        cohort = EU_COHORT_T_A
+    elif route == ROUTE_EEA_EFTA:
+        coverage = (
+            "PH-1 CANDIDATE, RULE-DERIVED, NOT YET ADMITTED. The profile text is identical "
+            "to the EU member states' ('as adopted by the EU'), but this jurisdiction reaches "
+            "the EU-endorsed IFRS through its OWN incorporation instrument, so its T-A is a "
+            "separate question from the EU's and has not been located. Condition 2 is NOT "
+            "verified: T_A is left EMPTY rather than inherited from the EU. Conditions 4 and "
+            "5 are unverified pending A2 and A1."
+        )
+        date_conflict = ""
+        source_url = candidate.get("profile_url", "")
+        scope_rule = (
+            f"IFRS 18 affected-firm list NOT yet determined for this jurisdiction. "
+            f"Profile extent of IFRS application: {scope}"
+        )
+        cohort = ""
     else:
         coverage = (
             "PH-1 CANDIDATE, RULE-DERIVED, NOT YET ADMITTED. Condition 2 (a legal instrument "
@@ -358,6 +675,7 @@ def build_row(
             f"IFRS 18 affected-firm list NOT yet determined for this jurisdiction. "
             f"Profile extent of IFRS application: {scope}"
         )
+        cohort = ""
 
     return {
         "event_id": f"EV-{300 + index:03d}",
@@ -379,6 +697,8 @@ def build_row(
         "profile_retrieved_utc": candidate.get("profile_retrieved_utc", ""),
         "profile_last_updated": candidate.get("profile_last_updated", ""),
         "status_text": scope,
+        "profile_route_hint": route,
+        "timing_cohort": cohort,
     }
 
 
@@ -397,10 +717,10 @@ def write_panel(rows: Iterable[dict[str, str]], path: Path) -> int:
     path.parent.mkdir(parents=True, exist_ok=True)
     count = 0
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(PANEL_COLUMNS), lineterminator="\n")
+        writer = csv.DictWriter(handle, fieldnames=list(PH1_COLUMNS), lineterminator="\n")
         writer.writeheader()
         for row in rows:
-            writer.writerow({column: row.get(column, "") for column in PANEL_COLUMNS})
+            writer.writerow({column: row.get(column, "") for column in PH1_COLUMNS})
             count += 1
     return count
 
