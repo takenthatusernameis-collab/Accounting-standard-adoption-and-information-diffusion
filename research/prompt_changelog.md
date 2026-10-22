@@ -314,22 +314,106 @@ arm-specific ≥12-cluster / ≥200-firm minima). The v1.0 and v1.1 files are
   ordinal scale) is still unresolved** and must be recorded before the holdout opens.
 
 
+---
+
+## 2026-10-22 — Iteration 10: the three named verification gaps are closed, the PH-1 panel is materialised, and two date conflicts are recorded rather than resolved
+
+**Problem.** Iteration 9 left three named verification gaps on the critical path and one
+required file missing. The gaps were: (i) whether the UK filing route publishes a filing
+**time** (T-R needs a timestamp, and the FCA NSM host had answered HTTP 403 from this
+environment, so the published field list could not be read); (ii) the **day-level IFRS 18
+adoption instrument date** per admitted jurisdiction, the UK Endorsement Board's decision
+date first; and (iii) the **linguistic-distance choice**, which the frozen specification
+requires to be recorded before the holdout opens. The file was
+`research/panel_v1.2.csv` — required by `research/specification_v1.2.md` §1.2 to exist
+**before** the PH-1 feasibility audit begins, and absent.
+
+**Change.** All three gaps are now closed or determined, and the file exists. **No frozen
+artefact was edited in place**; three new decisions (D-021, D-022, D-023) carry the changes,
+and `research/specification_v1.2.md` is untouched.
+
+| Artefact | What it registers |
+|---|---|
+| `research/panel_v1.2.csv` | The PH-1 panel: **142 rows**, one per (IFRS 18, jurisdiction), in the schema of `research/specification_v1.1.md` §4.2 and with the same three-state `in_registered_panel` discipline. **All 142 rows are `pending`**: conditions 3, 4 and 5 are unverified for every jurisdiction, and condition 2 is verified for three. **Three rows carry a primary-verified day-level T_A** — European Union **2026-02-13**, United Kingdom **2025-12-10**, Saudi Arabia **2024-12-26** — each with a `date_conflict` field recording the competing dates. The other 139 carry an **empty** T_A rather than an inferred one. |
+| `scripts/build_panel.py`, `tests/test_build_panel.py` | The builder and its 9 unit tests. The candidate universe is **read back from the Stratum B rows of `research/panel_v1.1.csv`**, so both panel files are built from **one dated, hashed membership vintage** and no new snapshot was taken. No network access. |
+| `research/event_calendar.csv` | EV-201 and EV-202 carry the UK filing-timestamp determination. The **retrospective calendar is deliberately not extended** with the IFRS 18 events: adding 2024–2026 rows would destroy its defining property (every registered retrospective event has T-A ≤ 2017-10-31, so the chronological holdout split is empty — D-014). The IFRS 18 events live in `research/panel_v1.2.csv`. |
+| `research/decision_log.md` | **D-021** (the UK route publishes a date, not a time), **D-022** (the three IFRS 18 instrument dates pinned; the Saudi conflict recorded), **D-023** (the linguistic-distance measure cannot be reproduced exactly panel-wide, so the registered fallback is selected). |
+| `research/source_ledger.csv` | **S-60 … S-71** — twelve primary sources: the EFRAG Endorsement Status Report of 16 February 2026, SOCPA's endorsement document, the Saudi CMA announcement CMA_N_4083, the UKEB IFRS 18 news release and project record, four FCA documents (the NSM FAQ, Technical Note 523.1, the Investor User Guide, the Submitter User Guide, plus PS24/19), the operationalisation detail for S-44, and the Joshi and Lahiri index. **71 sources** in all. |
+
+**The three determinations, in brief.**
+
+1. **The UK NSM publishes a date, not a time.** Its glossary defines "Publication date" as
+   "The date a document/announcement was released via a Regulatory Information Service
+   (RIS) or uploaded to the NSM"; the Investor User Guide defines "Filing date" as "The date
+   at which the information was made available for filing on the NSM". A time *does* exist in
+   the plumbing — the PIP-to-NSM schema carries a mandatory `PublishingDate` element
+   (`YYYY-MM-DDTHH:MM:SSZ`) — but that schema binds PIPs only **from 3 November 2025** under
+   PS24/19. **Consequence, stated now rather than discovered later: the two retrospective UK
+   events cannot be timed at all**, because their transition windows (2016-01-01, 2019-01-01)
+   precede the timestamp regime, whatever the answer to the remaining verification. The UK
+   stays viable for **PH-1**, whose window falls entirely after it. The NSM search API
+   answered HTTP 403, so the condition is recorded **unverified, not false**, and the failed
+   retrieval is recorded as a failed retrieval.
+2. **The IFRS 18 instruments are pinned.** EU **2026-02-13** (endorsement) with OJ publication
+   **2026-02-16**; UK **2025-12-10** (UKEB formal adoption — this closes the gap v1.2 left
+   open); Saudi Arabia **2024-12-26** (SOCPA adoption). **v1.2 had registered the Saudi date
+   2026-06-30, which is the CMA's *early-adoption* decision, not the instrument making IFRS 18
+   mandatory.** The applied T-A follows the registered condition (2), and the conflict is written
+   into the row's own fields. **Its consequence is recorded too:** the CMA-mandated pre-adoption
+   impact disclosure (periods from 2026-04-01) falls **inside** the Saudi transition window
+   rather than before it, so Saudi Arabia has **no clean T-PRE anchor**, and whether it enters
+   PH-1 at all is an open design question to be settled **before the holdout opens** and never
+   by looking at outcomes.
+3. **The published linguistic-distance index cannot be reproduced exactly panel-wide.** S-44
+   operationalises it as the Joshi and Lahiri (2015) friction index over 192 WALS features,
+   averaged, with simple averaging for multi-language countries, and publishes values for its
+   84-country 2004–2018 sample. Three obstacles block exact panel-wide reproduction: Ethnologue
+   is **licensed and versioned**, the Ethnologue-to-WALS merge was **manual**, and Table 1 does
+   not cover the campaign's jurisdictions. The registered condition ("cannot be reproduced
+   exactly from its source") is therefore **met**, and the **registered fallback ordinal scale
+   is selected by the rule**, with the published values kept as an **external validation of the
+   ordering**. The fallback's **category boundaries are still not enumerated**, and that
+   enumeration must be added by dated decision before the holdout opens.
+
+**What is still true, and stated so it is not lost.** The campaign is **PARKED — not
+validated, not rejected**. The highest-value unresolved question is unchanged: the **data and
+authorisation** question. A1, A2 and A3 are entirely outstanding, and A4 now has a concrete
+object (the 426 pending Stratum B rows) and A5 a concrete ask (confirmation that the
+registered PH-1 arm may be **run**). **No outcome-period return has ever been computed or
+inspected.** The test suite is **124 passing** (115 before).
+
 ## Next iteration (reserved)
 
 The next prompt improvement must address the highest-value unresolved question.
-As of this entry, the **design** question is resolved: v1.1 is registered, executable in
-principle, and compliant with every binding dossier amendment. The highest-value
-unresolved question is now the **data and authorisation** question: the v1.1 panel
-cannot be assembled until the maintainer answers the authorisation checklist in
-`research/data_acquisition_plan.md` §8 (A1 market data, A2 public harvesting, A3
-repository policy, A4 panel scope, A5 prospective holdout).
+As of this entry, the **design** question is resolved and so are the three named
+verification gaps that sat behind it. v1.1 is registered and compliant with every
+binding dossier amendment; v1.2 is registered for the prospective holdout arm; the
+retrospective panel and the PH-1 panel are both materialised as files; the acquirer is
+implemented and tested; and every event-calendar date is primary-verified.
 
-Two secondary questions are also now open and are **named** so they are not lost:
-(i) the **day-level UK endorsement instrument date** and whether the UK route publishes a
-filing **time** (T-R needs a time), and (ii) the **day-level ASU 2016-01 issuance
-date**, both recorded as verification gaps in `research/event_calendar.csv`; and (iii)
-whether the published linguistic-distance measure (S-44) can be reproduced exactly from
-its source, or whether the registered fallback scale must be used.
+The highest-value unresolved question is therefore **unchanged** and is the **data and
+authorisation** question: neither panel can be assembled into data until the maintainer
+answers the authorisation checklist in `research/data_acquisition_plan.md` §8 —
+**A1** (market data), **A2** (read-only public harvesting, zero-cost and highest
+value), **A3** (repository policy), **A4** (panel scope, which now has a concrete
+object in the 426 pending Stratum B rows of `research/panel_v1.1.csv`), and **A5**
+(confirmation that the registered PH-1 arm may be **run**). One-click-able form:
+`research/authorisation_request.md`.
+
+Three further items are now open and are **named** so they are not lost, all of them
+requiring a **dated decision before the holdout opens** and none of them permitting a
+look at any outcome:
+
+(i) the **Saudi Arabia T-PRE question** — with T-A at 2024-12-26, the CMA-mandated
+pre-adoption impact disclosure falls inside the transition window rather than before
+it, so Saudi Arabia has no clean pre-disclosure anchor and its standing in PH-1 must be
+settled (exclude, or admit with a separately specified T-PRE rule) — D-022;
+(ii) the **category boundaries of the registered fallback linguistic-distance scale**,
+which must be enumerated by dated decision now that the fallback is the selected
+implementation — D-023;
+(iii) the **single remaining UK verification** — whether the NSM search response or
+CSV export carries a time-of-day component, which decides whether the UK satisfies
+panel condition (j) for events after 3 November 2025 — D-021.
 
 A prompt iteration that merely rewords the hypothesis without resolving one of those
 questions is not progress.

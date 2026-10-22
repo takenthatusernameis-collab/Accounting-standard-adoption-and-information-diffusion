@@ -638,3 +638,218 @@ where, how fast, and with what hash, and can rule on it.
 **Reverses if.** The maintainer rules that the profile snapshot itself required A2, in
 which case `research/panel_v1.1.csv` is withdrawn and the panel is rebuilt after
 authorisation.
+
+---
+
+## D-021 — 2026-10-22 — The UK filing route publishes a DATE, not a TIME: the finding is recorded, and the retrospective UK events cannot be timed
+
+**Context.** `research/specification_v1.1.md` §1.1 condition (j) admits a jurisdiction
+only if it has "a public filing route that publishes a **filing acceptance time** (a
+date alone is insufficient — T-R must be a timestamp)". T-R and T-RI are defined as
+**acceptance timestamps in UTC** of the firm's first full and first interim report
+under the standard (§2). The previous session recorded this as an open item on the
+UK rows (EV-201, EV-202) because the FCA National Storage Mechanism API host
+answered HTTP 403 to every request from this environment, so the published field
+list could not be read.
+
+**Determination, from primary FCA sources.**
+
+1. The NSM's own published glossary defines the field as a date, without a time:
+   "**Publication date**: The date a document/announcement was released via a
+   Regulatory Information Service (RIS) or uploaded to the NSM"; "**Document date**:
+   The date to which a document relates to" (FCA, *NSM user help and FAQs*, S-64).
+   The NSM *Investor User Guide* likewise defines "**Filing date**: The date at which
+   the information was made available for filing on the NSM" and "**Publication
+   date**: The date the document/announcement was released via a PIP" (S-66). The
+   published search fields are therefore **day-granular**.
+2. A time *does* exist in the plumbing. FCA Primary Market Technical Note 523.1
+   specifies the PIP→NSM submission schema, whose `PublishingDate` element is
+   "Date and time when the PIP disseminated the disclosure to the public", format
+   `YYYY-MM-DDTHH:MM:SSZ` (S-65). The NSM *Submitter User Guide* states that "on
+   submission, the date/time is recorded to create an NSM filing date, which will be
+   displayed publicly" (S-67). The NSM FAQ adds that it "makes information available
+   near real time after the date and time specified by a primary information provider
+   (PIP) or an issuer" (S-64). **The timestamp therefore exists at submission; what
+   the public interface publishes is a date.**
+3. **The PIP timestamp regime has a start date.** From **3 November 2025**, PIPs
+   submit under the schema and rules of PS24/19 (FCA, *Enhancing the National
+   Storage Mechanism*; S-68). Before that date, PIP submissions were free-form and
+   the recorded date/time cannot be relied on to the same specification.
+
+**Decision.** The UK NSM is recorded as **not established** as satisfying condition
+(j). The finding is written into the `notes` of EV-201 and EV-202 and into the
+`filing_route` column of the UK rows of both panel files, and the row status is
+**`unverified`**, not `false`: the published documentation does not say whether a
+time component is exposed in the search response or the CSV export, and that could
+not be checked empirically because `api.data.fca.org.uk/search?index=nsm-search`
+answered **HTTP 403** to this environment on 2026-10-22 (a **failed retrieval**,
+recorded as such, not as an absence).
+
+**Consequences, stated now so they are not discovered later.**
+
+* **The retrospective UK events cannot be timed at all.** The UK's two registered
+  events have transition windows beginning 2016-01-01 (IFRS 15) and 2019-01-01
+  (IFRS 16). The PIP timestamp regime begins 2025-11-03, which is **after** both.
+  Even if a time component were exposed tomorrow, it could not cover them. **The UK
+  therefore cannot supply T-R or T-RI for the retrospective panel**, whatever the
+  answer to the remaining verification.
+* **The UK remains viable for PH-1.** The IFRS 18 transition window opens in 2026
+  and the reports land in 2027, which is entirely **after** 2025-11-03, so the
+  timestamp regime covers it. This raises the UK's value in the arm that matters and
+  it is why the UK row in `research/panel_v1.2.csv` is retained.
+* **The single remaining verification** is narrow and cheap: run one NSM search for a
+  known annual financial report and inspect the CSV export header and the underlying
+  search response for a time component. Until that is done, the UK's condition (j)
+  stays `pending`.
+* **The UK is not the only route.** The alternative is the PIPs' own newsfeeds, which
+  carry the dissemination timestamp by construction, but those are licensed
+  commercial services rather than a public repository, and any use of them is a
+  separate authorisation question.
+
+**Rationale.** The rule was written before the fact and says a date is insufficient.
+Finding, after the fact, that the one large non-US public repository publishes a date
+is exactly the kind of thing the rule exists to catch, and the finding is more
+useful recorded now — before a feasibility audit and before any outcome is computed
+— than absorbed silently into a screen.
+
+**Reverses if.** The NSM search response or CSV export is shown to carry a
+time-of-day component, in which case the UK condition (j) is satisfied **for events
+whose filings fall after 2025-11-03** and nothing changes for the retrospective UK
+events.
+
+---
+
+## D-022 — 2026-10-22 — The three IFRS 18 instrument dates are pinned from primary sources, and the Saudi T-A conflict is recorded rather than resolved
+
+**Context.** `research/specification_v1.2.md` §1.2 left the **UK day-level T-A
+unpinned** ("to be pinned from the UKEB's own decision record") and recorded the EU
+and Saudi T-A values. The handoff made the UK date the first concrete task of the
+next phase. This decision pins all three from primary sources and records the Saudi
+conflict.
+
+**Findings.**
+
+| Jurisdiction | Instrument | T-A as registered in v1.2 | T-A applied here | Basis |
+|---|---|---|---|---|
+| European Union | Commission Regulation (EU) 2026/338 | 2026-02-13 (OJ 2026-02-16) | **2026-02-13** | EFRAG Endorsement Status Report of 16 February 2026 and the EFRAG endorsement-status table: date of endorsement 13 February 2026, date of publication in the Official Journal 16 February 2026 (S-60). **Consistent with v1.2.** |
+| United Kingdom | UK Endorsement Board adoption of IFRS 18 | *to be pinned* | **2025-12-10** | UKEB news release of 12 December 2025: "It was issued by the IASB in April 2024, and **formally adopted by the UKEB, for use in the UK, on 10 December 2025**" (S-63). The UKEB project record gives Project Closure 2026-01-30 and an effective date of 2027-01-01 (S-69). |
+| Saudi Arabia | SOCPA adoption of IFRS 18, and CMA announcement CMA_N_4083 | 2026-06-30 | **2024-12-26** | SOCPA's endorsement document, §7: the Accounting Standards Council resolution of 25/06/1446H corresponding to **26 December 2024**, endorsing IFRS 18 and IFRS 19 (S-61). The CMA announcement CMA_N_4083 is dated **30 June 2026** and is the Board's decision on **early adoption** during 2026 (S-62). |
+
+**Decision.** The UK T-A is **2025-12-10**, applied in `research/panel_v1.2.csv` and
+recorded there; **v1.2 is not edited in place**, and the gap is closed by this dated
+decision, which is the mechanism the protocol prescribes. The EU T-A is
+**2026-02-13**, unchanged and now corroborated.
+
+**The Saudi conflict is recorded, not resolved.** v1.2 registered 2026-06-30, which is
+the CMA's **early-adoption decision**; the instrument that makes IFRS 18 mandatory
+in the Kingdom is SOCPA's adoption of **2024-12-26**. Condition 2 asks for the
+instrument making IFRS 18 **mandatory**, so the applied T-A is 2024-12-26 and the CMA
+date is recorded as a separate event in the row's own `date_conflict` field. **This
+is a definitional application of the registered rule, not a choice of date, and the
+rule and both dates are on the record so a reader can see the reasoning and disagree
+with it.**
+
+**The consequence is stated now, in advance of any outcome.** CMA_N_4083 also
+requires listed joint-stock companies to "disclose a preliminary assessment of the
+expected impact of the initial application of IFRS 18 ... for interim and annual
+financial statements prepared for financial periods beginning on or after 1 April
+2026". With T-A at 2024-12-26, that mandated pre-adoption impact disclosure falls
+**inside** the transition window rather than **before** it. Saudi Arabia therefore
+**does not have the clean pre-disclosure anchor T-PRE** that
+`research/specification_v1.2.md` §2 requires of PH-1, and its standing in the arm
+is an **open design question**. The question is recorded here and must be settled
+**before the holdout is opened** — it must not be settled by looking at outcomes,
+and it must not be settled by silently moving T-A. The two candidate answers, for
+the maintainer or the next agent to take up: exclude the Saudi row from PH-1 on the
+T-PRE ground, or admit it with a separately specified T-PRE rule. **Both are
+admissible; choosing between them is a design decision that belongs in a new
+registered version, not in a data file.**
+
+**The retrospective event calendar is deliberately not extended.** The IFRS 18 events
+are registered in `research/panel_v1.2.csv`, not in `research/event_calendar.csv`,
+because that calendar's defining property — every registered retrospective event has
+T-A ≤ 2017-10-31, so the chronological holdout split is empty (D-014) — would be
+destroyed by adding 2024–2026 events to it. The two files are separated so that the
+property stays checkable.
+
+**Rationale.** v1.2 registered a date it could not source and said so in the file.
+Pinning it is the whole point of registering the arm in advance: the arm is only
+untamable if its anchors are fixed before the first report exists, and the first
+IFRS 18 report cannot exist before 2027.
+
+**Reverses if.** The UKEB's own decision record is shown to carry a different
+adoption decision date from the news release — in which case the UK T-A is corrected
+by a further dated decision, in the same way, with the conflict written into the
+row.
+
+---
+
+## D-023 — 2026-10-22 — The published linguistic-distance index cannot be reproduced exactly panel-wide, so the registered fallback is selected and the published values become an external validation
+
+**Context.** `research/specification_v1.1.md` §3.5 makes **linguistic distance** a
+mandatory conditioning control and registers two options: the **primary measure**,
+"the country-level 'distance between a country's official language and English'
+measure published in S-44", and a **pre-registered fallback**, an "ordinal
+distance-from-English scale built from the official-language status published by the
+UN/ISO 639, with English-official jurisdictions at 0", registered "so the design is
+executable if the published index cannot be reproduced exactly from its source". The
+handoff made the choice a named open item and required it to be **recorded before the
+holdout is opened**.
+
+**What the published measure is, now read from the source.** Guan, Shafron, Ye and
+Zhuang (2025), *Review of Accounting Studies* 30(3): 2963–3020, operationalises
+"linguistic distance" (LD) as the **language friction index of Joshi and Lahiri
+(2015)**: for each official language, its **192 WALS linguistic characteristics** are
+compared with their English equivalents, scored 0 where the characteristic is shared
+and 1 where it is not, summed across the 192 features and **divided by 192**; the
+scale is bounded in [0,1]; where a country has several official languages the
+language scores are **simply averaged**. Official languages come from **Ethnologue**
+and **WALS**, "manually check[ed] and merge[d]". The paper's Table 1 publishes the
+resulting values for its 84-country sample: Japanese 0.590 (most distant), Bengali
+0.583, Korean 0.507, Arabic 0.490, Chinese 0.467, and 0 for English-speaking
+countries (S-70, with the underlying index at S-71).
+
+**Why exact panel-wide reproduction is not available.** The *algorithm* is fully
+specified and every free input is identified: WALS is open access, and the
+ISO 639 language codes are open. Three obstacles remain. (1) The official-language
+lists come from **Ethnologue**, a **licensed, versioned** commercial database that
+is not freely reproducible and whose lists change; the paper does not archive the
+vintage it used. (2) The merge between Ethnologue language names and WALS language
+codes was done **manually** by the authors, so exact reproduction requires
+reproducing a set of undocumented manual name-resolution decisions. (3) The paper's
+Table 1 covers its **84-country, 2004–2018 sample**, which is neither the campaign's
+panel jurisdictions nor the 2024–2027 vintage. The article itself was not
+reachable from this environment (Springer returned a client challenge), so the
+operationalisation above is read from the publisher's own indexed text rather than
+from the typeset article; that is recorded as a limitation, not glossed.
+
+**Decision.** The **registered fallback ordinal distance-from-English scale is
+selected as the panel-wide implementation** of the mandatory linguistic-distance
+control. The published S-44 LD values are **not** discarded: they are registered as
+an **external validation** of the fallback scale's **ordering** — the fallback must
+rank jurisdictions in the same order as the published index on the countries where
+S-44 publishes a value, and the concordance is reported alongside every result. The
+published index is **never** presented as this campaign's own effect, in either
+role.
+
+**What remains open, and is recorded rather than hidden.** The fallback is registered
+as a *construct* — "ordinal distance-from-English", English-official jurisdictions
+at 0, built from UN/ISO 639 official-language status — but the **category
+boundaries are not enumerated** in the frozen specification. An ordinal scale needs
+its categories written down before it can be applied, and the enumeration must be
+**added by dated decision before the holdout is opened**, not improvised at run
+time. The inputs for it are the same open sources already named in §3.5, so the
+enumeration is cheap; it is simply not done in this session, and pretending
+otherwise would be a registration defect of exactly the kind this campaign exists to
+avoid.
+
+**Rationale.** The choice was pre-registered in the right order: primary measure,
+fallback, and the condition that selects the fallback ("cannot be reproduced
+exactly from its source"). The condition turns out to be **met**, so the fallback is
+selected by the rule rather than by preference. Selecting it now, before any return
+is computed and before the holdout opens, is what keeps the control ex ante.
+
+**Reverses if.** The authors publish their country-level LD values and the
+Ethnologue vintage they used, or the maintainer supplies an existing entitlement to
+both, in which case the primary measure is restored for the jurisdictions it covers
+and the fallback remains in force for the rest, with the split recorded.
