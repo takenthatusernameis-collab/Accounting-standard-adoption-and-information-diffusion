@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-22 (worker session 99 — verification session)
+**Last updated:** 2026-10-22 (worker session 100 — verification session)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
@@ -19,6 +19,15 @@ P0–P3 cannot be executed until the environment resolves the hosts. No new prim
 source read, no filing archive harvested, no paid provider contacted, no
 outcome-period return computed or inspected, no workflow run. §9 initial task
 message carried forward unchanged.
+
+**Session 100 note.** Session 100 re-verified the committed state against the handoff:
+`git fetch origin main` shows `origin/main` at `891da70` (checkpoint), no advance
+beyond the prior tip; `git status` is clean; `python3 -m pytest -q tests/` →
+**173 passed, 0 failing**. Blocker **B3 (network/DNS)** remains open: P0–P3
+cannot be executed until the environment resolves the hosts. No new primary source
+read, no filing archive harvested, no paid provider contacted, no outcome-period
+return computed or inspected, no workflow run. §9 initial task message carried
+forward unchanged.
 
 ---
 
