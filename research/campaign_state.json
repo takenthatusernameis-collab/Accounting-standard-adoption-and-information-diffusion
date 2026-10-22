@@ -201,7 +201,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-22T18:36:46Z",
+  "updated_at": "2026-10-22T19:36:15Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
