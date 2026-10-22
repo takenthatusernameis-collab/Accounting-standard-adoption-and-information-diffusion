@@ -4,12 +4,11 @@ Written: 2026-10-22
 Author: Worker session 4 of the ACCTCLOCK loop.
 Governing design: `research/specification_v1.1.md` (v1.1),
 `research/preregistration_v1.1.md` (v1.1).
-Companion: `research/data_route_assessment.md` (route comparison and authorisation
-request, §6.5).
+Companion: `research/data_route_assessment.md` (route comparison and D-031 current decision).
 
-Status: **Plan. Not executed.** Nothing has been downloaded, purchased, or committed.
-No paid data pull has been made, no GitHub Actions run has been started, and no
-outcome-period return has been computed or inspected.
+Status: **D-031 route selected; acquisition not yet executed.** The repo now contains a guarded paid-provider client and offline tests. No paid data was purchased or fetched; no public filing archive was harvested; no workflow run started; no outcome-period return has been computed or inspected.
+
+**Current instruction:** public read-only harvesting is authorized subject to source terms/rate limits, and the selected paid route is Sharadar for US stocks plus EODHD All World for international venues. This supersedes the earlier requirement to wait for separate A1–A5 user responses. A paid request still requires user-provisioned credentials, an explicit adapter flag and known quota/charges; an agent must not buy a subscription or spend money. Keep raw files outside the repository. See research/paid_data_route_execution.md and research/authorisation_request.md.
 
 ---
 
@@ -240,24 +239,19 @@ Rules:
 - The **UK Endorsement Board / FRC** instruments for the UK (see §6.2).
 - Each jurisdiction's own adoption instrument for Stratum B.
 
-### 6.5 Prices — the one paid dependency
+### 6.5 Prices — selected paid-provider route (D-031)
 
-- **Preferred (authorisation required):** **Sharadar / Nasdaq Data Link** (~$30/month
-  personal tier; CRSP-grade daily prices with point-in-time membership and delisted
-  names) for US and global coverage, and **EODHD** (~$20/month; delisted included on
-  all paid tiers) for UK and selected EU venues. If the maintainer holds a **CRSP
-  Global + Compustat / WRDS** seat, use it — it is free to this campaign and strictly
-  better.
-- **Requirement, not a preference:** the price source must cover **delisted securities
-  and supply a vendor delisting return**, and must cover the venues of the **control
-  jurisdictions**. A source that covers only the treated venues is not sufficient,
-  because the DDD's counterfactual needs not-yet-treated jurisdictions with the same
-  coverage.
-- **Free fallback (Stooq / Yahoo / Tiingo / Alpha Vantage) is rejected** for the
-  primary estimate: measured coverage of a delisted cohort was ~41% on free stooq, and
-  the missing names are disproportionately small and illiquid — the treatment arm.
-- **Cost:** ~$50/month at retail tiers. **This is a paid data pull and requires the
-  protocol's Authority item 4 authorisation.**
+**Preferred split:**
+
+- **US active and delisted stocks:** Sharadar stock-prices table / SEP, daily OHLCV with split-adjusted and split/dividend/spinoff-adjusted fields. Official docs: https://sharadar.com/docs/stocks and https://sharadar.com/docs/auth. The docs describe active and delisted US names back to December 1997.
+- **International and matched-control venues:** EODHD All World historical EOD API; inventory active and delisted symbol lists by exchange, then request EOD history. Official docs: https://eodhd.com/financial-apis/api-for-historical-data-and-volumes, https://eodhd.com/financial-apis/delisted-stock-companies-data-2, and https://eodhd.com/pricing.
+- **Existing CRSP/WRDS entitlement:** may be assessed if already provisioned, but do not assume access or create a new account solely for this possibility.
+
+The current public EODHD price page lists **US$19.99/month** for All World EOD (personal use). The campaign's previous Sharadar estimate (~US$30/month) is not verified as a current quote. The earlier combined ~US$50/month figure is only a planning estimate. Verify checkout price, market/identifier coverage, data fields, licence, renewal and cancellation terms before any purchase; the agent may not buy or silently upgrade a plan.
+
+**Required validation:** paid access does not itself prove the data panel is survivor-clean. Before bulk acquisition, audit exchanges, ticker history, inactive/delisted names, history depth, corporate actions, adjusted price definitions, delisting/terminal return treatment and coverage in both treated and not-yet-treated control jurisdictions. An adjusted close is not automatically a CRSP-style delisting return. Do not assume a missing terminal return is zero or silently drop the security; use a documented permitted reconstruction or fail the registered R1 gate.
+
+The implementation is **scripts/price_provider_client.py**, with offline tests in **tests/test_price_provider_client.py**. It is disabled by default; requires **ACCTCLOCK_ENABLE_PAID_DATA=1** plus **SHARADAR_API_KEY** or **EODHD_API_TOKEN**, which must be provisioned directly in the execution environment/secret store, never in chat or Git. Raw files and manifests remain under the external cache, and credential values must never appear in logs or manifest URLs. No purchase or paid request has been made by this update.
 
 ### 6.6 FX, enforcement and linguistic distance
 
@@ -293,72 +287,39 @@ both conditional on licence availability.
 6. **Coverage matrix:** counts by event, jurisdiction, year, treatment leg, liquidity
    bucket and split — the input to the preregistration's feasibility audit (§5).
 
-## 8. Authorisation checklist — the actual gate
+## 8. Current execution decision (D-031) — replaces the old A1–A5 wait
 
-**Nothing in §6 may be executed until the maintainer answers §8.1 and §8.2.**
-"No answer" is not authorisation. The protocol's Authority item 4 forbids paid data
-pulls and side-effecting runs without explicit authorisation, and this repository's
-token cannot grant it.
+The earlier A1–A5 question list is historical; do not use it as a reason to wait for another user answer. The maintainer's current direction is recorded in research/authorisation_request.md and research/decision_log.md.
 
-### 8.1 Decisions required
+| Item | Current decision | Execution boundary |
+|---|---|---|
+| A1 — prices | Select Sharadar for US active/delisted prices and EODHD All World EOD for international/control venues. | Subscription purchase and payment remain with the account holder; an agent does not create accounts, accept paid terms or incur charges. API calls require user-provisioned credentials, explicit enable flag and known plan quota/charges. |
+| A2 — public data | Read-only harvesting is authorized for SEC EDGAR and public regulator/issuer/standard-setter sources listed in §6. | Apply source access terms, rates, declared User-Agent and retry rules; cache outside repo and log failed retrievals. |
+| A3 — raw data | Use external cache; commit code, hashes, provenance manifests and non-restricted aggregate outputs only. | No raw vendor-licensed payload in Git. |
+| A4 — panel | Apply the already registered panel rule. | Do not hand-pick, trim or add jurisdictions after the feasibility audit starts to change counts. Reconcile stale panel counts from code/source manifests first. |
+| A5 — PH-1 | Feasibility audit is authorized. | Outcome returns are inspected only if the data-quality and preregistered sample gates pass; preserve the once-only PH-1 rule. |
 
-| # | Decision | Options | Consequence |
-|---|---|---|---|
-| **A1** | **Market data** | (a) authorise **Sharadar/Nasdaq Data Link** (~$30/mo) + **EODHD** (~$20/mo); (b) point the pipeline at an existing **CRSP/WRDS** entitlement; (c) **no paid data** — authorise the reduced-power fallback in §9 | (a)/(b) unblock the full v1.1 design. (c) makes the primary estimand **inconclusive by construction** (preregistration §5.3) and triggers kill condition 9. |
-| **A2** | **Public harvesting** | authorise read-only harvesting of **SEC EDGAR**, the **FCA NSM/RNS**, the named **national OAMs**, **EUR-Lex**, the **IFRS Foundation** profiles, the **FASB** pages, **ECB FX** and **World Bank WGI** | Required for T-R, T-RI, the state variables and the restated comparatives. **This is the highest-value and zero-cost authorisation.** |
-| **A3** | **Repository policy for harvested files** | (a) default — cache outside the repository, commit only code, manifests and hashes; (b) named-source exception | (a) is the default; (b) requires a per-source ruling recorded as a new decision. |
-| **A4** | **Panel scope confirmation** | (a) confirm the registered panel of `research/specification_v1.1.md` §1.1 (Stratum A + Stratum B by rule); (b) restrict to Stratum A only; (c) restrict to the frozen EU/UK/US universe | (b) reduces expected clusters to ≈8, **below the ≥12 minimum** → primary estimand inconclusive by construction. (c) is the v1.0 universe and is **not executable** (D-009). **The panel is registered by rule and should not be changed after the feasibility audit begins.** |
-| **A5** | **Prospective holdout** | confirm that **PH-1** (the IFRS 18 first-application window, 2027 interim reporting season) may be registered as v1.2 before the first IFRS 18 report is published | PH-1 is the only genuinely prospective, untamable holdout available to this campaign. |
+### 8.1 Bounded trigger sequence
 
-**Status of §8.1 as of 2026-10-22 (session 5).** The table above is the request **as
-issued**; it is reproduced verbatim in `research/authorisation_request.md` and in the
-handoff, and it is **not edited in place**. Two of its rows have since moved:
+1. Record D-031 and verify all frozen preregistration files remain unchanged.
+2. Reconcile the panel file and state/handoff counts using the committed builder and manifest; record each pending membership condition explicitly.
+3. Run the offline suite in the actual repository environment and report the observed test count. Do not infer that a test passes simply because test files were committed.
+4. Continue public-source collection within permitted rate limits without waiting for vendor access.
+5. If user-provisioned vendor credentials are available, verify that quota and charges are understood; enable the adapter explicitly for a small US and an international symbol, validate schema and secret redaction, then review results before any bulk request.
+6. Build and publish the feasibility audit: independent clusters, treatment and control counts, coverage, missingness, survivorship/delisting-return semantics and licensing. **No outcome-period returns before this report.**
+7. Stop before the outcome if the frozen minimum of **12 independent clusters** or **200 treatment firms** fails, or if the primary price/terminal-return requirement cannot be satisfied. Report the result as inconclusive/parked, not as a null and not as a validated strategy.
 
-- **A5 is partially discharged.** The **registration** it asks for has been performed:
-  v1.2 (`research/hypothesis_v1.2.md`, `research/specification_v1.2.md`,
-  `research/preregistration_v1.2.md`) was registered on 2026-10-22, before the first
-  IFRS 18 report can be published (decision D-019). What remains is the maintainer's
-  **confirmation that the registered arm may be *run*** under the protocol's promotion
-  gate. Registration was not treated as self-authorisation.
-- **A4 now has a concrete object.** `research/panel_v1.1.csv` exists — 434 rows, 8
-  complete Stratum A events and 426 Stratum B candidate rows over 142 jurisdictions —
-  derived by rule from a dated, hashed snapshot of the IFRS Foundation jurisdiction
-  profiles. A4 (a) is what converts those 426 rows from `pending` to `true` or
-  `false`, one by one, as A1 and A2 land.
+### 8.2 Explicitly not done or authorized
 
-**A1, A2 and A3 are entirely outstanding.**
+- No subscription purchase, auto-renewal or unspecified spend by an agent.
+- No paid API request until credentials have been provisioned and quota/charges are understood.
+- No bulk filing harvest until bounded smoke checks succeed and source rate limits are verified.
+- No GitHub Actions run, workflow change, broker connection, trading action or deployment.
+- No outcome-period return has been computed or inspected.
 
-### 8.2 When authorisation arrives — the trigger sequence
+## 9. Historical free-data fallback (superseded as the selected route by D-031)
 
-1. **Record the authorisation** as a new decision in `research/decision_log.md` (D-0xx)
-   quoting the maintainer's instruction, with the date and the exact scope granted.
-2. **Set the cache root** (`$ACCTCLOCK_CACHE`) and confirm it is **outside** the
-   repository working tree; verify with `git status` that no raw file appears.
-3. **Implement the acquirer** under `scripts/` with the manifests and hashing of §5,
-   plus the integrity checks of §7. Commit the code **before** fetching.
-4. **Run the smallest possible smoke fetch** (one CIK, one filing, one price symbol)
-   and verify the manifest, the hash and the acceptance-timestamp parse against the
-   filing index by hand.
-5. **Expand in the registered order:** panel file first (it fixes the universe), then
-   filings, then prices, then the control jurisdictions, then the mandatory control
-   series.
-6. **Run the feasibility audit** (preregistration §5) and **publish its counts before
-   any return is computed.**
-7. Only then may any outcome-period return be computed, and only under the frozen
-   test order.
-
-### 8.3 What is explicitly NOT requested and NOT done
-
-- No paid pull has been made in this session, and none will be made without A1.
-- No GitHub Actions run has been started, and none will be started without explicit
-  authorisation (the protocol's Authority item 4).
-- No new upstream repository has been written to. The canonical dossier was read
-  read-only, and no upstream file was modified.
-- `.github/workflows/main.yml` remains unmodified (D-006).
-
-## 9. The fallback (Route c), scoped under the v1.1 design
-
-If **A1(c)** is chosen — no paid data — the panel collapses to **US (EDGAR) + UK (FCA
+This is a historical fallback, not the current selected route. If paid credentials cannot be provisioned, the panel would collapse to **US (EDGAR) + UK (FCA
 NSM) + EU-27 (national OAMs, treated as one application cohort)**, and the registered
 Stratum B is unavailable because free survivorship-clean price coverage does not exist
 for those venues.
@@ -382,7 +343,7 @@ count of 8 clusters and the survivorship bias stated in every table.
 | SEC EDGAR acquirer + SGML acceptance parser | free | 1–2 days | **Yes — the primary spine** |
 | OAM acquirers (per jurisdiction) | free | 1 day each | Yes for Stratum B |
 | UK endorsement instrument verification + NSM time verification | free | 0.5 day | Yes for the UK rows |
-| Price subscription | ~$50/month (retail) | 0.5 day | **Yes — the one paid dependency** |
+| Price subscription | EODHD currently lists US$19.99/month for All World EOD; Sharadar quote unverified (old ~US$30/month estimate) | account-holder checkout + bounded adapter test | Selected route; purchase not made by agent |
 | IFRS Foundation profile snapshot | free | 0.5 day | Yes for the panel |
 | EUR-Lex / FASB primary-date verification | free | 0.5 day | Yes for T-A |
 | WGI + FX + linguistic distance | free | 0.5 day | Yes for the mandatory controls |
