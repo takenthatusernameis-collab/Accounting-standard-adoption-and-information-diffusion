@@ -167,7 +167,7 @@ Where authorized, maintain:
 - research/decision_log.md — continue/park/reject and reasons.
 - research/prompt_changelog.md — dated iterations and rationale.
 
-Do not create or modify these artifacts automatically if repository instructions or permissions prohibit it. This request authorizes the prompt file itself, not additional workflow runs or live activity.
+Do not create or modify these artifacts automatically if repository instructions or permissions prohibit it. The original prompt-file request authorized the prompt file only. D-031 additionally authorizes read-only public-source collection and a pre-outcome feasibility audit; it still does not authorize paid purchases or unspecified charges, GitHub Actions runs, trading or live activity.
 
 ## Final report format for every cycle
 1. **Decision:** continue, narrow, park, reject, or (only after every gate) recommend a separately authorized next stage.
