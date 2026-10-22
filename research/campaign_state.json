@@ -2,7 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
-    "2026-10-22: v1.1 registered (hypothesis, specification, preregistration). The design blocker (D-009) is cleared; v1.0 files are byte-identical and unedited.",
+    "2026-10-22 (session 112): verification pass. Local at 280ee1d, clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. No new primary source, no filing harvest, no outcome-period return. Campaign PARKED — not validated, not rejected; next step phase3b-data-execution-and-feasibility-audit; starts at P3. P0/E-028, P1/D-038 done; P2 done (10 verified T-A in 10 cohorts). B3 lifted; remaining unverified keep empty T_A per D-011.",
     "2026-10-22: the retrospective panel has NO post-2019 T-A, so its chronological holdout is EMPTY; declared in advance with the consequence fixed (D-014). The promotable test is the prospective holdout arm PH-1, which needs a v1.2 registration before the first IFRS 18 report is published.",
     "2026-10-22: data execution is blocked on maintainer authorisation A1-A5 (research/data_acquisition_plan.md section 8). No outcome-period return has been computed or inspected.",
     "2026-10-22: the read-only EDGAR acquirer, the SGML acceptance-time parser, the manifest writer and the cache layout are now IMPLEMENTED and unit-tested (scripts/sec_edgar.py, scripts/sec_acceptance.py, scripts/data_manifest.py, scripts/data_cache.py; 48 new tests, 115 total, all passing, zero network calls in the suite). The acquirer was exercised only against synthetic fixtures; no filing archive was harvested (E-015).",
