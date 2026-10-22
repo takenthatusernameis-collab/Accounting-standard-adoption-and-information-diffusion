@@ -14,7 +14,8 @@
     "2026-10-22: ALL THREE named verification gaps are now CLOSED or DETERMINED from primary sources (D-021, D-022, D-023). (a) The FCA National Storage Mechanism publishes a filing DATE, not a time: the published glossary defines 'Publication date' as 'The date a document/announcement was released via a Regulatory Information Service (RIS) or uploaded to the NSM', and the Investor User Guide defines 'Filing date' as a date. A time exists in the plumbing (the PIP-to-NSM schema carries a mandatory PublishingDate element, YYYY-MM-DDTHH:MM:SSZ) but binds PIPs only FROM 3 NOVEMBER 2025 under PS24/19. CONSEQUENCE: the two retrospective UK events (transition windows 2016-01-01 and 2019-01-01) CANNOT be timed at all, whatever the remaining verification; the UK stays viable for PH-1, whose window falls entirely after the regime starts. The NSM search API answered HTTP 403 on 2026-10-22, so condition (j) is UNVERIFIED, not false, and the failed retrieval is recorded as a failed retrieval. (b) The IFRS 18 instruments are pinned: EU T-A 2026-02-13 (date of endorsement; OJ publication 2026-02-16), UK T-A 2025-12-10 (UKEB formal adoption, closing the gap v1.2 left open), Saudi Arabia T-A 2024-12-26 (SOCPA adoption). v1.2 had registered the Saudi date 2026-06-30, which is the CMA's EARLY-ADOPTION decision (CMA_N_4083), not the instrument making IFRS 18 mandatory; the applied T-A follows the registered condition (2) and the conflict is written into the row's own fields. CONSEQUENCE, recorded in advance: the CMA-mandated pre-adoption impact disclosure (periods from 2026-04-01) falls INSIDE the Saudi transition window rather than before it, so Saudi Arabia has NO clean T-PRE anchor and its standing in PH-1 is an open design question to be settled before the holdout opens and never by looking at outcomes. (c) The published S-44 linguistic-distance index (Joshi and Lahiri 2015 friction index over 192 WALS features) CANNOT be reproduced exactly panel-wide: Ethnologue is licensed and versioned, the merge was manual, and Table 1 covers only the paper's 84-country 2004-2018 sample. The registered condition is therefore met and the REGISTERED FALLBACK ordinal scale is selected by the rule, with the published values kept as an external validation of the ordering. The fallback's category boundaries are still to be enumerated by dated decision before the holdout opens. The IFRS 18 events are registered in research/panel_v1.2.csv and deliberately NOT in the retrospective event calendar, because adding 2024-2026 rows would destroy that calendar's defining property (every retrospective event has T-A on or before 2017-10-31, so the chronological holdout split is empty; D-014). No outcome-period return was computed or inspected (E-020).",
     "2026-10-22: the PH-1 PANEL FILE NOW EXISTS: research/panel_v1.2.csv, 142 rows, one per (IFRS 18, jurisdiction), in the schema of research/specification_v1.1.md section 4.2 with the same three-state in_registered_panel discipline. All 142 rows are pending (conditions 3, 4 and 5 unverified for every jurisdiction; condition 2 verified for three). Three rows carry a primary-verified day-level T_A (EU 2026-02-13, UK 2025-12-10, Saudi Arabia 2024-12-26) and a date_conflict field recording the competing dates; the other 139 carry an EMPTY T_A rather than an inferred one. The file is built by committed code (scripts/build_panel.py, 9 unit tests, no network access) and the candidate universe is read back from the Stratum B rows of research/panel_v1.1.csv, so both panel files come from ONE dated, hashed membership vintage (E-021).",
     "2026-10-22 (session 5d): read prior handoff, verified tests (144 passed), updated handoff/campaign state. D-029 (2026-10-22) settled Saudi T-PRE by admission with uniform interval rule [T-A, T-PRE] (if T-A < T-PRE < T-R) and registered as v1.3; corrected preregistration_v1.2.md statement that instruments converge on application date (they do not - T-A spans 17 months). Campaign remains PARKED — not validated, not rejected; phase3b pending and blocked on authorisation A1–A5.",
-    "2026-10-22 (session 5e): condition 2 of the PH-1 membership rule verified for a SIXTH jurisdiction - New Zealand, NZ IFRS 18 issued 2024-05-23 by the NZ Accounting Standards Board under the Financial Reporting Act 2013, mandatory date 2027-01-01, statutory character (S-72, decision D-030). South Korea recorded as ATTEMPTED AND NOT VERIFIED AT DAY LEVEL: K-IFRS 1118 was announced December 2025 and is mandatory 2027-01-01, but no source consulted carries a day-level issuance date, so T-A is left EMPTY rather than inferred (S-73). research/panel_v1.2.csv rebuilt from committed code: 141 rows, 6 primary-verified day-level T_A (EU 2026-02-13, UK 2025-12-10, Saudi Arabia 2024-12-26, Singapore 2024-10-04, Brazil 2025-12-23, New Zealand 2024-05-23), 135 still pending with empty T_A. Source ledger now 73 entries (S-72, S-73); experiment ledger 23 rows (E-022); test suite 145 passing. Panel rule, thresholds and the v1.2/v1.3 inconclusive-by-construction consequence are unchanged; D-016 not triggered (feasibility audit has not begun, no jurisdiction dropped by hand). Campaign remains PARKED - not validated, not rejected; A1-A5 still outstanding; no outcome-period return computed or inspected."
+    "2026-10-22 (session 5e): condition 2 of the PH-1 membership rule verified for a SIXTH jurisdiction - New Zealand, NZ IFRS 18 issued 2024-05-23 by the NZ Accounting Standards Board under the Financial Reporting Act 2013, mandatory date 2027-01-01, statutory character (S-72, decision D-030). South Korea recorded as ATTEMPTED AND NOT VERIFIED AT DAY LEVEL: K-IFRS 1118 was announced December 2025 and is mandatory 2027-01-01, but no source consulted carries a day-level issuance date, so T-A is left EMPTY rather than inferred (S-73). research/panel_v1.2.csv rebuilt from committed code: 141 rows, 6 primary-verified day-level T_A (EU 2026-02-13, UK 2025-12-10, Saudi Arabia 2024-12-26, Singapore 2024-10-04, Brazil 2025-12-23, New Zealand 2024-05-23), 135 still pending with empty T_A. Source ledger now 73 entries (S-72, S-73); experiment ledger 23 rows (E-022); test suite 145 passing. Panel rule, thresholds and the v1.2/v1.3 inconclusive-by-construction consequence are unchanged; D-016 not triggered (feasibility audit has not begun, no jurisdiction dropped by hand). Campaign remains PARKED - not validated, not rejected; A1-A5 still outstanding; no outcome-period return computed or inspected.",
+    "2026-10-22 (D-031): paid-provider route selected (Sharadar US active/delisted prices; EODHD All World EOD for international/control venues); public read-only harvesting and pre-outcome PH-1 feasibility audit authorized subject to source terms/rate limits. A1-A5 are superseded as pending user decisions. Provider client/scripts/price_provider_client.py and offline tests/tests/test_price_provider_client.py are committed; research/paid_data_route_execution.md, authorisation_request.md, data_acquisition_plan.md and HANDOFF.md refreshed. No purchase, paid API request, bulk filing harvest, workflow run, backtest or outcome-return inspection occurred. Still pending: provisioned provider access/credentials, offline test execution, current panel-count reconciliation, exchange-level coverage/terminal-return verification and the frozen feasibility gates."
   ],
   "remote_source": null,
   "schema_version": 1,
@@ -93,7 +94,7 @@
         "filings_acquired": false,
         "manifest": "research/data_manifest.md",
         "market_data_acquired": false,
-        "note": "no paid data pull, no filing-archive harvest, no GitHub Actions run, no workflow edit; harvest not yet authorised",
+        "note": "D-031 current route selected; public read-only harvesting authorized under source terms/rate limits. No data acquisition has run in this update. Paid access/credentials are not provisioned.",
         "route_assessment": "research/data_route_assessment.md",
         "panel": "research/panel_v1.1.csv",
         "panel_rows": 434,
@@ -106,28 +107,26 @@
     },
     {
       "attempts": 0,
-      "error": "blocked on maintainer authorisation (protocol Authority item 4); no data acquired",
+      "error": null,
       "finished_at": null,
       "id": "phase3b-data-execution-and-feasibility-audit",
       "result": {
         "blocked_on": [
-          "authorisation A1 (market data: survivorship-clean price subscription)",
-          "authorisation A2 (read-only public harvesting: SEC EDGAR, FCA NSM, national OAMs, EUR-Lex, IFRS Foundation, FASB, ECB FX, World Bank WGI)",
-          "authorisation A3 (repository policy for harvested files)",
-          "authorisation A4 (panel scope confirmation)",
-          "authorisation A5 (confirmation that the registered PH-1 / v1.2 arm may be RUN; the registration itself was completed on 2026-10-22 and was not treated as self-authorisation)"
+          "user-provisioned Sharadar/EODHD plan access and API credentials for any paid price request",
+          "actual venue-by-venue active/delisted price coverage and terminal/delisting-return semantics must be verified",
+          "reconcile current panel/handoff/state counts and execute offline tests in the repository environment"
         ],
-        "first_action_when_unblocked": "the acquirer is already implemented and tested; on authorisation, commit the code path, set ACCTCLOCK_USER_AGENT, run the smallest possible smoke fetch and verify the acceptance-timestamp parse against the filing index by hand before any bulk run",
-        "gate_before_any_return": "publish the feasibility audit counts (clusters, treatment firms, coverage) BEFORE any outcome-period return is computed; stop if clusters < 12 or treatment firms < 200",
+        "first_action_when_unblocked": "Run offline tests in the repository environment; reconcile the current panel and state counts; continue authorized public-source acquisition; if paid credentials exist and costs/quotas are understood, run one bounded US and one international price smoke test before any bulk request.",
+        "gate_before_any_return": "Publish coverage, independent cluster count, treatment/control counts, data quality and terminal/delisting-return audit before any outcome-period return is computed. Stop if <12 independent clusters or <200 treatment firms, or required terminal returns cannot be supported.",
         "trigger_sequence": "research/data_acquisition_plan.md section 8.2",
         "also_outstanding": [
-          "the Saudi Arabia T-PRE question: with T-A at 2024-12-26 the CMA-mandated pre-adoption impact disclosure falls inside the transition window, so Saudi has no clean pre-disclosure anchor; its standing in PH-1 must be settled by dated decision before the holdout opens (D-022)",
-          "the category boundaries of the registered fallback linguistic-distance ordinal scale, which must be enumerated by dated decision now that the fallback is the selected implementation (D-023)",
-          "the single remaining UK verification: whether the NSM search response or CSV export carries a time-of-day component, which decides whether the UK satisfies panel condition (j) for events after 3 November 2025 (D-021)"
+          "provider access/credentials are external to the repository; agent must not purchase a subscription or incur unspecified charges",
+          "PH-1 is expected at ~4-8 independent clusters, below the frozen minimum, pending audit",
+          "delisted-security terminal/delisting return semantics may remain infeasible even if a vendor supplies adjusted close"
         ],
         "panels_materialised": [
-          "research/panel_v1.1.csv (434 rows: 8 complete Stratum A events, 426 Stratum B candidate rows)",
-          "research/panel_v1.2.csv (142 rows: the PH-1 panel; 3 with a primary-verified T_A, 139 pending, all rows pending)"
+          "research/panel_v1.1.csv (434 rows in the registered historic snapshot; reconcile before use)",
+          "research/panel_v1.2.csv (latest campaign note reports 141 rows: six primary-verified day-level T_A and 135 pending; reconcile by rerunning the committed builder before audit)"
         ],
         "closed_gaps": [
           "the UK filing-timestamp question (D-021): the NSM publishes a date; the retrospective UK events cannot be timed",
@@ -175,5 +174,23 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-22T11:55:00Z"
+  "updated_at": "2026-10-22T12:10:10.245Z",
+  "current_instruction": {
+    "decision_id": "D-031",
+    "selected_price_route": [
+      "Sharadar Stock Prices / SEP for US active and delisted daily prices",
+      "EODHD All World EOD for international and matched-control venues"
+    ],
+    "public_read_only_harvesting": "authorized subject to source terms, rate limits, and attribution requirements",
+    "raw_data_policy": "cache outside repository; commit code, hashes, manifests, and non-restricted aggregates only",
+    "paid_api_guard": "requires account-holder-provisioned credentials, explicit ACCTCLOCK_ENABLE_PAID_DATA=1, and known plan quotas/charges; agent must not purchase or incur unspecified spend",
+    "feasibility_gate": "publish coverage and sample counts before outcomes; require at least 12 independent adoption clusters and 200 treatment firms; verify terminal/delisting-return handling",
+    "execution_status": "route selected; provider credentials and coverage audit pending; no outcome-period returns computed or inspected",
+    "no_actions": [
+      "subscription purchase",
+      "paid API request without credentials/known charge limits",
+      "GitHub Actions run",
+      "brokerage/trading/deployment"
+    ]
+  }
 }
