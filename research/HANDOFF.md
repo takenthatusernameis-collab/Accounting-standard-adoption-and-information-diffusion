@@ -531,7 +531,7 @@ as a feature of the design rather than an obstacle to it.
 > PH-1 arm), `research/specification_v1.1.md` (the design, §§1–7),
 > `research/data_acquisition_plan.md`, `research/data_route_assessment.md`,
 > `research/decision_log.md` (D-001 … D-038), `research/prompt_changelog.md`
-> (Iteration 17 is the most recent), `research/event_calendar.csv`,
+> (Iteration 18 is the most recent), `research/event_calendar.csv`,
 > `research/experiment_ledger.csv`, `research/source_ledger.csv`,
 > `research/authorisation_request.md`, and `research/results.md`.
 > There is no `AGENTS.md` in this repository; the protocol file is the governing
@@ -543,7 +543,7 @@ as a feature of the design rather than an obstacle to it.
 > the v1.0 and v1.1 files are byte-identical and unedited; the canonical dossier was
 > retrieved read-only at commit `1f9bd09cc96c1953f67ffc1f9892f7e60b6a71ff` and was
 > **not modified**; the source ledger holds **99** sources (S-01 … S-99); the decision
-> log holds **D-001 … D-038**; the experiment ledger holds **30** rows (E-000 … E-029);
+> log holds **D-001 … D-038**; the experiment ledger holds **31** rows (E-000 … E-030);
 > `research/panel_v1.1.csv` holds **431** rows and `research/panel_v1.2.csv` holds
 > **141** rows, of which **10** carry a primary-verified day-level T-A in **10 distinct
 > timing cohorts**; the test suite is **173 passed, 0 failing**; and **no
@@ -552,7 +552,9 @@ as a feature of the design rather than an obstacle to it.
 > **finished** with outcome **inconclusive_by_construction** (experiment ledger row
 > E-029), because the frozen gates fail — **10 verified timing cohorts < 12 required**
 > and **0 admitted treatment firms < 200 required** — and free delisted/terminal-return
-> price coverage is not established. `current_instruction` = **D-032 (free-only route)**.
+> price coverage is not established. The prior agent task (report the park honestly) is
+> complete: experiment ledger row E-030 and changelog Iteration 18 record the park.
+> `current_instruction` = **D-032 (free-only route)**.
 >
 > **FIRST — check whether the remote has moved.** Two runners can push here.
 > Run `git fetch origin main` and `git log --oneline origin/main -5` **before** you
@@ -593,13 +595,23 @@ as a feature of the design rather than an obstacle to it.
 > experiment ledger row E-029 and changelog Iteration 17; campaign_state.json phase3b
 > marked finished. Test suite **173 passed, 0 failing**.
 >
-> **What remains.** The campaign is parked on the frozen ≥ 12 cohort gate. To unblock,
-> you would need to verify **+2 more condition-2 jurisdictions** (day-level IFRS 18
-> instruments, each from its own regulator, hashed, empty T_A if unverifiable per
-> D-011) to reach 12 cohorts, AND establish treatment firms ≥ 200 AND terminal/delisting
-> returns from free sources. **Do not compute or inspect any outcome-period return, and
-> do not open PH-1, unless all gates pass.** If you cannot advance the gates, report the
-> park honestly and do not narrow the panel or lower the gates (D-016).
+> **Park reported honestly (this session).** The prior agent task is complete: P0–P3
+> are all done, and the campaign is reported as parked rather than advanced. The frozen
+> gates fail — **10 verified timing cohorts < 12 required**, **0 admitted treatment
+> firms < 200 required** — and free delisted/terminal-return price coverage is not
+> established (Stooq JavaScript anti-bot challenge; Yahoo Finance terms-prohibited/
+> unreliable). Even reaching 12 cohorts would **not** satisfy the ≥200 treatment-firm
+> gate, which requires unacquired firm-level data. **No outcome-period return has been
+> computed or inspected**, and **PH-1 has not been opened**. Recorded as experiment
+> ledger row E-030 and changelog Iteration 18. **Do not re-do the park report.**
+>
+> **What remains.** To unblock the campaign you would need to verify **+2 more
+> condition-2 jurisdictions** (day-level IFRS 18 instruments, each from its own
+> regulator, hashed, empty T_A if unverifiable per D-011) to reach 12 cohorts, **AND**
+> establish treatment firms ≥ 200 **AND** terminal/delisting returns from free sources.
+> **Do not compute or inspect any outcome-period return, and do not open PH-1, unless
+> all gates pass.** If you cannot advance the gates, report the park honestly and do
+> not narrow the panel or lower the gates (D-016).
 >
 > **Rules that are not negotiable.**
 > - **No outcome-period return before the feasibility audit's counts are published.**
@@ -686,3 +698,5 @@ Verification pass (session 111). `git fetch origin main` -> origin/main at $(git
 **Session 112 (this turn).** Verified committed state against the handoff: `git fetch origin main` shows `origin/main` at e05bea8, no advance beyond the prior tip; `git status` clean; `python3 -m pytest -q tests/` -> **173 passed, 0 failing**. DNS resolves (B3 lifted). Confirmed P3 pre-outcome feasibility audit is complete: experiment ledger row E-029 recorded, changelog Iteration 17, campaign_state.json phase3b marked finished (outcome inconclusive_by_construction). Frozen gates fail: 10 verified timing cohorts < 12 required, 0 admitted treatment firms < 200 required; free delisted/terminal-return price coverage not established (Stooq JS anti-bot challenge, Yahoo terms-prohibited/unreliable). Primary estimand **inconclusive by construction**; no outcome-period return computed or inspected; PH-1 not opened; no registered artefact edited in place. Updated §9 initial task message for the next agent to reflect P3 completion and the parked cohort gate. Campaign remains **PARKED — not validated, not rejected**; next step remains `phase3b-data-execution-and-feasibility-audit` (blocked at the frozen ≥ 12 cohort gate).
 
 **Session 113 (this turn).** Verification pass. `git fetch origin main` -> origin/main at e05bea8 (no advance); `git status` clean; `python3 -m pytest -q tests/` -> **173 passed, 0 failing**. DNS resolves. P0–P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (10 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no outcome-period return computed or inspected. §9 initial task message carried forward unchanged.
+
+**This session.** Prior agent task completed — the park is reported honestly. `git fetch origin main` -> origin/main at 3c07e5b (no advance); `git status` clean; `python3 -m pytest -q tests/` -> **173 passed, 0 failing**. DNS resolves (B3 lifted). P0 (E-028), P1 (D-038), P2 (10 verified T-A in 10 cohorts) and P3 (E-029, Iteration 17) are all complete. Frozen gates fail: 10 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required; free delisted/terminal-return price coverage not established (Stooq JS anti-bot challenge, Yahoo terms-prohibited/unreliable). Even reaching 12 cohorts would not satisfy the ≥200 treatment-firm gate, which requires unacquired firm-level data. No outcome-period return computed or inspected; PH-1 not opened; no registered artefact edited in place; no paid provider contacted; no GitHub Actions run. Recorded as experiment ledger row E-030 and changelog Iteration 18. Campaign remains **PARKED — not validated, not rejected**. §9 initial task message rewritten for the next agent.
