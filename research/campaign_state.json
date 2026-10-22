@@ -15,7 +15,8 @@
     "2026-10-22: the PH-1 PANEL FILE NOW EXISTS: research/panel_v1.2.csv, 142 rows, one per (IFRS 18, jurisdiction), in the schema of research/specification_v1.1.md section 4.2 with the same three-state in_registered_panel discipline. All 142 rows are pending (conditions 3, 4 and 5 unverified for every jurisdiction; condition 2 verified for three). Three rows carry a primary-verified day-level T_A (EU 2026-02-13, UK 2025-12-10, Saudi Arabia 2024-12-26) and a date_conflict field recording the competing dates; the other 139 carry an EMPTY T_A rather than an inferred one. The file is built by committed code (scripts/build_panel.py, 9 unit tests, no network access) and the candidate universe is read back from the Stratum B rows of research/panel_v1.1.csv, so both panel files come from ONE dated, hashed membership vintage (E-021).",
     "2026-10-22 (session 5d): read prior handoff, verified tests (144 passed), updated handoff/campaign state. D-029 (2026-10-22) settled Saudi T-PRE by admission with uniform interval rule [T-A, T-PRE] (if T-A < T-PRE < T-R) and registered as v1.3; corrected preregistration_v1.2.md statement that instruments converge on application date (they do not - T-A spans 17 months). Campaign remains PARKED — not validated, not rejected; phase3b pending and blocked on authorisation A1–A5.",
     "2026-10-22 (session 5e): condition 2 of the PH-1 membership rule verified for a SIXTH jurisdiction - New Zealand, NZ IFRS 18 issued 2024-05-23 by the NZ Accounting Standards Board under the Financial Reporting Act 2013, mandatory date 2027-01-01, statutory character (S-72, decision D-030). South Korea recorded as ATTEMPTED AND NOT VERIFIED AT DAY LEVEL: K-IFRS 1118 was announced December 2025 and is mandatory 2027-01-01, but no source consulted carries a day-level issuance date, so T-A is left EMPTY rather than inferred (S-73). research/panel_v1.2.csv rebuilt from committed code: 141 rows, 6 primary-verified day-level T_A (EU 2026-02-13, UK 2025-12-10, Saudi Arabia 2024-12-26, Singapore 2024-10-04, Brazil 2025-12-23, New Zealand 2024-05-23), 135 still pending with empty T_A. Source ledger now 73 entries (S-72, S-73); experiment ledger 23 rows (E-022); test suite 145 passing. Panel rule, thresholds and the v1.2/v1.3 inconclusive-by-construction consequence are unchanged; D-016 not triggered (feasibility audit has not begun, no jurisdiction dropped by hand). Campaign remains PARKED - not validated, not rejected; A1-A5 still outstanding; no outcome-period return computed or inspected.",
-    "2026-10-22 (D-031): paid-provider route selected (Sharadar US active/delisted prices; EODHD All World EOD for international/control venues); public read-only harvesting and pre-outcome PH-1 feasibility audit authorized subject to source terms/rate limits. A1-A5 are superseded as pending user decisions. Provider client/scripts/price_provider_client.py and offline tests/tests/test_price_provider_client.py are committed; research/paid_data_route_execution.md, authorisation_request.md, data_acquisition_plan.md and HANDOFF.md refreshed. No purchase, paid API request, bulk filing harvest, workflow run, backtest or outcome-return inspection occurred. Still pending: provisioned provider access/credentials, offline test execution, current panel-count reconciliation, exchange-level coverage/terminal-return verification and the frozen feasibility gates."
+    "2026-10-22 (D-031): paid-provider route selected (Sharadar US active/delisted prices; EODHD All World EOD for international/control venues); public read-only harvesting and pre-outcome PH-1 feasibility audit authorized subject to source terms/rate limits. A1-A5 are superseded as pending user decisions. Provider client/scripts/price_provider_client.py and offline tests/tests/test_price_provider_client.py are committed; research/paid_data_route_execution.md, authorisation_request.md, data_acquisition_plan.md and HANDOFF.md refreshed. No purchase, paid API request, bulk filing harvest, workflow run, backtest or outcome-return inspection occurred. Still pending: provisioned provider access/credentials, offline test execution, current panel-count reconciliation, exchange-level coverage/terminal-return verification and the frozen feasibility gates.",
+    "2026-10-22 (D-031 smoke check): two bounded read-only requests used only vendor-published public sample/demo credentials (one 2-day AAPL history query per provider) but failed before HTTP response with local environment DNS error [Errno -3] Temporary failure in name resolution. Failure records with redacted URLs were added to research/manifests/price_provider_smoke_attempts.jsonl and E-025. No response body, price data, paid API request, subscription purchase or strategy outcome was obtained. This is an execution-environment/network limitation, not evidence of provider rejection or API failure."
   ],
   "remote_source": null,
   "schema_version": 1,
@@ -113,14 +114,16 @@
       "result": {
         "blocked_on": [
           "user-provisioned Sharadar/EODHD plan access and API credentials for any paid price request",
+          "current execution environment cannot resolve vendor domains; public sample smoke requests failed before HTTP, so retry from a network-enabled research runner",
           "actual venue-by-venue active/delisted price coverage and terminal/delisting-return semantics must be verified",
-          "reconcile current panel/handoff/state counts and execute offline tests in the repository environment"
+          "reconcile current panel/handoff/state counts and execute offline tests in a repository environment"
         ],
-        "first_action_when_unblocked": "Run offline tests in the repository environment; reconcile the current panel and state counts; continue authorized public-source acquisition; if paid credentials exist and costs/quotas are understood, run one bounded US and one international price smoke test before any bulk request.",
+        "first_action_when_unblocked": "Use a network-enabled repository environment: run the offline tests, reconcile panel/state counts, continue authorized public-source acquisition, then perform one bounded sample-key or provisioned-key request for each provider. Confirm current plan quotas/charges before paid requests.",
         "gate_before_any_return": "Publish coverage, independent cluster count, treatment/control counts, data quality and terminal/delisting-return audit before any outcome-period return is computed. Stop if <12 independent clusters or <200 treatment firms, or required terminal returns cannot be supported.",
         "trigger_sequence": "research/data_acquisition_plan.md section 8.2",
         "also_outstanding": [
           "provider access/credentials are external to the repository; agent must not purchase a subscription or incur unspecified charges",
+          "this container's DNS failure occurred before HTTP; neither vendor returned an HTTP response, so it does not establish a provider-side failure",
           "PH-1 is expected at ~4-8 independent clusters, below the frozen minimum, pending audit",
           "delisted-security terminal/delisting return semantics may remain infeasible even if a vendor supplies adjusted close"
         ],
@@ -174,7 +177,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-22T12:10:10.245Z",
+  "updated_at": "2026-10-22T12:15:33.251Z",
   "current_instruction": {
     "decision_id": "D-031",
     "selected_price_route": [
@@ -185,12 +188,18 @@
     "raw_data_policy": "cache outside repository; commit code, hashes, manifests, and non-restricted aggregates only",
     "paid_api_guard": "requires account-holder-provisioned credentials, explicit ACCTCLOCK_ENABLE_PAID_DATA=1, and known plan quotas/charges; agent must not purchase or incur unspecified spend",
     "feasibility_gate": "publish coverage and sample counts before outcomes; require at least 12 independent adoption clusters and 200 treatment firms; verify terminal/delisting-return handling",
-    "execution_status": "route selected; provider credentials and coverage audit pending; no outcome-period returns computed or inspected",
+    "execution_status": "Paid-provider route selected; provider adapter/tests committed but not run in a working repository clone; public sample endpoint smoke attempts recorded and blocked by local DNS resolution failure; no outcome-period returns computed or inspected.",
     "no_actions": [
       "subscription purchase",
       "paid API request without credentials/known charge limits",
       "GitHub Actions run",
       "brokerage/trading/deployment"
+    ],
+    "remaining_external": [
+      "user-provisioned plan access/API credentials for actual paid-data acquisition",
+      "a network-enabled execution environment for provider/API smoke requests and public filing acquisition",
+      "venue-by-venue coverage and terminal/delisting-return semantics",
+      "offline test execution in the repository environment and panel/handoff count reconciliation"
     ]
   }
 }
