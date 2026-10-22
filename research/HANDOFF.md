@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-22 (Worker session 5k)
+**Last updated:** 2026-10-22 (D-031 paid-provider route update)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
@@ -10,6 +10,14 @@ authorisation* blocker is still open, and it is the only thing that blocks the
 campaign. **No outcome-period return has ever been computed or inspected.**
 **Machine-readable state:** `research/campaign_state.json` — next step is
 `phase3b-data-execution-and-feasibility-audit` (pending, blocked on authorisation).
+
+---
+
+## Current instruction — D-031 (supersedes historical A1–A5 requests)
+
+The maintainer has selected a paid-provider route and authorized public read-only evidence acquisition plus a pre-outcome PH-1 feasibility audit. Use Sharadar Stock Prices / SEP for US active/delisted price history and EODHD All World EOD for international/control venues. **Do not ask the user to re-answer A1–A5.** The account holder must provision vendor plan access and API credentials; the agent must not buy a subscription, accept paid terms or incur unspecified charges. research/paid_data_route_execution.md is the current runbook; research/authorisation_request.md is now a resolved direction/credentials record rather than an open A1–A5 form.
+
+The new provider client and tests are committed, but have **not been independently run in this session**. Paid requests remain disabled by default. Public-source retrieval is authorized within published rate limits and terms. The strategy remains **PARKED — not validated, not rejected**; no outcome returns have been computed. The frozen ≥12-cluster/≥200-treatment-firm gates and once-only PH-1 protocol are not waived. Earlier sections/table counts in this handoff include historical, superseded snapshots; reconcile current files from the current panel builder and campaign state before execution.
 
 ---
 
@@ -499,3 +507,13 @@ read as a feature of the design rather than an obstacle to it.
 | 2026-10-22 | 2 | Literature audit; v1.0 hypothesis, specification and preregistration frozen. |
 | 2026-10-22 | 5k | **Read prior handoff, verified durable state.** Campaign remains **PARKED — not validated, not rejected**; phase3b pending and blocked on authorisation A1–A5. Ran `python3 -m pytest -q tests/` → **159 passed**. No new primary sources, no new decisions, no new ledger rows, no artefact edits beyond this handoff and campaign_state. Section 9 initial task message carried forward. |
 EOF
+
+## 11. Current runbook and next action (D-031)
+
+1. Read research/paid_data_route_execution.md and D-031 in research/decision_log.md first; old A1–A5 references below are historical and are not a reason to wait for another user answer.
+2. Run the repository's offline tests from its normal environment and report the observed count, including the new price-client tests. No test run is claimed by this handoff update.
+3. Reconcile research/panel_v1.2.csv, research/campaign_state.json, research/HANDOFF.md and research/authorisation_request.md; do not carry forward conflicting row counts.
+4. Continue public read-only filing and legal-source acquisition in parallel, respecting rate limits and keeping raw files outside the repo.
+5. Check whether the account holder has provisioned Sharadar/EODHD access and credentials in the execution environment. Do not ask for a key in chat; do not purchase anything. If credentials and known billing/quotas exist, run only the bounded smoke test with ACCTCLOCK_ENABLE_PAID_DATA=1.
+6. Publish pre-outcome coverage and feasibility counts. Stop if the registered ≥12 independent-cluster or ≥200 treatment-firm gates fail, or if valid delisting/terminal returns cannot be established. **Do not compute or inspect returns before the feasibility report, and do not open PH-1 unless all gates pass.**
+7. No GitHub Actions, deployment, brokerage or trading action under D-031.
