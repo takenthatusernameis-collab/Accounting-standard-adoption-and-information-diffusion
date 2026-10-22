@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-22 (this session — P3 pre-outcome feasibility audit executed; local at edf6423, clean; tests 173 passing)
+**Last updated:** 2026-10-22 (this session — P3 pre-outcome feasibility audit confirmed complete; local at e05bea8, clean; tests 173 passing)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
@@ -530,7 +530,7 @@ as a feature of the design rather than an obstacle to it.
 > `research/specification_v1.4.md`, `research/preregistration_v1.4.md` (the registered
 > PH-1 arm), `research/specification_v1.1.md` (the design, §§1–7),
 > `research/data_acquisition_plan.md`, `research/data_route_assessment.md`,
-> `research/decision_log.md` (D-001 … D-037), `research/prompt_changelog.md`
+> `research/decision_log.md` (D-001 … D-038), `research/prompt_changelog.md`
 > (Iteration 17 is the most recent), `research/event_calendar.csv`,
 > `research/experiment_ledger.csv`, `research/source_ledger.csv`,
 > `research/authorisation_request.md`, and `research/results.md`.
@@ -543,12 +543,12 @@ as a feature of the design rather than an obstacle to it.
 > the v1.0 and v1.1 files are byte-identical and unedited; the canonical dossier was
 > retrieved read-only at commit `1f9bd09cc96c1953f67ffc1f9892f7e60b6a71ff` and was
 > **not modified**; the source ledger holds **99** sources (S-01 … S-99); the decision
-> log holds **D-001 … D-037**; the experiment ledger holds **29** rows (E-000 … E-029);
+> log holds **D-001 … D-038**; the experiment ledger holds **30** rows (E-000 … E-029);
 > `research/panel_v1.1.csv` holds **431** rows and `research/panel_v1.2.csv` holds
 > **141** rows, of which **10** carry a primary-verified day-level T-A in **10 distinct
-> timing cohorts**; the test suite is **173 passing, 0 failing**; and **no
+> timing cohorts**; the test suite is **173 passed, 0 failing**; and **no
 > outcome-period return has ever been computed or inspected**. P3 (pre-outcome
-> feasibility audit) has **run**: `phase3b-data-execution-and-feasibility-audit` is
+> feasibility audit) is **complete**: `phase3b-data-execution-and-feasibility-audit` is
 > **finished** with outcome **inconclusive_by_construction** (experiment ledger row
 > E-029), because the frozen gates fail — **10 verified timing cohorts < 12 required**
 > and **0 admitted treatment firms < 200 required** — and free delisted/terminal-return
@@ -579,16 +579,19 @@ as a feature of the design rather than an obstacle to it.
 > instrument; each keeps an empty T_A per D-011). Panel stands at **10 verified T-A in
 > 10 distinct timing cohorts**. **Do not re-do P2.**
 >
-> **P3 — DONE (this session).** Pre-outcome feasibility audit executed and published.
-> The EDGAR acquirer ran end-to-end against one live filing (AAPL 10-K
-> 0000320193-25-000079; ACCEPTANCE-DATETIME 20251031060126 Eastern →
-> 2025-10-31T10:01:26Z, parsed correctly); Stooq returns a JavaScript anti-bot
-> challenge (no data) and Yahoo Finance is terms-prohibited/unreliable, so
-> delisted/terminal-return coverage is **not established**. Committed panel counts
-> (authoritative, D-037): 10 cohorts, 0 admitted treatment firms. Frozen gates: 10 < 12
-> cohorts and 0 < 200 treatment firms → **both fail**. Primary estimand reported
-> **inconclusive by construction**; no outcome-period return computed or inspected;
-> PH-1 **not opened**. Recorded as E-029 and changelog Iteration 17.
+> **P3 — COMPLETE (this session).** Pre-outcome feasibility audit executed under D-032
+> (free-only route). EDGAR acquirer run end-to-end against one live filing (AAPL 10-K
+> 0000320193-25-000079; ACCEPTANCE-DATETIME parsed to 2025-10-31T10:01:26Z). Stooq
+> free price source returns a JavaScript anti-bot challenge (no data); Yahoo Finance is
+> terms-prohibited/unreliable; delisted/terminal-return coverage is **not established**
+> (B2 open). Committed panel counts (authoritative, D-037): panel_v1.2.csv 141 rows /
+> 10 verified T-A in 10 distinct timing cohorts (2024-05-10 to 2026-02-13), all rows
+> pending; panel_v1.1.csv 431 rows (8 Stratum A true, 423 Stratum B pending). Frozen
+> gates: 10 cohorts < 12 required and 0 admitted treatment firms < 200 required ->
+> **both FAIL**. Primary estimand reported **inconclusive by construction**; no
+> outcome-period return computed or inspected; PH-1 **not opened**. Recorded as
+> experiment ledger row E-029 and changelog Iteration 17; campaign_state.json phase3b
+> marked finished. Test suite **173 passed, 0 failing**.
 >
 > **What remains.** The campaign is parked on the frozen ≥ 12 cohort gate. To unblock,
 > you would need to verify **+2 more condition-2 jurisdictions** (day-level IFRS 18
@@ -678,3 +681,5 @@ Verification pass (session 109). `git fetch origin main` -> origin/main at 944b4
 Verification pass (session 111). `git fetch origin main` -> origin/main at $(git rev-parse --short origin/main) (checkpoint commits); `git status` clean; `python3 -m pytest -q tests/` -> **173 passed, 0 failing**. DNS resolves in this runner. No new primary source read, no filing archive harvested, no outcome-period return computed or inspected. Campaign remains **PARKED — not validated, not rejected**; next step still `phase3b-data-execution-and-feasibility-audit`. Next agent: continue P3 (pre-outcome feasibility audit) — bulk filing harvest under the free-only route, coverage/delisted/terminal-return audit, publish cohort count before any outcome return.
 
 **This session (P3 executed).** `git fetch origin main` -> origin/main at edf6423 (checkpoint commits); `git status` clean; `python3 -m pytest -q tests/` -> **173 passed, 0 failing**. DNS resolves (B3 lifted). The EDGAR acquirer was run end-to-end against one live filing (AAPL 10-K 0000320193-25-000079): submissions JSON and complete submission text retrieved (HTTP 200), cached outside the repo under ACCTCLOCK_CACHE and SHA-256 hashed in the sec_edgar manifest; the SGML ACCEPTANCE-DATETIME 20251031060126 (Eastern) parsed DST-correctly to 2025-10-31T10:01:26Z. The filing-index cross-check source index-headers.json returned HTTP 404 and was recorded as a failed_retrieval, so the SGML header is the authoritative acceptance timestamp per the design. The free price source Stooq returns a JavaScript anti-bot challenge and no CSV data; Yahoo Finance is terms-prohibited/unreliable; delisted/terminal-return coverage is not established (B2 open). Committed panel counts (authoritative, D-037): panel_v1.2.csv 141 rows / 10 verified T-A in 10 distinct timing cohorts (2024-05-10 to 2026-02-13), all rows pending; panel_v1.1.csv 431 rows (8 Stratum A true, 423 Stratum B pending). Frozen gates: 10 cohorts < 12 required and 0 admitted treatment firms < 200 required -> both FAIL. Primary estimand reported **inconclusive by construction**; no outcome-period return computed or inspected; PH-1 not opened; no registered artefact edited in place. Recorded as experiment ledger row E-029 and changelog Iteration 17; campaign_state.json phase3b marked finished (outcome inconclusive_by_construction). Campaign remains **PARKED — not validated, not rejected**. Next agent: do not compute outcome returns and do not open PH-1; either verify +2 more condition-2 jurisdictions to reach 12 cohorts or report the park honestly; keep research/results.md reporting no results.
+
+**Session 112 (this turn).** Verified committed state against the handoff: `git fetch origin main` shows `origin/main` at e05bea8, no advance beyond the prior tip; `git status` clean; `python3 -m pytest -q tests/` -> **173 passed, 0 failing**. DNS resolves (B3 lifted). Confirmed P3 pre-outcome feasibility audit is complete: experiment ledger row E-029 recorded, changelog Iteration 17, campaign_state.json phase3b marked finished (outcome inconclusive_by_construction). Frozen gates fail: 10 verified timing cohorts < 12 required, 0 admitted treatment firms < 200 required; free delisted/terminal-return price coverage not established (Stooq JS anti-bot challenge, Yahoo terms-prohibited/unreliable). Primary estimand **inconclusive by construction**; no outcome-period return computed or inspected; PH-1 not opened; no registered artefact edited in place. Updated §9 initial task message for the next agent to reflect P3 completion and the parked cohort gate. Campaign remains **PARKED — not validated, not rejected**; next step remains `phase3b-data-execution-and-feasibility-audit` (blocked at the frozen ≥ 12 cohort gate).
