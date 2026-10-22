@@ -82,7 +82,11 @@ the point at which the rule becomes binding.
 `research/preregistration_v1.2.md` are now **written and registered** (2026-10-22),
 ahead of the first IFRS 18 report in the 2027 interim reporting season. The
 registration is in place; the confirmation is still required for the arm to be
-*run* under the protocol's promotion gate.
+*run* under the protocol's promotion gate. A further **v1.3** was registered the
+same day (D-029), which admits Saudi Arabia on a uniform T-PRE interval rule and
+restates the cluster arithmetic as **≈ 4–8** cohorts — still below the ≥12
+minimum, so the arm is expected to be inconclusive by construction whatever A1
+and A2 return.
 
 ---
 

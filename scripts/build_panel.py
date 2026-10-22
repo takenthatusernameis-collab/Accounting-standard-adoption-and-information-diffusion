@@ -15,9 +15,9 @@ conditions, checked in order, and every check is recorded:
 
 **Conditions 3 to 5 are unverified for every jurisdiction**, because condition 3
 depends on the membership snapshot, condition 4 on the A2 authorisation and
-condition 5 on the A1 authorisation. **Condition 2 is verified for five
-jurisdictions only** (European Union, United Kingdom, Saudi Arabia, Singapore,
-Brazil). Every row therefore carries
+condition 5 on the A1 authorisation. **Condition 2 is verified for six
+jurisdictions** (European Union, United Kingdom, Saudi Arabia, Singapore,
+Brazil, New Zealand). Every row therefore carries
 ``in_registered_panel = pending``, which is the three-state discipline of
 ``research/specification_v1.1.md`` §4.2: ``true`` / ``false`` / ``pending``.
 
@@ -51,13 +51,16 @@ The verified instruments are **primary sources**, quoted in
   makes CPC 51 (aligned to IFRS 18) mandatory for the listed companies and whose
   Article 3 brings it into force on 2027-01-01.
 
-**Hong Kong and South Africa are recorded as *attempted and not verified*, not as
-verified.** Hong Kong's HKICPA page states the effective date (financial periods
-beginning on or after 2027-01-01) but the retrieved page does not carry the
-issuance date, so T-A is left empty. South Africa's route is incorporation by
-reference ("IFRS as issued from time to time by the IASB"), which has no dated
-local instrument, so T-A is left empty. Both attempts are recorded in
-``research/decision_log.md`` (D-026).
+**Hong Kong, South Africa and South Korea are recorded as *attempted and not
+verified*, not as verified.** Hong Kong's HKICPA page states the effective date
+(financial periods beginning on or after 2027-01-01) but the retrieved page does
+not carry the issuance date, so T-A is left empty. South Africa's route is
+incorporation by reference ("IFRS as issued from time to time by the IASB"),
+which has no dated local instrument, so T-A is left empty. South Korea's K-IFRS
+No. 1118 was established and announced in December 2025, but no source consulted
+carries a day-level issuance date, so T-A is left empty rather than inferred from
+the month. All three attempts are recorded in ``research/decision_log.md``
+(D-026 and D-030) and in ``research/source_ledger.csv`` (S-73).
 
 The builder is deterministic and takes no network access.
 """
@@ -190,8 +193,35 @@ IFRS18_INSTRUMENTS: dict[str, dict[str, str]] = {
             "and 5 remain unverified."
         ),
     },
+    "New Zealand": {
+        "t_a": "2024-05-23",
+        "date_conflict": (
+            "Two New Zealand dates, both primary-verified and both recorded: the NZ Accounting "
+            "Standards Board of the External Reporting Board issued NZ IFRS 18 on 23 May 2024, "
+            "and the instrument took effect (was gazetted as secondary legislation) on 20 June "
+            "2024. T-A is the issuance date, 2024-05-23, because the v1.1 event clock defines "
+            "T-A as the jurisdictional legal-adoption date. The XRB's own instrument page carries "
+            "the month-level label 'May 2024'; the day comes from the standard's own text, which "
+            "states that it was issued on 23 May 2024 pursuant to section 12(a) of the Financial "
+            "Reporting Act 2013."
+        ),
+        "source_url": "https://www.xrb.govt.nz/standards/accounting-standards/for-profit-entities/nz-ifrs-18",
+        "coverage_notes": (
+            "Condition 2 VERIFIED. NZ IFRS 18, the New Zealand Equivalent to IFRS 18 "
+            "Presentation and Disclosure in Financial Statements, was issued on 2024-05-23 by the "
+            "NZ Accounting Standards Board of the External Reporting Board, pursuant to section "
+            "12(a) of the Financial Reporting Act 2013; it is secondary legislation, gazetted on "
+            "2024-05-23 and taking effect on 20 June 2024. Mandatory date 1 January 2027 for Tier 1 "
+            "and Tier 2 for-profit entities; Tier 1 entities complying with NZ IFRS 18 are "
+            "simultaneously in compliance with IFRS 18 as issued by the IASB, so the mandatory "
+            "character is statutory rather than merely a rulebook election. Source ledger S-72. "
+            "Conditions 3, 4 and 5 remain unverified: the NZX filing route's publication of an "
+            "acceptance TIMESTAMP is not yet checked."
+        ),
+    },
     "Saudi Arabia": {
-        "t_a": "2024-12-26",        "date_conflict": (
+        "t_a": "2024-12-26",
+        "date_conflict": (
             "OPEN CONFLICT, RECORDED AND NOT RESOLVED. Two Saudi instruments bear on IFRS 18 and "
             "they are NOT the same kind of instrument. (a) The Saudi Organization for Chartered "
             "and Professional Accountants (SOCPA) adopted IFRS 18 for application in the Kingdom "

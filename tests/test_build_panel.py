@@ -47,13 +47,14 @@ def test_page_boilerplate_is_not_a_jurisdiction():
     assert is_plausible_jurisdiction("") is False
 
 
-def test_verified_instruments_are_the_five_primary_verified_jurisdictions():
+def test_verified_instruments_are_the_six_primary_verified_jurisdictions():
     assert set(IFRS18_INSTRUMENTS) == {
         "European Union",
         "United Kingdom",
         "Saudi Arabia",
         "Singapore",
         "Brazil",
+        "New Zealand",
     }
 
 
@@ -76,8 +77,20 @@ def test_verified_instruments_carry_day_level_dates():
     assert rows["Saudi Arabia"]["T_A"] == "2024-12-26"
     assert rows["Singapore"]["T_A"] == "2024-10-04"
     assert rows["Brazil"]["T_A"] == "2025-12-23"
+    assert rows["New Zealand"]["T_A"] == "2024-05-23"
     for jurisdiction in IFRS18_INSTRUMENTS:
         assert rows[jurisdiction]["T_E"] == "2027-01-01"
+
+
+def test_attempted_but_unverified_jurisdictions_carry_no_date():
+    """Hong Kong, South Africa and South Korea were attempted and could not be
+    verified at day level; their T-A stays empty rather than inferred."""
+    rows = {row["jurisdiction"]: row for row in build_rows(_candidates())}
+    for jurisdiction in ("Hong Kong Sar", "South Africa", "South Korea"):
+        assert jurisdiction in rows, f"{jurisdiction} must be in the candidate universe"
+        assert rows[jurisdiction]["T_A"] == "", (
+            f"{jurisdiction} was attempted and not verified, so T_A must stay empty"
+        )
 
 
 def test_unverified_rows_have_no_date():
