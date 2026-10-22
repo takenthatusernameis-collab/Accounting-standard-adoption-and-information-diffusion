@@ -1,7 +1,7 @@
 # ACCTCLOCK — Iteratively Improving Research and Validation Prompt
-Version: 1.0
+Version: 1.1
 Prepared: 2026-10-21
-Status: Research guidance only — hypothesis not validated; no live trading authorization.
+Status: Research guidance v1.1 — D-031 paid-provider route selected; hypothesis not validated; research-only.
 
 ## Mission
 Independently test ACCTCLOCK: accounting-standard adoption can change information, comparability, and the speed investors incorporate reported information, potentially producing conditional, time-limited equity-return drift. Determine whether a precisely specified, implementable rule has reproducible positive expected net returns after realistic costs. Do not try to confirm the story or maximize a backtest; reject it quickly if evidence fails.
@@ -12,9 +12,24 @@ This file is a prompt and protocol, not evidence that a test has run or an edge 
 1. Work only in this strategy-specific repository unless the user explicitly authorizes another repository.
 2. Do not place, route, or imply live trades; do not connect to brokerage accounts or create live deployment workflows.
 3. Do not edit upstream hypothesis-factory repositories, unrelated projects, or live trading systems.
-4. Do not start costly jobs, GitHub Actions, paid data pulls, or other side-effecting runs without explicit authorization. Read-only inspection and bounded local analysis are permitted where access and data licensing allow.
+4. Follow D-031 below. Read-only public-source collection is authorized under source access terms and rate limits. The paid-provider route is selected, but no purchase, subscription, unspecified charge, or paid API call is authorized without a provisioned credential and known quota/charges. Do not trigger GitHub Actions or live/paper-trading workflows.
 5. Preserve an immutable record of the original hypothesis and each version. Never silently change the thesis, universe, sample, entry time, holding period, filters, costs, or acceptance criteria to rescue a failing result.
 6. If essential data or permission is unavailable, document the blocker and stop at a clear handoff. Never claim completion based on a plan alone.
+
+
+
+## Current operating directive — D-031 (2026-10-22; supersedes earlier A1–A5 waiting)
+
+The maintainer selected a paid-provider route for the market-price leg and authorized read-only public-source harvesting plus a pre-outcome PH-1 feasibility audit. Do not stop to ask the user to re-answer A1–A5. Execute permitted research tasks concurrently wherever access exists.
+
+- Preferred price route: **Sharadar** active/delisted US daily prices and **EODHD All World EOD** for international and matched-control jurisdictions. Official references: https://sharadar.com/docs/stocks, https://sharadar.com/docs/auth, https://eodhd.com/pricing, https://eodhd.com/financial-apis/api-for-historical-data-and-volumes, https://eodhd.com/financial-apis/delisted-stock-companies-data-2.
+- Existing repo adapter: **scripts/price_provider_client.py**; offline tests: **tests/test_price_provider_client.py**. Credentials belong in execution-environment variables/secret storage only: **SHARADAR_API_KEY**, **EODHD_API_TOKEN**. Paid requests also require **ACCTCLOCK_ENABLE_PAID_DATA=1**. Do not print or commit credentials.
+- This direction does **not** authorize buying a subscription, accepting paid terms, or incurring an unspecified charge. Do not make a paid call until an account-holder-provisioned credential exists and plan scope, request quotas and any charges are understood. Do not ask the user for secrets in chat.
+- Public filings and legal/standard-setter documents are authorized for read-only acquisition under source access terms and rate limits. Cache raw payloads outside the repository; record status, timestamp, hashes and failed retrievals.
+- Check each vendor for historical delisted-name coverage and whether an actual terminal/delisting return is provided. Adjusted prices are not by themselves evidence of a delisting return. Missing terminal value must not be replaced with zero or hidden by dropping firms.
+- Reconcile stale duplicated panel/handoff counts. Run offline tests in the actual repository environment, or clearly report that they could not be run. Do not claim a passing suite based only on committed tests.
+- Publish event/firm counts, coverage, missingness and return-data feasibility **before opening outcome data**. Frozen gates (at least 12 independent clusters and 200 treatment firms) remain binding. Expected PH-1 clusters remain ~4–8, so if the counts remain below thresholds, stop and record inconclusive-by-construction. Never lower thresholds, count EU member states as independent adoption cohorts, peek at PH-1, or edit preregistrations v1.0–v1.3 in place.
+- No live trading, broker connection, deployment, costly background run, or GitHub Actions workflow run is authorized by this directive.
 
 ## Starting hypothesis (provisional and falsifiable)
 Around a pre-announced accounting-standard adoption or implementation, firms with lower pre-event information quality may exhibit a different post-announcement or post-reporting abnormal-return path than comparable firms with higher information quality. The effect may depend on enforcement quality, analyst following, adoption novelty, disclosure timing, and whether the market has already priced the change. Any drift or subsequent reversal is a conjecture to test, not an established trading fact.
