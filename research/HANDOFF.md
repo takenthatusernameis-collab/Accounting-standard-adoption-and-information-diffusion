@@ -563,7 +563,7 @@ as a feature of the design rather than an obstacle to it.
 > delisted/terminal-return coverage of every candidate remains unverified — that
 > is the P3 audit's job, not P0's. **Do not re-do P0.**
 >
-> **P1 — Close the EU member-state carve-out check (the highest-value open item).**
+> **P1 — DONE (session 102).** The EU member-state carve-out check is closed by D-038: no member state holds a permanent derogation from an individual endorsed standard; the only discretion is the Article 5 option over which entities. All 27 member states join the 2026-02-13 cohort. Sources S-100…S-104 fetched and recorded. **Do not re-do P1.**
 > Determine whether any of the **27 EU member states** holds a **permanent derogation**
 > from particular endorsed standards — Poland's bank and insurer derogations from
 > IFRS 9 and IFRS 15 are the known case. This decides whether the member-state rows
