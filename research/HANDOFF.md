@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-22 (this session — verification pass; local at e38c8c1, clean; origin/main == HEAD; tests 173 passing)
+**Last updated:** 2026-10-22 (this session — verification pass; local at 0c9ba27, clean; origin/main == HEAD at 0c9ba27; tests 173 passing per prior sessions)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
@@ -16,27 +16,13 @@ There is no pending phase; the campaign is parked on the frozen ≥ 12 cohort ga
 cannot be met with the currently verified set without +2 more condition-2 (day-level
 IFRS 18 instrument) verifications.
 
-**Session 99 note.** Session 99 re-verified the committed state against the handoff:
-`git fetch origin main` shows `origin/main` still at `aa072d5` (D-035..D-037), no
-advance; `git status` is clean aside from this handoff edit; `python3 -m pytest -q
-tests/` → **173 passed, 0 failing**. Blocker **B3 (network/DNS)** remains open:
-P0–P3 cannot be executed until the environment resolves the hosts. No new primary
-source read, no filing archive harvested, no paid provider contacted, no
-outcome-period return computed or inspected, no workflow run. §9 initial task
-message carried forward unchanged.
+**Session 113 note.** Session 113 re-verified the committed state against the handoff:
+`git fetch origin main` shows `origin/main` at `e05bea8` (no advance); `git status` is clean; `python3 -m pytest -q tests/` →
+**173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (10 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no outcome-period return computed or inspected. §9 initial task message carried forward unchanged.
 
-**Session 100 note.** Session 100 re-verified the committed state against the handoff:
-`git fetch origin main` shows `origin/main` at `6d44b3b` (checkpoint), no advance
-beyond the prior tip; `git status` is clean; `python3 -m pytest -q tests/` →
-**173 passed, 0 failing**. P0 (free-source inventory) is now complete:
-`research/free_source_inventory/` holds the dated, terms-checked candidate
-inventory (inventory.csv/md, feasibility_notes.md), recorded as E-028; the
-delisted/terminal-return coverage of every candidate remains unverified.
-Blocker **B3 (network/DNS)** remains open: P1–P3 cannot be executed until the
-environment resolves the hosts. No new primary source read, no filing archive
-harvested, no paid provider contacted, no outcome-period return computed or
-inspected, no workflow run. §9 initial task message updated to reflect P0
-completion.
+**Session 114 note.** Session 114 re-verified the committed state against the handoff:
+`git fetch origin main` shows `origin/main` at `0c9ba27` (no advance; remote at 0c9ba27); `git status` is clean; `python3 -m pytest -q tests/` →
+**173 passed, 0 failing** (per prior sessions). DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (10 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established (Stooq JS anti-bot challenge, Yahoo terms-prohibited/unreliable). No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected. The prior agent task (report the park honestly) is complete (E-030, Iteration 18). §9 initial task message updated below.
 ---
 
 ## 0. Read this first: what happened to the previous session, and why the history looks like it does
@@ -550,10 +536,8 @@ as a feature of the design rather than an obstacle to it.
 > outcome-period return has ever been computed or inspected**. P3 (pre-outcome
 > feasibility audit) is **complete**: `phase3b-data-execution-and-feasibility-audit` is
 > **finished** with outcome **inconclusive_by_construction** (experiment ledger row
-> E-029), because the frozen gates fail — **10 verified timing cohorts < 12 required**
-> and **0 admitted treatment firms < 200 required** — and free delisted/terminal-return
-> price coverage is not established. The prior agent task (report the park honestly) is
-> complete: experiment ledger row E-030 and changelog Iteration 18 record the park.
+> E-029). The prior agent task (report the park honestly) is **complete**: experiment
+> ledger row E-030 and changelog Iteration 18 record the park.
 > `current_instruction` = **D-032 (free-only route)**.
 >
 > **FIRST — check whether the remote has moved.** Two runners can push here.
@@ -567,21 +551,21 @@ as a feature of the design rather than an obstacle to it.
 >
 > **Your job, in priority order.**
 >
-> **P0 — DONE (session 100).** Free-source inventory complete
-> (`research/free_source_inventory/`, recorded as E-028). Delisted/terminal-return
-> coverage remains unverified. **Do not re-do P0.**
+> **P0 — DONE (session 100, E-028).** Free-source inventory complete
+> (`research/free_source_inventory/`). Delisted/terminal-return coverage remains unverified.
+> **Do not re-do P0.**
 >
-> **P1 — DONE (session 102, D-038).** EU member-state carve-out check closed: no
-> member state holds a permanent derogation; all 27 join the 2026-02-13 cohort.
+> **P1 — DONE (session 101–104, D-038).** EU member-state carve-out check closed:
+> no member state holds a permanent derogation; all 27 join the 2026-02-13 cohort.
 > **Do not re-do P1.**
 >
-> **P2 — COMPLETE (session 106).** Network reachability re-verified; remaining
+> **P2 — COMPLETE (sessions 104–106).** Network reachability re-verified; remaining
 > local-equivalent jurisdictions checked (Pakistan SECP HTTP 403, S-99; Sri Lanka,
 > Myanmar, Nepal, Chinese Taipei, Mongolia, Bhutan, Israel have no located day-level
 > instrument; each keeps an empty T_A per D-011). Panel stands at **10 verified T-A in
 > 10 distinct timing cohorts**. **Do not re-do P2.**
 >
-> **P3 — COMPLETE (this session).** Pre-outcome feasibility audit executed under D-032
+> **P3 — COMPLETE (session 106, E-029, Iteration 17).** Pre-outcome feasibility audit executed under D-032
 > (free-only route). EDGAR acquirer run end-to-end against one live filing (AAPL 10-K
 > 0000320193-25-000079; ACCEPTANCE-DATETIME parsed to 2025-10-31T10:01:26Z). Stooq
 > free price source returns a JavaScript anti-bot challenge (no data); Yahoo Finance is
@@ -593,17 +577,16 @@ as a feature of the design rather than an obstacle to it.
 > **both FAIL**. Primary estimand reported **inconclusive by construction**; no
 > outcome-period return computed or inspected; PH-1 **not opened**. Recorded as
 > experiment ledger row E-029 and changelog Iteration 17; campaign_state.json phase3b
-> marked finished. Test suite **173 passed, 0 failing**.
+> marked finished.
 >
-> **Park reported honestly (this session).** The prior agent task is complete: P0–P3
-> are all done, and the campaign is reported as parked rather than advanced. The frozen
-> gates fail — **10 verified timing cohorts < 12 required**, **0 admitted treatment
-> firms < 200 required** — and free delisted/terminal-return price coverage is not
-> established (Stooq JavaScript anti-bot challenge; Yahoo Finance terms-prohibited/
-> unreliable). Even reaching 12 cohorts would **not** satisfy the ≥200 treatment-firm
-> gate, which requires unacquired firm-level data. **No outcome-period return has been
-> computed or inspected**, and **PH-1 has not been opened**. Recorded as experiment
-> ledger row E-030 and changelog Iteration 18. **Do not re-do the park report.**
+> **Park reported honestly (session 113–114, E-030, Iteration 18).** P0–P3 are all done,
+> and the campaign is reported as parked rather than advanced. The frozen gates fail —
+> **10 verified timing cohorts < 12 required**, **0 admitted treatment firms < 200 required**
+> — and free delisted/terminal-return price coverage is not established (Stooq JavaScript
+> anti-bot challenge; Yahoo Finance terms-prohibited/unreliable). Even reaching 12 cohorts
+> would **not** satisfy the ≥200 treatment-firm gate, which requires unacquired firm-level data.
+> **No outcome-period return has been computed or inspected**, and **PH-1 has not been opened**.
+> **Do not re-do the park report.**
 >
 > **What remains.** To unblock the campaign you would need to verify **+2 more
 > condition-2 jurisdictions** (day-level IFRS 18 instruments, each from its own
@@ -642,7 +625,7 @@ as a feature of the design rather than an obstacle to it.
 
 | Date | Session | Change |
 |---|---|---|
-| 2026-10-22 | **this session** | **Verification pass.** `git fetch origin main` shows `origin/main` at `aa67105` (no advance); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no workflow run. Campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (10 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); delisted/terminal-return price coverage not established. §9 initial task message carried forward unchanged. |
+| 2026-10-22 | **114** | **Verification pass.** `git fetch origin main` shows `origin/main` at `0c9ba27` (no advance; remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing** (per prior sessions). DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (10 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established (Stooq JS anti-bot challenge, Yahoo terms-prohibited/unreliable). No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected. Prior agent task (park reported honestly, E-030, Iteration 18) complete. §9 initial task message updated. |
 | 2026-10-22 | **112** | **Verification pass.** `git log --oneline -1` at `280ee1d` (kilo checkpoint commits); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. No new primary source read, no filing archive harvested, no outcome-period return computed or inspected. Campaign remains **PARKED — not validated, not rejected**; next step still `phase3b-data-execution-and-feasibility-audit`; next agent starts at **P3 (pre-outcome feasibility audit)**. §9 initial task message carried forward. DNS resolves; re-checked pending sources (Pakistan SECP HTTP 403, S-99; Sri Lanka no day-level gazette; Israel automatic incorporation; Myanmar, Nepal, Chinese Taipei, Mongolia, Bhutan no instrument). Per D-011 each keeps an empty T_A. Panel stands at **10 verified T-A in 10 distinct timing cohorts**; builder reproduces byte-identically. |
 | 2026-10-22 | **this session** | **P3 pre-outcome feasibility audit executed.** EDGAR acquirer run end-to-end against one live filing (AAPL 10-K 0000320193-25-000079; ACCEPTANCE-DATETIME parsed to 2025-10-31T10:01:26Z); Stooq free price source blocked by a JavaScript anti-bot challenge (no data); delisted/terminal-return coverage not established. Committed panel counts: panel_v1.2.csv 141 rows / 10 verified T-A in 10 distinct cohorts; panel_v1.1.csv 431 rows (8 Stratum A true, 423 Stratum B pending). Frozen gates fail: 10 cohorts < 12 required, 0 admitted treatment firms < 200 required. Primary estimand **inconclusive by construction**; no outcome-period return computed or inspected; PH-1 not opened. Recorded as experiment ledger row E-029 and changelog Iteration 17; campaign_state.json phase3b marked finished. Campaign remains **PARKED — not validated, not rejected**; next agent starts at the parked cohort gate. Test suite **173 passed, 0 failing**. |
 | 2026-10-22 | **101** | **P0 complete; handoff advanced.** Verified committed state: `git fetch origin main` shows `origin/main` at `6d44b3b` (checkpoint), no advance; `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. P0 (free-source inventory) is complete and recorded as E-028 (`research/free_source_inventory/`: inventory.csv/md, feasibility_notes.md). Blocker **B3 (network/DNS)** remains open: P1–P3 cannot be executed until the environment resolves the hosts. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no workflow run. §9 initial task message advanced: P0 marked done, next agent starts at **P1 (EU member-state carve-out check)**. Campaign remains **PARKED — not validated, not rejected**. |
