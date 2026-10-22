@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-22 (D-031 paid-provider route update)
+**Last updated:** 2026-10-22 (D-032 free-only route update)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
@@ -13,11 +13,15 @@ campaign. **No outcome-period return has ever been computed or inspected.**
 
 ---
 
-## Current instruction — D-031 (supersedes historical A1–A5 requests)
+## Current instruction — D-032 (supersedes D-031 paid-provider route)
 
-The maintainer has selected a paid-provider route and authorized public read-only evidence acquisition plus a pre-outcome PH-1 feasibility audit. Use Sharadar Stock Prices / SEP for US active/delisted price history and EODHD All World EOD for international/control venues. **Do not ask the user to re-answer A1–A5.** The account holder must provision vendor plan access and API credentials; the agent must not buy a subscription, accept paid terms or incur unspecified charges. research/paid_data_route_execution.md is the current runbook; research/authorisation_request.md is now a resolved direction/credentials record rather than an open A1–A5 form.
+The maintainer explicitly directed the project away from all paid services. Do not use Sharadar, EODHD, paid API tiers, paid subscriptions, trials requiring payment details, or any request that could incur a charge. Do not ask the user to purchase or provision credentials. D-031's provider selection is superseded.
 
-The new provider client and tests are committed, but have **not been independently run in this session**. Two tiny public sample/demo-key smoke requests were attempted and both failed **before HTTP** due the current terminal's DNS resolution error; see research/manifests/price_provider_smoke_attempts.jsonl and E-025. This does not establish provider failure. Paid requests remain disabled by default. Public-source retrieval is authorized within published rate limits and terms. The strategy remains **PARKED — not validated, not rejected**; no outcome returns have been computed. The frozen ≥12-cluster/≥200-treatment-firm gates and once-only PH-1 protocol are not waived. Earlier sections/table counts in this handoff include historical, superseded snapshots; reconcile current files from the current panel builder and campaign state before execution.
+Use free and lawful public sources only: official filings and standards-setter records, regulators/OAMs, open government datasets, official exchange archives where available, and candidate free price archives/endpoints only after checking their terms and coverage. Candidate price sources (such as Stooq or Yahoo Finance) are not presumed complete, especially for delisted securities and terminal returns. No-cost access does not waive data-quality or terms-of-use checks.
+
+Two previous sample requests failed before HTTP due to this terminal's DNS resolution error; that is an environment limitation, not a vendor result. Do not repeat paid-provider smoke requests. The provider adapter/tests remain in the repository but the paid paths are now out of scope; do not invoke them. Run offline tests only in an actual repository environment and report actual results.
+
+Immediate next step: inventory free sources and execute the pre-outcome feasibility audit; reconcile panel counts using the committed builder; document source coverage, missingness, delisted-name/terminal-return limitations, and whether the frozen ≥12 independent-cluster / ≥200 treatment-firm gates can be met. If the registered PH-1 sample remains below threshold, stop and report inconclusive-by-construction. No outcome-period return may be opened before the gate. No paid calls, purchases, workflow runs, trading, broker connections, or deployment are authorized.
 
 ---
 
