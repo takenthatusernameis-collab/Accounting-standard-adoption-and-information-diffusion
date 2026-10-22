@@ -502,6 +502,59 @@ IFRS18_INSTRUMENTS: dict[str, dict[str, str]] = {
             "consequence in the date_conflict field is unresolved by design."
         ),
     },
+    "Australia": {
+        "t_a": "2024-06-07",
+        "date_conflict": (
+            "Two Australian dates, both primary-verified and both recorded, and they are NOT "
+            "the same day. (a) The AASB's own standard text carries 'Dated 7 June 2024' as the "
+            "issue date, and the AASB Action Alert No. 231 (re the 6-7 June 2024 Board meeting) "
+            "lists AASB 18 with issue date 7 June 2024. (b) The AASB news page announcing the "
+            "standard is dated Friday, 14 June 2024, which is the date the announcement was "
+            "published, not the date the standard was issued. T-A is the issue date of the "
+            "instrument that makes the standard mandatory, 2024-06-07, per the v1.1 event clock."
+        ),
+        "source_url": (
+            "https://www.aasb.gov.au/news/new-standard-aasb-18-issued/ ; "
+            "https://www.aasb.gov.au/media/xuujgash/231-actionalert.pdf"
+        ),
+        "coverage_notes": (
+            "Condition 2 VERIFIED. The Australian Accounting Standards Board made Accounting "
+            "Standard AASB 18 Presentation and Disclosure in Financial Statements under section "
+            "334 of the Corporations Act 2001; the standard text itself is dated 7 June 2024 and "
+            "applies to for-profit entities (other than superannuation entities applying AASB 1056) "
+            "for annual reporting periods beginning on or after 1 January 2027, with earlier "
+            "application permitted. This is a statutory instrument, not a voluntary early-adoption "
+            "decision, so Australia is not excluded by condition 4. Source ledger S-105 (AASB news "
+            "page) and S-106 (AASB Action Alert No. 231). Conditions 3, 4 and 5 remain unverified."
+        ),
+    },
+    "Bhutan": {
+        "t_a": "2026-09-09",
+        "date_conflict": (
+            "Two Bhutan dates, both primary-verified and both recorded. (a) The AASBB's own "
+            "notification document carries the letterhead date '9th September, 2026' "
+            "(AASBB/Board-TWC/05/2026/142). (b) The Ministry of Finance's notification was "
+            "distributed by Public Technologies on 10 September 2026, which is the distribution "
+            "date of that release, not the date of the instrument. T-A is the date of the "
+            "notification instrument, 2026-09-09."
+        ),
+        "source_url": (
+            "https://aasbb.gov.bt/bas-2026-notification/ ; "
+            "https://aasbb.gov.bt/wp-content/uploads/2026/09/BAS-2026-Notification.pdf"
+        ),
+        "coverage_notes": (
+            "Condition 2 VERIFIED. The Accounting and Auditing Standards Board of Bhutan (AASBB), "
+            "under the Ministry of Finance, notified the Implementation of Bhutanese Accounting "
+            "Standards (BAS) 2026, which incorporates all Standards, amendments and interpretations "
+            "issued by the International Accounting Standards Board up to 31 December 2025. The "
+            "notification states that 'BAS 2026 shall come into effect for financial statements "
+            "for periods beginning on or after 1 January 2027 and shall replace BAS 2020 from that "
+            "date.' BAS 2026 is the Bhutanese equivalent that carries IFRS 18, so the instrument "
+            "makes the IFRS 18 presentation-and-disclosure requirements mandatory for the affected "
+            "class. Source ledger S-107 (AASBB notification page) and S-108 (the BAS 2026 "
+            "Notification PDF). Conditions 3, 4 and 5 remain unverified."
+        ),
+    },
 }
 
 #: Jurisdictions whose condition 2 has NOT been verified. Their T-A stays empty
