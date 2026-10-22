@@ -90,3 +90,10 @@ This change resolves operating choices; it does **not** remove a scientific limi
 6. Build the per-venue/per-event coverage matrix and publish the feasibility audit **before computing any return**.
 7. Compute the registered outcome only if the frozen data-quality and sample gates pass. The PH-1 arm remains once-only and must be voided if an outcome is peeked early.
 8. End with an evidence-backed result, blockers that are genuinely external or statistical, and the single highest-value next action. Never claim that a route selection or adapter implementation is a completed backtest.
+
+
+## 7. Latest environment smoke check (2026-10-22)
+
+Two bounded requests were attempted using only provider-published public sample/demo credentials and non-strategy AAPL date ranges: one Sharadar stocks-table query and one EODHD AAPL.US query. Both failed before an HTTP response with the local execution environment error **DNS resolution failed** ([Errno -3] Temporary failure in name resolution). The failure manifest is research/manifests/price_provider_smoke_attempts.jsonl; ledger entry E-025 records the attempt.
+
+Interpretation: this is **not** evidence of vendor rejection, invalid sample credentials, or an API outage. No payload was received, no price data was inspected, and no paid API request or charge occurred. Do not repeat the same calls in this environment; retry from a network-enabled repository runner. The repository adapter's offline tests also remain unexecuted in this session because a working local repository clone is not available. Keep those validation items explicitly pending.
