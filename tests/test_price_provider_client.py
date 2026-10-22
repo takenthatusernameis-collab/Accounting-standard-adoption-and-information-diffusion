@@ -129,6 +129,8 @@ def test_end_to_end_cache_and_manifest_use_redacted_url(tmp_path: Path):
     def fake_open(request, timeout=30):
         observed["url"] = request.full_url
         observed["timeout"] = timeout
+        observed["accept"] = request.get_header("Accept")
+        observed["accept_encoding"] = request.get_header("Accept-Encoding")
         return FakeResponse(payload)
 
     repo = tmp_path / "repo"
@@ -151,6 +153,8 @@ def test_end_to_end_cache_and_manifest_use_redacted_url(tmp_path: Path):
     assert "do-not-log-me" not in manifest_text
     assert "do-not-log-me" in observed["url"]
     assert observed["timeout"] == 30
+    assert observed["accept"] == "application/json, text/csv, */*"
+    assert observed["accept_encoding"] is None
 
 
 def test_cache_guard_rejects_raw_prices_inside_repository(tmp_path: Path):
