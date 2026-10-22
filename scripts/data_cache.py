@@ -39,6 +39,7 @@ SOURCE_DIRS = (
     "fx",
     "wgi",
     "linguistic",
+    "sources",
 )
 
 #: Per-source manifest file names, one JSONL file per source.
@@ -51,6 +52,7 @@ MANIFEST_NAMES = {
     "wgi": "wgi.jsonl",
     "linguistic": "linguistic.jsonl",
     "oam": "oam.jsonl",
+    "sources": "sources.jsonl",
 }
 
 

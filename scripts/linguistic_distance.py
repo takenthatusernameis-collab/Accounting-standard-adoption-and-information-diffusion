@@ -13,12 +13,23 @@ This module implements the fallback from **open, dated, hashed inputs**:
 
 * **WALS 2020.6** (Dryer & Haspelmath; Zenodo record 23010827) — the 192 linguistic
   characteristics, per language;
-* **Unicode CLDR 49** (territory information) — each territory's **official**
+* **Unicode CLDR 48.2.0** (territory information) — each territory's **official**
   languages, as ISO 639-3 codes;
 * **S-44 Table 1** (Guan, Shafron, Ye and Zhuang 2025, *Review of Accounting
   Studies* 30(3): 2963–3020, open access) — the published values used only as an
   **external validation** of the fallback's ordering, never as this campaign's own
   measure.
+
+**Two CLDR vintages, deliberately and separately identified.** The official-language
+**statuses** are read from CLDR **48.2.0** (``cldr-core@48.2.0``,
+``supplemental/territoryInfo.json``), which is the version registered in decision
+**D-028** and in source ledger **S-81**. The English **territory names** used to
+match a jurisdiction name to a CLDR territory code are read from the CLDR **49**
+common bundle (**S-82**), because the ``latest`` URL serves that release. The two
+vintages differ, the difference is recorded rather than resolved, and it touches
+only the name matching — never the official-language statuses that carry the
+measure. Both inputs are hashed in ``research/manifests/linguistic_sources.jsonl``.
+
 
 **The rule, stated once.**
 

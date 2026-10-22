@@ -223,3 +223,20 @@ def test_published_language_names_all_map_to_iso_codes() -> None:
 def test_strict_status_filter_excludes_regional_official_languages() -> None:
     assert "official" in OFFICIAL_STATUS_STRICT
     assert "official_regional" not in OFFICIAL_STATUS_STRICT
+
+
+def test_registered_cldr_vintages_are_declared_in_both_places() -> None:
+    """The official-language and territory-name CLDR vintages must be stated.
+
+    Decision D-028 registers CLDR 48.2.0 for the official-language statuses
+    (source ledger S-81). The territory-name list comes from the CLDR 49 common
+    bundle (S-82) because the `latest` URL serves that release. The two vintages
+    differ, and the difference must stay visible in the code that produced the
+    registered numbers rather than collapsing into a single version claim.
+    """
+    from scripts import build_linguistic_distance, linguistic_distance
+
+    assert "48.2.0" in build_linguistic_distance.SOURCE_CLDR
+    module_doc = linguistic_distance.__doc__ or ""
+    assert "CLDR 48.2.0" in module_doc
+    assert "CLDR **49**" in module_doc
