@@ -2,7 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
-    "2026-10-22 (session 112): verification pass. Local at 280ee1d, clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. No new primary source, no filing harvest, no outcome-period return. Campaign PARKED — not validated, not rejected; next step phase3b-data-execution-and-feasibility-audit; starts at P3. P0/E-028, P1/D-038 done; P2 done (10 verified T-A in 10 cohorts). B3 lifted; remaining unverified keep empty T_A per D-011.",
+    "2026-10-22 (session 112): verification pass. Local at 280ee1d, clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. No new primary source, no filing harvest, no outcome-period return. Campaign PARKED \u2014 not validated, not rejected; next step phase3b-data-execution-and-feasibility-audit; starts at P3. P0/E-028, P1/D-038 done; P2 done (10 verified T-A in 10 cohorts). B3 lifted; remaining unverified keep empty T_A per D-011.",
     "2026-10-22: the retrospective panel has NO post-2019 T-A, so its chronological holdout is EMPTY; declared in advance with the consequence fixed (D-014). The promotable test is the prospective holdout arm PH-1, which needs a v1.2 registration before the first IFRS 18 report is published.",
     "2026-10-22: data execution is blocked on maintainer authorisation A1-A5 (research/data_acquisition_plan.md section 8). No outcome-period return has been computed or inspected.",
     "2026-10-22: the read-only EDGAR acquirer, the SGML acceptance-time parser, the manifest writer and the cache layout are now IMPLEMENTED and unit-tested (scripts/sec_edgar.py, scripts/sec_acceptance.py, scripts/data_manifest.py, scripts/data_cache.py; 48 new tests, 115 total, all passing, zero network calls in the suite). The acquirer was exercised only against synthetic fixtures; no filing archive was harvested (E-015).",
@@ -23,7 +23,8 @@
     "2026-10-22 (D-035): the two concurrently committed research lines are reconciled. The bounded checkpoint-persistence failure that ended session 96 was a CONTENT conflict, not a transport fault: the upstream line (D-031 paid-provider route, D-032 free-only route, E-023 to E-025, S-86 to S-90) and the session-96 line (D-031/D-032 jurisdiction verification, E-023, S-86 to S-94) had both appended to the same three append-only ledgers from two different runners, so the controller's rebase-and-retry loop reproduced the identical conflict on every attempt and could never succeed. Reconciled by hand: the upstream identifiers keep their numbers and the local line's identifiers move to D-033/D-034, E-026 and S-91 to S-99 with every cross-reference moved with them, so BOTH lines' content is retained in full and no ledger carries a duplicate identifier. research/panel_v1.2.csv regenerates BYTE-IDENTICALLY from committed code (141 rows, 10 condition-2 verified, 131 pending with empty T_A). Nothing was reset or discarded: the original commit 9093ba4da2bc7488bb5204b758447ef8e1df4e91 is retained at branch backup/session-96-local-ahead and tag backup/session-96-local-ahead-9093ba4, and the recovery bundle verifies. The reconciliation is a rebase, not a history rewrite (E-027).",
     "2026-10-22 (D-036): one PRE-EXISTING upstream test defect repaired - the paid-provider redaction test asserted the literal marker against a percent-encoded query value. The redaction itself was always correct (the credential never reaches the manifest); only the assertion was wrong, and it now uses the same parsed-query idiom as its sibling unit test. The paid-provider adapter remains inert and out of scope under D-032. The test suite is 173 passing, 0 failing (E-027).",
     "2026-10-22 (D-038): EU member-state carve-out check CLOSED. No member state holds a permanent derogation from an individual endorsed IFRS Accounting Standard; the only discretion under the IAS Regulation (EC) 1606/2002 is the Article 5 option over which entities. Regulation (EU) 2026/338 is binding in its entirety and directly applicable in all Member States. All 27 EU member states join the 2026-02-13 timing cohort. Sources S-100..S-104 fetched and recorded in research/manifests/p1_carveout_check.jsonl. No outcome-period return computed or inspected.",
-    "2026-10-22 (session 104): re-verified committed state: git fetch origin main succeeds, local at 69989f8; git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. DNS now resolves (example.com -> 172.66.147.243), so the environment limitation recorded in B3 is lifted in this runner. P0 (E-028) and P1 (D-038) remain complete; P2 remains open for Pakistan (SECP, S-99, HTTP 403 on every path tried), Sri Lanka, Myanmar, Nepal, Chinese Taipei, Mongolia, Bhutan, Israel - each needs its own regulator's dated instrument at day granularity, empty T_A if unverifiable (D-011). No new primary source read, no filing archive harvested, no outcome-period return computed or inspected. Campaign remains PARKED - not validated, not rejected."
+    "2026-10-22 (session 104): re-verified committed state: git fetch origin main succeeds, local at 69989f8; git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. DNS now resolves (example.com -> 172.66.147.243), so the environment limitation recorded in B3 is lifted in this runner. P0 (E-028) and P1 (D-038) remain complete; P2 remains open for Pakistan (SECP, S-99, HTTP 403 on every path tried), Sri Lanka, Myanmar, Nepal, Chinese Taipei, Mongolia, Bhutan, Israel - each needs its own regulator's dated instrument at day granularity, empty T_A if unverifiable (D-011). No new primary source read, no filing archive harvested, no outcome-period return computed or inspected. Campaign remains PARKED - not validated, not rejected.",
+    "2026-10-22 (this session): P3 pre-outcome feasibility audit executed under D-032 (free-only route). EDGAR acquirer run end-to-end against AAPL 10-K 0000320193-25-000079 (HTTP 200); ACCEPTANCE-DATETIME 20251031060126 Eastern parsed to 2025-10-31T10:01:26Z; index-headers.json HTTP 404 recorded as failed_retrieval. Stooq free price source returns a JS anti-bot challenge (no data); Yahoo terms-prohibited/unreliable; delisted/terminal-return coverage not established. Committed panel counts (authoritative, D-037): panel_v1.2 141 rows / 10 verified T-A in 10 distinct cohorts; panel_v1.1 431 rows (8 Stratum A true, 423 Stratum B pending). Frozen gates: 10 cohorts < 12 required and 0 admitted treatment firms < 200 required -> both FAIL. Primary estimand reported inconclusive by construction; no outcome-period return computed or inspected; PH-1 not opened. Recorded as experiment ledger row E-029; changelog Iteration 17. Test suite 173 passing, 0 failing. Campaign remains PARKED \u2014 not validated, not rejected. Next agent: do not compute outcome returns, do not open PH-1; either verify +2 more condition-2 jurisdictions to reach 12 cohorts or report the park honestly."
   ],
   "remote_source": null,
   "schema_version": 1,
@@ -126,7 +127,7 @@
     {
       "attempts": 0,
       "error": null,
-      "finished_at": null,
+      "finished_at": "2026-10-22T20:00:00Z",
       "id": "phase3b-data-execution-and-feasibility-audit",
       "result": {
         "blocked_on": [
@@ -159,10 +160,24 @@
           "specification": "research/specification_v1.4.md",
           "preregistration": "research/preregistration_v1.4.md",
           "cluster_expectation": "approximately 10-13 distinct timing cohorts, against the unchanged >=12 minimum"
+        },
+        "outcome": "inconclusive_by_construction",
+        "gate_evaluation": {
+          "timing_cohorts_verified": 10,
+          "timing_cohorts_required": 12,
+          "cohorts_met": false,
+          "admitted_treatment_firms": 0,
+          "treatment_firms_required": 200,
+          "treatment_firms_met": false,
+          "terminal_delisting_returns_established": false,
+          "terminal_returns_note": "Stooq returns a JavaScript anti-bot challenge (no CSV data); Yahoo Finance terms-prohibited/unreliable; free delisted/terminal-return coverage not established (B2 open).",
+          "source": "committed panel files authoritative (D-037): panel_v1.2.csv 141 rows / 10 verified T-A / 10 cohorts; panel_v1.1.csv 431 rows (8 Stratum A true, 423 Stratum B pending)",
+          "consequence": "Primary estimand is inconclusive by construction; no outcome-period return computed or inspected; PH-1 not opened; no registered artefact edited in place.",
+          "recorded_as": "research/experiment_ledger.csv row E-029"
         }
       },
       "started_at": null,
-      "status": "pending"
+      "status": "finished"
     },
     {
       "attempts": 0,
@@ -215,7 +230,7 @@
     "public_read_only_harvesting": "permitted under each source's own terms, rate limits and attribution requirements; raw data cached outside the repository, with only code, manifests, hashes and non-licensed aggregates committed",
     "data_quality_caveat": "No-cost access does not waive the data-quality checks. Candidate free price sources are NOT presumed complete, especially for delisted securities and terminal returns. Free-source insufficiency must be reported honestly; it does not justify lowering the frozen gates or asserting completeness.",
     "feasibility_gate": "publish coverage, the independent timing-cohort count, treatment and control counts and the terminal-return audit before any outcome-period return is computed; require at least 12 independent timing cohorts and 200 treatment firms, and report the estimand as inconclusive by construction if the gate fails",
-    "execution_status": "The two concurrently committed research lines have been reconciled (D-035): upstream identifiers keep their numbers, the session-96 identifiers are D-033/D-034, E-026 and S-91 to S-99, and both lines' content is retained in full. research/panel_v1.2.csv regenerates byte-identically from committed code with 10 condition-2 verified in 10 distinct timing cohorts. The test suite is 173 passing, 0 failing. P0 (free-source inventory) is complete: research/free_source_inventory/ holds the dated, terms-checked candidate inventory (E-028); delisted/terminal-return coverage remains unverified. No feasibility audit or outcome-period return has been run.",
+    "execution_status": "P3 feasibility audit executed (E-029, changelog Iteration 17). The free-only acquirer works against a live EDGAR filing and the acceptance timestamp parses correctly, but the frozen gates fail: 10 verified timing cohorts (< 12 required) and 0 admitted treatment firms (< 200 required); free delisted/terminal-return price coverage is not established (Stooq JS anti-bot challenge, Yahoo terms-prohibited). Primary estimand is inconclusive by construction; no outcome-period return computed or inspected. No paid provider contacted; no GitHub Actions run; .github/workflows/main.yml unmodified. P0 (E-028) and P1 (D-038) complete; P2 complete at 10 cohorts.",
     "no_actions": [
       "subscription purchase",
       "paid API request",
