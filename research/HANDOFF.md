@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-22 (Worker session 5j)
+**Last updated:** 2026-10-22 (Worker session 5k)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
@@ -497,4 +497,5 @@ read as a feature of the design rather than an obstacle to it.
 | 2026-10-22 | 4 | **v1.1 registered** (hypothesis, specification, preregistration); `research/data_acquisition_plan.md` written; source ledger extended to 54 entries (S-42…S-54); decisions D-012…D-016; changelog Iteration 8; ledger row E-014; campaign state gains `phase3b-data-execution-and-feasibility-audit`. The design blocker is cleared; the data/authorisation blocker is open. |
 | 2026-10-22 | 3 | Canonical dossier retrieved read-only; binding constraints recorded (D-008); event calendar built (14 events); data route assessed (D-010). |
 | 2026-10-22 | 2 | Literature audit; v1.0 hypothesis, specification and preregistration frozen. |
-| 2026-10-22 | 1 | Repository audit; infrastructure and 67 tests in place. |
+| 2026-10-22 | 5k | **Read prior handoff, verified durable state.** Campaign remains **PARKED — not validated, not rejected**; phase3b pending and blocked on authorisation A1–A5. Ran `python3 -m pytest -q tests/` → **159 passed**. No new primary sources, no new decisions, no new ledger rows, no artefact edits beyond this handoff and campaign_state. Section 9 initial task message carried forward. |
+EOF
