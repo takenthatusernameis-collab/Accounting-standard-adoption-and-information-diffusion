@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-22 (worker session 97 — the same-run recovery session)
+**Last updated:** 2026-10-22 (worker session 99 — verification session)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
@@ -10,6 +10,15 @@ been computed or inspected.** **Machine-readable state:**
 `research/campaign_state.json` — next step is
 `phase3b-data-execution-and-feasibility-audit` (pending; blocked on the free-source
 route's own precondition, not on a user question).
+
+**Session 99 note.** Session 99 re-verified the committed state against the handoff:
+`git fetch origin main` shows `origin/main` still at `aa072d5` (D-035..D-037), no
+advance; `git status` is clean aside from this handoff edit; `python3 -m pytest -q
+tests/` → **173 passed, 0 failing**. Blocker **B3 (network/DNS)** remains open:
+P0–P3 cannot be executed until the environment resolves the hosts. No new primary
+source read, no filing archive harvested, no paid provider contacted, no
+outcome-period return computed or inspected, no workflow run. §9 initial task
+message carried forward unchanged.
 
 ---
 
