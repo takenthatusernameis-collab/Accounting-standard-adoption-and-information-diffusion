@@ -667,3 +667,8 @@ as a feature of the design rather than an obstacle to it.
    the feasibility report, and do not open PH-1 unless all gates pass.**
 8. **No GitHub Actions, deployment, brokerage, trading or paid-service action** under
    D-032.
+
+---
+## 12. Session note (this session)
+
+One filing run end-to-end with `ACCTCLOCK_USER_AGENT` set: Apple 10-K accession 0000320193-23-000106. Parsed acceptance timestamp from SGML header `20231102180827` → UTC `2023-11-02 22:08:27`, consistent with the filing index's Eastern stamp. Acquirer path verified; network resolves. Campaign remains PARKED — not validated, not rejected. Next agent: continue P3 (pre-outcome feasibility audit) — bulk filing harvest under the free-only route, coverage/delisted/terminal-return audit, publish cohort count before any outcome return.
