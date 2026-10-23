@@ -1,6 +1,7 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-23 (session 128 — prior agent task complete; park reported honestly; origin/main at bd36ee4; tests 173 passing)
+**Last updated:** 2026-10-23 (session 129 — re-verified committed state; origin/main at 80df955; tests 173 passing; DNS resolves; park remains)
+
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
@@ -57,8 +58,10 @@ or inspected. §9 initial task message rewritten for the next agent.
 **Session 126 note.** Session 126 re-verified the committed state against the handoff:
 `git fetch origin main` shows `origin/main` at `24c4651` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) remains complete. §9 initial task message carried forward.
 
-**Session 127 note.** Session 127 re-verified the committed state against the handoff:
-`git fetch origin main` shows `origin/main` at `8c7abff` (advanced from `24c4651` at session 126; remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) remains complete. §9 initial task message carried forward.
+**Session 129 note.** Session 129 re-verified the committed state against the handoff:
+`git fetch origin main` shows `origin/main` at `80df955` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` →
+**173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) remains complete. §9 initial task message carried forward.
+
 ## 0. Read this first: what happened to the previous session, and why the history looks like it does
 
 **The previous session (96) did not fail because of the network, a credential, or a
