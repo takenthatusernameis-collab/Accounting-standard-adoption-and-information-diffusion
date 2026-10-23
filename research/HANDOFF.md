@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-22 (session 119 — verification pass; local at 1d958f0, clean; origin/main == HEAD at 1d958f0; tests 173 passing)
+**Last updated:** 2026-10-23 (session 121 — verification pass; local at 2c34075, clean; origin/main == HEAD at 2c34075; tests 173 passing)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
@@ -42,6 +42,9 @@ or inspected. §9 initial task message rewritten for the next agent.
 
 **Session 120 note.** Session 120 re-verified the committed state against the handoff:
 `git fetch origin main` shows `origin/main` at `0020852` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected. Prior agent task (report the park honestly) is complete (E-030, E-032, Iteration 18). §9 initial task message carried forward unchanged.
+
+**Session 121 note.** Session 121 re-verified the committed state against the handoff:
+`git fetch origin main` shows `origin/main` at `2c34075` (advanced from `0020852` at session 120; remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established (Stooq JS anti-bot challenge, Yahoo terms-prohibited/unreliable). No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (report the park honestly) remains complete (E-030, E-032, Iteration 18). §9 initial task message rewritten below for the next agent.
 
 ---
 ## 0. Read this first: what happened to the previous session, and why the history looks like it does
@@ -549,14 +552,14 @@ as a feature of the design rather than an obstacle to it.
 > the v1.0 and v1.1 files are byte-identical and unedited; the canonical dossier was
 > retrieved read-only at commit `1f9bd09cc96c1953f67ffc1f9892f7e60b6a71ff` and was
 > **not modified**; the source ledger holds **99** sources (S-01 … S-99); the decision
-> log holds **D-001 … D-038**; the experiment ledger holds **33** rows (E-000 … E-032);
+> log holds **D-001 … D-038**; the experiment ledger holds **34** rows (E-000 … E-033);
 > `research/panel_v1.1.csv` holds **431** rows and `research/panel_v1.2.csv` holds
 > **141** rows, of which **11** carry a primary-verified day-level T-A in **11 distinct
 > timing cohorts** (Bhutan added in session 115); the test suite is **173 passed, 0 failing**;
 > and **no outcome-period return has ever been computed or inspected**. P3 (pre-outcome feasibility audit) is **complete**:
 > `phase3b-data-execution-and-feasibility-audit` is **finished** with outcome
 > **inconclusive_by_construction** (experiment ledger row E-029). The park is reported
-> honestly (E-030, E-032). Session 118 verified state matches this handoff.
+> honestly (E-030, E-032, Iteration 18; carried forward by sessions 119, 120 and 121).
 > `current_instruction` = **D-032 (free-only route)**.
 >
 > **FIRST — check whether the remote has moved.** Two runners can push here.
@@ -610,6 +613,7 @@ as a feature of the design rather than an obstacle to it.
 
 | Date | Session | Change |
 |---|---|---|
+| 2026-10-23 | **121** | **Verification pass.** `git fetch origin main` shows `origin/main` at `2c34075` (advanced from `0020852` at session 120; remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) remains complete. §9 initial task message rewritten for the next agent. Experiment ledger row E-033 and changelog Iteration 19 record this session. |
 | 2026-10-23 | **120** | **Verification pass.** `git fetch origin main` shows `origin/main` at `0020852` (remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) complete. §9 initial task message carried forward unchanged. |
 | 2026-10-22 | **119** | **Verification pass.** `git fetch origin main` shows `origin/main` at `1d958f0` (remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) complete. §9 initial task message carried forward. |
 | 2026-10-22 | **117** | **Verification pass.** `git fetch origin main` shows `origin/main` at `26f2eaa` (remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected. §9 initial task message carried forward.
