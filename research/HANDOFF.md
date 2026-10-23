@@ -749,6 +749,8 @@ as a feature of the design rather than an obstacle to it.
    D-032.
 
 ---
+Verification pass (session 152). `git fetch origin main` → origin/main at `7550d6f` (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL). Prior agent task (park reported honestly, E-039…E-043, Iterations 22–25) remains complete. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message carried forward for the next agent: do not compute outcome returns or open PH-1; the binding constraint is ≥200 admitted treatment firms (conditions 3–5 unverified for all 141 PH-1 rows) plus free delisted/terminal-return coverage. Report the park honestly if gates cannot be advanced.
+
 ## 12. Session note (this session)
 
 Verification pass. `git fetch origin main` -> origin/main at 656a869 (checkpoint commits); `git status` clean; `python3 -m pytest -q tests/` -> **173 passed, 0 failing**. DNS resolves in this runner. No new primary source read, no filing archive harvested, no outcome-period return computed or inspected. Campaign remains **PARKED — not validated, not rejected**; next step still `phase3b-data-execution-and-feasibility-audit`. Next agent: continue P3 (pre-outcome feasibility audit) — bulk filing harvest under the free-only route, coverage/delisted/terminal-return audit, publish cohort count before any outcome return.
