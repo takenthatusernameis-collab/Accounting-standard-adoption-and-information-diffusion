@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-23 (session 151 — verification pass; origin/main at f6019ca == HEAD; DNS resolves; park remains)
+**Last updated:** 2026-10-23 (session 153 — verification pass; origin/main at 4cc0858 == HEAD; DNS resolves; park remains)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
@@ -610,7 +610,7 @@ as a feature of the design rather than an obstacle to it.
 > **S-105**; sources **S-100 … S-104** exist only in
 > `research/manifests/p1_carveout_check.jsonl` and were never appended to the ledger —
 > parse the file, do not trust a quoted count); the decision
-> log holds **D-001 … D-040**; the experiment ledger holds **44** rows (E-000 … E-043);
+> log holds **D-001 … D-040**; the experiment ledger holds **45** rows (E-000 … E-044);
 > `research/panel_v1.1.csv` holds **431** rows and `research/panel_v1.2.csv` holds
 > **141** rows, of which **12** carry a primary-verified day-level T-A in **12 distinct
 > timing cohorts** (2024-05-10 Philippines → 2026-09-09 Bhutan; South Korea
@@ -622,14 +622,10 @@ as a feature of the design rather than an obstacle to it.
 > (E-030, E-032, E-036, E-039–E-043; Iterations 18 and 22-25).
 > `current_instruction` = **D-032 (free-only route)**.
 >
-> **One thing to check on arrival.** `research/campaign_state.json` was repaired this
-> session (**D-040**): it failed `json.load` with `Expecting value: line 39 column 3`
-> because a previous session left a trailing comma after the last element of the `notes`
-> array. The comma was removed with a single one-line edit (`git diff`: one insertion, one
-> deletion); the file now parses, the session-150 note was added as the new first element
-> (notes now **36**), `updated_at` was set to the session-150 timestamp, and no other byte
-> changed. If you load it and it fails, that is the thing to fix — not a substantive
-> state problem.
+> **One thing to check on arrival.** `research/campaign_state.json` parses (the D-040
+> repair holds, verified this session with `json.load`); it now carries **37** notes, the
+> session-153 note first. If you load it and it fails, that is the thing to fix — not a
+> substantive state problem.
 >
 > **FIRST — check whether the remote has moved.** Two runners can push here.
 > Run `git fetch origin main` and `git log --oneline origin/main -5` **before** you
@@ -645,15 +641,24 @@ as a feature of the design rather than an obstacle to it.
 > condition-2 verification complete for verified set (**12 cohorts**, D-039), pre-outcome
 > feasibility audit done (E-029). **Do not re-do these phases.**
 >
-> **This session's own work (session 150).** A verification pass against the committed
-> state, plus one repair: `research/campaign_state.json` failed `json.load` with
-> `Expecting value: line 39 column 3` — a trailing comma after the last element of the
-> `notes` array, a **pre-existing** defect present at every prior tip back to at least
-> `29c6e07` (recorded as **D-040**; experiment ledger row **E-043**; changelog
-> **Iteration 25**). The comma was removed with a single one-line edit, the session-150
-> note was added as the new first element of `notes` (now **36**), `updated_at` was set
-> to the session-150 timestamp, and no other byte changed. If you load the file and it
-> fails to parse, that is the thing to fix — not a substantive state problem.
+> **This session's own work (session 153).** A verification pass against the committed
+> state. The remote had advanced past the prior tip `f6019ca` by two checkpoint commits
+> (`7550d6f`, `4cc0858`), but the only content change was a "session 152" verification note
+> appended to §12 of this file — no ledger, panel, code or registered artefact moved, and
+> `origin/main` is at my HEAD so there is no rebase to perform. `research/campaign_state.json`
+> was loaded with `json.load` and **parses** (the D-040 repair holds); it gained a
+> session-153 note as its new first element (now **37**), `updated_at` was set to the
+> session-153 timestamp, and no other byte of the file changed. Panel counts were
+> re-derived by parsing the committed files (D-037): `panel_v1.1.csv` 431 rows
+> (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A
+> in 12 distinct cohorts, all 141 rows `pending`, regenerates byte-identically from
+> committed code. Source ledger 100 records (S-01…S-99 plus S-105; S-100…S-104 exist only
+> in `research/manifests/p1_carveout_check.jsonl` and were never appended to the ledger —
+> parse the file, do not trust a quoted count); decision log D-001…D-040; experiment
+> ledger E-000…E-044. No new primary source read, no filing archive harvested, no paid
+> provider contacted, no outcome-period return computed or inspected, no GitHub Actions
+> run. Prior agent task (park reported honestly, E-039…E-043, Iterations 22-25) remains
+> complete.
 >
 > **Remaining gate blockers (must all be satisfied to open PH-1 / compute outcomes).**
 > 1. **Timing cohorts — MET.** Need **≥ 12 independent timing cohorts**. Currently **12**
@@ -671,6 +676,22 @@ as a feature of the design rather than an obstacle to it.
 > 3. **Delisted/terminal returns:** Establish coverage for delisted securities and terminal
 >    returns from **free sources only** (Stooq blocked by anti-bot challenge,
 >    Yahoo terms-prohibited/unreliable; empirical evidence required, not presumption).
+>
+> **Your task (priority order).**
+> - **P0–P3 — DONE.** Free-source inventory (E-028), EU carve-out closed (D-038),
+>   condition-2 verification complete for the verified set (**12 cohorts**, D-039),
+>   pre-outcome feasibility audit done (E-029). **Do not re-do these phases.**
+> - **If you can advance a gate, do it from a free, lawful source and record it as a
+>   decision (D-001…D-040 are the convention) plus an experiment-ledger row and a changelog
+>   iteration.** The two open gates both need data that has not been acquired: firm-level
+>   filings/financials for ≥ 200 admitted treatment firms (conditions 3, 4 and 5 of the
+>   PH-1 membership rule, unverified for all 141 rows), and empirical evidence that a free
+>   price source covers delisted securities and terminal returns. The EDGAR acquirer in
+>   `scripts/sec_edgar.py` is implemented, unit-tested and ready to run against live
+>   filings; it is the only route that has ever returned data in this environment.
+> - **Otherwise, report the park honestly.** Do not compute or inspect any outcome-period
+>   return, do not open PH-1, and do not lower the frozen ≥ 12 cohort / ≥ 200
+>   treatment-firm minima.
 >
 > **Rules (non-negotiable).**
 > - **No outcome-period return before the feasibility audit's counts are published and all gates pass.**
@@ -696,6 +717,7 @@ as a feature of the design rather than an obstacle to it.
 | Date | Session | Change |
 |---|---|---|
 | 2026-10-23 | **138** | **Verification pass; handoff reconciled to the committed state.** `git fetch origin main` shows `origin/main` at `29c6e07` (remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates read: **12 verified timing cohorts ≥ 12 required (cohort gate MET, session 137, D-039)**, **0 admitted treatment firms < 200 required**, free delisted/terminal-return price coverage not established. `panel_v1.2.csv` regenerates byte-identically from committed code (141 rows / 12 verified T-A / 12 distinct cohorts). Prior agent task (park reported honestly, E-039, Iteration 22) remains complete. §9 initial task message rewritten for the next agent. |
+| 2026-10-23 | **153** | **Verification pass; handoff, campaign state and §9 rewritten for the next agent.** `git fetch origin main` → origin/main at `4cc0858` (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. The remote had advanced past the prior tip `f6019ca` by two checkpoint commits (`7550d6f`, `4cc0858`), but the only content change was a "session 152" verification note appended to §12 of this file — no ledger, panel, code or registered artefact moved, so no rebase was needed. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL) — primary estimand remains **inconclusive_by_construction** on two of the three gates. Panel counts re-derived by parsing the committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct cohorts (2024-05-10 → 2026-09-09), all 141 rows `pending`, regenerates byte-identically from committed code. Source ledger holds **100** records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended to the ledger — parse the file, do not trust a quoted count); decision log D-001…D-040; experiment ledger E-000…E-044. `research/campaign_state.json` was loaded with `json.load` and **parses** (the D-040 repair holds); it gained a session-153 note as its new first element (now **37**), `updated_at` set to the session-153 timestamp, and no other byte changed. Prior agent task (park reported honestly, E-039…E-043, Iterations 22-25) remains complete. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent. |
 | 2026-10-23 | **150** | **Verification pass; one pre-existing JSON defect repaired (D-040).** `git fetch origin main` → origin/main at `fb9c790` (remote == HEAD, local HEAD == fb9c790); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL). Panel counts re-derived by parsing the committed files (D-037): panel_v1.1.csv 431 rows (8 true, 423 pending); panel_v1.2.csv 141 rows / 12 verified T-A in 12 distinct cohorts, regenerates byte-identically from committed code. Source ledger holds **100** records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended to the ledger — parse the file, do not trust a quoted count); decision log D-001…D-040; experiment ledger E-000…E-043. **REPAIR:** `research/campaign_state.json` failed `json.load` with `Expecting value: line 39 column 3` — a trailing comma after the last element of the `notes` array, a pre-existing defect present at every prior tip back to at least `29c6e07`. The comma was removed with a single one-line edit (`git diff`: one insertion, one deletion); the session-150 note was added as the new first element of `notes` (now **36**), `updated_at` was set to the session-150 timestamp, and no other byte changed. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent. |
 | 2026-10-23 | **145** | **Verification pass.** `git fetch origin main` → origin/main at `ca89c5b` (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 complete; campaign remains **PARKED — not validated, not rejected**; frozen gates: **12 verified timing cohorts ≥ 12 (MET)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL). No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-039/E-040, Iterations 22-23) remains complete. §9 initial task message carried forward for the next agent: do not compute outcome returns or open PH-1; the binding constraint is ≥200 admitted treatment firms (conditions 3–5 unverified for all 141 PH-1 rows) plus free delisted/terminal-return coverage. Report the park honestly if gates cannot be advanced. |
 | 2026-10-23 | **137** | **Condition-2 verification pass; the frozen ≥ 12 timing-cohort gate is satisfied for the first time.** South Korea verified from the KASB's own K-IFRS instrument register (S-105), which lists K-IFRS No. 1118 with the day-level date 2025-12-18, closing the D-030 finding. Verified set is now **12** instruments in **12 distinct timing cohorts** (2024-05-10 → 2026-09-09). `panel_v1.2.csv` rebuilt from committed code at 141 rows / 12 verified T-A / 12 cohorts; `test_build_panel.py` pins the count at 12; pytest 173 passed, 0 failing. Decision **D-039**; source ledger now **105** (S-105); experiment ledger repaired (E-031 restored from durable record, now E-000 … E-039 continuous). Other gates still FAIL: 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. PH-1 not opened; no outcome-period return computed or inspected. |
@@ -795,3 +817,5 @@ Verification pass (session 111). `git fetch origin main` -> origin/main at $(git
 Verification pass (session 151). `git fetch origin main` -> origin/main at f6019ca (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` -> **173 passed, 0 failing**. DNS resolves. P0-P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts >= 12 (MET)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL). No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-039...E-043, Iterations 22-25) remains complete. Next agent: do not compute outcome returns or open PH-1; binding constraint is >=200 admitted treatment firms (conditions 3-5 unverified for all 141 PH-1 rows) plus free delisted/terminal-return coverage. Report the park honestly if gates cannot be advanced. `git fetch origin main` → origin/main at `fb9c790` (remote == HEAD, local HEAD == fb9c790); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. Panel counts re-derived by parsing the committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct cohorts (2024-05-10 → 2026-09-09), all 141 rows `pending`, regenerates byte-identically from committed code. Source ledger holds **100** records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended to the ledger — parse the file, do not trust a quoted count); decision log D-001…D-040; experiment ledger E-000…E-043. **REPAIR (D-040):** `research/campaign_state.json` failed `json.load` with `Expecting value: line 39 column 3` — a trailing comma after the last element of the `notes` array, a pre-existing defect present at every prior tip back to at least `29c6e07`. The comma was removed with a single one-line edit (`git diff`: one insertion, one deletion); the file now parses with all 35 notes intact, `updated_at` untouched, and no other byte changed. Campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL) — primary estimand remains **inconclusive by construction** on two of the three gates. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-039/E-040/E-041/E-042, Iterations 22-24) remains complete. §9 initial task message rewritten for the next agent: do not compute outcome returns or open PH-1; the binding constraint is ≥200 admitted treatment firms (conditions 3–5 unverified for all 141 PH-1 rows) plus free delisted/terminal-return coverage. Report the park honestly if gates cannot be advanced.
 
 **Session 149 note (this session).** Verification pass. `git fetch origin main` → origin/main at ca251b1 (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL). Prior agent task (park reported honestly, E-039/E-040/E-041, Iterations 22-23) remains complete. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message carried forward for the next agent: do not compute outcome returns or open PH-1; the binding constraint is ≥200 admitted treatment firms (conditions 3–5 unverified for all 141 PH-1 rows) plus free delisted/terminal-return coverage. Report the park honestly if gates cannot be advanced.
+
+**Session 153 note (this session).** Verification pass. `git fetch origin main` → origin/main at `4cc0858` (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. The remote had advanced past the prior tip `f6019ca` by two checkpoint commits (`7550d6f`, `4cc0858`), but the only content change was a "session 152" verification note appended to §12 of this file — no ledger, panel, code or registered artefact moved, and `origin/main` is at my HEAD so no rebase was needed. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL). Panel counts re-derived by parsing the committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct cohorts, all 141 rows `pending`, regenerates byte-identically from committed code. Source ledger 100 records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended to the ledger — parse the file, do not trust a quoted count); decision log D-001…D-040; experiment ledger E-000…E-044. `research/campaign_state.json` was loaded with `json.load` and **parses** (the D-040 repair holds); it gained a session-153 note as its new first element (now **37**), `updated_at` set to the session-153 timestamp, and no other byte changed. Prior agent task (park reported honestly, E-039…E-043, Iterations 22-25) remains complete. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent.
