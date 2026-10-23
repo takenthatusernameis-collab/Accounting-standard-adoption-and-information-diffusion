@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-23 (session 127 — verification pass; local at 8c7abff, clean; origin/main == HEAD at 8c7abff; tests 173 passing)
+**Last updated:** 2026-10-23 (session 128 — prior agent task complete; park reported honestly; origin/main at bd36ee4; tests 173 passing)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
@@ -691,4 +691,4 @@ Verification pass (session 111). `git fetch origin main` -> origin/main at $(git
 
 **Session 113 (this turn).** Verification pass. `git fetch origin main` -> origin/main at e05bea8 (no advance); `git status` clean; `python3 -m pytest -q tests/` -> **173 passed, 0 failing**. DNS resolves. P0–P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (10 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no outcome-period return computed or inspected. §9 initial task message carried forward unchanged.
 
-**This session.** Prior agent task completed — the park is reported honestly. `git fetch origin main` -> origin/main at 56b706f (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` -> **173 passed, 0 failing**. DNS resolves. P0–P3 all complete. Frozen gates fail: 11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required; free delisted/terminal-return price coverage not established (Stooq JS anti-bot challenge, Yahoo terms-prohibited/unreliable). No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Campaign remains **PARKED — not validated, not rejected**. §9 initial task message rewritten for the next agent.
+**This session (128).** Prior agent task complete — park reported honestly. `git fetch origin main` -> origin/main at bd36ee4 (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` -> **173 passed, 0 failing**. DNS resolves. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**; frozen gates fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required; free delisted/terminal-return price coverage not established). No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message carried forward.
