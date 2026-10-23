@@ -598,14 +598,12 @@ as a feature of the design rather than an obstacle to it.
 > hypothesis in force is `research/hypothesis_v1.3.md` (v1.4 is a specification /
 > pre-registration amendment only). `current_instruction` = **D-032 (free-only
 > route)** — no paid services, no GitHub Actions runs. `research/campaign_state.json`
-> parses (`json.load`, **45** notes, the D-040 repair holds); `python3 -m pytest -q
-> tests/` → **173 passed, 0 failing**. **No outcome-period return has ever been
-> computed or inspected; PH-1 is not opened.**
-> This session (164) re-verified the committed state (origin/main at `92cc7fb`, tests 173 passed,
-> 0 failing) and reported the park honestly — no gate was advanced (experiment ledger row E-049,
-> changelog Iteration 30).
+> parses (`json.load`); `python3 -m pytest -q tests/` → **173 passed, 0 failing**.
+> **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
+> This session (169) re-verified the committed state (origin/main at `18b4017`, tests 173 passed,
+> 0 failing) and reported the park honestly — no gate was advanced.
 >
-> **Frozen gates (unchanged this session).**
+> **Frozen gates (current).**
 > - **Timing cohorts — MET:** 12 verified, distinct T-A dates
 >   2024-05-10 → 2026-09-09 (South Korea 2025-12-18, S-105, D-039). Requirement ≥ 12.
 >   **Do not re-verify to chase a 13th cohort** — more cohorts cannot by themselves
@@ -638,14 +636,12 @@ as a feature of the design rather than an obstacle to it.
 > `research/source_ledger.csv`, the rebase **will** conflict — resolve it the way D-035
 > did: the published identifiers keep their numbers, yours take the next free numbers,
 > and record the mapping as a dated decision. Do not let a rebase conflict become a
-> retry loop. (Session 163's remote advance — `ce5753c` → `5088681`, one checkpoint
-> commit touching only `research/HANDOFF.md` — did **not** trigger the conflict, and the
-> ledgers remain collision-free at D-001…D-043 / E-000…E-048 / S-01…S-105.)
+> retry loop.
 >
 > **Your task (priority order).**
 > - **P0–P3 — DONE.** Do not re-do these phases.
 > - **If you can advance a gate, do it from a free, lawful source** and record it as a
->   decision (D-001 … D-042 convention) plus an experiment-ledger row and a changelog
+>   decision (D-001 … convention) plus an experiment-ledger row and a changelog
 >   iteration. The EDGAR acquirer in `scripts/sec_edgar.py` is implemented,
 >   unit-tested and ready to run against live filings; it serves condition 4 (a filing
 >   route with an acceptance TIMESTAMP), not condition 5 (price coverage). Raw data is
@@ -675,7 +671,7 @@ as a feature of the design rather than an obstacle to it.
 > cannot be advanced, report the park honestly and do **not** compute outcomes or open
 > PH-1.
 
----
+
 
 ## 10. Change log for this handoff
 
@@ -830,3 +826,5 @@ Verification pass (session 161). `git fetch origin main` -> origin/main at 98ccc
 ## 12. Session note (this session)
 
 Verification pass (session 168). `git fetch origin main` → origin/main at `b6df735` (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL). Prior agent task (park reported honestly) remains complete. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message carried forward for the next agent: do not compute outcome returns or open PH-1; the binding constraint is ≥200 admitted treatment firms (conditions 3–5 unverified for all 141 PH-1 rows) plus free delisted/terminal-return coverage. Report the park honestly if gates cannot be advanced.
+
+**Session 169 note (this session).** Verification pass; the park is reported honestly and no gate was advanced. `git fetch origin main` → origin/main at `18b4017` (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. `research/campaign_state.json` parses (`json.load`). P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage **not established (FAIL, re-audited live session 160, D-042/E-047)** — primary estimand remains **inconclusive_by_construction** on two of the three gates. Panel counts re-derived by parsing committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct cohorts, all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Source ledger 100 records (S-01…S-99 plus S-105; S-100…S-104 only in manifests, not appended); decision log D-001…D-043; experiment ledger E-000…E-049. Prior agent task (park reported honestly) remains complete. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent.
