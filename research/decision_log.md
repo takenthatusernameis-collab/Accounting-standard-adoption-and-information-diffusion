@@ -1323,3 +1323,17 @@ The month-level press date is recorded as the weaker rendering and is **not** us
 **Reverses if.** A primary source from the KASB or the FSS carrying a different day-level date for K-IFRS No. 1118, in which case the conflict is written into the row's own `date_conflict` field per D-011 and a new decision is logged; or the instrument text proves the register's date to be a metadata artefact rather than the establishment date.
 
 **Boundary.** No outcome-period return computed or inspected; no panel row added or removed by hand; no registered v1.0–v1.4 file edited in place; no paid service used (D-032); no GitHub Actions run.
+
+---
+
+## D-040 — 2026-10-23 — `research/campaign_state.json` carried a pre-existing JSON syntax defect; it is repaired
+
+**Context.** Session 150 re-verified the committed state against the durable handoff (`git fetch origin main` → `origin/main` at `fb9c790` == local HEAD; `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**; DNS resolves). As part of that verification the machine-readable campaign state was loaded with `json.load`, and it **failed**: `Expecting value: line 39 column 3`. The defect is **pre-existing** — it is present at the prior handoff tip `ca251b1` and at every earlier tip back to at least `29c6e07`, so it was introduced by an earlier session's edit, not by this one.
+
+**Defect.** The `"notes"` array's last element (the session-132 note) was terminated by a comma, and the array's closing bracket followed it: `...carried forward for the next agent.",\n  ],`. That trailing comma makes the file unparseable as JSON, so the machine-readable state has been **broken since before session 133** — every prior session that reloaded it (sessions 133–149) would have hit the same error, which is precisely the failure mode that makes a "verification pass" not a verification at all.
+
+**Decision.** Remove the trailing comma and append the session-150 note as the new first element of the `"notes"` array. The repaired file is byte-identical to the committed file **except for that one character plus the new note** (`git diff` shows a single-line change at the last element of the `"notes"` array, one insertion and one deletion, plus the session-150 note prepended in place of the old first element): **no existing note is added, removed, reworded or re-ordered**, and `execution_status`, `gate_evaluation` and every other field are untouched; `updated_at` is set to the session-150 timestamp. The repair is validated by `json.load` succeeding after the edit. The session-150 note is recorded in the experiment ledger (E-043), the changelog (Iteration 25) and this handoff's session note rather than in this file, so that this file's diff stays the syntax repair it is.
+
+**Why this is a decision and not a silent edit.** A file that cannot be parsed is not a state file; it is a corrupted one. D-037's rule applies directly — a count correction is a decision, not an edit — and here the "count" is the parseability of the machine-readable record. The prior sessions that recorded "verification pass" without loading the JSON were reporting a check that had not actually been run; this session corrects that record too (see E-043 and Iteration 25).
+
+**Boundary.** No outcome-period return computed or inspected; no panel row added or removed; no registered v1.0–v1.4 file edited in place; no paid service used (D-032); no GitHub Actions run; the campaign state's substantive content is unchanged and the campaign remains **PARKED — not validated, not rejected**.
