@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-23 (session 129 — re-verified committed state; origin/main at 80df955; tests 173 passing; DNS resolves; park remains)
+**Last updated:** 2026-10-23 (session 130 — verification pass; origin/main at bb0aa16; tests 173 passing; DNS resolves; park remains)
 
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
@@ -18,9 +18,9 @@ cannot be met with the currently verified set without +1 more condition-2 (day-l
 IFRS 18 instrument) verification (and even then the ≥ 200 treatment-firm gate still
 fails without firm-level data).
 
-**Session 113 note.** Session 113 re-verified the committed state against the handoff:
-`git fetch origin main` shows `origin/main` at `e05bea8` (no advance); `git status` is clean; `python3 -m pytest -q tests/` →
-**173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (10 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no outcome-period return computed or inspected. §9 initial task message carried forward unchanged.
+**Session 130 note.** Session 130 re-verified the committed state against the handoff:
+`git fetch origin main` shows `origin/main` at `bb0aa16` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` →
+**173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) remains complete. §9 initial task message rewritten below for the next agent.
 
 **Session 114 note.** Session 114 re-verified the committed state against the handoff:
 `git fetch origin main` shows `origin/main` at `0c9ba27` (no advance; remote at 0c9ba27); `git status` is clean; `python3 -m pytest -q tests/` →
@@ -571,14 +571,14 @@ as a feature of the design rather than an obstacle to it.
 > the v1.0 and v1.1 files are byte-identical and unedited; the canonical dossier was
 > retrieved read-only at commit `1f9bd09cc96c1953f67ffc1f9892f7e60b6a71ff` and was
 > **not modified**; the source ledger holds **99** sources (S-01 … S-99); the decision
-> log holds **D-001 … D-038**; the experiment ledger holds **34** rows (E-000 … E-033);
+> log holds **D-001 … D-038**; the experiment ledger holds **35** rows (E-000 … E-035);
 > `research/panel_v1.1.csv` holds **431** rows and `research/panel_v1.2.csv` holds
 > **141** rows, of which **11** carry a primary-verified day-level T-A in **11 distinct
 > timing cohorts** (Bhutan added in session 115); the test suite is **173 passed, 0 failing**;
 > and **no outcome-period return has ever been computed or inspected**. P3 (pre-outcome feasibility audit) is **complete**:
 > `phase3b-data-execution-and-feasibility-audit` is **finished** with outcome
 > **inconclusive_by_construction** (experiment ledger row E-029). The park is reported
-> honestly (E-030, E-032, Iteration 18; carried forward by sessions 119, 120 and 121).
+> honestly (E-030, E-032, Iteration 18; carried forward through session 130).
 > `current_instruction` = **D-032 (free-only route)**.
 >
 > **FIRST — check whether the remote has moved.** Two runners can push here.
@@ -600,8 +600,8 @@ as a feature of the design rather than an obstacle to it.
 >    (need **+1 more** condition-2 jurisdiction with a day-level IFRS 18 instrument from its
 >    own regulator, hashed; if unverifiable keep empty T_A per D-011). Candidates with no
 >    located instrument: Pakistan (SECP HTTP 403, S-99), Sri Lanka, Myanmar, Nepal,
->    Chinese Taipei, Mongolia, Israel, South Korea (announced Dec 2025 month-level only),
->    Thailand (outside arm on T-E ground - 2028 effective). Check primary sources only.
+>    Chinese Taipei, Mongolia, Israel, South Korea (announced Dec 2025 month-level only).
+>    Thailand is outside the arm on T-E grounds (2028 effective). Check primary sources only.
 > 2. **Treatment firms:** Need **≥ 200 admitted treatment firms**. Currently **0 admitted**
 >    (all 141 PH-1 rows pending; conditions 3–5 unverified). This requires firm-level data
 >    that has not been acquired.
