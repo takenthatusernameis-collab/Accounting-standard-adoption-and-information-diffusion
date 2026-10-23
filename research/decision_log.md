@@ -1357,3 +1357,30 @@ The month-level press date is recorded as the weaker rendering and is **not** us
 **Reverses if.** EDGAR re-introduces `index-headers.json` and stops gzip-compressing the submission text, in which case the fallback paths become dead code and the fixtures should be reverted to the original form.
 
 **Boundary.** No outcome-period return computed or inspected; no panel row added or removed; no registered v1.0–v1.4 file edited in place; no paid service used (D-032); no GitHub Actions run; no filing archive harvested beyond the four artefacts named above, which are cached outside the repository under `ACCTCLOCK_CACHE` and are not committed. The campaign remains **PARKED — not validated, not rejected**, and the frozen gates are unchanged: **12 verified timing cohorts ≥ 12 (MET)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL).
+
+---
+
+## D-042 — 2026-10-23 — The free price-source gate is re-tested live and remains unmet; recorded as a failed coverage audit, not as a source refusal
+
+**Context.** Session 159's §9 task message names two open gates beyond the cohort one: **≥ 200 admitted treatment firms** (conditions 3–5 of the PH-1 membership rule, unverified for all 141 rows) and **free delisted/terminal-return price coverage** (B2). The handoff records Stooq as blocked by a JavaScript anti-bot challenge and Yahoo as terms-prohibited/unreliable, but those findings predate this environment's DNS recovery, so they were re-tested rather than carried forward on trust. Re-testing is authorized under D-032 (free and lawful public sources only, checked before use) and changes nothing about the gates if it confirms them.
+
+**What was done.** DNS was re-probed for 12 candidate hosts (all 12 resolve; the earlier "failed before HTTP" failures are not present in this runner, so B3 is lifted here and the finding is an environment limitation, not a source result — D-032). Live HTTP probes were then run against nine candidate free price sources:
+
+| Source | Result | Reading |
+|---|---|---|
+| Stooq (`stooq.com/q/d/l/?s=aapl&i=d`) | HTTP 200, but the body is an HTML page with `<noscript>This site requires JavaScript to verify your browser.</noscript>` | **No CSV data reachable without JS execution.** Confirms the prior anti-bot finding; no price series obtainable. |
+| Yahoo Finance chart API (`query1/2.finance.yahoo.com/v8/finance/chart/{sym}`) | HTTP 429 "Too Many Requests" on every host tried, for live (AAPL) and delisted (LEH, LNKD, XLNX, VMW, SCTY, GME, TSLA) tickers alike, across a 90-second cooldown | **Rate-limited at the edge, not a coverage signal.** No series returned, so delisted coverage cannot be established from it. Yahoo's own terms additionally prohibit automated harvesting. |
+| Alpha Vantage (demo key) | HTTP 200, body: "The **demo** API key is for demo purposes only. Please claim your free API key..." | A demo key is not a data route; claiming one is a registration step, not a paid purchase, but it is also not a verified coverage evidence and was not pursued further. |
+| IEX Cloud (`api.iex.cloud/v1/stock/AAPL/chart/latest`) | read timeout | No data. |
+| Nasdaq API (`api.nasdaq.com/api/quote/AAPL`) | read timeout | No data. |
+| Barchart (`barchart.com/site/api/getQuote.json?symbols=AAPL`) | HTTP 200, JSON quote returned | Live-quote coverage only; no delisted history established. |
+| Investing.com | HTTP 403 Cloudflare challenge | No data. |
+| Marketbeat / Tradingview | HTTP 200, HTML marketing pages | Not price-series sources. |
+
+**Decision.** Record the outcome as a **failed coverage audit**: no free candidate source has been shown to deliver a daily price series for a **delisted** security, and the one candidate that plausibly could (Yahoo) is both rate-limited to the point of unusability in this environment and terms-prohibited. B2 stays **open**. This is a finding about free-source insufficiency, and under D-032's own caveat it does **not** justify lowering the frozen terminal-return gate or asserting completeness that has not been shown.
+
+**Why this is a decision and not a silent edit.** The terminal-return gate is one of three frozen preconditions on computing any outcome-period return (`research/preregistration_v1.4.md` §5.3). A gate that is neither met nor honestly reported as met must be recorded as failed, with the evidence, so that the next agent does not re-run the same probes expecting a different answer and does not mistake the absence of evidence for evidence of absence.
+
+**Reverses if.** A free source demonstrably returns a daily series for a delisted security (e.g. Yahoo removes its rate limit or a new free endpoint appears) and its terms permit the harvest; then B2 is re-audited and the gate re-evaluated. Stooq becomes usable only if it serves the CSV without JavaScript.
+
+**Boundary.** No price outcome-period return computed or inspected; no panel row added, removed or re-statused; no registered v1.0–v1.4 file edited in place; no paid service used, no credentials provisioned, no purchase or checkout of any kind (D-032); no GitHub Actions run; no price series acquired or cached. The campaign remains **PARKED — not validated, not rejected**, and the frozen gates are unchanged: **12 verified timing cohorts ≥ 12 (MET)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage **not established (FAIL)**.

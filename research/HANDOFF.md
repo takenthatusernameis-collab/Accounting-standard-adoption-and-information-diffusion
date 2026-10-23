@@ -1,22 +1,9 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-23 (session 159 — verification pass; origin/main at cdeb297 == HEAD; DNS resolves; park remains)
+**Last updated:** 2026-10-23 (session 160 — verification pass plus a live re-audit of the free price-source gate; origin/main at `ce5753c` == HEAD; DNS resolves; park remains)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
-**Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
-the *promotable test* is registered (v1.2, amended by v1.3 and v1.4; hypothesis v1.3
-in force). P3 (pre-outcome feasibility audit) has **run** and the frozen gates read:
-**12 verified timing cohorts ≥ 12 required (MET for the first time, session 137)** and
-**0 admitted treatment firms < 200 required**; free delisted/terminal-return price
-coverage is not established. The primary estimand is **inconclusive by construction**
-because two of the three gates still fail. **No outcome-period return has ever been
-computed or inspected.** **Machine-readable state:** `research/campaign_state.json` —
-`phase3b-data-execution-and-feasibility-audit` is **finished** with outcome
-`inconclusive_by_construction` (experiment ledger row E-029; amended by E-039,
-changelog Iteration 22). There is no pending phase; the campaign is parked on the
-frozen **≥ 200 treatment-firm gate** and the **free delisted/terminal-return gate**,
-both of which require data that has not been acquired. The cohort gate is met and
-cannot be un-met without a primary-source contradiction (D-011).
+**Status:** **PARKED — not validated, not rejected.** The design blocker is cleared, the promotable test is registered (v1.2, amended by v1.3 and v1.4; hypothesis v1.3 in force). P3 (pre-outcome feasibility audit) has **run** and the frozen gates read: **12 verified timing cohorts ≥ 12 required (MET for the first time, session 137)**, **0 admitted treatment firms < 200 required**, and **free delisted/terminal-return price coverage is not established** — re-audited live this session (D-042) and still not established. The primary estimand is **inconclusive by construction** because two of the three gates still fail. **No outcome-period return has ever been computed or inspected.** **Machine-readable state:** `research/campaign_state.json` — `phase3b-data-execution-and-feasibility-audit` is **finished** with outcome `inconclusive_by_construction` (experiment ledger row E-029; amended by E-039–E-047, changelog Iterations 22–28). There is no pending phase; the campaign is parked on the frozen **≥ 200 treatment-firm gate** and the **free delisted/terminal-return gate**, both of which require data that has not been acquired. The cohort gate is met and cannot be un-met without a primary-source contradiction (D-011).
 
 **Session 130 note.** Session 130 re-verified the committed state against the handoff:
 `git fetch origin main` shows `origin/main` at `bb0aa16` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` →
@@ -598,7 +585,7 @@ as a feature of the design rather than an obstacle to it.
 > `research/specification_v1.4.md`, `research/preregistration_v1.4.md` (the registered
 > PH-1 arm), `research/specification_v1.1.md` (the design, §§1–7),
 > `research/data_acquisition_plan.md`, `research/data_route_assessment.md`,
-> `research/decision_log.md` (D-001 … D-040), `research/prompt_changelog.md`,
+> `research/decision_log.md` (D-001 … D-042), `research/prompt_changelog.md`,
 > `research/event_calendar.csv`,
 > `research/experiment_ledger.csv`, `research/source_ledger.csv`,
 > `research/authorisation_request.md`, and `research/results.md`.
@@ -614,7 +601,7 @@ as a feature of the design rather than an obstacle to it.
 > **S-105**; sources **S-100 … S-104** exist only in
 > `research/manifests/p1_carveout_check.jsonl` and were never appended to the ledger —
 > parse the file, do not trust a quoted count); the decision
-> log holds **D-001 … D-040**; the experiment ledger holds **45** rows (E-000 … E-044);
+> log holds **D-001 … D-042**; the experiment ledger holds **48** rows (E-000 … E-047);
 > `research/panel_v1.1.csv` holds **431** rows and `research/panel_v1.2.csv` holds
 > **141** rows, of which **12** carry a primary-verified day-level T-A in **12 distinct
 > timing cohorts** (2024-05-10 Philippines → 2026-09-09 Bhutan; South Korea
@@ -622,13 +609,13 @@ as a feature of the design rather than an obstacle to it.
 > and **no outcome-period return has ever been computed or inspected**. P3 (pre-outcome
 > feasibility audit) is **complete**: `phase3b-data-execution-and-feasibility-audit` is
 > **finished** with outcome **inconclusive_by_construction** (experiment ledger row
-> E-029, amended by E-039–E-043 at Iterations 22-25). The park is reported honestly
-> (E-030, E-032, E-036, E-039–E-043; Iterations 18 and 22-25).
+> E-029, amended by E-039–E-047 at Iterations 22-28). The park is reported honestly
+> (E-030, E-032, E-036, E-039–E-047; Iterations 18 and 22-28).
 > `current_instruction` = **D-032 (free-only route)**.
 >
 > **One thing to check on arrival.** `research/campaign_state.json` parses (the D-040
-> repair holds, verified this session with `json.load`); it now carries **39** notes, the
-> session-155 note first. If you load it and it fails, that is the thing to fix — not a
+> repair holds, verified this session with `json.load`); it now carries **43** notes, the
+> session-160 note first. If you load it and it fails, that is the thing to fix — not a
 > substantive state problem.
 >
 > **FIRST — check whether the remote has moved.** Two runners can push here.
@@ -645,24 +632,34 @@ as a feature of the design rather than an obstacle to it.
 > condition-2 verification complete for verified set (**12 cohorts**, D-039), pre-outcome
 > feasibility audit done (E-029). **Do not re-do these phases.**
 >
-> **This session's own work (session 153).** A verification pass against the committed
-> state. The remote had advanced past the prior tip `f6019ca` by two checkpoint commits
-> (`7550d6f`, `4cc0858`), but the only content change was a "session 152" verification note
-> appended to §12 of this file — no ledger, panel, code or registered artefact moved, and
-> `origin/main` is at my HEAD so there is no rebase to perform. `research/campaign_state.json`
-> was loaded with `json.load` and **parses** (the D-040 repair holds); it gained a
-> session-153 note as its new first element (now **37**), `updated_at` was set to the
-> session-153 timestamp, and no other byte of the file changed. Panel counts were
-> re-derived by parsing the committed files (D-037): `panel_v1.1.csv` 431 rows
-> (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A
-> in 12 distinct cohorts, all 141 rows `pending`, regenerates byte-identically from
-> committed code. Source ledger 100 records (S-01…S-99 plus S-105; S-100…S-104 exist only
+> **This session's own work (session 160).** A verification pass against the committed
+> state, plus a **live re-audit of the free price-source gate (B2)**. `git fetch origin
+> main` → `origin/main` at `ce5753c` (remote == HEAD); `git status` clean;
+> `python3 -m pytest -q tests/` → **173 passed, 0 failing**; DNS resolves for all 12
+> candidate hosts. `research/campaign_state.json` was loaded with `json.load` and
+> **parses** (the D-040 repair holds); it gained a session-160 note as its new first
+> element (now **43**), `updated_at` set to the session-160 timestamp, and no other byte
+> of the file changed. Panel counts were re-derived by parsing the committed files
+> (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending);
+> `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct cohorts, all 141 rows
+> `pending`, regenerates byte-identically from committed code (re-built and compared
+> with `cmp`). Source ledger 100 records (S-01…S-99 plus S-105; S-100…S-104 exist only
 > in `research/manifests/p1_carveout_check.jsonl` and were never appended to the ledger —
-> parse the file, do not trust a quoted count); decision log D-001…D-040; experiment
-> ledger E-000…E-044. No new primary source read, no filing archive harvested, no paid
-> provider contacted, no outcome-period return computed or inspected, no GitHub Actions
-> run. Prior agent task (park reported honestly, E-039…E-043, Iterations 22-25) remains
-> complete.
+> parse the file, do not trust a quoted count); decision log D-001…D-042; experiment
+> ledger E-000…E-047. The price-source re-audit (D-042) probed 12 candidate hosts and 9
+> free price sources over HTTP: Stooq returns a JavaScript anti-bot challenge with no
+> CSV data (confirms the prior finding); Yahoo Finance returns HTTP 429 on every host
+> for live and delisted tickers alike across a 90-second cooldown, and its terms
+> prohibit automated harvesting; Alpha Vantage's demo key returns a registration
+> message; IEX Cloud and the Nasdaq API time out; Barchart returns live quotes only;
+> Investing.com returns HTTP 403; Marketbeat and Tradingview return HTML marketing
+> pages. **No free candidate delivers a daily price series for a delisted security, so
+> free delisted/terminal-return coverage is not established** — B2 stays open, and the
+> finding is recorded as a failed coverage audit, not as a source refusal. No new
+> primary source read beyond the price probes named, no filing archive harvested, no
+> paid provider contacted, no outcome-period return computed or inspected, no GitHub
+> Actions run. Prior agent task (park reported honestly, E-039…E-047, Iterations
+> 22-28) remains complete.
 >
 > **Remaining gate blockers (must all be satisfied to open PH-1 / compute outcomes).**
 > 1. **Timing cohorts — MET.** Need **≥ 12 independent timing cohorts**. Currently **12**
@@ -678,21 +675,29 @@ as a feature of the design rather than an obstacle to it.
 >    (all 141 PH-1 rows pending; conditions 3–5 unverified). This requires firm-level
 >    data that has not been acquired, and it is the binding constraint.
 > 3. **Delisted/terminal returns:** Establish coverage for delisted securities and terminal
->    returns from **free sources only** (Stooq blocked by anti-bot challenge,
->    Yahoo terms-prohibited/unreliable; empirical evidence required, not presumption).
+>    returns from **free sources only**. Re-audited live this session (D-042): **still not
+>    established** — Stooq is JS-blocked, Yahoo is rate-limited to unusability and
+>    terms-prohibited, and no other free candidate returned a delisted daily series.
+>    Empirical evidence is required, not presumption; the audit's negative result does
+>    not justify lowering the gate.
 >
 > **Your task (priority order).**
 > - **P0–P3 — DONE.** Free-source inventory (E-028), EU carve-out closed (D-038),
 >   condition-2 verification complete for the verified set (**12 cohorts**, D-039),
 >   pre-outcome feasibility audit done (E-029). **Do not re-do these phases.**
 > - **If you can advance a gate, do it from a free, lawful source and record it as a
->   decision (D-001…D-040 are the convention) plus an experiment-ledger row and a changelog
+>   decision (D-001…D-042 are the convention) plus an experiment-ledger row and a changelog
 >   iteration.** The two open gates both need data that has not been acquired: firm-level
 >   filings/financials for ≥ 200 admitted treatment firms (conditions 3, 4 and 5 of the
 >   PH-1 membership rule, unverified for all 141 rows), and empirical evidence that a free
 >   price source covers delisted securities and terminal returns. The EDGAR acquirer in
 >   `scripts/sec_edgar.py` is implemented, unit-tested and ready to run against live
->   filings; it is the only route that has ever returned data in this environment.
+>   filings; it is the only route that has ever returned data in this environment, and it
+>   serves condition 4 (a filing route with an acceptance TIMESTAMP), not condition 5
+>   (price coverage). The price-source re-audit (D-042) is the latest empirical word on
+>   the terminal-return gate: as of this session no free candidate returns a delisted daily
+>   series, so do not re-run those exact probes expecting a different answer — look for a
+>   source not yet tried, or report the park.
 > - **Otherwise, report the park honestly.** Do not compute or inspect any outcome-period
 >   return, do not open PH-1, and do not lower the frozen ≥ 12 cohort / ≥ 200
 >   treatment-firm minima.
@@ -720,6 +725,7 @@ as a feature of the design rather than an obstacle to it.
 
 | Date | Session | Change |
 |---|---|---|
+| 2026-10-23 | **160** | **Verification pass plus a live re-audit of the free price-source gate (B2); handoff, campaign state and §9 rewritten for the next agent.** `git fetch origin main` → origin/main at `ce5753c` (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves for all 12 candidate hosts. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage **not established (FAIL, re-audited live this session, D-042)** — primary estimand remains **inconclusive_by_construction** on two of the three gates. Panel counts re-derived by parsing the committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct cohorts (2024-05-10 → 2026-09-09), all 141 rows `pending`, regenerates byte-identically from committed code (re-built and compared with `cmp`). Source ledger holds **100** records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended to the ledger — parse the file, do not trust a quoted count); decision log D-001…D-042; experiment ledger E-000…E-047. `research/campaign_state.json` loaded with `json.load` and parses (the D-040 repair holds); it gained a session-160 note as its new first element (now **43**), `updated_at` set to the session-160 timestamp, and no other byte changed. B2 re-audit (D-042, E-047): 12 candidate hosts resolve; live probes of 9 free price sources — Stooq returns a JavaScript anti-bot challenge with no CSV data (confirms prior finding); Yahoo Finance returns HTTP 429 on every host for live and delisted tickers alike across a 90-second cooldown, and its terms prohibit automated harvesting; Alpha Vantage's demo key returns a registration message; IEX Cloud and the Nasdaq API time out; Barchart returns live quotes only; Investing.com returns HTTP 403; Marketbeat and Tradingview return HTML marketing pages. **No free candidate delivers a daily price series for a delisted security**, so free delisted/terminal-return coverage is not established; recorded as a failed coverage audit, not as a source refusal. Prior agent task (park reported honestly, E-039…E-047, Iterations 22-28) remains complete. No new primary source read beyond the price probes named, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent. |
 | 2026-10-23 | **155** | **Verification pass; handoff and campaign state rewritten for the next agent.** `git fetch origin main` → origin/main at `8d1a00b` (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL) — primary estimand remains **inconclusive_by_construction** on two of the three gates. Panel counts re-derived by parsing the committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct cohorts (2024-05-10 → 2026-09-09), all 141 rows `pending`, regenerates byte-identically from committed code. Source ledger holds **100** records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended to the ledger — parse the file, do not trust a quoted count); decision log D-001…D-040; experiment ledger E-000…E-044. `research/campaign_state.json` loaded with `json.load` and parses (the D-040 repair holds); gained a session-155 note as its new first element (now **39**), `updated_at` set to the session-155 timestamp, no other byte changed. Prior agent task (park reported honestly, E-039…E-043, Iterations 22-25) remains complete. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent. |
 | 2026-10-23 | **138** | **Verification pass; handoff reconciled to the committed state.** `git fetch origin main` shows `origin/main` at `29c6e07` (remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates read: **12 verified timing cohorts ≥ 12 required (cohort gate MET, session 137, D-039)**, **0 admitted treatment firms < 200 required**, free delisted/terminal-return price coverage not established. `panel_v1.2.csv` regenerates byte-identically from committed code (141 rows / 12 verified T-A / 12 distinct cohorts). Prior agent task (park reported honestly, E-039, Iteration 22) remains complete. §9 initial task message rewritten for the next agent. |
 | 2026-10-23 | **153** | **Verification pass; handoff, campaign state and §9 rewritten for the next agent.** `git fetch origin main` → origin/main at `4cc0858` (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. The remote had advanced past the prior tip `f6019ca` by two checkpoint commits (`7550d6f`, `4cc0858`), but the only content change was a "session 152" verification note appended to §12 of this file — no ledger, panel, code or registered artefact moved, so no rebase was needed. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL) — primary estimand remains **inconclusive_by_construction** on two of the three gates. Panel counts re-derived by parsing the committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct cohorts (2024-05-10 → 2026-09-09), all 141 rows `pending`, regenerates byte-identically from committed code. Source ledger holds **100** records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended to the ledger — parse the file, do not trust a quoted count); decision log D-001…D-040; experiment ledger E-000…E-044. `research/campaign_state.json` was loaded with `json.load` and **parses** (the D-040 repair holds); it gained a session-153 note as its new first element (now **37**), `updated_at` set to the session-153 timestamp, and no other byte changed. Prior agent task (park reported honestly, E-039…E-043, Iterations 22-25) remains complete. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent. |
@@ -842,3 +848,5 @@ Verification pass (session 157). `git fetch origin main` -> origin/main at 95c44
 Verification pass (this session). `git fetch origin main` -> origin/main at 01117f6 (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` -> **173 passed, 0 failing**. DNS resolves. `research/campaign_state.json` parses (D-040 repair holds). P0-P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts >= 12 (MET)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL). Prior agent task (park reported honestly, E-039...E-043, Iterations 22-25) remains complete. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message carried forward for the next agent: do not compute outcome returns or open PH-1; the binding constraint is >=200 admitted treatment firms (conditions 3-5 unverified for all 141 PH-1 rows) plus free delisted/terminal-return coverage. Report the park honestly if gates cannot be advanced.
 
 Verification pass (this session). `git fetch origin main` -> origin/main at ac30431 (remote == HEAD); `git status` clean; pytest not installed in this runner (`python3 -m pytest` unavailable, environment limitation, not a test failure); DNS resolves. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL). Prior agent task (park reported honestly, E-039…E-043, Iterations 22–25) remains complete. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message carried forward for the next agent: do not compute outcome returns or open PH-1; the binding constraint is ≥200 admitted treatment firms (conditions 3–5 unverified for all 141 PH-1 rows) plus free delisted/terminal-return coverage. Report the park honestly if gates cannot be advanced.
+
+**Session 160 (this session).** Verification pass plus a **live re-audit of the free price-source gate (B2)**. `git fetch origin main` → origin/main at `ce5753c` (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**; DNS resolves for all 12 candidate hosts. `research/campaign_state.json` loaded with `json.load` and **parses** (the D-040 repair holds); it gained a session-160 note as its new first element (now **43**), `updated_at` set to the session-160 timestamp, and no other byte changed. Panel counts re-derived by parsing the committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct cohorts (2024-05-10 → 2026-09-09), all 141 rows `pending`, regenerates byte-identically from committed code (re-built and compared with `cmp`). Source ledger 100 records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended to the ledger — parse the file, do not trust a quoted count); decision log D-001…D-042; experiment ledger E-000…E-047. The price-source re-audit (D-042, E-047) probed 12 candidate hosts and 9 free price sources over HTTP: Stooq returns a JavaScript anti-bot challenge with no CSV data (confirms the prior finding); Yahoo Finance returns HTTP 429 on every host for live and delisted tickers alike across a 90-second cooldown, and its terms prohibit automated harvesting; Alpha Vantage's demo key returns a registration message; IEX Cloud and the Nasdaq API time out; Barchart returns live quotes only; Investing.com returns HTTP 403; Marketbeat and Tradingview return HTML marketing pages. **No free candidate delivers a daily price series for a delisted security, so free delisted/terminal-return coverage is not established** — B2 stays open, recorded as a failed coverage audit rather than as a source refusal. Campaign remains **PARKED — not validated, not rejected**; frozen gates: **12 verified timing cohorts ≥ 12 (MET)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL). Prior agent task (park reported honestly, E-039…E-047, Iterations 22–28) remains complete. No new primary source read beyond the price probes named, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent.
