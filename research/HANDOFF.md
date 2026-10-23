@@ -1,9 +1,11 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-23 (this session — verification pass; origin/main at `a3929b6` == HEAD; DNS resolves; park remains; §9 rewritten)
+**Last updated:** 2026-10-23 (this session — verification pass; origin/main at `0bf1994` == HEAD, advanced from the handoff tip `a3929b6` by one checkpoint commit touching only the handoff; DNS resolves; park remains; §9 rewritten)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The design blocker is cleared, the promotable test is registered (v1.2, amended by v1.3 and v1.4; hypothesis v1.3 in force). P3 (pre-outcome feasibility audit) has **run** and the frozen gates read: **12 verified timing cohorts ≥ 12 required (MET for the first time, session 137)**, **0 admitted treatment firms < 200 required**, and **free delisted/terminal-return price coverage is not established** — re-audited live this session (D-042) and still not established. The primary estimand is **inconclusive by construction** because two of the three gates still fail. **No outcome-period return has ever been computed or inspected.** **Machine-readable state:** `research/campaign_state.json` — `phase3b-data-execution-and-feasibility-audit` is **finished** with outcome `inconclusive_by_construction` (experiment ledger row E-029; amended by E-039–E-054, changelog Iterations 22–34). There is no pending phase; the campaign is parked on the frozen **≥ 200 treatment-firm gate** and the **free delisted/terminal-return gate**, both of which require data that has not been acquired. The cohort gate is met and cannot be un-met without a primary-source contradiction (D-011).
+
+**Session 179 note.** Session 179 read the prior agent task from this durable handoff and completed it. `git fetch origin main` shows `origin/main` at **`0bf1994`** (remote == HEAD, advanced from the handoff tip `a3929b6` by one checkpoint commit whose only content change was a `research/HANDOFF.md` rewrite — 6 insertions / 2 deletions); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing** (1.47 s). DNS resolves. Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending; 8 non-empty T-A in 7 distinct retrospective cohorts, all ≤ 2017-10-31); `panel_v1.2.csv` 141 rows with **12** non-empty T-A in **12** distinct timing cohorts (2024-05-10 → 2026-09-09), all 141 rows `pending`, regenerates **byte-identically** from `scripts/build_panel.py` (rebuilt and compared with `cmp`). Source ledger **100** records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended — parse the file, do not trust a quoted count); decision log D-001…D-044; experiment ledger E-000…E-055 (row E-055 records this session). `research/campaign_state.json` loaded with `json.load` and parses; it gained a session-179 note as its new first element (now **57**), `updated_at` set to the session-179 timestamp, and no other byte changed. No rebase was needed (the remote's advance touched only the handoff, not the three append-only ledgers), so no D-035 reconciliation was triggered. Prior agent task (park reported honestly, E-054, Iteration 34) remains complete; no gate was advanced. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent.
 
 **Session 130 note.** Session 130 re-verified the committed state against the handoff:
 `git fetch origin main` shows `origin/main` at `bb0aa16` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` →
@@ -585,7 +587,7 @@ as a feature of the design rather than an obstacle to it.
 > `research/specification_v1.4.md`, `research/preregistration_v1.4.md` (the registered
 > PH-1 arm), `research/specification_v1.1.md` (the design, §§1–7),
 > `research/data_acquisition_plan.md`, `research/data_route_assessment.md`,
-> `research/decision_log.md` (D-001 … D-043), `research/prompt_changelog.md`,
+> `research/decision_log.md` (D-001 … D-044), `research/prompt_changelog.md`,
 > `research/event_calendar.csv`, `research/experiment_ledger.csv`,
 > `research/source_ledger.csv`, `research/authorisation_request.md`, and
 > `research/results.md`. There is no `AGENTS.md` in this repository; the protocol
@@ -600,8 +602,10 @@ as a feature of the design rather than an obstacle to it.
 > route)** — no paid services, no GitHub Actions runs. `research/campaign_state.json`
 > parses (`json.load`); `python3 -m pytest -q tests/` → **173 passed, 0 failing**.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session re-verified the committed state (origin/main at `a3929b6`, tests 173 passed,
-> 0 failing) and reported the park honestly — no gate was advanced.
+> This session re-verified the committed state (origin/main at `0bf1994`, tests 173 passed,
+> 0 failing) and reported the park honestly — no gate was advanced. The remote had
+> advanced past the prior handoff tip `a3929b6` by one checkpoint commit touching only
+> this handoff, so no rebase was needed and no D-035 ledger conflict arose (D-044).
 >
 > **Frozen gates (current).**
 > - **Timing cohorts — MET:** 12 verified, distinct T-A dates
@@ -623,8 +627,8 @@ as a feature of the design rather than an obstacle to it.
 > all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Source
 > ledger holds 100 records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in
 > `research/manifests/p1_carveout_check.jsonl`, never appended to the ledger — parse
-> the file, do not trust a quoted count). Decision log D-001 … D-043; experiment
-> ledger E-000 … E-054.
+> the file, do not trust a quoted count). Decision log D-001 … D-044; experiment
+> ledger E-000 … E-055 (row E-055 records this session).
 >
 > **One thing to check on arrival.** If `research/campaign_state.json` fails
 > `json.load`, fix that first — it is not a substantive state problem.
@@ -650,6 +654,11 @@ as a feature of the design rather than an obstacle to it.
 > - **Otherwise, report the park honestly.** Do not compute or inspect any
 >   outcome-period return, do not open PH-1, and do not lower the frozen ≥ 12 cohort /
 >   ≥ 200 treatment-firm minima. `research/results.md` keeps reporting **no results**.
+> - **The two open gates, in one line each.** (a) ≥ 200 admitted treatment firms —
+>   0 today, because conditions 3–5 of the PH-1 membership rule are unverified for
+>   all 141 PH-1 rows and firm-level data has not been acquired; (b) free
+>   delisted/terminal-return price coverage — not established (D-042/E-047). The
+>   cohort gate is MET (12 ≥ 12) and must not be chased for a 13th (D-011).
 >
 > **Rules (non-negotiable).**
 > - No outcome-period return before the feasibility audit's counts are published and
@@ -900,3 +909,7 @@ Verification pass. `git fetch origin main` → origin/main at `69e6e55` (remote 
 ## 12. Session note (this session)
 
 Verification pass (this session). `git fetch origin main` → origin/main at `a3929b6` (remote == HEAD, local HEAD == `a3929b6`); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. `research/campaign_state.json` parses (`json.load`, `current_instruction` = D-032 free-only route; phase3b finished `inconclusive_by_construction`). P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL; conditions 3–5 unverified for all 141 PH-1 rows)**, free delisted/terminal-return price coverage **not established (FAIL, re-audited live session 160, D-042/E-047)** — primary estimand remains **inconclusive_by_construction** on two of the three gates. Panel counts re-derived by parsing committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct cohorts (2024-05-10 → 2026-09-09), all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Prior agent task (park reported honestly) is complete; **no gate was advanced**. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent: do not compute outcome returns or open PH-1; the binding constraint is ≥200 admitted treatment firms (conditions 3–5 unverified for all 141 PH-1 rows) plus free delisted/terminal-return coverage. Report the park honestly if gates cannot be advanced.
+
+## 12. Session note (this session)
+
+Verification pass (session 179). `git fetch origin main` → origin/main at `0bf1994` (remote == HEAD, local HEAD == `0bf1994`, advanced from the prior handoff tip `a3929b6` by one checkpoint commit whose only content change was a `research/HANDOFF.md` rewrite — 6 insertions / 2 deletions); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing** (1.47 s). DNS resolves. `research/campaign_state.json` parses (`json.load`, `current_instruction` = D-032 free-only route; phase3b finished `inconclusive_by_construction`). P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL; conditions 3–5 unverified for all 141 PH-1 rows)**, free delisted/terminal-return price coverage **not established (FAIL, re-audited live session 160, D-042/E-047)** — primary estimand remains **inconclusive_by_construction** on two of the three gates. Panel counts re-derived by parsing committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending; 8 non-empty T-A in 7 distinct retrospective cohorts, all ≤ 2017-10-31); `panel_v1.2.csv` 141 rows with **12** non-empty T-A in **12** distinct timing cohorts (2024-05-10 → 2026-09-09), all 141 rows `pending`, regenerates **byte-identically** from `scripts/build_panel.py` (rebuilt and compared with `cmp`). Source ledger **100** records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended — parse the file, do not trust a quoted count); decision log D-001…D-044; experiment ledger E-000…E-055 (row E-055 records this session). No rebase was needed (the remote's advance touched only the handoff, not the three append-only ledgers), so no D-035 reconciliation was triggered. Prior agent task (park reported honestly, E-054, Iteration 34) remains complete; **no gate was advanced**. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent: do not compute outcome returns or open PH-1; the binding constraint is ≥200 admitted treatment firms (conditions 3–5 unverified for all 141 PH-1 rows) plus free delisted/terminal-return coverage. Report the park honestly if gates cannot be advanced.
