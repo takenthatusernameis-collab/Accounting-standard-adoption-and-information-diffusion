@@ -2,7 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
-    "2026-10-23 (session 126): verification pass. Local at 24c4651, clean; origin/main == HEAD at 24c4651; pytest 173 passed. P0-P3 complete; PARKED — not validated, not rejected. Gates: 11 cohorts < 12 required, 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) remains complete. §9 initial task message carried forward.",
+    "2026-10-23 (session 127): verification pass. Local at 8c7abff, clean; origin/main == HEAD at 8c7abff; pytest 173 passed. P0-P3 complete; PARKED — not validated, not rejected. Gates: 11 cohorts < 12 required, 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) remains complete. §9 initial task message carried forward.",
     "2026-10-23 (session 121): verification pass. Local at 2c34075, clean; origin/main == HEAD at 2c34075; pytest 173 passed. P0-P3 complete; PARKED — not validated, not rejected. Gates: 11 cohorts < 12 required, 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) remains complete. §9 initial task message rewritten for the next agent.",
     "2026-10-22 (session 116): verification pass. Local at d3dcf27, clean; pytest 173 passed. P0-P3 complete; PARKED — not validated, not rejected. Gates: 11 cohorts < 12 required, 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. E-032 recorded; handoff §9 updated.",
     "2026-10-22 (session 117): verification pass. Local at 26f2eaa, clean; pytest 173 passed. P0-P3 complete; PARKED — not validated, not rejected. Gates: 11 cohorts < 12 required, 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. §9 carried forward.",
@@ -223,7 +223,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-23T00:34:45Z",
+  "updated_at": "2026-10-23T01:40:00Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
