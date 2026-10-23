@@ -1,21 +1,22 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-23 (session 136 — verification pass; origin/main at bee7de2; DNS resolves; park remains)
+**Last updated:** 2026-10-23 (session 138 — verification pass; origin/main at 29c6e07 == HEAD; DNS resolves; park remains)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
 the *promotable test* is registered (v1.2, amended by v1.3 and v1.4; hypothesis v1.3
-in force). P3 (pre-outcome feasibility audit) has **run** and the frozen gates **fail**:
-**11 verified timing cohorts < 12 required** and **0 admitted treatment firms < 200 required**;
-free delisted/terminal-return price coverage is not established. The primary estimand is
-**inconclusive by construction**. **No outcome-period return has ever been computed or
-inspected.** **Machine-readable state:** `research/campaign_state.json` —
+in force). P3 (pre-outcome feasibility audit) has **run** and the frozen gates read:
+**12 verified timing cohorts ≥ 12 required (MET for the first time, session 137)** and
+**0 admitted treatment firms < 200 required**; free delisted/terminal-return price
+coverage is not established. The primary estimand is **inconclusive by construction**
+because two of the three gates still fail. **No outcome-period return has ever been
+computed or inspected.** **Machine-readable state:** `research/campaign_state.json` —
 `phase3b-data-execution-and-feasibility-audit` is **finished** with outcome
-`inconclusive_by_construction` (experiment ledger row E-029, changelog Iteration 17).
-There is no pending phase; the campaign is parked on the frozen ≥ 12 cohort gate, which
-cannot be met with the currently verified set without +1 more condition-2 (day-level
-IFRS 18 instrument) verification (and even then the ≥ 200 treatment-firm gate still
-fails without firm-level data).
+`inconclusive_by_construction` (experiment ledger row E-029; amended by E-039,
+changelog Iteration 22). There is no pending phase; the campaign is parked on the
+frozen **≥ 200 treatment-firm gate** and the **free delisted/terminal-return gate**,
+both of which require data that has not been acquired. The cohort gate is met and
+cannot be un-met without a primary-source contradiction (D-011).
 
 **Session 130 note.** Session 130 re-verified the committed state against the handoff:
 `git fetch origin main` shows `origin/main` at `bb0aa16` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` →
@@ -68,6 +69,29 @@ or inspected. §9 initial task message rewritten for the next agent.
 **Session 131 note.** Session 131 re-verified the committed state against the handoff:
 `git fetch origin main` shows `origin/main` at `e75972a` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` →
 **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. Prior agent task (park reported honestly, E-035) complete. §9 initial task message carried forward for next agent.
+
+**Session 138 note.** Session 138 re-verified the committed state against the handoff:
+`git fetch origin main` shows `origin/main` at `29c6e07` (remote == HEAD); `git status` is
+clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves.
+P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen
+gates read: **12 verified timing cohorts ≥ 12 required (cohort gate MET, session 137,
+D-039)**, **0 admitted treatment firms < 200 required**, free delisted/terminal-return
+price coverage not established. `panel_v1.2.csv` regenerates byte-identically from
+committed code (141 rows / 12 verified T-A / 12 distinct cohorts). Prior agent task (park
+reported honestly, E-039, Iteration 22) remains complete. §9 initial task message
+rewritten below for the next agent.
+
+**Session 137 note.** Session 137 verified condition 2 of the PH-1 membership rule for
+**South Korea** from the KASB's own instrument register (S-105), which lists K-IFRS
+No. 1118 with the day-level date **2025-12-18**, closing the D-030 finding. The
+verified set is now **12** instruments in **12 distinct timing cohorts** (2024-05-10 →
+2026-09-09) — the frozen ≥ 12 timing-cohort gate is **MET for the first time**.
+`panel_v1.2.csv` rebuilt from committed code at 141 rows / 12 verified T-A / 12 cohorts;
+`test_build_panel.py` pins the count at 12; pytest 173 passed, 0 failing. Decision
+**D-039**; source ledger now **105** (S-105); experiment ledger repaired (E-031
+restored from durable record, now E-000 … E-039 continuous). Other gates still FAIL:
+0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not
+established. PH-1 not opened; no outcome-period return computed or inspected.
 
 **Session 136 note.** Session 136 re-verified the committed state against the handoff:
 `git fetch origin main` shows `origin/main` at `bee7de2` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` →
@@ -267,9 +291,9 @@ research/hypothesis_v1.1.md research/specification_v1.1.md research/preregistrat
   moved, and the hypothesis was not amended.
 - **The tests pass**: `python3 -m pytest -q tests/` → **173 passed, 0 failing**
   (re-run this session, same command as the workflow).
-- **Condition 2 of the PH-1 membership rule is verified for ten jurisdictions**, each
+- **Condition 2 of the PH-1 membership rule is verified for twelve jurisdictions**, each
   from a standard-setter or regulator document read directly and hashed
-  (D-022, D-026, D-030, **D-033**):
+  (D-022, D-026, D-030, **D-033**, **D-039**):
 
   | Jurisdiction | T-A | Primary source |
   |---|---|---|
@@ -281,11 +305,12 @@ research/hypothesis_v1.1.md research/specification_v1.1.md research/preregistrat
   | Saudi Arabia | 2024-12-26 | the SOCPA endorsement document (S-61); the CMA early-adoption decision recorded separately (S-62) |
   | Indonesia | 2025-05-28 | the DSAK IAI's own bulletin, in the original language (S-93) |
   | United Kingdom | 2025-12-10 | the UKEB's news release recording the formal adoption (S-63) |
+  | **South Korea** | **2025-12-18** | **the KASB's own K-IFRS instrument register (S-105) — closes the D-030 finding** |
   | Brazil | 2025-12-23 | Resolução CVM nº 237 (S-77) |
   | European Union | 2026-02-13 | Commission Regulation (EU) 2026/338 (S-54), corroborated by the EFRAG Endorsement Status Report of 16 February 2026 (S-60) |
   | Bhutan | 2026-09-09 | the AASBB's own notification document (S-107), corroborated by the BAS 2026 Notification PDF (S-108) |
 
-  **Eleven instruments in eleven distinct T-A dates spanning twenty-nine months.** The
+  **Twelve instruments in twelve distinct T-A dates spanning twenty-seven months.** The
   remaining jurisdictions keep an **empty** T_A; no date is ever inferred from a
   secondary summary (D-011).
 - **The date gaps are closed from primary sources** (D-016):
@@ -403,8 +428,8 @@ is deterministic, takes no network access, and reproduces the committed file
 
 | | Rows | Status |
 |---|---|---|
-| **Condition 2 verified** (a legal instrument making IFRS 18 mandatory, with a day-level date) | **11** — eleven distinct T-A dates from 2024-05-10 to 2026-09-09 (§2) | `in_registered_panel = pending` — conditions 3, 4 and 5 are still unverified |
-| **Condition 2 unverified** | **131** | `in_registered_panel = pending`, and **`T_A` is left empty rather than inferred** |
+| **Condition 2 verified** (a legal instrument making IFRS 18 mandatory, with a day-level date) | **12** — twelve distinct T-A dates from 2024-05-10 to 2026-09-09 (§2) | `in_registered_panel = pending` — conditions 3, 4 and 5 are still unverified |
+| **Condition 2 unverified** | **129** | `in_registered_panel = pending`, and **`T_A` is left empty rather than inferred** |
 | **Total** | **141** | **every row is `pending`** |
 
 The panel carries two further **additive evidence columns**, `profile_route_hint` and
@@ -431,7 +456,10 @@ retrospective panel's evidential role checkable.
 1. If the realised number of independent **timing cohorts** is **< 12** or the
    treatment-firm count is **< 200**, the primary estimand is **inconclusive by
    construction** — the decision is park, never "pass"
-   (`research/preregistration_v1.4.md` §5.3; D-016, D-034).
+   (`research/preregistration_v1.4.md` §5.3; D-016, D-034). **The cohort half of this
+   condition was satisfied on 2026-10-23 (D-039): 12 distinct T-A dates, 2024-05-10 →
+   2026-09-09.** The treatment-firm half (0 < 200) and the terminal-return half both
+   still fail, so the estimand remains inconclusive by construction.
 2. **The retrospective panel's chronological holdout is EMPTY.** Every registered
    retrospective event has T-A ≤ 2017-10-31, so no event falls in the post-2019 split.
    This is declared in advance together with its consequence: **the retrospective panel
@@ -577,16 +605,17 @@ as a feature of the design rather than an obstacle to it.
 > by **v1.3** and **v1.4**; the hypothesis in force is `research/hypothesis_v1.3.md`;
 > the v1.0 and v1.1 files are byte-identical and unedited; the canonical dossier was
 > retrieved read-only at commit `1f9bd09cc96c1953f67ffc1f9892f7e60b6a71ff` and was
-> **not modified**; the source ledger holds **99** sources (S-01 … S-99); the decision
-> log holds **D-001 … D-038**; the experiment ledger holds **38** rows (E-000 … E-037);
+> **not modified**; the source ledger holds **105** sources (S-01 … S-105); the decision
+> log holds **D-001 … D-039**; the experiment ledger holds **40** rows (E-000 … E-039);
 > `research/panel_v1.1.csv` holds **431** rows and `research/panel_v1.2.csv` holds
-> **141** rows, of which **11** carry a primary-verified day-level T-A in **11 distinct
-> timing cohorts** (Bhutan added in session 115); the test suite is **173 passed, 0 failing**;
-> and **no outcome-period return has ever been computed or inspected**. P3 (pre-outcome feasibility audit) is **complete**:
-> `phase3b-data-execution-and-feasibility-audit` is **finished** with outcome
-> **inconclusive_by_construction** (experiment ledger row E-029). The park is reported
-> honestly (E-030, E-032, E-036; Iteration 18; carried forward through session 131).
-> `current_instruction` = **D-032 (free-only route)**.
+> **141** rows, of which **12** carry a primary-verified day-level T-A in **12 distinct
+> timing cohorts** (2024-05-10 Philippines → 2026-09-09 Bhutan; South Korea
+> 2025-12-18 added in session 137, D-039); the test suite is **173 passed, 0 failing**;
+> and **no outcome-period return has ever been computed or inspected**. P3 (pre-outcome
+> feasibility audit) is **complete**: `phase3b-data-execution-and-feasibility-audit` is
+> **finished** with outcome **inconclusive_by_construction** (experiment ledger row
+> E-029, amended by E-039 at Iteration 22). The park is reported honestly (E-030, E-032,
+> E-036, E-039; Iterations 18 and 22). `current_instruction` = **D-032 (free-only route)**.
 >
 > **FIRST — check whether the remote has moved.** Two runners can push here.
 > Run `git fetch origin main` and `git log --oneline origin/main -5` **before** you
@@ -598,23 +627,26 @@ as a feature of the design rather than an obstacle to it.
 >
 > **Your task (priority order).**
 >
-> **P0–P3 — DONE.** Free-source inventory (E-028), EU carve-out closed (D-038), condition-2
-> verification complete for verified set (11 cohorts), pre-outcome feasibility audit done
-> (E-029). **Do not re-do these phases.**
+> **P0–P3 — DONE.** Free-source inventory (E-028), EU carve-out closed (D-038),
+> condition-2 verification complete for verified set (**12 cohorts**, D-039), pre-outcome
+> feasibility audit done (E-029). **Do not re-do these phases.**
 >
 > **Remaining gate blockers (must all be satisfied to open PH-1 / compute outcomes).**
-> 1. **Timing cohorts:** Need **≥ 12 independent timing cohorts**. Currently **11** verified
->    (need **+1 more** condition-2 jurisdiction with a day-level IFRS 18 instrument from its
->    own regulator, hashed; if unverifiable keep empty T_A per D-011). Candidates with no
->    located instrument: Pakistan (SECP HTTP 403, S-99), Sri Lanka, Myanmar, Nepal,
->    Chinese Taipei, Mongolia, Israel, South Korea (announced Dec 2025 month-level only).
->    Thailand is outside the arm on T-E grounds (2028 effective). Check primary sources only.
+> 1. **Timing cohorts — MET.** Need **≥ 12 independent timing cohorts**. Currently **12**
+>    verified (2024-05-10, 2024-05-23, 2024-06-14, 2024-07-09, 2024-10-04, 2024-12-26,
+>    2025-05-28, 2025-12-10, **2025-12-18 South Korea**, 2025-12-23, 2026-02-13,
+>    2026-09-09). Satisfied on 2026-10-23 by adding South Korea from the KASB's own
+>    instrument register (S-105), not by lowering the number. Candidates still carrying
+>    an empty T_A per D-011: Pakistan (SECP HTTP 403, S-99), Sri Lanka, Myanmar, Nepal,
+>    Chinese Taipei, Mongolia, Israel; Thailand is outside the arm on T-E grounds
+>    (2028 effective). **Do not re-verify these to chase a 13th cohort** — the gate is
+>    met and more cohorts cannot by themselves unblock the arm.
 > 2. **Treatment firms:** Need **≥ 200 admitted treatment firms**. Currently **0 admitted**
->    (all 141 PH-1 rows pending; conditions 3–5 unverified). This requires firm-level data
->    that has not been acquired.
+>    (all 141 PH-1 rows pending; conditions 3–5 unverified). This requires firm-level
+>    data that has not been acquired, and it is the binding constraint.
 > 3. **Delisted/terminal returns:** Establish coverage for delisted securities and terminal
->    returns from **free sources only** (Stooq blocked by anti-bot challenge, Yahoo terms-prohibited/unreliable;
->    empirical evidence required, not presumption).
+>    returns from **free sources only** (Stooq blocked by anti-bot challenge,
+>    Yahoo terms-prohibited/unreliable; empirical evidence required, not presumption).
 >
 > **Rules (non-negotiable).**
 > - **No outcome-period return before the feasibility audit's counts are published and all gates pass.**
@@ -639,6 +671,8 @@ as a feature of the design rather than an obstacle to it.
 
 | Date | Session | Change |
 |---|---|---|
+| 2026-10-23 | **138** | **Verification pass; handoff reconciled to the committed state.** `git fetch origin main` shows `origin/main` at `29c6e07` (remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates read: **12 verified timing cohorts ≥ 12 required (cohort gate MET, session 137, D-039)**, **0 admitted treatment firms < 200 required**, free delisted/terminal-return price coverage not established. `panel_v1.2.csv` regenerates byte-identically from committed code (141 rows / 12 verified T-A / 12 distinct cohorts). Prior agent task (park reported honestly, E-039, Iteration 22) remains complete. §9 initial task message rewritten for the next agent. |
+| 2026-10-23 | **137** | **Condition-2 verification pass; the frozen ≥ 12 timing-cohort gate is satisfied for the first time.** South Korea verified from the KASB's own K-IFRS instrument register (S-105), which lists K-IFRS No. 1118 with the day-level date 2025-12-18, closing the D-030 finding. Verified set is now **12** instruments in **12 distinct timing cohorts** (2024-05-10 → 2026-09-09). `panel_v1.2.csv` rebuilt from committed code at 141 rows / 12 verified T-A / 12 cohorts; `test_build_panel.py` pins the count at 12; pytest 173 passed, 0 failing. Decision **D-039**; source ledger now **105** (S-105); experiment ledger repaired (E-031 restored from durable record, now E-000 … E-039 continuous). Other gates still FAIL: 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. PH-1 not opened; no outcome-period return computed or inspected. |
 | 2026-10-23 | **126** | **Verification pass.** `git fetch origin main` shows `origin/main` at `24c4651` (remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) remains complete. §9 initial task message carried forward. |
 | 2026-10-23 | **127** | **Verification pass.** `git fetch origin main` shows `origin/main` at `8c7abff` (remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) remains complete. §9 initial task message carried forward. |
 | 2026-10-23 | **123** | **Verification pass.** `git fetch origin main` shows `origin/main` at `9b0f04d` (advanced from `375e878` at session 122; remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) remains complete. §9 initial task message carried forward. |
@@ -713,3 +747,5 @@ Verification pass (session 111). `git fetch origin main` -> origin/main at $(git
 | 2026-10-23 | **132** | **Verification pass.** `git fetch origin main` shows `origin/main` at `2efe2a3` (remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves (172.66.147.243). P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-036) complete. Experiment ledger row E-037 recorded; `research/campaign_state.json` updated; `research/HANDOFF.md` header, §9 and §10 updated. §9 initial task message carried forward for next agent.
 
 **Session 133 note.** Verification pass. `git fetch origin main` shows `origin/main` at `7c00753` (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-036/E-037) remains complete. §9 initial task message carried forward for the next agent.
+
+**Session 138 note (this session).** Verification pass, and the handoff was reconciled to the committed state. `git fetch origin main` shows `origin/main` at `29c6e07` (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates now read: **12 verified timing cohorts ≥ 12 required (cohort gate MET for the first time, session 137, D-039)**, **0 admitted treatment firms < 200 required**, free delisted/terminal-return price coverage not established — so the primary estimand is still **inconclusive by construction** on two of the three gates. `panel_v1.2.csv` regenerates byte-identically from committed code (141 rows / 12 verified T-A / 12 distinct cohorts, rebuilt and compared with `cmp`). Prior agent task (park reported honestly, E-039, Iteration 22) remains complete. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent.
