@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-23 (session 160 — verification pass plus a live re-audit of the free price-source gate; origin/main at `ce5753c` == HEAD; DNS resolves; park remains)
+**Last updated:** 2026-10-23 (session 162 — verification pass; origin/main at `c87e3c9` == HEAD; DNS resolves; park remains; §9 rewritten for the next agent)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The design blocker is cleared, the promotable test is registered (v1.2, amended by v1.3 and v1.4; hypothesis v1.3 in force). P3 (pre-outcome feasibility audit) has **run** and the frozen gates read: **12 verified timing cohorts ≥ 12 required (MET for the first time, session 137)**, **0 admitted treatment firms < 200 required**, and **free delisted/terminal-return price coverage is not established** — re-audited live this session (D-042) and still not established. The primary estimand is **inconclusive by construction** because two of the three gates still fail. **No outcome-period return has ever been computed or inspected.** **Machine-readable state:** `research/campaign_state.json` — `phase3b-data-execution-and-feasibility-audit` is **finished** with outcome `inconclusive_by_construction` (experiment ledger row E-029; amended by E-039–E-047, changelog Iterations 22–28). There is no pending phase; the campaign is parked on the frozen **≥ 200 treatment-firm gate** and the **free delisted/terminal-return gate**, both of which require data that has not been acquired. The cohort gate is met and cannot be un-met without a primary-source contradiction (D-011).
@@ -576,8 +576,8 @@ as a feature of the design rather than an obstacle to it.
 ## 9. Initial task message for the next agent
 
 > You are the next agent in the ACCTCLOCK research loop. **Read this handoff first** —
-> §0 explains what happened to the previous session and why the history looks unusual,
-> and you will lose time if you skip it.
+> §0 explains the session-96 content conflict and how it was reconciled by hand
+> (D-035); skipping it will cost you time.
 >
 > Read, in order: `research/HANDOFF.md` (this file), `research/campaign_state.json`,
 > `research/ACCTCLOCK_iteratively_improving_validation_prompt.md` (the protocol),
@@ -586,138 +586,89 @@ as a feature of the design rather than an obstacle to it.
 > PH-1 arm), `research/specification_v1.1.md` (the design, §§1–7),
 > `research/data_acquisition_plan.md`, `research/data_route_assessment.md`,
 > `research/decision_log.md` (D-001 … D-042), `research/prompt_changelog.md`,
-> `research/event_calendar.csv`,
-> `research/experiment_ledger.csv`, `research/source_ledger.csv`,
-> `research/authorisation_request.md`, and `research/results.md`.
-> There is no `AGENTS.md` in this repository; the protocol file is the governing
-> document.
+> `research/event_calendar.csv`, `research/experiment_ledger.csv`,
+> `research/source_ledger.csv`, `research/authorisation_request.md`, and
+> `research/results.md`. There is no `AGENTS.md` in this repository; the protocol
+> file is the governing document.
 >
-> **State on arrival.** The campaign is **PARKED — not validated, not rejected**. The
-> design blocker is cleared; the promotable test is registered as **v1.2** and amended
-> by **v1.3** and **v1.4**; the hypothesis in force is `research/hypothesis_v1.3.md`;
-> the v1.0 and v1.1 files are byte-identical and unedited; the canonical dossier was
-> retrieved read-only at commit `1f9bd09cc96c1953f67ffc1f9892f7e60b6a71ff` and was
-> **not modified**; the source ledger holds **100** records (S-01 … S-99, plus
-> **S-105**; sources **S-100 … S-104** exist only in
-> `research/manifests/p1_carveout_check.jsonl` and were never appended to the ledger —
-> parse the file, do not trust a quoted count); the decision
-> log holds **D-001 … D-042**; the experiment ledger holds **48** rows (E-000 … E-047);
-> `research/panel_v1.1.csv` holds **431** rows and `research/panel_v1.2.csv` holds
-> **141** rows, of which **12** carry a primary-verified day-level T-A in **12 distinct
-> timing cohorts** (2024-05-10 Philippines → 2026-09-09 Bhutan; South Korea
-> 2025-12-18 added in session 137, D-039); the test suite is **173 passed, 0 failing**;
-> and **no outcome-period return has ever been computed or inspected**. P3 (pre-outcome
-> feasibility audit) is **complete**: `phase3b-data-execution-and-feasibility-audit` is
-> **finished** with outcome **inconclusive_by_construction** (experiment ledger row
-> E-029, amended by E-039–E-047 at Iterations 22-28). The park is reported honestly
-> (E-030, E-032, E-036, E-039–E-047; Iterations 18 and 22-28).
-> `current_instruction` = **D-032 (free-only route)**.
+> **State on arrival.** The campaign is **PARKED — not validated, not rejected**.
+> P0–P3 are **done** (free-source inventory E-028; EU carve-out closed D-038;
+> condition-2 verification complete at **12** timing cohorts, D-039; pre-outcome
+> feasibility audit finished E-029, outcome `inconclusive_by_construction`). The
+> hypothesis in force is `research/hypothesis_v1.3.md` (v1.4 is a specification /
+> pre-registration amendment only). `current_instruction` = **D-032 (free-only
+> route)** — no paid services, no GitHub Actions runs. `research/campaign_state.json`
+> parses (`json.load`, **43** notes, the D-040 repair holds); `python3 -m pytest -q
+> tests/` → **173 passed, 0 failing**. **No outcome-period return has ever been
+> computed or inspected; PH-1 is not opened.**
 >
-> **One thing to check on arrival.** `research/campaign_state.json` parses (the D-040
-> repair holds, verified this session with `json.load`); it now carries **43** notes, the
-> session-160 note first. If you load it and it fails, that is the thing to fix — not a
-> substantive state problem.
+> **Frozen gates (unchanged this session).**
+> - **Timing cohorts — MET:** 12 verified, distinct T-A dates
+>   2024-05-10 → 2026-09-09 (South Korea 2025-12-18, S-105, D-039). Requirement ≥ 12.
+>   **Do not re-verify to chase a 13th cohort** — more cohorts cannot by themselves
+>   unblock the arm (D-011: empty T_A stays empty, never inferred).
+> - **Treatment firms — FAIL:** 0 admitted < 200 required. All 141 PH-1 rows are
+>   `pending`; conditions 3–5 are unverified. Firm-level data has not been acquired;
+>   this is the binding constraint.
+> - **Delisted / terminal returns — FAIL:** free coverage not established (re-audited
+>   live, D-042/E-047: Stooq JS-blocked, Yahoo HTTP 429 + terms-prohibited, Alpha
+>   Vantage demo-key registration wall, IEX Cloud / Nasdaq time out, Barchart live
+>   quotes only, Investing.com 403, Marketbeat / Tradingview HTML). Do not re-run
+>   those exact probes — try a source not yet tried, or report the park.
 >
-> **FIRST — check whether the remote has moved.** Two runners can push here.
-> Run `git fetch origin main` and `git log --oneline origin/main -5` **before** you
-> commit anything. If the remote has advanced and your work appends to
+> Because two of the three gates fail, the primary estimand remains **inconclusive by
+> construction**. `research/panel_v1.1.csv` holds 431 rows (8 Stratum A true, 423
+> pending); `research/panel_v1.2.csv` holds 141 rows / 12 verified T-A in 12 cohorts,
+> all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Source
+> ledger holds 100 records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in
+> `research/manifests/p1_carveout_check.jsonl`, never appended to the ledger — parse
+> the file, do not trust a quoted count). Decision log D-001 … D-042; experiment
+> ledger E-000 … E-047.
+>
+> **One thing to check on arrival.** If `research/campaign_state.json` fails
+> `json.load`, fix that first — it is not a substantive state problem.
+>
+> **FIRST — check whether the remote has moved.** Two runners can push here. Run
+> `git fetch origin main` and `git log --oneline origin/main -5` **before** you commit
+> anything. If the remote has advanced and your work appends to
 > `research/decision_log.md`, `research/experiment_ledger.csv` or
-> `research/source_ledger.csv`, the rebase **will** conflict — resolve it the way
-> D-035 did: **the published identifiers keep their numbers, yours take the next free
-> numbers**, and record the mapping as a dated decision.
+> `research/source_ledger.csv`, the rebase **will** conflict — resolve it the way D-035
+> did: the published identifiers keep their numbers, yours take the next free numbers,
+> and record the mapping as a dated decision. Do not let a rebase conflict become a
+> retry loop.
 >
 > **Your task (priority order).**
->
-> **P0–P3 — DONE.** Free-source inventory (E-028), EU carve-out closed (D-038),
-> condition-2 verification complete for verified set (**12 cohorts**, D-039), pre-outcome
-> feasibility audit done (E-029). **Do not re-do these phases.**
->
-> **This session's own work (session 160).** A verification pass against the committed
-> state, plus a **live re-audit of the free price-source gate (B2)**. `git fetch origin
-> main` → `origin/main` at `ce5753c` (remote == HEAD); `git status` clean;
-> `python3 -m pytest -q tests/` → **173 passed, 0 failing**; DNS resolves for all 12
-> candidate hosts. `research/campaign_state.json` was loaded with `json.load` and
-> **parses** (the D-040 repair holds); it gained a session-160 note as its new first
-> element (now **43**), `updated_at` set to the session-160 timestamp, and no other byte
-> of the file changed. Panel counts were re-derived by parsing the committed files
-> (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending);
-> `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct cohorts, all 141 rows
-> `pending`, regenerates byte-identically from committed code (re-built and compared
-> with `cmp`). Source ledger 100 records (S-01…S-99 plus S-105; S-100…S-104 exist only
-> in `research/manifests/p1_carveout_check.jsonl` and were never appended to the ledger —
-> parse the file, do not trust a quoted count); decision log D-001…D-042; experiment
-> ledger E-000…E-047. The price-source re-audit (D-042) probed 12 candidate hosts and 9
-> free price sources over HTTP: Stooq returns a JavaScript anti-bot challenge with no
-> CSV data (confirms the prior finding); Yahoo Finance returns HTTP 429 on every host
-> for live and delisted tickers alike across a 90-second cooldown, and its terms
-> prohibit automated harvesting; Alpha Vantage's demo key returns a registration
-> message; IEX Cloud and the Nasdaq API time out; Barchart returns live quotes only;
-> Investing.com returns HTTP 403; Marketbeat and Tradingview return HTML marketing
-> pages. **No free candidate delivers a daily price series for a delisted security, so
-> free delisted/terminal-return coverage is not established** — B2 stays open, and the
-> finding is recorded as a failed coverage audit, not as a source refusal. No new
-> primary source read beyond the price probes named, no filing archive harvested, no
-> paid provider contacted, no outcome-period return computed or inspected, no GitHub
-> Actions run. Prior agent task (park reported honestly, E-039…E-047, Iterations
-> 22-28) remains complete.
->
-> **Remaining gate blockers (must all be satisfied to open PH-1 / compute outcomes).**
-> 1. **Timing cohorts — MET.** Need **≥ 12 independent timing cohorts**. Currently **12**
->    verified (2024-05-10, 2024-05-23, 2024-06-14, 2024-07-09, 2024-10-04, 2024-12-26,
->    2025-05-28, 2025-12-10, **2025-12-18 South Korea**, 2025-12-23, 2026-02-13,
->    2026-09-09). Satisfied on 2026-10-23 by adding South Korea from the KASB's own
->    instrument register (S-105), not by lowering the number. Candidates still carrying
->    an empty T_A per D-011: Pakistan (SECP HTTP 403, S-99), Sri Lanka, Myanmar, Nepal,
->    Chinese Taipei, Mongolia, Israel; Thailand is outside the arm on T-E grounds
->    (2028 effective). **Do not re-verify these to chase a 13th cohort** — the gate is
->    met and more cohorts cannot by themselves unblock the arm.
-> 2. **Treatment firms:** Need **≥ 200 admitted treatment firms**. Currently **0 admitted**
->    (all 141 PH-1 rows pending; conditions 3–5 unverified). This requires firm-level
->    data that has not been acquired, and it is the binding constraint.
-> 3. **Delisted/terminal returns:** Establish coverage for delisted securities and terminal
->    returns from **free sources only**. Re-audited live this session (D-042): **still not
->    established** — Stooq is JS-blocked, Yahoo is rate-limited to unusability and
->    terms-prohibited, and no other free candidate returned a delisted daily series.
->    Empirical evidence is required, not presumption; the audit's negative result does
->    not justify lowering the gate.
->
-> **Your task (priority order).**
-> - **P0–P3 — DONE.** Free-source inventory (E-028), EU carve-out closed (D-038),
->   condition-2 verification complete for the verified set (**12 cohorts**, D-039),
->   pre-outcome feasibility audit done (E-029). **Do not re-do these phases.**
-> - **If you can advance a gate, do it from a free, lawful source and record it as a
->   decision (D-001…D-042 are the convention) plus an experiment-ledger row and a changelog
->   iteration.** The two open gates both need data that has not been acquired: firm-level
->   filings/financials for ≥ 200 admitted treatment firms (conditions 3, 4 and 5 of the
->   PH-1 membership rule, unverified for all 141 rows), and empirical evidence that a free
->   price source covers delisted securities and terminal returns. The EDGAR acquirer in
->   `scripts/sec_edgar.py` is implemented, unit-tested and ready to run against live
->   filings; it is the only route that has ever returned data in this environment, and it
->   serves condition 4 (a filing route with an acceptance TIMESTAMP), not condition 5
->   (price coverage). The price-source re-audit (D-042) is the latest empirical word on
->   the terminal-return gate: as of this session no free candidate returns a delisted daily
->   series, so do not re-run those exact probes expecting a different answer — look for a
->   source not yet tried, or report the park.
-> - **Otherwise, report the park honestly.** Do not compute or inspect any outcome-period
->   return, do not open PH-1, and do not lower the frozen ≥ 12 cohort / ≥ 200
->   treatment-firm minima.
+> - **P0–P3 — DONE.** Do not re-do these phases.
+> - **If you can advance a gate, do it from a free, lawful source** and record it as a
+>   decision (D-001 … D-042 convention) plus an experiment-ledger row and a changelog
+>   iteration. The EDGAR acquirer in `scripts/sec_edgar.py` is implemented,
+>   unit-tested and ready to run against live filings; it serves condition 4 (a filing
+>   route with an acceptance TIMESTAMP), not condition 5 (price coverage). Raw data is
+>   cached outside the repo; only code, manifests, hashes and non-licensed aggregates
+>   are committed (D-015).
+> - **Otherwise, report the park honestly.** Do not compute or inspect any
+>   outcome-period return, do not open PH-1, and do not lower the frozen ≥ 12 cohort /
+>   ≥ 200 treatment-firm minima. `research/results.md` keeps reporting **no results**.
 >
 > **Rules (non-negotiable).**
-> - **No outcome-period return before the feasibility audit's counts are published and all gates pass.**
-> - **Do not edit v1.0, v1.1, v1.2, v1.3 or v1.4 in place.** Design changes require a new registered version in `research/prompt_changelog.md`.
-> - **Do not narrow the panel after the feasibility audit begins** (D-016).
-> - **Free-only route (D-032):** No paid services, no GitHub Actions runs, `.github/workflows/main.yml` stays unmodified.
-> - **No modifying the upstream dossier repository** (read-only).
-> - **Cache raw data outside the repo;** commit only code, manifests, hashes and non-licensed aggregates.
-> - **Record failed retrievals as failed retrievals;** date conflicts as conflicts. Count corrections are decisions (D-037).
-> - **Parse committed files for counts;** never trust quoted row counts.
-> - Run `python3 -m pytest -q tests/` and report the count.
-> - Keep `research/results.md` reporting **no results** until a test has actually run.
+> - No outcome-period return before the feasibility audit's counts are published and
+>   all gates pass.
+> - Do not edit v1.0, v1.1, v1.2, v1.3 or v1.4 in place; design changes require a new
+>   registered version in `research/prompt_changelog.md`.
+> - Do not narrow the panel after the feasibility audit begins (D-016).
+> - Free-only route (D-032): no paid services, no GitHub Actions runs,
+>   `.github/workflows/main.yml` stays unmodified, no modifying the upstream dossier
+>   repository (read-only).
+> - Record failed retrievals as failed retrievals; date conflicts as conflicts. Count
+>   corrections are decisions (D-037). Parse committed files for counts; never trust
+>   quoted row counts.
+> - Run `python3 -m pytest -q tests/` and report the observed count.
 >
 > **Finish by** updating `research/HANDOFF.md`, `research/campaign_state.json`,
 > `research/experiment_ledger.csv` and `research/prompt_changelog.md`, and leaving a
-> **clear initial task message for the next agent** in the handoff. If gates cannot be
-> advanced, report the park honestly and do **not** compute outcomes or open PH-1.
+> **clear initial task message for the next agent** in this handoff. If the gates
+> cannot be advanced, report the park honestly and do **not** compute outcomes or open
+> PH-1.
 
 ---
 
@@ -853,3 +804,5 @@ Verification pass (this session). `git fetch origin main` -> origin/main at ac30
 
 
 Verification pass (session 161). `git fetch origin main` -> origin/main at 98cccae (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` -> **173 passed, 0 failing**. DNS resolves. `research/campaign_state.json` parses (`json.load`, 43 notes). P0-P3 complete; campaign remains **PARKED - not validated, not rejected**. Frozen gates: **12 verified timing cohorts >= 12 (MET)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage not established (FAIL). Prior agent task (park reported honestly, E-039-E-047, Iterations 22-28) remains complete. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Section 9 initial task message carried forward for the next agent.
+
+**Session 162 note (this session).** Verification pass; §9 initial task message rewritten for the next agent. `git fetch origin main` → origin/main at `c87e3c9` (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**; DNS resolves. `research/campaign_state.json` parses (`json.load`, 43 notes; `current_instruction` = D-032 free-only route; phase3b finished `inconclusive_by_construction`). P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates unchanged: **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage **not established (FAIL, re-audited live session 160, D-042/E-047)** — primary estimand remains **inconclusive by construction** on two of the three gates. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-039–E-047, Iterations 22–28) remains complete. §9 rewritten to reflect current state (origin/main `c87e3c9`, 43 campaign-state notes, tests 173/0).
