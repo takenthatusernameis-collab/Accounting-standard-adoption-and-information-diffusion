@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-23 (session 131 — verification pass; origin/main at e75972a; tests 173 passing; DNS resolves; park remains)
+**Last updated:** 2026-10-23 (session 132 — verification pass; origin/main at 2efe2a3; tests 173 passing; DNS resolves; park remains)
 
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
@@ -575,14 +575,14 @@ as a feature of the design rather than an obstacle to it.
 > the v1.0 and v1.1 files are byte-identical and unedited; the canonical dossier was
 > retrieved read-only at commit `1f9bd09cc96c1953f67ffc1f9892f7e60b6a71ff` and was
 > **not modified**; the source ledger holds **99** sources (S-01 … S-99); the decision
-> log holds **D-001 … D-038**; the experiment ledger holds **35** rows (E-000 … E-035);
+> log holds **D-001 … D-038**; the experiment ledger holds **38** rows (E-000 … E-037);
 > `research/panel_v1.1.csv` holds **431** rows and `research/panel_v1.2.csv` holds
 > **141** rows, of which **11** carry a primary-verified day-level T-A in **11 distinct
 > timing cohorts** (Bhutan added in session 115); the test suite is **173 passed, 0 failing**;
 > and **no outcome-period return has ever been computed or inspected**. P3 (pre-outcome feasibility audit) is **complete**:
 > `phase3b-data-execution-and-feasibility-audit` is **finished** with outcome
 > **inconclusive_by_construction** (experiment ledger row E-029). The park is reported
-> honestly (E-030, E-032, Iteration 18; carried forward through session 130).
+> honestly (E-030, E-032, E-036; Iteration 18; carried forward through session 131).
 > `current_instruction` = **D-032 (free-only route)**.
 >
 > **FIRST — check whether the remote has moved.** Two runners can push here.
@@ -707,3 +707,4 @@ Verification pass (session 111). `git fetch origin main` -> origin/main at $(git
 **This session (130).** Re-verified committed state: `git fetch origin main` -> origin/main at bb0aa16 (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` -> **173 passed, 0 failing**. DNS resolves. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**; frozen gates fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required; free delisted/terminal-return price coverage not established). Prior agent task (park reported honestly) complete. §9 initial task message carried forward for next agent.
 
 | 2026-10-23 | **131** | **Verification pass.** `git fetch origin main` shows `origin/main` at `e75972a` (remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-035) complete. §9 initial task message carried forward for next agent.
+| 2026-10-23 | **132** | **Verification pass.** `git fetch origin main` shows `origin/main` at `2efe2a3` (remote == HEAD), `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves (172.66.147.243). P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-036) complete. Experiment ledger row E-037 recorded; `research/campaign_state.json` updated; `research/HANDOFF.md` header, §9 and §10 updated. §9 initial task message carried forward for next agent.
