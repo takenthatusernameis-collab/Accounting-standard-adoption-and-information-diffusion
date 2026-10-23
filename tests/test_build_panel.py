@@ -56,7 +56,7 @@ def test_page_boilerplate_is_not_a_jurisdiction():
     assert is_plausible_jurisdiction("") is False
 
 
-def test_verified_instruments_are_the_eleven_primary_verified_jurisdictions():
+def test_verified_instruments_are_the_twelve_primary_verified_jurisdictions():
     assert set(IFRS18_INSTRUMENTS) == {
         "European Union",
         "United Kingdom",
@@ -69,6 +69,7 @@ def test_verified_instruments_are_the_eleven_primary_verified_jurisdictions():
         "Hong Kong Sar",
         "Indonesia",
         "Bhutan",
+        "South Korea",
     }
 
 
@@ -101,18 +102,21 @@ def test_verified_instruments_carry_day_level_dates():
     assert rows["Hong Kong Sar"]["T_A"] == "2024-07-09"
     assert rows["Indonesia"]["T_A"] == "2025-05-28"
     assert rows["Bhutan"]["T_A"] == "2026-09-09"
+    assert rows["South Korea"]["T_A"] == "2025-12-18"
     for jurisdiction in IFRS18_INSTRUMENTS:
         assert rows[jurisdiction]["T_E"] == "2027-01-01"
 
 
 def test_attempted_but_unverified_jurisdictions_carry_no_date():
-    """South Africa and South Korea were attempted and could not be verified at
-    day level; their T-A stays empty rather than inferred."""
+    """South Africa, Pakistan, Sri Lanka and Thailand were attempted and could
+    not be verified at day level; their T-A stays empty rather than inferred.
+    South Korea was verified on 2026-10-23 (D-039) and is no longer in this
+    set."""
     rows = {row["jurisdiction"]: row for row in build_rows(_candidates())}
-    for jurisdiction in ("South Africa", "South Korea", "Pakistan", "Sri Lanka", "Thailand"):
+    for jurisdiction in ("South Africa", "Pakistan", "Sri Lanka", "Thailand"):
         assert jurisdiction in rows, f"{jurisdiction} must be in the candidate universe"
         assert rows[jurisdiction]["T_A"] == "", (
-            f"{jurisdiction} was attempted and not verified, so T_A must stay empty"
+            f"{jurisdiction} was attempted and not verified, so T-A must stay empty"
         )
 
 
@@ -131,6 +135,7 @@ def test_date_conflicts_are_recorded_not_resolved():
     assert "2025-12-12" in rows["United Kingdom"]["date_conflict"]
     assert "2026-02-16" in rows["European Union"]["date_conflict"]
     assert "2026-09-09" in rows["Bhutan"]["date_conflict"]
+    assert "2025-12-18" in rows["South Korea"]["date_conflict"]
 
 
 def test_event_ids_are_unique_and_sequential():
@@ -207,12 +212,15 @@ def test_a_standing_reference_profile_does_not_exclude_an_instrument():
     assert rows["Saudi Arabia"]["T_A"] == "2024-12-26"
 
 
-def test_distinct_timing_cohort_count_is_eleven():
+def test_distinct_timing_cohort_count_is_twelve():
     """The gate quantity for the feasibility audit is the number of DISTINCT
     timing cohorts, not the number of jurisdictions. This test pins the count so
-    that a change in it has to be a deliberate act."""
+    that a change in it has to be a deliberate act. South Korea was verified on
+    2026-10-23 (D-039), taking the verified set from eleven to twelve cohorts and
+    satisfying the frozen >= 12 minimum for the first time."""
     rows = build_rows(_candidates())
     cohorts = {row["timing_cohort"] for row in rows if row["timing_cohort"]}
-    assert len(cohorts) == 11
+    assert len(cohorts) == 12
     assert "2026-02-13" in cohorts
     assert "2026-09-09" in cohorts
+    assert "2025-12-18" in cohorts

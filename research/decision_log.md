@@ -1288,3 +1288,38 @@ validated, not rejected**, and the arms remain blocked on **A1** and **A2**.
 **Consequence.** The 27 eu_member_state rows in panel_v1.2.csv are cleared to join the 2026-02-13 cohort; no T_A is left empty on carve-out grounds. This can raise the independent timing-cohort count toward the ≥ 12 minimum; the realised count is still subject to the feasibility audit.
 
 **Boundary.** No outcome-period return computed or inspected; no panel row added or removed; no threshold moved.
+
+---
+
+## D-039 — 2026-10-23 — Condition 2 is verified for South Korea from the KASB's own instrument register; the verified set reaches twelve timing cohorts
+
+**Context.** The frozen feasibility gate requires **≥ 12 independent timing cohorts**. At handover the verified set stood at **eleven** (Philippines 2024-05-10, New Zealand 2024-05-23, Malaysia 2024-06-14, Hong Kong SAR 2024-07-09, Singapore 2024-10-04, Saudi Arabia 2024-12-26, Indonesia 2025-05-28, United Kingdom 2025-12-10, Brazil 2025-12-23, European Union 2026-02-13, Bhutan 2026-09-09). South Korea was the highest-value unverified candidate: the D-030 finding recorded that K-IFRS No. 1118 was established in December 2025 and is mandatory from 2027-01-01, but that **no source consulted carried a day-level issuance date**, so T-A was left empty under D-011. The gate needed exactly one more.
+
+**Decision.** Condition 2 of the PH-1 membership rule is **verified for South Korea**, with T-A = **2025-12-18**. The evidence is the Korean Accounting Standards Board's **own register of K-IFRS instruments** (`https://www.kasb.or.kr/front/board/accountingAllList.do`, the "한국채택국제회계기준(K-IFRS) (조기적용가능)" section, source ledger **S-105**, read directly and hashed). The register lists the row **"2025-12-18 제1118호 재무제표 표시와 공시"** (K-IFRS No. 1118, Presentation and Disclosure in Financial Statements), immediately above the 2016-02-04 entries for Nos 1101–1108. The register is the standard setter's own record of when each instrument was established, and it carries a **day-level** date where the press, the FSS and the KASB's own investor materials carry only the month and year ("December 2025").
+
+The month-level press date is recorded as the weaker rendering and is **not** used to fill the date (D-011). This is the resolution of the D-030 finding, not a reversal of it: D-030 was right that the sources then consulted carried no day-level date, and it is now superseded by a primary source that does.
+
+**Limitation recorded, not hidden.** The instrument text itself — the PDF referenced by the register as "조기적용가능_K-IFRS_제1118호_재무제표표시와공시(2025제정).pdf" (file ID `5c419d22-3b04-434e-850e-f6ec99d79a3d`) — was **not** directly retrievable from this environment. The register's `fileView` endpoint returns a JSON metadata record pointing at `D:/KASB_was_upload/synap/2026/01/08/...`, and every direct download path tried against `kasb.or.kr` returned **HTTP 404**. The verification therefore rests on the **register's own date field**, which is a primary source from the standard setter but is the setter's *record* of the date rather than the instrument's own text. That is sufficient for condition 2 (the rule asks for a legal instrument making IFRS 18 mandatory, with a day-level date, from the jurisdiction's own regulator or standard setter), and it is recorded as a limitation so it is not later mistaken for a full instrument read.
+
+**Consequence.** The verified set is now **twelve** instruments in **twelve distinct timing cohorts** spanning twenty-seven months (2024-05-10 → 2026-09-09):
+
+| 2024-05-10 | Philippines |
+| 2024-05-23 | New Zealand |
+| 2024-06-14 | Malaysia |
+| 2024-07-09 | Hong Kong SAR |
+| 2024-10-04 | Singapore |
+| 2024-12-26 | Saudi Arabia |
+| 2025-05-28 | Indonesia |
+| 2025-12-10 | United Kingdom |
+| **2025-12-18** | **South Korea** |
+| 2025-12-23 | Brazil |
+| 2026-02-13 | European Union |
+| 2026-09-09 | Bhutan |
+
+**The frozen ≥ 12 timing-cohort gate is satisfied for the first time.** `research/panel_v1.2.csv` regenerates from committed code at 141 rows with 12 condition-2 verified rows and 12 distinct T-A dates; `tests/test_build_panel.py` pins the count at 12 (`test_distinct_timing_cohort_count_is_twelve`); the test suite is **173 passed, 0 failing**.
+
+**What this does NOT do.** Satisfying the cohort gate does **not** open PH-1 and does **not** license any outcome-period return. The other two frozen gates still fail: **0 admitted treatment firms < 200 required** (conditions 3, 4 and 5 remain unverified for every one of the 141 rows, because they need firm-level data that has not been acquired), and **free delisted/terminal-return price coverage is not established** (B2 open). Under `research/preregistration_v1.4.md` §5.3 the primary estimand is **inconclusive by construction** until all three gates pass, and nothing in this decision moves a threshold, narrows the panel, or edits a registered artefact in place. No outcome-period return was computed or inspected.
+
+**Reverses if.** A primary source from the KASB or the FSS carrying a different day-level date for K-IFRS No. 1118, in which case the conflict is written into the row's own `date_conflict` field per D-011 and a new decision is logged; or the instrument text proves the register's date to be a metadata artefact rather than the establishment date.
+
+**Boundary.** No outcome-period return computed or inspected; no panel row added or removed by hand; no registered v1.0–v1.4 file edited in place; no paid service used (D-032); no GitHub Actions run.

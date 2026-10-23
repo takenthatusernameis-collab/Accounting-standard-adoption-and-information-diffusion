@@ -15,12 +15,12 @@ conditions, checked in order, and every check is recorded:
 
 **Conditions 3 to 5 are unverified for every jurisdiction**, because condition 3
 depends on the membership snapshot, condition 4 on the A2 authorisation and
-condition 5 on the A1 authorisation. **Condition 2 is verified for eleven
+condition 5 on the A1 authorisation. **Condition 2 is verified for twelve
 jurisdictions** (European Union, United Kingdom, Saudi Arabia, Singapore,
-Brazil, New Zealand, Malaysia, Hong Kong SAR, Indonesia, Philippines, Bhutan). Every row
-therefore carries ``in_registered_panel = pending``, which is the three-state
-discipline of ``research/specification_v1.1.md`` §4.2: ``true`` / ``false`` /
-``pending``.
+Brazil, New Zealand, Malaysia, Hong Kong SAR, Indonesia, Philippines, Bhutan,
+South Korea). Every row therefore carries ``in_registered_panel = pending``, which
+is the three-state discipline of ``research/specification_v1.1.md`` §4.2:
+``true`` / ``false`` / ``pending``.
 
 The candidate universe is taken from the **same dated, hashed membership
 snapshot** that produced ``research/panel_v1.1.csv`` — the Stratum B rows of that
@@ -93,14 +93,17 @@ yet SOCPA issued a dated adoption resolution; South Korea's profile records
 standing-reference profile therefore does **not** exclude a jurisdiction from
 having its own dated instrument, and no jurisdiction is excluded on this basis.
 
-**South Africa and South Korea are recorded as *attempted and not verified*, not
-as verified.** South Africa's route is incorporation by reference ("IFRS as issued
-from time to time by the IASB"), which has no dated local instrument, so T-A is
-left empty. South Korea's K-IFRS No. 1118 was established and announced in
-December 2025, but no source consulted carries a day-level issuance date, so T-A
-is left empty rather than inferred from the month. Both attempts are recorded in
-``research/decision_log.md`` (D-026 and D-030) and in
-``research/source_ledger.csv`` (S-73).
+**South Africa is recorded as *attempted and not verified*, not as verified.**
+South Africa's route is incorporation by reference ("IFRS as issued from time to
+time by the IASB"), which has no dated local instrument, so T-A is left empty.
+
+**South Korea is verified as of 2026-10-23** (decision D-039, source S-105). The
+KASB's own register of K-IFRS instruments lists K-IFRS No. 1118 with the day-level
+date 2025-12-18, which closes the D-030 finding that no source consulted carried a
+day-level issuance date. The press and investor materials that state only
+"December 2025" are the weaker rendering and are not used to fill the date.
+Both attempts are recorded in ``research/decision_log.md`` (D-026, D-030, D-039)
+and in ``research/source_ledger.csv`` (S-73, S-105).
 
 The builder is deterministic and takes no network access.
 """
@@ -527,6 +530,38 @@ IFRS18_INSTRUMENTS: dict[str, dict[str, str]] = {
             "makes the IFRS 18 presentation-and-disclosure requirements mandatory for the affected "
             "class. Source ledger S-107 (AASBB notification page) and S-108 (the BAS 2026 "
             "Notification PDF). Conditions 3, 4 and 5 remain unverified."
+        ),
+    },
+    "South Korea": {
+        "t_a": "2025-12-18",
+        "date_conflict": (
+            "Two Korean dates are recorded rather than merged. (a) The Korean Accounting Standards "
+            "Board's own register of K-IFRS instruments lists '제1118호 재무제표 표시와 공시' "
+            "(K-IFRS No. 1118, Presentation and Disclosure in Financial Statements) with the date "
+            "2025-12-18, in the '한국채택국제회계기준(K-IFRS) (조기적용가능)' section of its "
+            "accounting-standard register. (b) The press and the FSS/KASB investor materials state "
+            "only the month and year of establishment, 'December 2025', and the effective date, "
+            "1 January 2027. T-A is the register's day-level date, 2025-12-18, because the v1.1 "
+            "event clock defines T-A as the jurisdictional legal-adoption date and the register is "
+            "the standard setter's own record of when the instrument was established. The "
+            "month-level press date is recorded as the earlier weaker rendering and is not used "
+            "to fill the date (D-011); this row is the resolution of the D-030 finding that South "
+            "Korea was 'attempted and not verified at day level'."
+        ),
+        "source_url": "https://www.kasb.or.kr/front/board/accountingAllList.do",
+        "coverage_notes": (
+            "Condition 2 VERIFIED. K-IFRS No. 1118 (K-IFRS 제1118호 재무제표 표시와 공시), the "
+            "Korean equivalent of IFRS 18 Presentation and Disclosure in Financial Statements, was "
+            "established by the Korean Accounting Standards Board on 2025-12-18, as recorded in "
+            "the Board's own register of K-IFRS instruments; it renumbers the former K-IFRS 1001 "
+            "(IAS 1) and is mandatory for annual reporting periods beginning on or after "
+            "1 January 2027. Mandatory character: K-IFRS is issued by the KASB and given legal "
+            "force for listed companies by the Financial Reporting Act and the FSS's supervisory "
+            "authority; the IFRS Foundation profile records that South Korea 'has adopted IFRS "
+            "Accounting Standards for all listed companies and some unlisted companies'. Source "
+            "ledger S-105 (the KASB register, read directly and hashed). Conditions 3, 4 and 5 "
+            "remain unverified: the FSS/DSRS filing route's publication of an acceptance TIMESTAMP "
+            "is not yet checked."
         ),
     },
 }

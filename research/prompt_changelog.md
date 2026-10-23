@@ -540,3 +540,25 @@ The reconciliation is by hand and is recorded as **D-035**: the **upstream ident
 **Hypothesis or acceptance criteria altered?** **No.** `research/hypothesis_v1.3.md` remains in force; v1.4 does not amend the hypothesis. No threshold, acceptance criterion, test order, split, panel rule, or registered date was moved. No v1.0–v1.4 file was edited in place.
 
 **Still true.** The campaign is **PARKED — not validated, not rejected**. The next agent's task is either to verify +1 more condition-2 jurisdiction to reach 12 cohorts AND establish ≥200 treatment firms AND terminal/delisting returns from free sources, or to report the park honestly again. No outcome-period return may be computed or inspected before the gate; PH-1 may not be opened unless all gates pass.
+
+## Iteration 22 — 2026-10-23 — Condition-2 verification pass; the frozen ≥ 12 timing-cohort gate is satisfied for the first time
+
+**What changed.** Session 137 verified condition 2 of the PH-1 membership rule for **South Korea** from the Korean Accounting Standards Board's **own instrument register** (`https://www.kasb.or.kr/front/board/accountingAllList.do`, source ledger **S-105**, read directly and hashed), which lists **K-IFRS No. 1118** with the day-level date **2025-12-18**. This closes the D-030 finding that no source consulted carried a day-level issuance date. The verified set is now **twelve** instruments in **twelve distinct timing cohorts** (2024-05-10 Philippines, 2024-05-23 New Zealand, 2024-06-14 Malaysia, 2024-07-09 Hong Kong SAR, 2024-10-04 Singapore, 2024-12-26 Saudi Arabia, 2025-05-28 Indonesia, 2025-12-10 United Kingdom, **2025-12-18 South Korea**, 2025-12-23 Brazil, 2026-02-13 European Union, 2026-09-09 Bhutan), spanning twenty-seven months.
+
+`scripts/build_panel.py` gained the South Korea instrument entry; `tests/test_build_panel.py` was updated to assert twelve verified jurisdictions, a day-level T-A of 2025-12-18 for South Korea, and a distinct timing-cohort count of **12** (`test_distinct_timing_cohort_count_is_twelve`). `research/panel_v1.2.csv` regenerates from committed code at **141 rows / 12 verified T-A / 12 distinct cohorts**. `research/source_ledger.csv` now holds **105** sources (S-105 added) and `research/manifests/source_ledger_verification.jsonl` carries the hashed retrieval. Decision **D-039** and experiment ledger row **E-039** record the pass. The experiment ledger was also repaired: row **E-031** (the session-115 test-fix pass) was missing from the committed CSV although referenced from the durable handoff and `research/campaign_state.json`, a gap left by the checkpoint-persistence failure of session 96; it is restored at its proper sequence number, verbatim from that durable record, so the ledger now runs **E-000 … E-039** with no gap and no duplicate. `python3 -m pytest -q tests/` → **173 passed, 0 failing**.
+
+**Why.** The frozen feasibility gate requires **≥ 12 independent timing cohorts**; the handover state had eleven. This was the single remaining condition-2 verification that could move the count, and it was executed under D-032's free-only route against the standard setter's own public register, with no paid service, no filing-archive harvest and no GitHub Actions run.
+
+**Hypothesis or acceptance criteria altered?** **No.** `research/hypothesis_v1.3.md` remains in force; v1.4 does not amend the hypothesis. No threshold, acceptance criterion, test order, split, panel rule or registered date was moved, and no v1.0–v1.4 file was edited in place. The **≥ 12** minimum was **satisfied by adding a verified cohort, not by lowering the number**.
+
+**Still true, and now sharper.** The campaign is **PARKED — not validated, not rejected**. One of the three frozen gates now passes; the other two still fail, and they are the hard ones:
+
+| Gate | Required | Achieved | Status |
+|---|---|---|---|
+| Independent timing cohorts | ≥ 12 | **12** | **MET** |
+| Admitted treatment firms | ≥ 200 | **0** | **FAIL** |
+| Free delisted/terminal-return price coverage | established | not established (Stooq JS anti-bot challenge; Yahoo terms-prohibited/unreliable) | **FAIL** |
+
+The treatment-firm gate needs firm-level data that has not been acquired (conditions 3, 4 and 5 are unverified for all 141 PH-1 rows), and the terminal-return gate needs empirical coverage evidence from a free source. Under `research/preregistration_v1.4.md` §5.3 the primary estimand is **inconclusive by construction** until **all three** gates pass, so PH-1 stays closed and **no outcome-period return may be computed or inspected**.
+
+**Reverses if.** A primary source from the KASB or the FSS carrying a different day-level date for K-IFRS No. 1118 (the conflict is then written into the row's own `date_conflict` field per D-011 and a new decision is logged); or the instrument text proves the register's date to be a metadata artefact rather than the establishment date (the PDF itself was not directly retrievable, which is recorded as a limitation in D-039 and S-105, not hidden).

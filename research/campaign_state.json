@@ -1,7 +1,7 @@
 {
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
-  "notes": [    "2026-10-23 (session 134): verification pass. Local at 6866310, clean; origin/main == HEAD at 6866310; tests 173 passing. DNS resolves. P0-P3 complete; PARKED — not validated, not rejected. Gates: 11 cohorts < 12 required, 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. Prior agent task (park reported honestly) remains complete. §9 initial task message carried forward for the next agent.",
+  "notes": [    "2026-10-23 (session 137): CONDITION-2 VERIFICATION PASS. South Korea verified from the KASB's own instrument register (S-105, https://www.kasb.or.kr/front/board/accountingAllList.do), which lists K-IFRS No. 1118 with the day-level date 2025-12-18, closing the D-030 finding. Verified set is now 12 instruments in 12 distinct timing cohorts (2024-05-10 to 2026-09-09) — the frozen >= 12 timing-cohort gate is MET for the first time. panel_v1.2.csv rebuilt from committed code at 141 rows / 12 verified T-A / 12 cohorts; test_build_panel.py pins the count at 12; pytest 173 passed, 0 failing. Decision D-039; source ledger now 105 (S-105); experiment ledger repaired (E-031 restored from durable record, now E-000..E-039 continuous). Other gates still FAIL: 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. PH-1 not opened; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.",
 "2026-10-23 (session 133): verification pass. Local at 7c00753, clean; origin/main == HEAD at 7c00753; pytest 173 passed. DNS resolves. P0-P3 complete; PARKED — not validated, not rejected. Gates: 11 cohorts < 12 required, 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. Prior agent task (park reported honestly, E-036/E-037) remains complete. §9 initial task message carried forward for the next agent.",
     "2026-10-23 (session 130): verification pass. Local at bb0aa16, clean; origin/main == HEAD at bb0aa16; pytest 173 passed. P0-P3 complete; PARKED — not validated, not rejected. Gates: 11 cohorts < 12 required, 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) remains complete. §9 initial task message rewritten for the next agent.",
     "2026-10-23 (session 121): verification pass. Local at 2c34075, clean; origin/main == HEAD at 2c34075; pytest 173 passed. P0-P3 complete; PARKED — not validated, not rejected. Gates: 11 cohorts < 12 required, 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) remains complete. §9 initial task message rewritten for the next agent.",
@@ -157,33 +157,35 @@
           "the single remaining UK verification: whether the NSM search response or CSV export carries a time-of-day component, which decides whether the UK satisfies panel condition (j) for events after 3 November 2025 (D-021)"
         ],
         "panels_materialised": [
-          "research/panel_v1.1.csv (434 rows in the registered historic snapshot; reconcile before use)",
-          "research/panel_v1.2.csv (141 rows, rebuilt 2026-10-22 from committed code; 10 condition-2 verified in 10 distinct timing cohorts, 131 pending with an EMPTY T_A; every row still pending because conditions 3, 4 and 5 are unverified)"
+          "research/panel_v1.1.csv (431 rows: 8 Stratum A true, 423 Stratum B pending over 141 jurisdictions)",
+          "research/panel_v1.2.csv (141 rows, rebuilt 2026-10-23 from committed code; 12 condition-2 verified in 12 distinct timing cohorts, 129 pending with an EMPTY T_A; every row still pending because conditions 3, 4 and 5 are unverified)"
         ],
         "closed_gaps": [
           "the UK filing-timestamp question (D-021): the NSM publishes a date; the retrospective UK events cannot be timed",
           "the day-level IFRS 18 adoption instrument date (D-022): EU 2026-02-13, UK 2025-12-10, Saudi Arabia 2024-12-26",
-          "the linguistic-distance measure choice (D-023): the published index is not exactly reproducible panel-wide, so the registered fallback is selected"
+          "the linguistic-distance measure choice (D-023): the published index is not exactly reproducible panel-wide, so the registered fallback is selected",
+          "condition 2 for South Korea (D-039, S-105): K-IFRS No. 1118 carries the day-level date 2025-12-18 in the KASB's own instrument register, closing the D-030 finding that no source carried a day-level issuance date"
         ],
         "registered_versions": {
           "hypothesis_in_force": "research/hypothesis_v1.3.md (v1.4 does not amend the hypothesis)",
           "specification": "research/specification_v1.4.md",
           "preregistration": "research/preregistration_v1.4.md",
-          "cluster_expectation": "approximately 10-13 distinct timing cohorts, against the unchanged >=12 minimum"
+          "cluster_expectation": "approximately 10-13 distinct timing cohorts, against the unchanged >=12 minimum; ACHIEVED at 12 on 2026-10-23 (D-039)"
         },
         "outcome": "inconclusive_by_construction",
         "gate_evaluation": {
-          "timing_cohorts_verified": 11,
+          "timing_cohorts_verified": 12,
           "timing_cohorts_required": 12,
-          "cohorts_met": false,
+          "cohorts_met": true,
+          "cohorts_note": "MET for the first time on 2026-10-23 (D-039): 12 distinct T-A dates 2024-05-10 to 2026-09-09. The gate was satisfied by adding a verified cohort, not by lowering the number.",
           "admitted_treatment_firms": 0,
           "treatment_firms_required": 200,
           "treatment_firms_met": false,
           "terminal_delisting_returns_established": false,
           "terminal_returns_note": "Stooq returns a JavaScript anti-bot challenge (no CSV data); Yahoo Finance terms-prohibited/unreliable; free delisted/terminal-return coverage not established (B2 open).",
-          "source": "committed panel files authoritative (D-037): panel_v1.2.csv 141 rows / 10 verified T-A / 10 cohorts; panel_v1.1.csv 431 rows (8 Stratum A true, 423 Stratum B pending)",
-          "consequence": "Primary estimand is inconclusive by construction; no outcome-period return computed or inspected; PH-1 not opened; no registered artefact edited in place.",
-          "recorded_as": "research/experiment_ledger.csv row E-029"
+          "source": "committed panel files authoritative (D-037): panel_v1.2.csv 141 rows / 12 verified T-A / 12 cohorts; panel_v1.1.csv 431 rows (8 Stratum A true, 423 Stratum B pending)",
+          "consequence": "One of three frozen gates passes; the primary estimand is STILL inconclusive by construction because the treatment-firm gate (0 < 200) and the terminal-return gate both fail. No outcome-period return computed or inspected; PH-1 not opened; no registered artefact edited in place.",
+          "recorded_as": "research/experiment_ledger.csv row E-039; decision D-039"
         }
       },
       "started_at": null,
