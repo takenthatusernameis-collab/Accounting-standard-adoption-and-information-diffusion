@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-23 (session 156 — verification pass plus EDGAR acquirer repair; origin/main at 29c18d7 == HEAD; DNS resolves; park remains)
+**Last updated:** 2026-10-23 (session 157 — verification pass; origin/main at ebce5ea == HEAD; DNS resolves; park remains)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
@@ -97,6 +97,10 @@ established. PH-1 not opened; no outcome-period return computed or inspected.
 **Session 136 note.** Session 136 re-verified the committed state against the handoff:
 `git fetch origin main` shows `origin/main` at `bee7de2` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` →
 **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. Prior agent task (park reported honestly) complete. §9 initial task message carried forward for next agent.
+
+**Session 157 note.** Session 157 re-verified the committed state against the handoff:
+`git fetch origin main` shows `origin/main` at `ebce5ea` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` →
+**173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates read: **12 verified timing cohorts ≥ 12 required (MET)**, **0 admitted treatment firms < 200 required**, free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (verification pass, session 156) complete. §9 initial task message carried forward.
 
 ## 0. Read this first: what happened to the previous session, and why the history looks like it does
 
