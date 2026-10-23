@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-23 (session 173 — verification pass; origin/main at `2932cc8` == HEAD; DNS resolves; park remains; §9 rewritten)
+**Last updated:** 2026-10-23 (session 174 — verification pass; origin/main at `b3aebf0` == HEAD; DNS resolves; park remains; §9 rewritten)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The design blocker is cleared, the promotable test is registered (v1.2, amended by v1.3 and v1.4; hypothesis v1.3 in force). P3 (pre-outcome feasibility audit) has **run** and the frozen gates read: **12 verified timing cohorts ≥ 12 required (MET for the first time, session 137)**, **0 admitted treatment firms < 200 required**, and **free delisted/terminal-return price coverage is not established** — re-audited live this session (D-042) and still not established. The primary estimand is **inconclusive by construction** because two of the three gates still fail. **No outcome-period return has ever been computed or inspected.** **Machine-readable state:** `research/campaign_state.json` — `phase3b-data-execution-and-feasibility-audit` is **finished** with outcome `inconclusive_by_construction` (experiment ledger row E-029; amended by E-039–E-047, changelog Iterations 22–28). There is no pending phase; the campaign is parked on the frozen **≥ 200 treatment-firm gate** and the **free delisted/terminal-return gate**, both of which require data that has not been acquired. The cohort gate is met and cannot be un-met without a primary-source contradiction (D-011).
@@ -600,7 +600,7 @@ as a feature of the design rather than an obstacle to it.
 > route)** — no paid services, no GitHub Actions runs. `research/campaign_state.json`
 > parses (`json.load`); `python3 -m pytest -q tests/` → **173 passed, 0 failing**.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session (173) re-verified the committed state (origin/main at `2932cc8`, tests 173 passed,
+> This session (174) re-verified the committed state (origin/main at `b3aebf0`, tests 173 passed,
 > 0 failing) and reported the park honestly — no gate was advanced.
 >
 > **Frozen gates (current).**
@@ -624,7 +624,7 @@ as a feature of the design rather than an obstacle to it.
 > ledger holds 100 records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in
 > `research/manifests/p1_carveout_check.jsonl`, never appended to the ledger — parse
 > the file, do not trust a quoted count). Decision log D-001 … D-043; experiment
-> ledger E-000 … E-051.
+> ledger E-000 … E-052.
 >
 > **One thing to check on arrival.** If `research/campaign_state.json` fails
 > `json.load`, fix that first — it is not a substantive state problem.
@@ -846,3 +846,7 @@ Verification pass (this session). `git fetch origin main` -> origin/main at `2d7
 ## 12. Session note (session 173)
 
 Verification pass (session 173). `git fetch origin main` → origin/main at `2932cc8` (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses (`json.load`, 49 notes). DNS resolves. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage **not established (FAIL, re-audited live session 160, D-042/E-047)** — primary estimand remains **inconclusive_by_construction** on two of the three gates. Panel counts re-derived by parsing committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct cohorts, all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Prior agent task (park reported honestly) remains complete; **no gate was advanced** — the cohort gate is met and must not be chased for a 13th (D-011), the treatment-firm gate requires firm-level data that has not been acquired (conditions 3–5 unverified for all 141 PH-1 rows), and the terminal-return gate was re-audited live (D-042) and stays unestablished; repeating those exact probes adds nothing. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Experiment ledger row E-051 recorded; `research/campaign_state.json` gained a session note and refreshed `updated_at`; `research/prompt_changelog.md` gained Iteration 32; §9 rewritten for the next agent.
+
+## 12. Session note (session 174)
+
+Verification pass (session 174). `git fetch origin main` → origin/main at `b3aebf0` (remote == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses (`json.load`, 50 notes). DNS resolves. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage **not established (FAIL, re-audited live session 160, D-042/E-047)** — primary estimand remains **inconclusive_by_construction** on two of the three gates. Panel counts re-derived by parsing committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct cohorts, all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Prior agent task (park reported honestly) remains complete; **no gate was advanced** — the cohort gate is met and must not be chased for a 13th (D-011), the treatment-firm gate requires firm-level data that has not been acquired (conditions 3–5 unverified for all 141 PH-1 rows), and the terminal-return gate was re-audited live (D-042) and stays unestablished; repeating those exact probes adds nothing. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Experiment ledger row E-052 recorded; `research/campaign_state.json` gained a session note and refreshed `updated_at`; `research/prompt_changelog.md` gained Iteration 33; §9 initial task message rewritten for the next agent.
