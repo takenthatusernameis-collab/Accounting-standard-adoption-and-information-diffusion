@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-23 (session 135 — verification pass; origin/main at 6866310; DNS resolves; park remains)
+**Last updated:** 2026-10-23 (session 136 — verification pass; origin/main at bee7de2; DNS resolves; park remains)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,
@@ -68,6 +68,10 @@ or inspected. §9 initial task message rewritten for the next agent.
 **Session 131 note.** Session 131 re-verified the committed state against the handoff:
 `git fetch origin main` shows `origin/main` at `e75972a` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` →
 **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. Prior agent task (park reported honestly, E-035) complete. §9 initial task message carried forward for next agent.
+
+**Session 136 note.** Session 136 re-verified the committed state against the handoff:
+`git fetch origin main` shows `origin/main` at `bee7de2` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` →
+**173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. Prior agent task (park reported honestly) complete. §9 initial task message carried forward for next agent.
 
 ## 0. Read this first: what happened to the previous session, and why the history looks like it does
 
