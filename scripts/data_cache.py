@@ -166,7 +166,11 @@ def sec_edgar_paths(layout: CacheLayout, cik: int | str, accession: str) -> dict
 
     * ``raw/sec_edgar/<cik>/<accession-nodashes>/<form>.txt`` — complete submission
       text file;
-    * ``raw/sec_edgar/<cik>/<accession-nodashes>/index.json`` — filing index;
+    * ``raw/sec_edgar/<cik>/<accession-nodashes>/index.json`` — the accession
+      directory listing (the file inventory for one filing);
+    * ``raw/sec_edgar/<cik>/<accession-nodashes>/index-headers.html`` — the
+      per-filing header block, carrying form type, period of report, filing date
+      and the acceptance stamp in Eastern clock;
     * ``raw/sec_edgar/<cik>/submissions.json`` — submissions JSON (identifier
       history only; **never** the acceptance time).
     """
@@ -178,6 +182,7 @@ def sec_edgar_paths(layout: CacheLayout, cik: int | str, accession: str) -> dict
         "accession_nodashes": Path(accession_nodashes),
         "submission_text": base / "submission.txt",
         "index": base / "index.json",
+        "index_headers": base / "index-headers.html",
         "submissions": layout.raw_source("sec_edgar") / cik_text / "submissions.json",
     }
 

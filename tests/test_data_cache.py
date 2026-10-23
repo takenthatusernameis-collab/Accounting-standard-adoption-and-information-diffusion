@@ -88,6 +88,9 @@ def test_sec_edgar_paths_follow_the_registered_naming(tmp_path: Path) -> None:
     assert paths["index"] == (
         layout.raw / "sec_edgar" / "0000320193" / "000032019318000123" / "index.json"
     )
+    assert paths["index_headers"] == (
+        layout.raw / "sec_edgar" / "0000320193" / "000032019318000123" / "index-headers.html"
+    )
     assert paths["submission_text"] == (
         layout.raw / "sec_edgar" / "0000320193" / "000032019318000123" / "submission.txt"
     )

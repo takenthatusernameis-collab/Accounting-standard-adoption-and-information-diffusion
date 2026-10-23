@@ -47,10 +47,13 @@ UTC = dt.timezone.utc
 
 ACCEPTANCE_FIELD = "ACCEPTANCE-DATETIME"
 
-#: The field is a single fixed-width stamp inside the SGML header block. EDGAR
-#: writes it as an opening tag with the value on the same line and no closing
-#: tag, for example ``<ACCEPTANCE-DATETIME>20240116163025``.
-_ANY_TAG_RE = re.compile(r"<" + ACCEPTANCE_FIELD + r">\s*([^\s<]*)")
+#: The acceptance field, written as an opening tag with the value on the same
+#: line and no closing tag, for example ``<ACCEPTANCE-DATETIME>20240116163025``.
+_ACCEPTANCE_TAG_RE = re.compile(r"<" + ACCEPTANCE_FIELD + r">\s*([^\s<]*)")
+
+#: The same opening-tag form, generalised so :func:`iter_header_fields` can read
+#: every field of the header block rather than just the acceptance stamp.
+_TAG_LINE_RE = re.compile(r"<([A-Z][A-Z0-9_-]*)>\s*([^\s<]*)")
 
 
 class AcceptanceParseError(ValueError):
@@ -101,12 +104,13 @@ class AcceptanceTimestamp:
 def find_acceptance_field(text: str) -> str | None:
     """Return the raw ``ACCEPTANCE-DATETIME`` value, or ``None`` when absent.
 
-    Both spellings are accepted because the complete submission text file uses the
-    tag form ``<ACCEPTANCE-DATETIME>...`` while a header rendered on its own uses
-    the ``ACCEPTANCE-DATETIME: ...`` pair form. The value is returned verbatim so
-    that a malformed stamp is distinguishable from an absent field.
+    Both spellings are accepted because the complete submission text file and
+    the per-filing header block use the tag form ``<ACCEPTANCE-DATETIME>...``
+    while a header rendered on its own uses the ``ACCEPTANCE-DATETIME: ...``
+    pair form. The value is returned verbatim so that a malformed stamp is
+    distinguishable from an absent field.
     """
-    match = _ANY_TAG_RE.search(text)
+    match = _ACCEPTANCE_TAG_RE.search(text)
     if match and match.group(1):
         return match.group(1)
     for line in text.splitlines():
@@ -228,10 +232,25 @@ def iter_header_fields(text: str) -> Iterable[tuple[str, str]]:
     Used by the acquirer to read the form type, the period of report and the
     filer identity from the same header that carries the acceptance stamp, so
     that every filing attribute comes from one authoritative block.
+
+    Two spellings are accepted, because EDGAR renders the same block two ways:
+
+    * the **tag form** inside the complete submission text file and inside the
+      per-filing ``<accession>-index-headers.html`` comment block —
+      ``<ACCEPTANCE-DATETIME>20240116163025`` — with the value on the same
+      line and no closing tag;
+    * the **pair form** on a header rendered on its own —
+      ``ACCEPTANCE-DATETIME: 20240116163025``.
     """
     for line in text.splitlines():
         stripped = line.strip()
-        if not stripped or stripped.startswith("<"):
+        if not stripped:
+            continue
+        tag_match = _TAG_LINE_RE.match(stripped)
+        if tag_match:
+            yield tag_match.group(1), tag_match.group(2)
+            continue
+        if stripped.startswith("<"):
             continue
         if ":" not in stripped:
             continue
@@ -239,6 +258,6 @@ def iter_header_fields(text: str) -> Iterable[tuple[str, str]]:
         name = name.strip()
         if not name or len(name) > 60:
             continue
-        if not all(character.isalnum() or character in " -/" for character in name):
+        if not all(character.isalnum() or character in " -/_" for character in name):
             continue
         yield name, value.strip()

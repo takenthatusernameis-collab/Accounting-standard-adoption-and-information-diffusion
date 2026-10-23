@@ -13,11 +13,14 @@ What it fetches, per the registered plan:
   deliberately **not** used for the acceptance time: it has been documented to
   mix UTC and Eastern clock readings (S-41), and the registered design pins the
   parse to the raw SGML header (``research/specification_v1.1.md`` §2).
-* ``www.sec.gov/Archives/edgar/data/<cik>/<accession>/index-headers.json`` — the
-  filing index. Its payload carries the form type, the period of report and the
-  acceptance stamp in Eastern clock; it is cached at the plan's path
-  ``raw/sec_edgar/<cik>/<accession-nodashes>/index.json`` and the manifest
-  records the exact URL that produced it.
+* ``www.sec.gov/Archives/edgar/data/<cik>/<accession>/index.json`` — the filing
+  index, a directory listing of every file in the accession; it is cached at
+  the plan's path ``raw/sec_edgar/<cik>/<accession-nodashes>/index.json`` and
+  the manifest records the exact URL that produced it.
+* ``www.sec.gov/Archives/edgar/data/<cik>/<accession>/<accession>-index-headers.html``
+  — the per-filing header block, carrying the form type, the period of report
+  and the acceptance stamp in Eastern clock. The legacy ``index-headers.json``
+  document is no longer served by EDGAR.
 * ``www.sec.gov/Archives/edgar/data/<cik>/<accession>/<accession>.txt`` — the
   complete submission text file, whose SGML header is the authoritative source
   of the acceptance timestamp.
@@ -37,6 +40,7 @@ Compliance rules implemented here:
 from __future__ import annotations
 
 import datetime as dt
+import gzip
 import json
 import time
 import urllib.error
@@ -51,6 +55,7 @@ from .sec_acceptance import (
     AcceptanceParseError,
     AcceptanceTimestamp,
     format_utc,
+    iter_header_fields,
     parse_acceptance_timestamp,
 )
 
@@ -66,7 +71,33 @@ RETRYABLE_STATUS = frozenset({429, 500, 502, 503, 504})
 #: Upper bound on how long a single ``Retry-After`` wait may last.
 MAX_RETRY_AFTER_SECONDS = 120.0
 
-FILING_INDEX_SOURCE = "index-headers.json"
+FILING_INDEX_SOURCE = "index.json"
+
+#: The header block for one filing now lives in a separate HTML file named
+#: ``<accession>-index-headers.html`` inside the accession directory. The
+#: legacy ``index-headers.json`` document is no longer served by EDGAR (it
+#: returns HTTP 404 after the 2025-10-31 re-format), so the acquirer reads
+#: the header fields from this file and the directory listing from
+#: :data:`FILING_INDEX_SOURCE` below.
+FILING_INDEX_HEADERS_HTML = "index-headers.html"
+
+
+def _decompress_text(payload: bytes) -> str:
+    """Return the payload as text, transparently handling EDGAR's gzip encoding.
+
+    EDGAR serves the complete submission text file with ``Content-Encoding:
+    gzip`` even though the URL ends in ``.txt``. The raw bytes are hashed and
+    cached as received; only the in-memory copy used for parsing is
+    decompressed, so the manifest digest always matches the file on disk.
+    """
+    if payload[:2] == b"\x1f\x8b":
+        import gzip
+
+        try:
+            payload = gzip.decompress(payload)
+        except OSError:
+            pass
+    return payload.decode("utf-8", errors="replace")
 
 
 class EdgarConfigurationError(RuntimeError):
@@ -84,6 +115,7 @@ class Response:
     status: int
     body: bytes
     headers: dict[str, str]
+    decompressed: bytes | None = None
 
 
 class RateLimiter:
@@ -243,14 +275,33 @@ class EdgarClient:
     # -- transport ---------------------------------------------------------
 
     @staticmethod
+    def _decompress(body: bytes, headers: dict[str, str]) -> bytes:
+        """Return the payload in a form the parsers can read.
+
+        EDGAR serves the complete submission text file with ``Content-Encoding:
+        gzip`` even though the URL ends in ``.txt``, and the SGML header is only
+        legible after decompression. The raw bytes are hashed and cached as
+        received; only the in-memory copy used for parsing is decompressed.
+        """
+        encoding = (headers.get("content-encoding") or "").lower()
+        if encoding != "gzip":
+            return body
+        try:
+            return gzip.decompress(body)
+        except OSError:
+            return body
+
+    @staticmethod
     def _default_opener(url: str, headers: dict[str, str]) -> Response:
         request = urllib.request.Request(url, headers=headers)
         try:
             with urllib.request.urlopen(request, timeout=60) as response:
+                body = response.read()
+                norm_headers = {k.lower(): v for k, v in response.headers.items()}
                 return Response(
                     status=response.status,
-                    body=response.read(),
-                    headers={k.lower(): v for k, v in response.headers.items()},
+                    body=body,
+                    headers=norm_headers,
                 )
         except urllib.error.HTTPError as exc:
             return Response(
@@ -270,6 +321,7 @@ class EdgarClient:
             self.limiter.acquire()
             self.requests += 1
             response = self._opener(url, headers)
+            response.decompressed = self._decompress(response.body, response.headers)
             if response.status not in RETRYABLE_STATUS:
                 return response
             if attempt >= self.max_retries:
@@ -354,6 +406,12 @@ class EdgarClient:
             f"{accession.replace('-', '')}/{FILING_INDEX_SOURCE}"
         )
 
+    def filing_index_headers_url(self, cik: int | str, accession: str) -> str:
+        return (
+            f"{SEC_ARCHIVES_BASE}/{int(cik):010d}/"
+            f"{accession.replace('-', '')}/{accession}-index-headers.html"
+        )
+
     def submission_text_url(self, cik: int | str, accession: str) -> str:
         return (
             f"{SEC_ARCHIVES_BASE}/{int(cik):010d}/"
@@ -379,7 +437,14 @@ class EdgarClient:
         return paths["submissions"], None
 
     def fetch_filing_index(self, cik: int | str, accession: str) -> tuple[Path | None, str | None]:
-        """Fetch the filing index for one accession."""
+        """Fetch the accession directory listing (``index.json``).
+
+        This is the directory manifest for one filing: it lists every file in
+        the accession directory, including the ``<accession>-index-headers.html``
+        file that carries the form type, period of report and acceptance stamp.
+        The legacy ``index-headers.json`` document is no longer served by EDGAR,
+        so the header fields themselves come from :meth:`fetch_filing_index_headers`.
+        """
         paths = sec_edgar_paths(self.layout, cik, accession)
         url = self.filing_index_url(cik, accession)
         _, error = self._store(
@@ -388,13 +453,66 @@ class EdgarClient:
             target=paths["index"],
             parser_version="sec_acceptance_parser@1.0.0",
             notes=(
-                f"filing index payload is the SEC {FILING_INDEX_SOURCE} document: form type, "
-                "period of report and the acceptance stamp in Eastern clock"
+                f"filing index payload is the SEC {FILING_INDEX_SOURCE} directory listing: "
+                "the file inventory for one accession, including the header HTML"
             ),
         )
         if error:
             return None, error
         return paths["index"], None
+
+    def fetch_filing_index_headers(self, cik: int | str, accession: str) -> tuple[Path | None, str | None]:
+        """Fetch the per-filing header block (``<accession>-index-headers.html``).
+
+        The header block carries the form type, the period of report, the filing
+        date and the acceptance stamp in Eastern clock, and it is the same block
+        that the complete submission text file's SGML header duplicates. The
+        acquirer reads it from this file rather than from the submissions JSON,
+        whose ``acceptanceDateTime`` field mixes UTC and Eastern clock (S-41).
+        """
+        paths = sec_edgar_paths(self.layout, cik, accession)
+        url = self.filing_index_headers_url(cik, accession)
+        _, error = self._store(
+            source_id="SEC_EDGAR_FILING_INDEX_HEADERS",
+            url=url,
+            target=paths["index_headers"],
+            parser_version="sec_acceptance_parser@1.0.0",
+            notes=(
+                "the SEC per-filing header block: form type, period of report, filing date "
+                "and the acceptance stamp in Eastern clock"
+            ),
+        )
+        if error:
+            return None, error
+        return paths["index_headers"], None
+
+    def parse_filing_index_headers(self, html_path: Path) -> FilingIndex:
+        """Read the header fields out of a cached ``<accession>-index-headers.html`` file.
+
+        The file wraps the SGML header block in an HTML comment. EDGAR serves it
+        gzip-compressed even though the URL ends in ``.html``, so the cached raw
+        bytes are decompressed for parsing while the manifest digest stays over
+        the compressed bytes. The fields are the same ``NAME: value`` pairs
+        that :func:`scripts.sec_acceptance.iter_header_fields` reads from the
+        submission text header, so the two sources stay in lock-step.
+        """
+        text = _decompress_text(Path(html_path).read_bytes())
+        start = text.find("<SEC-HEADER>")
+        end = text.find("</SEC-HEADER>")
+        if start == -1 or end == -1:
+            raise EdgarConfigurationError(
+                f"{html_path} does not contain a <SEC-HEADER> block"
+            )
+        block = text[start + len("<SEC-HEADER>"):end]
+        fields = dict(iter_header_fields(block))
+        return FilingIndex(
+            accession_number=fields.get("ACCESSION-NUMBER"),
+            form_type=fields.get("TYPE") or fields.get("FORM-TYPE"),
+            period_of_report=fields.get("PERIOD"),
+            filing_date=fields.get("FILING-DATE"),
+            acceptance_datetime_eastern=fields.get("ACCEPTANCE-DATETIME"),
+            raw=fields,
+        )
 
     def fetch_submission_text(self, cik: int | str, accession: str, form: str) -> tuple[Path | None, str | None]:
         """Fetch the complete submission text file for one accession."""
@@ -413,8 +531,14 @@ class EdgarClient:
         return target, None
 
     def parse_acceptance(self, submission_text_path: Path) -> tuple[AcceptanceTimestamp | None, str | None]:
-        """Parse the acceptance stamp out of a cached complete submission text file."""
-        text = Path(submission_text_path).read_text(encoding="utf-8", errors="replace")
+        """Parse the acceptance stamp out of a cached complete submission text file.
+
+        The cached file is stored as received, which for EDGAR means gzip
+        compressed; the parser reads the decompressed text so that the SGML
+        header is legible.
+        """
+        raw = Path(submission_text_path).read_bytes()
+        text = _decompress_text(raw)
         try:
             return parse_acceptance_timestamp(text), None
         except AcceptanceParseError as exc:
@@ -437,8 +561,21 @@ def describe_timestamp(timestamp: AcceptanceTimestamp) -> str:
 
 
 def load_json(path: Path) -> dict[str, Any]:
-    """Read a cached JSON artefact."""
-    return json.loads(Path(path).read_text(encoding="utf-8"))
+    """Read a cached JSON artefact.
+
+    EDGAR serves the accession directory listing with ``Content-Encoding:
+    gzip``, so a cached ``index.json`` may be compressed on disk. The raw bytes
+    are hashed as received; this reader decompresses only for parsing.
+    """
+    payload = Path(path).read_bytes()
+    if payload[:2] == b"\x1f\x8b":
+        import gzip
+
+        try:
+            payload = gzip.decompress(payload)
+        except OSError:
+            pass
+    return json.loads(payload.decode("utf-8", errors="replace"))
 
 
 def utc_date_stamp(moment: dt.datetime | None = None) -> str:

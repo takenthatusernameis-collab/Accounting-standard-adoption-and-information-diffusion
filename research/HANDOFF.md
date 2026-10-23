@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated:** 2026-10-23 (session 156 — verification pass; origin/main at 2ed4f32 == HEAD; DNS resolves; park remains)
+**Last updated:** 2026-10-23 (session 156 — verification pass plus EDGAR acquirer repair; origin/main at 29c18d7 == HEAD; DNS resolves; park remains)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The *design* blocker is cleared,

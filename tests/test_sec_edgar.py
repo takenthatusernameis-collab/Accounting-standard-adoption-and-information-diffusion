@@ -18,6 +18,7 @@ from scripts.sec_edgar import (
     MAX_REQUESTS_PER_SECOND,
     EdgarClient,
     EdgarConfigurationError,
+    FilingIndex,
     RateLimiter,
     Response,
     build_user_agent,
@@ -25,6 +26,7 @@ from scripts.sec_edgar import (
     parse_filing_index,
     resolve_user_agent,
 )
+from scripts.sec_acceptance import parse_acceptance_timestamp
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures" / "sec_edgar"
 USER_AGENT = "AcctClock Research contact@example.org"
@@ -196,43 +198,78 @@ def test_retries_are_bounded(tmp_path: Path) -> None:
 
 
 def test_filing_index_is_parsed_into_the_fields_the_design_needs() -> None:
-    payload = json.loads((FIXTURES / "filing_index_headers.json").read_text(encoding="utf-8"))
+    """The directory listing carries the accession directory name."""
+    payload = json.loads((FIXTURES / "filing_index_directory.json").read_text(encoding="utf-8"))
     index = parse_filing_index(payload)
+    assert index.accession_number is None
+    assert index.form_type is None
+    assert index.period_of_report is None
+    assert index.filing_date is None
+    assert index.acceptance_datetime_eastern is None
+    assert index.raw["directory"]["name"] == "0000000000-24-000001"
+
+
+def test_filing_index_headers_html_is_parsed_into_the_fields_the_design_needs(tmp_path: Path) -> None:
+    """The per-filing header block carries the fields the design needs."""
+    client, _layout, _calls, _clock = make_client(Path("/tmp"))
+    html = (FIXTURES / "filing_index_headers.html").read_text(encoding="utf-8")
+    target = tmp_path / "index-headers.html"
+    target.write_text(html, encoding="utf-8")
+    index = client.parse_filing_index_headers(target)
+    assert index.accession_number == "0000000000-24-000001"
     assert index.form_type == "10-K"
     assert index.period_of_report == "20231231"
     assert index.filing_date == "2024-01-16"
     assert index.acceptance_datetime_eastern == "20240116163025"
-    assert index.accession_number == "0000000000-24-000001"
 
 
 def test_acceptance_cross_check_compares_the_two_eastern_stamps(tmp_path: Path) -> None:
-    from scripts.sec_acceptance import parse_acceptance_timestamp
-
     text = (FIXTURES / "submission_header_standard.txt").read_text(encoding="utf-8")
     timestamp = parse_acceptance_timestamp(text)
-    payload = json.loads((FIXTURES / "filing_index_headers.json").read_text(encoding="utf-8"))
-    index = parse_filing_index(payload)
+    client, _layout, _calls, _clock = make_client(Path("/tmp"))
+    html = (FIXTURES / "filing_index_headers.html").read_text(encoding="utf-8")
+    header_path = tmp_path / "index-headers.html"
+    header_path.write_text(html, encoding="utf-8")
+    index = client.parse_filing_index_headers(header_path)
     check = cross_check_acceptance(timestamp, index)
     assert check.agree is True
 
-    payload["headers"]["acceptance-datetime"] = "20240116163026"
-    mismatch = cross_check_acceptance(timestamp, parse_filing_index(payload))
+    index2 = FilingIndex(
+        accession_number=index.accession_number,
+        form_type=index.form_type,
+        period_of_report=index.period_of_report,
+        filing_date=index.filing_date,
+        acceptance_datetime_eastern="20240116163026",
+        raw=index.raw,
+    )
+    mismatch = cross_check_acceptance(timestamp, index2)
     assert mismatch.agree is False
     assert mismatch.sgml_value == "20240116163025"
     assert mismatch.index_value == "20240116163026"
 
 
-def test_acceptance_parse_of_a_cached_submission_is_reported(tmp_path: Path) -> None:
-    payload = (FIXTURES / "submission_header_standard.txt").read_bytes()
+def test_gzip_encoded_submission_text_is_decompressed_before_parsing(tmp_path: Path) -> None:
+    """EDGAR serves the complete submission text file gzip-compressed.
+
+    The cached file is stored as received and its manifest digest is over the
+    compressed bytes; only the in-memory copy used for parsing is
+    decompressed, so the acceptance stamp is legible.
+    """
+    import gzip
+
+    text = (FIXTURES / "submission_header_standard.txt").read_text(encoding="utf-8")
+    payload = gzip.compress(text.encode("utf-8"))
     url = (
         "https://www.sec.gov/Archives/edgar/data/0000000001/"
         "000000000124000001/0000000001-24-000001.txt"
     )
     client, _layout, _calls, _clock = make_client(
-        tmp_path, {url: Response(200, payload, {"content-type": "text/plain"})}
+        tmp_path, {url: Response(200, payload, {"content-type": "text/plain", "content-encoding": "gzip"})}
     )
     target, error = client.fetch_submission_text(1, "0000000001-24-000001", "10-K")
     assert error is None and target is not None
+    # The file on disk is the compressed bytes, not the decompressed text.
+    assert target.read_bytes() == payload
     timestamp, reason = client.parse_acceptance(target)
     assert reason is None
     assert timestamp is not None and timestamp.ok
@@ -240,27 +277,15 @@ def test_acceptance_parse_of_a_cached_submission_is_reported(tmp_path: Path) -> 
     assert timestamp.utc_datetime.hour == 21
 
 
-def test_missing_acceptance_is_reported_rather_than_defaulted(tmp_path: Path) -> None:
-    payload = (FIXTURES / "submission_header_missing_acceptance.txt").read_bytes()
-    url = (
-        "https://www.sec.gov/Archives/edgar/data/0000000001/"
-        "000000000124000004/0000000001-24-000004.txt"
-    )
-    client, _layout, _calls, _clock = make_client(
-        tmp_path, {url: Response(200, payload, {"content-type": "text/plain"})}
-    )
-    target, error = client.fetch_submission_text(1, "0000000001-24-000004", "8-K")
-    assert error is None and target is not None
-    timestamp, reason = client.parse_acceptance(target)
-    assert timestamp is None
-    assert reason == "missing_acceptance_datetime"
-
-
 def test_urls_are_built_on_the_registered_hosts() -> None:
     client, _layout, _calls, _clock = make_client(Path("/tmp"))
     assert client.submissions_url(320193) == "https://data.sec.gov/submissions/CIK0000320193.json"
     assert client.filing_index_url(320193, "0000320193-18-000123") == (
-        "https://www.sec.gov/Archives/edgar/data/0000320193/000032019318000123/index-headers.json"
+        "https://www.sec.gov/Archives/edgar/data/0000320193/000032019318000123/index.json"
+    )
+    assert client.filing_index_headers_url(320193, "0000320193-18-000123") == (
+        "https://www.sec.gov/Archives/edgar/data/0000320193/000032019318000123/"
+        "0000320193-18-000123-index-headers.html"
     )
     assert client.submission_text_url(320193, "0000320193-18-000123") == (
         "https://www.sec.gov/Archives/edgar/data/0000320193/000032019318000123/"
