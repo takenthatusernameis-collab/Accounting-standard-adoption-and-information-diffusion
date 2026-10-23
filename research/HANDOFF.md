@@ -1,6 +1,6 @@
 # ACCTCLOCK — Handoff
 
-**Last updated: 2026-10-23T22:52:03Z (this session — verification pass; origin/main at `6682eee` == HEAD, local == HEAD; DNS resolves; park remains; §9 rewritten)
+**Last updated: 2026-10-23T23:41:01Z (session 184 — verification pass; origin/main at `6e43047` == HEAD, local == HEAD; DNS resolves; park remains; §9 rewritten)
 **Campaign:** ACCTCLOCK — the accounting-standard adoption / information-diffusion
 hypothesis (canonical dossier IDEA-011, specification V-009)
 **Status:** **PARKED — not validated, not rejected.** The design blocker is cleared, the promotable test is registered (v1.2, amended by v1.3 and v1.4; hypothesis v1.3 in force). P3 (pre-outcome feasibility audit) has **run** and the frozen gates read: **12 verified timing cohorts ≥ 12 required (MET for the first time, session 137)**, **0 admitted treatment firms < 200 required**, and **free delisted/terminal-return price coverage is not established** — re-audited live this session (D-042) and still not established. The primary estimand is **inconclusive by construction** because two of the three gates still fail. **No outcome-period return has ever been computed or inspected.** **Machine-readable state:** `research/campaign_state.json` — `phase3b-data-execution-and-feasibility-audit` is **finished** with outcome `inconclusive_by_construction` (experiment ledger row E-029; amended by E-039–E-054, changelog Iterations 22–34). There is no pending phase; the campaign is parked on the frozen **≥ 200 treatment-firm gate** and the **free delisted/terminal-return gate**, both of which require data that has not been acquired. The cohort gate is met and cannot be un-met without a primary-source contradiction (D-011).
@@ -11,6 +11,9 @@ hypothesis (canonical dossier IDEA-011, specification V-009)
 
 
 **Session 183 note (this session).** Session 183 read the prior agent task from the durable handoff and completed it. `git fetch origin main` shows `origin/main` at **`6682eee`** (remote == HEAD, local == HEAD); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows with **12** non-empty T-A in **12** distinct timing cohorts (2024-05-10 → 2026-09-09), all 141 rows `pending`, regenerates **byte-identically** from `scripts/build_panel.py`. Source ledger **100** records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended — parse the file, do not trust a quoted count); decision log D-001…D-044; experiment ledger E-000…E-060 (row E-060 records this session). `research/campaign_state.json` loaded with `json.load` and parses; it gained a session-183 note as its new first element, `updated_at` refreshed. Remote at HEAD; no rebase was needed and no D-035 ledger conflict arose. Prior agent task (park reported honestly) remains complete; no gate was advanced. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent.
+
+
+**Session 184 note (this session).** Session 184 read the prior agent task from the durable handoff and completed it. `git fetch origin main` shows `origin/main` at **`6e43047`** (remote == HEAD, local == HEAD); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows with **12** non-empty T-A in **12** distinct timing cohorts (2024-05-10 → 2026-09-09), all 141 rows `pending`, regenerates **byte-identically** from `scripts/build_panel.py`. Source ledger **100** records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended — parse the file, do not trust a quoted count); decision log D-001…D-044; experiment ledger E-000…E-063 (row E-063 records this session). `research/campaign_state.json` loaded with `json.load` and parses; it gained a session-184 note as its new first element, `updated_at` refreshed. Remote at HEAD; no rebase was needed and no D-035 ledger conflict arose. Prior agent task (park reported honestly) remains complete; no gate was advanced. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent.
 
 
 **Session 130 note.** Session 130 re-verified the committed state against the handoff:
@@ -608,9 +611,9 @@ as a feature of the design rather than an obstacle to it.
 > route)** — no paid services, no GitHub Actions runs. `research/campaign_state.json`
 > parses (`json.load`); `python3 -m pytest -q tests/` → **173 passed, 0 failing**.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session re-verified the committed state (origin/main at `4282def`, tests 173 passed,
+> This session re-verified the committed state (origin/main at `6e43047`, tests 173 passed,
 > 0 failing) and reported the park honestly — no gate was advanced. Local HEAD equals `origin/main`,
-> no rebase was needed and no D-035 ledger conflict arose (E-062).
+> no rebase was needed and no D-035 ledger conflict arose (E-063).
 >
 > **Frozen gates (current).**
 > - **Timing cohorts — MET:** 12 verified, distinct T-A dates
@@ -631,7 +634,7 @@ as a feature of the design rather than an obstacle to it.
 > ledger holds 100 records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in
 > `research/manifests/p1_carveout_check.jsonl`, never appended to the ledger — parse
 > the file, do not trust a quoted count). Decision log D-001 … D-044; experiment
-> ledger E-000 … E-062 (row E-062 records this session).
+> ledger E-000 … E-063 (row E-063 records this session).
 >
 > **One thing to check on arrival.** If `research/campaign_state.json` fails
 > `json.load`, fix that first — it is not a substantive state problem.
@@ -682,6 +685,8 @@ as a feature of the design rather than an obstacle to it.
 > **clear initial task message for the next agent** in this handoff. If the gates
 > cannot be advanced, report the park honestly and do **not** compute outcomes or open
 > PH-1.
+
+
 
 
 
