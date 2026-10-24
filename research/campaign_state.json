@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "2026-10-24T04:29:49Z (this session): verification pass; prior agent task read from the durable handoff and completed. git fetch origin main -> origin/main at 355e7f9 (remote == HEAD, local == HEAD); git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. DNS resolves. P0-P3 complete; campaign remains PARKED - not validated, not rejected. Frozen gates: 12 verified timing cohorts >= 12 (MET, session 137, D-039), 0 admitted treatment firms < 200 (FAIL; conditions 3-5 unverified for all 141 PH-1 rows), free delisted/terminal-return price coverage not established (FAIL, re-audited live session 160, D-042/E-047). Primary estimand inconclusive_by_construction on two of three gates. No gate advanced. No outcome-period return computed or inspected. PH-1 not opened. Updated handoff, campaign_state.json, experiment ledger (E-073).",
     {
       "session": 199,
       "timestamp_utc": "2026-10-24T03:42:43Z",
@@ -301,7 +302,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-24T03:42:43Z",
+  "updated_at": "2026-10-24T04:29:49Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",

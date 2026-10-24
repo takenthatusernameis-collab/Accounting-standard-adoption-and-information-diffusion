@@ -627,7 +627,7 @@ as a feature of the design rather than an obstacle to it.
 > pre-registration amendment only). `current_instruction` = **D-032 (free-only
 > route)** — no paid services, no GitHub Actions runs.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session re-verified the committed state (origin/main at `29685cb`, tests 173 passed,
+> This session re-verified the committed state (origin/main at `355e7f9`, tests 173 passed,
 > 0 failing) and reported the park honestly — no gate was advanced. Local HEAD equals `origin/main`,
 > no rebase was needed and no D-035 ledger conflict arose.
 >
@@ -649,8 +649,8 @@ as a feature of the design rather than an obstacle to it.
 > all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Source
 > ledger holds 100 records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in
 > `research/manifests/p1_carveout_check.jsonl`, never appended to the ledger — parse
-> the file, do not trust a quoted count). Decision log D-001 … D-047; experiment
-> ledger E-000 … E-071 (row E-071 records this session).
+> the file, do not trust a quoted count). Decision log D-001 … D-048; experiment
+> ledger E-000 … E-073 (row E-073 records this session).
 >
 > **FIRST — check whether the remote has moved.** Two runners can push here. Run
 > `git fetch origin main` and `git log --oneline origin/main -5` **before** you commit
@@ -1013,3 +1013,7 @@ Verification pass (session 196). `git fetch origin main` → origin/main at **`6
 ## 12. Session note (session 197 — this session)
 
 Verification pass (session 197). `git fetch origin main` → origin/main at **`29685cb`** (remote == HEAD, local == HEAD); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. `research/campaign_state.json` parses (`json.load`, **77** notes); `updated_at` refreshed. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL; conditions 3–5 unverified for all 141 PH-1 rows)**, free delisted/terminal-return price coverage **not established (FAIL, re-audited live session 160, D-042/E-047)** — primary estimand remains **inconclusive_by_construction** on two of the three gates. Panel counts re-derived by parsing committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct timing cohorts (2024-05-10 → 2026-09-09), all `pending`, regenerates **byte-identically** from `scripts/build_panel.py`. Source ledger holds **100** records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` — 10 records, never appended — parse the file, do not trust a quoted count); decision log D-001…D-047; experiment ledger E-000…E-071 (row E-071 records this session). Prior agent task (park reported honestly) remains complete; **no gate was advanced**. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent: do not compute outcome returns or open PH-1; the binding constraint is ≥200 admitted treatment firms (conditions 3–5 unverified for all 141 PH-1 rows) plus free delisted/terminal-return coverage. Report the park honestly if gates cannot be advanced.
+
+## 12. Session note (session 199)
+
+Verification pass (session 199). `git fetch origin main` → origin/main at `355e7f9` (remote == HEAD, local HEAD == `355e7f9`); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. `research/campaign_state.json` parses (`json.load`). P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL; conditions 3–5 unverified for all 141 PH-1 rows)**, free delisted/terminal-return price coverage **not established (FAIL, re-audited live session 160, D-042/E-047)** — primary estimand remains **inconclusive_by_construction** on two of the three gates. Panel counts re-derived by parsing committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct cohorts (2024-05-10 → 2026-09-09), all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Prior agent task (park reported honestly) remains complete; **no gate was advanced**. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent: do not compute outcome returns or open PH-1; the binding constraint is ≥200 admitted treatment firms (conditions 3–5 unverified for all 141 PH-1 rows) plus free delisted/terminal-return coverage. Report the park honestly if gates cannot be advanced.
