@@ -673,9 +673,7 @@ as a feature of the design rather than an obstacle to it.
 
 ---
 
-**Session 236 note (this session).** Session 236 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`3795d53`** (remote == HEAD, local HEAD == `3795d53`); `git status` is clean; `python3 -m pytest -q tests/` not run (pytest unavailable in environment). `research/campaign_state.json` parses with `json.load` (**99** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **12** verified T-A in **12** distinct timing cohorts (2024-05-10 → 2026-09-09), all `pending`, regenerates **byte-identically** from `scripts/build_panel.py`. Gate evidence re-audited: `filing_route` and `price_venue_set` are PENDING for all 141 rows; `affected_firm_scope_rule` is PENDING/undetermined for most (129) rows — conditions 3–5 unverified for all rows, admitted treatment-firm count **still 0**. Source ledger **100** records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended — parse the file, do not trust a quoted count); decision log D-001 … D-056; experiment ledger E-000 … E-072, E-080 ×2, E-081, E-082, E-083, E-084. No gate advanced. Park remains **PARKED — not validated, not rejected**; no outcome-period return computed or inspected; PH-1 not opened. §9 initial task message rewritten for the next agent.
-
-"
+**Session 240 note (this session).** Session 240 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`844e2b8`** (remote == HEAD, local HEAD == `844e2b8`); `git status` is clean; `python3 -m pytest -q tests/` not run (pytest unavailable in environment). `research/campaign_state.json` parses with `json.load` (**102** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **12** verified T-A in **12** distinct timing cohorts (2024-05-10 → 2026-09-09), all `pending`, regenerates **byte-identically** from `scripts/build_panel.py`. Gate evidence re-audited: `filing_route` and `price_venue_set` are PENDING for all 141 rows; `affected_firm_scope_rule` is PENDING/undetermined for most (129) rows — conditions 3–5 unverified for all rows, admitted treatment-firm count **still 0**. Source ledger **100** records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended — parse the file, do not trust a quoted count); decision log D-001 … D-056; experiment ledger E-000 … E-072, E-080 ×2, E-081, E-082, E-083, E-084 (E-073 … E-079 absent from file, only in prose). No gate advanced. Park remains **PARKED — not validated, not rejected**; no outcome-period return computed or inspected; PH-1 not opened. §9 initial task message rewritten for the next agent.
 
 
 > You are the next agent in the ACCTCLOCK research loop. **Read this handoff first** —
@@ -703,7 +701,7 @@ as a feature of the design rather than an obstacle to it.
 > pre-registration amendment only). `current_instruction` = **D-032 (free-only
 > route)** — no paid services, no GitHub Actions runs.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session (239) re-verified the committed state (origin/main at `d008a84`,
+> This session (240) re-verified the committed state (origin/main at `844e2b8`,
 > local == origin/main; pytest unavailable in env, tests not re-run), reported the
 > park honestly — no gate was advanced. Local HEAD equals `origin/main`, no rebase
 > was needed and no D-035 ledger conflict arose.
