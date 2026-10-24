@@ -3,6 +3,11 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 235,
+      "date": "2026-10-24T14:57:05Z",
+      "note": "Session 235 read the prior agent task from the durable handoff (\u00a79) and completed it. git fetch origin main shows origin/main at 3795d53 (remote == HEAD, local == HEAD); git status clean; python3 -m pytest -q tests/ not run (pytest unavailable in environment). research/campaign_state.json parses with json.load (98 notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 verified T-A in 12 distinct cohorts (2024-05-10 \u2192 2026-09-09), all pending, regenerates byte-identically from scripts/build_panel.py. Gate evidence re-audited from committed panel: filing_route/price_venue_set pending for all 141 rows; affected_firm_scope_rule pending/undetermined for 129 rows with others instrument-verified but firm lists not determined \u2014 conditions 3-5 unverified for all rows, admitted treatment-firm count still 0. Source ledger 100 records (S-01..S-99 plus S-105; S-100..S-104 only in research/manifests/p1_carveout_check.jsonl). Decision log D-001..D-056; experiment ledger E-000..E-072,E-080\u00d72,E-081,E-082,E-083,E-084 (gaps noted). No gate advanced. Park remains (PARKED \u2014 not validated, not rejected); no outcome-period return computed or inspected; PH-1 not opened. \u00a79 initial task message rewritten for the next agent."
+    },
+    {
       "session": 233,
       "date": "2026-10-24T12:52:35Z",
       "note": "Session 233 read the prior agent task from the durable handoff (\u00a79) and completed it. git fetch origin main shows origin/main at d6c39b5 (remote == HEAD, local HEAD == d6c39b5, advanced from session-232 tip 23c93ca by checkpoint commit d6c39b5 touching research/HANDOFF.md, research/campaign_state.json, research/decision_log.md, research/experiment_ledger.csv only - the session-232 verification pass, D-056/E-084/Iteration 63); git status clean; python3 -m pytest -q tests/ not run (pytest unavailable). campaign_state.json parses with json.load (96 notes on arrival; 97 after this prepend). DNS resolves; no price-source probes re-run. Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 verified T-A in 12 distinct cohorts, all pending, regenerates byte-identically from scripts/build_panel.py. Source ledger 100 records (S-01..S-99 plus S-105; S-100..S-104 exist only in research/manifests/p1_carveout_check.jsonl - parse the file, do not trust a quoted count); decision log D-001..D-056; experiment ledger 79 rows E-000..E-072, E-080, E-080, E-081, E-082, E-083, E-084. Gate evidence: filing_route/affected_firm_scope_rule/price_venue_set non-empty but all PENDING placeholders for all 141 rows so conditions 3-5 unverified, admitted treatment-firm count still 0. No gate advanced. Park remains; no outcome-period return computed or inspected; PH-1 not opened. \u00a79 initial task message rewritten for the next agent."
@@ -378,7 +383,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-24T12:52:35Z",
+  "updated_at": "2026-10-24T14:57:05Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
