@@ -611,7 +611,7 @@ as a feature of the design rather than an obstacle to it.
 > route)** — no paid services, no GitHub Actions runs. `research/campaign_state.json`
 > parses (`json.load`); `python3 -m pytest -q tests/` → **173 passed, 0 failing**.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session re-verified the committed state (origin/main at `aa1a949`, tests 173 passed,
+> This session re-verified the committed state (origin/main at `f7af316`, tests 173 passed,
 > 0 failing) and reported the park honestly — no gate was advanced. Local HEAD equals `origin/main`,
 > no rebase was needed and no D-035 ledger conflict arose (E-066).
 >
@@ -634,7 +634,7 @@ as a feature of the design rather than an obstacle to it.
 > ledger holds 100 records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in
 > `research/manifests/p1_carveout_check.jsonl`, never appended to the ledger — parse
 > the file, do not trust a quoted count). Decision log D-001 … D-044; experiment
-> ledger E-000 … E-066 (row E-066 records this session).
+> ledger E-000 … E-065 (row E-065 records the prior session).
 >
 > **One thing to check on arrival.** If `research/campaign_state.json` fails
 > `json.load`, fix that first — it is not a substantive state problem.
