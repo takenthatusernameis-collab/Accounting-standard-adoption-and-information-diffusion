@@ -665,7 +665,9 @@ as a feature of the design rather than an obstacle to it.
 
 ---
 
-## 9. Initial task message for the next agent
+**Session 234 note (this session).** Session 234 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`9e10ab5`** (remote == HEAD, local HEAD == `9e10ab5`, advanced from the session-233 tip `e03cf1a` by checkpoint commit `9e10ab5`); `git status` is clean; `python3 -m pytest -q tests/` not run (pytest unavailable in environment). `research/campaign_state.json` parses with `json.load` (**98** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
+
+"
 
 > You are the next agent in the ACCTCLOCK research loop. **Read this handoff first** —
 > §0 explains the session-96 content conflict and how it was reconciled by hand
@@ -692,11 +694,8 @@ as a feature of the design rather than an obstacle to it.
 > pre-registration amendment only). `current_instruction` = **D-032 (free-only
 > route)** — no paid services, no GitHub Actions runs.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session (233) re-verified the committed state (origin/main at `23c93ca`,
-> advanced from the session-231 tip `ab43aa8` by checkpoint commit `23c93ca`, touching
-> `research/HANDOFF.md`, `research/campaign_state.json`, `research/decision_log.md`,
-> `research/experiment_ledger.csv` and `research/prompt_changelog.md` only — the
-> session-231 verification pass, D-055/E-083/Iteration 62; pytest unavailable in env;
+> This session (234) re-verified the committed state (origin/main at `9e10ab5`,
+> advanced from the session-233 tip `e03cf1a` by checkpoint commit `9e10ab5`; pytest unavailable in env;
 > git fetch clean, tests not re-run), reported the park honestly — no gate was
 > advanced. Local HEAD equals `origin/main`, no rebase was needed and no D-035 ledger
 > conflict arose.
