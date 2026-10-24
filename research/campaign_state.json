@@ -3,6 +3,10 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 216,
+      "note": "2026-10-24 (session 216): verification pass. git fetch origin main -> origin/main at 4f1a025 (remote == HEAD, local == HEAD, advanced from c12ba3c); git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. campaign_state.json parses (89 notes). DNS resolves. P0-P3 complete; campaign remains PARKED \u2014 not validated, not rejected. Frozen gates: 12 verified timing cohorts >= 12 (MET, D-039), 0 admitted treatment firms < 200 (FAIL), free delisted/terminal-return coverage not established (FAIL). Prior agent task (park reported honestly) remains complete; no gate was advanced. No outcome-period return computed or inspected; PH-1 not opened. Handoff \u00a79 initial task message rewritten for the next agent."
+    },
+    {
       "session": 214,
       "timestamp": "2026-10-24T08:03:25Z",
       "note": "Session 214 read the prior agent task from the durable handoff (\u00a79) and completed it. git fetch origin main shows origin/main at 86ad354 (remote == HEAD, local == HEAD, advanced from the session-213 tip 6e85aa6 by one checkpoint commit 86ad354); git status clean; pytest 173 passed, 0 failing. campaign_state.json parses (88 notes). DNS resolves; no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. \u00a79 initial task message rewritten for the next agent."
@@ -334,7 +338,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-24T08:03:25Z",
+  "updated_at": "2026-10-24T08:54:53Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
