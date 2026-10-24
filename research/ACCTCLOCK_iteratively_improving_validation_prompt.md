@@ -1,7 +1,7 @@
 # ACCTCLOCK — Iteratively Improving Research and Validation Prompt
-Version: 1.2
-Prepared: 2026-10-22
-Status: Research guidance v1.2 — D-032 free-only route; hypothesis not validated; research-only.
+Version: 1.3
+Prepared: 2026-10-24
+Status: Research guidance v1.3 — adaptive feasibility tiers; D-032 free-only route; hypothesis not validated; research-only.
 
 ## Mission
 Independently test ACCTCLOCK: accounting-standard adoption can change information, comparability, and the speed investors incorporate reported information, potentially producing conditional, time-limited equity-return drift. Determine whether a precisely specified, implementable rule has reproducible positive expected net returns after realistic costs. Do not try to confirm the story or maximize a backtest; reject it quickly if evidence fails.
@@ -14,7 +14,7 @@ This file is a prompt and protocol, not evidence that a test has run or an edge 
 3. Do not edit upstream hypothesis-factory repositories, unrelated projects, or live trading systems.
 4. Follow D-032 below. Use only genuinely free, legally accessible public sources and no-cost software. Do not use paid vendors, paid API tiers, subscriptions, free trials that convert to paid plans, or services requiring payment details. Do not ask the user to purchase or provision paid access. Public-source collection is authorized subject to source terms and rate limits. Do not trigger GitHub Actions or live/paper-trading workflows.
 5. Preserve an immutable record of the original hypothesis and each version. Never silently change the thesis, universe, sample, entry time, holding period, filters, costs, or acceptance criteria to rescue a failing result.
-6. If essential data or permission is unavailable, document the blocker and stop at a clear handoff. Never claim completion based on a plan alone.
+6. If essential data or permission is unavailable, keep the affected confirmatory test blocked and report the blocker. Do not stop the entire research program: apply the adaptive research-gate policy below and complete a permitted feasibility, measurement or separately versioned exploratory task. Never claim completion based on a plan alone.
 
 
 
@@ -183,3 +183,36 @@ Do not create or modify these artifacts automatically if repository instructions
 
 ## Operating principle
 Optimize for reliable knowledge and the fastest honest rejection of weak ideas—not activity, a high score, a positive backtest, or a narrative that survives every objection. Keep the hypothesis fixed long enough to test it fairly; change it only through a new documented version. A null result is useful progress.
+
+
+
+
+## Adaptive research-gate policy v1 — default for future work
+
+**Purpose:** prevent repeated feasibility deadlocks without turning weaker evidence into a stronger claim. This policy changes the default way the agent makes progress; it does not rewrite frozen experiments.
+
+### 1. Keep two tracks separate
+- **Confirmatory track:** preserve the currently registered hypothesis, sample minimums, history minimums, universe definition, parameter grid, costs, holdout boundaries and acceptance criteria. Never change them in place or retroactively reclassify old evidence.
+- **Exploratory track:** when the trigger below is met, automatically create a new uniquely identified version with the smallest feasible change. It may answer a narrower or lower-powered question, but its status must be `EXPLORATORY_ONLY` or `INCONCLUSIVE`; it cannot validate, replace or unlock the frozen confirmatory track.
+
+### 2. Trigger for adaptive relaxation
+Start the exploratory track after either (a) three materially distinct, documented attempts spanning at least two independent source families or methodological routes fail to advance the same feasibility gate, or (b) a durable structural impossibility is evidenced by source coverage, terms, schema or sample counts. A repeat of the same failed endpoint is not a distinct attempt. Record route, date, observed response/coverage, exact unmet requirement and why retries are unlikely to help. Do not keep looping on a known failure.
+
+### 3. Relax the least damaging feasibility constraint first
+Consider, one at a time: use a smaller *explicitly defined* eligible population; use the verified historical overlap rather than demanding a market-cap rank that is not essential to the mechanism; shorten history for a clearly labeled pilot; reduce grid breadth by testing a frozen anchor first; or run a descriptive/measurement feasibility study before estimating outcomes. Choose based on the estimand and data-generating process, not on which choice improves returns. If more than one dimension changes, state and justify each change in a new version before calculating its outcomes.
+
+### 4. Hard safeguards are never relaxed
+No look-ahead, fabricated or forward-filled observations, invented fills, silent sample exclusions, outcome-informed parameters/costs, hidden multiple-testing, reuse of an inspected holdout as fresh confirmation, misleading performance labels, breach of source terms, paid services or compute where prohibited, or live/paper trading. Synthetic fixtures are software tests, never market evidence. A current market-cap snapshot must never be labeled historical point-in-time truth. Do not open an originally sealed holdout to rescue progress; any relaxed study needs a new ID, explicit estimand and correctly labeled data vintage.
+
+### 5. Reporting and promotion
+Report all attempted routes and failures, coverage/missingness, sample and independent-cluster counts, changed assumptions, uncertainty, all tried variants, costs and reasons for exclusions. Report effect sizes descriptively if calculable, but do not describe underpowered inference as confirmation. A green workflow or passing tests proves only what the tests cover. Promotion requires the original confirmatory gates on admissible data, a sealed evaluation, complete multiple-testing correction and independent recomputation. If the alternative remains infeasible, say so and move to another independent task.
+
+**Default execution rule:** once the trigger is met, do not merely write another blocker memo. Within the repository's existing authorization, complete the next bounded, no-cost exploratory task and preserve the original blocked status. Do not obtain new permissions, spend money, trigger prohibited workflows, or alter frozen result artifacts to make this possible.
+
+
+### ACCTCLOCK-specific constraints
+- The timing-cohort minimum, 200-treatment-firm minimum, price/delisting-return requirement, original event clocks and registered PH-1 outcome protection remain frozen for the confirmatory arm. This policy does not authorize opening PH-1 when its gate fails, computing its outcome returns early, reducing its minimums in place, or relabeling an underpowered result as confirmation.
+- The currently documented state has 12 verified timing cohorts, zero admitted treatment firms against >=200, and no verified free delisted/terminal-return coverage. This qualifies for an adaptive **return-free** feasibility track now: continue permitted primary-source harvesting, coverage/count audits, power calculations based on pre-outcome inputs, identity-linkage validation and freely available source discovery; report the precise admission/coverage gap. Do not use paid sources, provision credentials, trigger paid requests, or ask for purchase; D-032 remains binding.
+- If a distinct, defensible exploratory estimand can be registered without opening or reusing the protected PH-1 outcomes, create a new version and state the smaller population and reduced inferential scope. Otherwise, maintain PARKED/INCONCLUSIVE and use source-independent validation or hypothesis-design work. The fact that a threshold is difficult to meet is not, by itself, evidence that the scientific threshold is wrong.
+
+**Prompt changelog note:** v1.3 adds a tiered feasibility policy only. It does not amend `research/hypothesis_v1.3.md`, registered `research/preregistration_v1.1.md`–`v1.4.md`, or any historic result. Any future experiment or estimand change requires its own preregistration and immutable artifacts.
