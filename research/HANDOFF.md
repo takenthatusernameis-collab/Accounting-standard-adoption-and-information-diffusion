@@ -1,3 +1,5 @@
+**Session 249 note (this session).** Session 249 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`f8f463c`** (remote == HEAD, local HEAD == `f8f463c`, advanced from the session-248 tip `81690e9` by one checkpoint commit `f8f463c`, touching `research/HANDOFF.md` and `research/campaign_state.json` only — the session-248 note); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing** (pytest 9.1.1 / numpy 2.5.4 available in this environment). `research/campaign_state.json` parses with `json.load` (**103** notes on arrival; **104** after this prepend). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
+
 **Session 248 note (this session).** Session 248 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`81690e9`** (remote == HEAD, local HEAD == `81690e9`); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**103** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message carried forward for the next agent.
 
 **Session 247 note (this session).** Session 247 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`841e65a`** (remote == HEAD, local HEAD == `841e65a`, advanced from the session-246 tip `58a25ad` by checkpoint commit `841e65a`); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**102** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message carried forward for the next agent.
@@ -354,10 +356,10 @@ research/hypothesis_v1.1.md research/specification_v1.1.md research/preregistrat
 | `research/manifests/ifrs_jurisdiction_profiles.jsonl` | The dated snapshot manifest: **171** records with URL, HTTP status, bytes, **SHA-256** and retrieval timestamp. |
 | `research/manifests/source_ledger_verification.jsonl` | Hashed retrievals for the ledger-verification and condition-2 sources, including the recorded failed retrievals. |
 | `research/event_calendar.csv` | EV-103 primary-verified and **corrected**; EV-201 primary-verified; **EV-202 added**. |
-| `research/decision_log.md` | **D-001 … D-040.** |
-| `research/prompt_changelog.md` | Iterations 1–25 (note: the upstream's D-032 entry is filed under a **second** "Iteration 7" heading, so the numbering is **not unique** — recorded in Iteration 16, not corrected). |
+| `research/decision_log.md` | **D-001 … D-058** (this session appends D-058). |
+| `research/prompt_changelog.md` | Iterations 1–66 (this session appends Iteration 65; note: the upstream's D-032 entry is filed under a **second** "Iteration 7" heading, so the numbering is **not unique** — recorded in Iteration 16, not corrected). |
 | `research/source_ledger.csv` | **100 sources** (S-01 … S-99, plus S-105; S-100 … S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended to the ledger). |
-| `research/experiment_ledger.csv` | **44 rows** (E-000 … E-043). |
+| `research/experiment_ledger.csv` | **81 rows** (E-000 … E-072, E-080 ×2, E-081 … E-086; E-073 … E-079 are absent from the file and exist only as prose references in earlier notes — a gap, not a renumbering; the two E-080 rows are byte-identical duplicates committed by the upstream checkpoint `bab3cf0` and are retained verbatim, not renumbered). |
 
 ## 2. What is verified (with sources)
 
@@ -702,11 +704,11 @@ as a feature of the design rather than an obstacle to it.
 > `research/specification_v1.4.md`, `research/preregistration_v1.4.md` (the registered
 > PH-1 arm), `research/specification_v1.1.md` (the design, §§1–7),
 > `research/data_acquisition_plan.md`, `research/data_route_assessment.md`,
-> `research/decision_log.md` (D-001 … D-056), `research/prompt_changelog.md`
-> (Iterations 1–63; note Iteration 7 is not unique), `research/event_calendar.csv`,
+> `research/decision_log.md` (D-001 … D-058), `research/prompt_changelog.md`
+> (Iterations 1–66; note Iteration 7 is not unique), `research/event_calendar.csv`,
 > `research/experiment_ledger.csv` (E-000 … E-072, E-080 ×2, E-081, E-082, E-083,
-> E-084), `research/source_ledger.csv`, `research/authorisation_request.md`, and
-> `research/results.md`. There is no `AGENTS.md` in this repository; the protocol
+> E-084, E-085, E-086), `research/source_ledger.csv`, `research/authorisation_request.md`,
+> and `research/results.md`. There is no `AGENTS.md` in this repository; the protocol
 > file is the governing document.
 >
 > **State on arrival.** The campaign is **PARKED — not validated, not rejected**.
@@ -717,7 +719,7 @@ as a feature of the design rather than an obstacle to it.
 > pre-registration amendment only). `current_instruction` = **D-032 (free-only
 > route)** — no paid services, no GitHub Actions runs.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session (244) re-verified the committed state (origin/main at `e234746`,
+> This session (249) re-verified the committed state (origin/main at `f8f463c`,
 > local == origin/main; pytest 173 passed, 0 failing), reported the
 > park honestly — no gate was advanced. Local HEAD equals `origin/main`, no rebase
 > was needed and no D-035 ledger conflict arose.
@@ -741,11 +743,12 @@ as a feature of the design rather than an obstacle to it.
 > all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Source
 > ledger holds 100 records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in
 > `research/manifests/p1_carveout_check.jsonl`, never appended to the ledger — parse
-> the file, do not trust a quoted count). Decision log D-001 … D-056; experiment
-> ledger E-000 … E-072, E-080 ×2, E-081, E-082, E-083, E-084 (E-073 … E-079 are
-> absent from the file and exist only as prose references in earlier notes — a gap,
-> not a renumbering; the two E-080 rows are byte-identical duplicates committed by
-> the upstream checkpoint `bab3cf0` and are retained verbatim, not renumbered).
+> the file, do not trust a quoted count). Decision log D-001 … D-058; experiment
+> ledger E-000 … E-072, E-080 ×2, E-081, E-082, E-083, E-084, E-085, E-086
+> (E-073 … E-079 are absent from the file and exist only as prose references in
+> earlier notes — a gap, not a renumbering; the two E-080 rows are byte-identical
+> duplicates committed by the upstream checkpoint `bab3cf0` and are retained
+> verbatim, not renumbered).
 >
 > **FIRST — check whether the remote has moved.** Two runners can push here. Run
 > `git fetch origin main` and `git log --oneline origin/main -5` **before** you commit
@@ -758,19 +761,19 @@ as a feature of the design rather than an obstacle to it.
 > **Your task (priority order).**
 > - **P0–P3 — DONE.** Do not re-do these phases.
 > - **If you can advance a gate, do it from a free, lawful source** and record it as a
->  decision (D-001 … convention) plus an experiment-ledger row and a changelog
->  iteration. The EDGAR acquirer in `scripts/sec_edgar.py` is implemented,
->  unit-tested and ready to run against live filings; it serves condition 4 (a filing
->  route with an acceptance TIMESTAMP), not condition 3 (affected-firm list) or
->  condition 5 (price coverage). Raw data cached outside the repo; only code, manifests,
->  hashes and non-licensed aggregates are committed (D-015).
+> decision (D-001 … convention) plus an experiment-ledger row and a changelog
+> iteration. The EDGAR acquirer in `scripts/sec_edgar.py` is implemented,
+> unit-tested and ready to run against live filings; it serves condition 4 (a filing
+> route with an acceptance TIMESTAMP), not condition 3 (affected-firm list) or
+> condition 5 (price coverage). Raw data cached outside the repo; only code, manifests,
+> hashes and non-licensed aggregates are committed (D-015).
 > - **Otherwise, report the park honestly.** Do not compute or inspect any
->  outcome-period return, do not open PH-1, and do not lower the frozen ≥ 12 cohort /
+> outcome-period return, do not open PH-1, and do not lower the frozen ≥ 12 cohort /
 >  ≥ 200 treatment-firm minima. `research/results.md` keeps reporting **no results**.
 > - **The two open gates.** (a) ≥ 200 admitted treatment firms — 0 today, conditions
->  3–5 unverified for all 141 PH-1 rows and firm-level data has not been acquired; (b)
->  free delisted/terminal-return price coverage — not established (D-042/E-047). The
->  cohort gate is MET (12 ≥ 12) and must not be chased for a 13th (D-011).
+> 3–5 unverified for all 141 PH-1 rows and firm-level data has not been acquired; (b)
+> free delisted/terminal-return price coverage — not established (D-042/E-047). The
+> cohort gate is MET (12 ≥ 12) and must not be chased for a 13th (D-011).
 > - **Check `research/campaign_state.json` parses on arrival** — it has failed
->  `json.load` in the past because of truncated note strings. If it fails, restore from
->  the last known-good parent rather than silently rewriting it.
+> `json.load` in the past because of truncated note strings. If it fails, restore from
+> the last known-good parent rather than silently rewriting it.
