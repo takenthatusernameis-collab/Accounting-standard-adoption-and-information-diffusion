@@ -1,3 +1,5 @@
+**Session 232 note (this session).** Session 232 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`23c93ca`** (remote == HEAD, local HEAD == `23c93ca`, advanced from the session-231 tip `ab43aa8` by one checkpoint commit `23c93ca`, touching `research/HANDOFF.md`, `research/campaign_state.json`, `research/decision_log.md`, `research/experiment_ledger.csv` and `research/prompt_changelog.md` only — the session-231 verification pass, D-055/E-083/Iteration 62); `git status` is clean; `python3 -m pytest -q tests/` not run (pytest unavailable in environment). `research/campaign_state.json` parses with `json.load` (**96** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
+
 **Session 231 note (this session).** Session 231 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`ab43aa8`** (remote == HEAD, local == HEAD, advanced from the session-230 tip `1fe6a74` by checkpoint commit `ab43aa8`, touching `research/HANDOFF.md` only); `git status` is clean; `python3 -m pytest -q tests/` not run (pytest unavailable in environment). `research/campaign_state.json` parses with `json.load` (**95** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
 
 **Session 230 note (this session).** Session 230 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`1fe6a74`** (remote == HEAD, local == HEAD, advanced from the session-229 tip `49fdfaa` by checkpoint commit `1fe6a74`, touching `research/HANDOFF.md` only); `git status` is clean; `python3 -m pytest -q tests/` not run (pytest unavailable in environment). `research/campaign_state.json` parses with `json.load` (**94** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
@@ -669,10 +671,10 @@ as a feature of the design rather than an obstacle to it.
 > `research/specification_v1.4.md`, `research/preregistration_v1.4.md` (the registered
 > PH-1 arm), `research/specification_v1.1.md` (the design, §§1–7),
 > `research/data_acquisition_plan.md`, `research/data_route_assessment.md`,
-> `research/decision_log.md` (D-001 … D-054), `research/prompt_changelog.md`
-> (Iterations 1–60; note Iteration 7 is not unique), `research/event_calendar.csv`,
-> `research/experiment_ledger.csv` (E-000 … E-072, E-080 ×2, E-081, E-082),
-> `research/source_ledger.csv`, `research/authorisation_request.md`, and
+> `research/decision_log.md` (D-001 … D-056), `research/prompt_changelog.md`
+> (Iterations 1–63; note Iteration 7 is not unique), `research/event_calendar.csv`,
+> `research/experiment_ledger.csv` (E-000 … E-072, E-080 ×2, E-081, E-082, E-083,
+> E-084), `research/source_ledger.csv`, `research/authorisation_request.md`, and
 > `research/results.md`. There is no `AGENTS.md` in this repository; the protocol
 > file is the governing document.
 >
@@ -684,26 +686,31 @@ as a feature of the design rather than an obstacle to it.
 > pre-registration amendment only). `current_instruction` = **D-032 (free-only
 > route)** — no paid services, no GitHub Actions runs.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session (230) re-verified the committed state (origin/main at `1fe6a74`, advanced from the session-229 tip `49fdfaa` by checkpoint commit `1fe6a74` touching `research/HANDOFF.md` only; pytest unavailable in env; git fetch clean, tests not re-run),
-> reported the park honestly — no gate was advanced. Local HEAD equals `origin/main`,
-> no rebase was needed and no D-035 ledger conflict arose.
+> This session (232) re-verified the committed state (origin/main at `23c93ca`,
+> advanced from the session-231 tip `ab43aa8` by checkpoint commit `23c93ca`, touching
+> `research/HANDOFF.md`, `research/campaign_state.json`, `research/decision_log.md`,
+> `research/experiment_ledger.csv` and `research/prompt_changelog.md` only — the
+> session-231 verification pass, D-055/E-083/Iteration 62; pytest unavailable in env;
+> git fetch clean, tests not re-run), reported the park honestly — no gate was
+> advanced. Local HEAD equals `origin/main`, no rebase was needed and no D-035 ledger
+> conflict arose.
 >
 > **Frozen gates (current).**
 > - **Timing cohorts — MET:** 12 verified, distinct T-A dates
 > 2024-05-10 → 2026-09-09 (South Korea 2025-12-18, S-105, D-039). Requirement ≥ 12.
->  **Do not re-verify to chase a 13th cohort** — more cohorts cannot by themselves
->  unblock the arm (D-011: empty T_A stays empty, never inferred).
+> **Do not re-verify to chase a 13th cohort** — more cohorts cannot by themselves
+> unblock the arm (D-011: empty T_A stays empty, never inferred).
 > - **Treatment firms — FAIL:** 0 admitted < 200 required. All 141 PH-1 rows are
->  `pending`; conditions 3–5 are unverified. Firm-level data has not been acquired;
->  this is the binding constraint. The EDGAR acquirer (`scripts/sec_edgar.py`) serves
->  condition 4 (a filing route with an acceptance TIMESTAMP), not condition 3
->  (affected-firm list) or condition 5 (price coverage).
+> `pending`; conditions 3–5 are unverified. Firm-level data has not been acquired;
+> this is the binding constraint. The EDGAR acquirer (`scripts/sec_edgar.py`) serves
+> condition 4 (a filing route with an acceptance TIMESTAMP), not condition 3
+> (affected-firm list) or condition 5 (price coverage).
 > - **Delisted / terminal returns — FAIL:** free coverage not established (re-audited
->  live, D-042/E-047). The free-source inventory is exhausted: Stooq, Yahoo,
->  Alpha Vantage, Marketstack, FMP, Twelve Data, IEX, Nasdaq, Polygon, BSE India and
->  Barchart all returned 401/404/timeout/anti-bot, and Yahoo's delisted tickers return
->  HTTP 404. Do not re-run those exact probes — try a genuinely new free source only
->  after checking its terms and coverage, or report the park.
+> live, D-042/E-047). The free-source inventory is exhausted: Stooq, Yahoo,
+> Alpha Vantage, Marketstack, FMP, Twelve Data, IEX, Nasdaq, Polygon, BSE India and
+> Barchart all returned 401/404/timeout/anti-bot, and Yahoo's delisted tickers return
+> HTTP 404. Do not re-run those exact probes — try a genuinely new free source only
+> after checking its terms and coverage, or report the park.
 >
 > Because two of the three gates fail, the primary estimand remains **inconclusive by
 > construction**. `research/panel_v1.1.csv` holds 431 rows (8 Stratum A true, 423
@@ -711,11 +718,11 @@ as a feature of the design rather than an obstacle to it.
 > all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Source
 > ledger holds 100 records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in
 > `research/manifests/p1_carveout_check.jsonl`, never appended to the ledger — parse
-> the file, do not trust a quoted count). Decision log D-001 … D-054; experiment
-> ledger E-000 … E-072, E-080 ×2, E-081, E-082 (E-073 … E-079 are absent from the
-> file and exist only as prose references in earlier notes — a gap, not a renumbering;
-> the two E-080 rows are byte-identical duplicates committed by the upstream checkpoint
-> `bab3cf0` and are retained verbatim, not renumbered).
+> the file, do not trust a quoted count). Decision log D-001 … D-056; experiment
+> ledger E-000 … E-072, E-080 ×2, E-081, E-082, E-083, E-084 (E-073 … E-079 are
+> absent from the file and exist only as prose references in earlier notes — a gap,
+> not a renumbering; the two E-080 rows are byte-identical duplicates committed by
+> the upstream checkpoint `bab3cf0` and are retained verbatim, not renumbered).
 >
 > **FIRST — check whether the remote has moved.** Two runners can push here. Run
 > `git fetch origin main` and `git log --oneline origin/main -5` **before** you commit
