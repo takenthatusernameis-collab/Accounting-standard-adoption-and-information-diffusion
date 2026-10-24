@@ -692,3 +692,7 @@ as a feature of the design rather than an obstacle to it.
 > - **Check `research/campaign_state.json` parses on arrival** — it has failed `json.load`
 >   in the past because of truncated note strings (e.g. session 193). If it fails, restore
 >   from the last known-good parent rather than silently rewriting it.
+
+
+**Session current (2026-10-24) note.** Session current re-verified the committed state against the handoff:
+`git fetch origin main` shows `origin/main` at `8f5a899` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates read: **12 verified timing cohorts ≥ 12 required (MET)**, **0 admitted treatment firms < 200 required (FAIL)**, free delisted/terminal-return price coverage not established (FAIL). No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly) remains complete. §9 initial task message updated for the next agent.
