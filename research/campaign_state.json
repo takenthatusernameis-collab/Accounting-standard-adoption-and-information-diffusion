@@ -2,6 +2,11 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    {
+      "date": "2026-10-24T18:47:38Z",
+      "session": "248",
+      "note": "Session 248 read the prior agent task from the durable handoff (\u00a79) and completed it. `git fetch origin main` shows `origin/main` at `81690e9` (remote == HEAD, local HEAD == `81690e9`); `git status` is clean; `python3 -m pytest -q tests/` \u2192 173 passed, 0 failing. `research/campaign_state.json` parses with `json.load` (102 notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. \u00a79 initial task message carried forward for the next agent."
+    },
     "**Session 240 note (this session).** Session 240 read the prior agent task from the durable handoff (\u00a79) and completed it. `git fetch origin main` shows `origin/main` at **`844e2b8`** (remote == HEAD, local HEAD == `844e2b8`); `git status` is clean; `python3 -m pytest -q tests/` not run (pytest unavailable in environment). `research/campaign_state.json` parses with `json.load` (**102** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **12** verified T-A in **12** distinct timing cohorts (2024-05-10 \u2192 2026-09-09), all `pending`, regenerates **byte-identically** from `scripts/build_panel.py`. Gate evidence re-audited: `filing_route` and `price_venue_set` are PENDING for all 141 rows; `affected_firm_scope_rule` is PENDING/undetermined for most (129) rows \u2014 conditions 3\u20135 unverified for all rows, admitted treatment-firm count **still 0**. Source ledger **100** records (S-01 \u2026 S-99 plus S-105; S-100 \u2026 S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended \u2014 parse the file, do not trust a quoted count); decision log D-001 \u2026 D-056; experiment ledger E-000 \u2026 E-072, E-080 \u00d72, E-081, E-082, E-083, E-084 (E-073 \u2026 E-079 absent from file, only in prose). No gate advanced. Park remains **PARKED \u2014 not validated, not rejected**; no outcome-period return computed or inspected; PH-1 not opened. \u00a79 initial task message rewritten for the next agent.",
     "Session 239 read the prior agent task from the durable handoff (\u00a79) and completed it. git fetch origin main shows origin/main at d008a84 (remote == HEAD, local HEAD == d008a84, advanced from the session-238 tip fedcda2 by checkpoint commits); git status is clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. research/campaign_state.json parses with json.load (100 notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. \u00a79 initial task message rewritten for the next agent.",
     {
@@ -390,7 +395,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-24T17:35:10Z",
+  "updated_at": "2026-10-24T18:47:38Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
