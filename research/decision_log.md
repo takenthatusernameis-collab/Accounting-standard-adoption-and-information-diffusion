@@ -1453,3 +1453,31 @@ The committed state was then re-verified from scratch rather than carried forwar
 **Reverses if.** The remote advances again and this session's work appends to `research/decision_log.md`, `research/experiment_ledger.csv` or `research/source_ledger.csv`; then reconcile as D-035 (published identifiers keep their numbers, the un-published line takes the next free numbers, and the mapping is recorded as a dated decision).
 
 **Boundary.** No panel row added, removed or re-statused; no registered v1.0–v1.4 file edited in place; no paid service used (D-032); no GitHub Actions run; `.github/workflows/main.yml` unmodified (D-006); no outcome-period return computed or inspected; PH-1 not opened.
+
+## D-046 — 2026-10-24 — Verification pass (session 192); the remote advanced past the handoff tip by three checkpoint commits and no rebase was needed
+
+**Context.** The durable handoff at `research/HANDOFF.md` (last updated at tip `c9c17c2`, session 189) carried the prior agent task: read the handoff, complete it, then update the handoff and write a clear initial task message for the next agent. Two runners can push to this repository, so the first action was to check whether the remote had moved.
+
+**What was done.** `git fetch origin main` shows `origin/main` at **`118060c`**, advanced from the handoff tip `c9c17c2` by three checkpoint commits:
+
+- `e36112d chore(kilo): checkpoint agent session` (session 190) — touched `research/HANDOFF.md`, `research/campaign_state.json`, `research/decision_log.md`, `research/experiment_ledger.csv` and `research/prompt_changelog.md`; recorded experiment ledger row E-067 against the append-only ledgers, resolving the D-035 precondition.
+- `09b37fe chore(kilo): checkpoint agent session` (session 191) — touched `research/HANDOFF.md` and `research/campaign_state.json` only.
+- `118060c chore(kilo): checkpoint agent session` (this session) — touched `research/HANDOFF.md` only.
+
+Local HEAD was already at `118060c` (remote == HEAD), so **no rebase was required and no conflict arose** — the D-035 reconciliation precondition was already resolved by `e36112d` (which touched the three append-only ledgers and recorded E-067), and the two later commits touched only HANDOFF.md and campaign_state.json. `git status` is clean.
+
+The committed state was then re-verified from scratch rather than carried forward on trust:
+
+- `python3 -m pytest -q tests/` → **173 passed, 0 failing**.
+- Panel counts re-derived by **parsing the committed files** (D-037): `research/panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending; 8 non-empty T-A in 7 distinct retrospective cohorts, all ≤ 2017-10-31); `research/panel_v1.2.csv` **141 rows**, **12** non-empty T-A in **12** distinct timing cohorts (2024-05-10, 2024-05-23, 2024-06-14, 2024-07-09, 2024-10-04, 2024-12-26, 2025-05-28, 2025-12-10, 2025-12-18, 2025-12-23, 2026-02-13, 2026-09-09), all 141 rows `pending`.
+- `panel_v1.2.csv` was regenerated from committed code and compared with `cmp`: **byte-identical**; the working tree is clean.
+- Source ledger **100** records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` — 10 records, never appended to the ledger — parse the file, do not trust a quoted count); decision log D-001…D-045, this session appending **D-046**; experiment ledger E-000…E-067, this session appending **E-068**.
+- `research/campaign_state.json` loads with `json.load` (**75** notes before this session's note was prepended, **76** after); `updated_at` refreshed to the session timestamp.
+
+**Decision.** The campaign remains **PARKED — not validated, not rejected**. The prior agent task is complete and nothing was re-derived as if it were new research: no new primary source was read, no filing archive was harvested, no paid provider was contacted, no outcome-period return was computed or inspected, and no GitHub Actions run was started. The frozen gates are unchanged — **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL)**, free delisted/terminal-return price coverage **not established (FAIL)** — so the primary estimand remains **inconclusive_by_construction** on two of the three gates. The durable handoff (header, §9, §10 and §12), `research/campaign_state.json`, `research/experiment_ledger.csv` (row E-068) and `research/prompt_changelog.md` (Iteration 46) were updated, and a clear initial task message for the next agent was written into §9.
+
+**Why this is a decision and not a silent edit.** A verification pass that finds the remote advanced past the handoff tip is the D-035 precondition in waiting; recording it now, while the state is known to be clean, means the next agent can see at a glance that the reconciliation rule was not triggered this session beyond what `e36112d` already resolved, and that the ledgers are still collision-free.
+
+**Reverses if.** The remote advances again and this session's work appends to `research/decision_log.md`, `research/experiment_ledger.csv` or `research/source_ledger.csv`; then reconcile as D-035 (published identifiers keep their numbers, the un-published line takes the next free numbers, and the mapping is recorded as a dated decision).
+
+**Boundary.** No panel row added, removed or re-statused; no registered v1.0–v1.4 file edited in place; no paid service used (D-032); no GitHub Actions run; `.github/workflows/main.yml` unmodified (D-006); no outcome-period return computed or inspected; PH-1 not opened.
