@@ -177,6 +177,10 @@ established. PH-1 not opened; no outcome-period return computed or inspected.
 `git fetch origin main` shows `origin/main` at `9511249` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` →
 **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates read: **12 verified timing cohorts ≥ 12 required (MET)**, **0 admitted treatment firms < 200 required**, free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-039–E-045, Iterations 22–27) remains complete. §9 initial task message carried forward.
 
+**Session 233 note.** Session 233 re-verified the committed state against the handoff:
+`git fetch origin main` shows `origin/main` at `e03cf1a` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` unavailable in env (no pytest module), tests not re-run. `research/campaign_state.json` parses ok. DNS not re-checked this session. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates read: **12 verified timing cohorts ≥ 12 required (MET)**, **0 admitted treatment firms < 200 required**, free delisted/terminal-return price coverage not established. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (report the park honestly) remains complete. §9 initial task message carried forward.
+
+
 ## 0. Read this first: what happened to the previous session, and why the history looks like it does
 
 **The previous session (96) did not fail because of the network, a credential, or a
@@ -688,7 +692,7 @@ as a feature of the design rather than an obstacle to it.
 > pre-registration amendment only). `current_instruction` = **D-032 (free-only
 > route)** — no paid services, no GitHub Actions runs.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session (232) re-verified the committed state (origin/main at `23c93ca`,
+> This session (233) re-verified the committed state (origin/main at `23c93ca`,
 > advanced from the session-231 tip `ab43aa8` by checkpoint commit `23c93ca`, touching
 > `research/HANDOFF.md`, `research/campaign_state.json`, `research/decision_log.md`,
 > `research/experiment_ledger.csv` and `research/prompt_changelog.md` only — the
