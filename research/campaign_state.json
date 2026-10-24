@@ -2,6 +2,34 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    {
+      "session": 199,
+      "timestamp_utc": "2026-10-24T03:42:43Z",
+      "summary": "Verification pass plus live re-audit of failing gates (B2, B4 UK) under D-032; no gate advanced; park remains inconclusive_by_construction.",
+      "actions": [
+        "git fetch origin/main at 915b93e; tests 173 passed; DNS resolves; parsed campaign_state (78 notes); no rebase/D-035 conflict (ledgers collision-free)"
+      ],
+      "decisions": [
+        "D-049"
+      ],
+      "gates": {
+        "timing_cohorts": {
+          "value": 12,
+          "required": 12,
+          "status": "MET"
+        },
+        "admitted_treatment_firms": {
+          "value": 0,
+          "required": 200,
+          "status": "FAIL"
+        },
+        "free_delisted_terminal_return_coverage": {
+          "status": "FAIL"
+        }
+      },
+      "notes_extra": "B2: Stooq JS anti-bot no CSV; Yahoo chart HTTP 429 with cooldown then 200 for live only (AAPL/MSFT/GME/AMC/CMG/FB), HTTP 404 for delisted (LEH/LNKD/XLNX/SCTY/JCP/RIMM); HTZ live not delisted; others 401/404/timeout. B4 UK: FCA NSM API HTTP 403 on all paths, NSM root 200; condition 4 unverified."
+    },
+    "2026-10-24 (session 199): live re-audit of the two failing gates now that the network is available. git fetch origin main -> origin/main at 915b93e (remote == HEAD, local == HEAD, advanced from the handoff tip 837dba1 by checkpoint commits 307c533, 6f4d36d, 29685cb, 915b93e); git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. DNS resolves for all probed hosts. research/campaign_state.json parses (json.load, 78 notes). No rebase needed (local HEAD already tracked the remote; ledgers collision-free: D-001..D-048, E-000..E-071, source ledger 100 records S-01..S-99 plus S-105). Prior agent task (park reported honestly, E-071, Iteration 48) remains complete. Substantive work this session (D-049): B2 free delisted/terminal-return price coverage re-audited live and still NOT ESTABLISHED -- Stooq serves an HTML anti-bot page with no CSV on every ticker; Yahoo chart API returns HTTP 429 under sustained load but HTTP 200 with a 5-point series for LIVE tickers (AAPL, MSFT, GME, AMC, CMG, FB) and HTTP 404 for every genuinely DELISTED ticker (LEH, LNKD, XLNX, SCTY, JCP, RIMM); v7 quote 401; HTZ returned live 2026-10-19->23 data and is NOT a delisted case (Hertz re-listed 2020-21); Alpha Vantage/Marketstack/FMP/Twelve Data return demo-or-401 messages; IEX/Nasdaq/Polygon timeout or 404. Condition 4 (filing route with acceptance timestamp) for the UK stays UNVERIFIED -- FCA NSM API answers HTTP 403 on every path while the NSM root serves 200; the two retrospective UK events remain untimeable (D-021, D-027 stand). Treatment-firm gate: all 141 PH-1 rows carry 'IFRS 18 affected-firm list NOT yet determined' (129) or 'IFRS 18 instrument verified; affected class per the instrument' (12) -- NEITHER is an admitted firm count; condition 3 unverified for every row, so admitted count = 0 < 200. Frozen gates unchanged: 12 verified timing cohorts >= 12 (MET, session 137, D-039), 0 admitted treatment firms < 200 (FAIL), free delisted/terminal-return price coverage not established (FAIL) -- primary estimand remains inconclusive_by_construction on two of three gates. No gate advanced. No outcome-period return computed or inspected. PH-1 not opened.",
     "2026-10-24 (session 197): verification pass. git fetch origin main -> origin/main at 29685cb (remote == HEAD, local == HEAD); git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. DNS resolves. research/campaign_state.json parses (json.load). P0-P3 complete; campaign remains PARKED - not validated, not rejected. Frozen gates: 12 verified timing cohorts >= 12 (MET, session 137, D-039), 0 admitted treatment firms < 200 (FAIL; conditions 3-5 unverified for all 141 PH-1 rows), free delisted/terminal-return price coverage not established (FAIL, re-audited live session 160, D-042/E-047). Primary estimand inconclusive_by_construction on two of three gates. Panel counts re-derived by parsing committed files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 verified T-A in 12 distinct timing cohorts (2024-05-10 -> 2026-09-09), all pending, regenerates byte-identically from scripts/build_panel.py. Source ledger 100 records (S-01..S-99 plus S-105; S-100..S-104 exist only in research/manifests/p1_carveout_check.jsonl and were never appended - parse the file, do not trust a quoted count); decision log D-001..D-047; experiment ledger E-000..E-070. Prior agent task (park reported honestly) remains complete; no gate was advanced. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run.",
     "Session 196 verification pass: prior agent task read from the durable handoff and completed. git fetch origin main -> origin/main at 6f4d36d (remote == HEAD, local == HEAD, advanced from the handoff tip 118060c by checkpoint commits through 6f4d36d); git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. DNS resolves. Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 verified T-A in 12 distinct cohorts, all pending, regenerates byte-identically. Source ledger 100 records; decision log D-001..D-047; experiment ledger E-000..E-069. P0-P3 complete; campaign remains PARKED - not validated, not rejected. Frozen gates: 12 verified timing cohorts >= 12 (MET, session 137, D-039), 0 admitted treatment firms < 200 (FAIL; conditions 3-5 unverified for all 141 PH-1 rows), free delisted/terminal-return price coverage not established (FAIL, re-audited live session 160, D-042/E-047). Primary estimand inconclusive_by_construction on two of three gates. No gate advanced. No outcome-period return computed or inspected. PH-1 not opened. Updated handoff (sections 9, 10, 12), campaign_state.json, experiment ledger (E-070), prompt_changelog.md (Iteration 48); section 9 initial task message rewritten for the next agent.",
     "Session 193 verification pass: prior agent task read from the durable handoff and completed. git fetch origin main -> origin/main at 01c52fd (remote == HEAD, local == HEAD, advanced from the handoff tip 118060c by one checkpoint commit touching research/HANDOFF.md, research/campaign_state.json, research/decision_log.md, research/experiment_ledger.csv and research/prompt_changelog.md); git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. DNS resolves. Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 verified T-A in 12 distinct cohorts, all pending, regenerates byte-identically. Source ledger 100 records; decision log D-001..D-046; experiment ledger E-000..E-069 (this session adds E-069). P0-P3 complete; campaign remains PARKED - not validated, not rejected. Frozen gates: 12 verified timing cohorts >= 12 (MET, session 137, D-039), 0 admitted treatment firms < 200 (FAIL; conditions 3-5 unverified for all 141 PH-1 rows), free delisted/terminal-return price coverage not established (FAIL, re-audited live session 160, D-042/E-047). Primary estimand inconclusive_by_construction on two of three gates. No gate advanced. No outcome-period return computed or inspected. PH-1 not opened. Updated handoff (header, sections 9 and 10), campaign_state.json, experiment ledger (E-069), prompt_changelog.md (Iteration 47); section 9 initial task message rewritten for the next agent.",
@@ -273,7 +301,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-24T03:23:22Z",
+  "updated_at": "2026-10-24T03:42:43Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -302,5 +330,6 @@
       "empirical coverage of any candidate free price source for delisted securities and terminal/delisting returns",
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
-  }
+  },
+  "last_verified_head": "915b93e"
 }
