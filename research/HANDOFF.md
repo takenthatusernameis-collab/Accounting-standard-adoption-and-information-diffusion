@@ -645,7 +645,7 @@ as a feature of the design rather than an obstacle to it.
 > pre-registration amendment only). `current_instruction` = **D-032 (free-only
 > route)** — no paid services, no GitHub Actions runs.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session re-verified the committed state (origin/main at `2ac9622`, tests 173 passed,
+> This session re-verified the committed state (origin/main at `d671d39`, tests 173 passed,
 > 0 failing) and reported the park honestly — no gate was advanced. Local HEAD equals `origin/main`,
 > no rebase was needed and no D-035 ledger conflict arose.
 >
@@ -667,7 +667,7 @@ as a feature of the design rather than an obstacle to it.
 > all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Source
 > ledger holds 100 records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in
 > `research/manifests/p1_carveout_check.jsonl`, never appended to the ledger — parse
-> the file, do not trust a quoted count). Decision log D-001 … D-050; experiment
+> the file, do not trust a quoted count). Decision log D-001 … D-048; experiment
 > ledger E-000 … E-078 (row E-078 records this session; E-074 and E-076 are absent
 > from the file and exist only as prose references in earlier notes — the ledger's
 > identifier sequence is E-000 … E-073, E-075, E-077, E-078, a gap, not a renumbering).
@@ -701,7 +701,4 @@ as a feature of the design rather than an obstacle to it.
 >  in the past because of truncated note strings (e.g. session 193). If it fails, restore
 >  from the last known-good parent rather than silently rewriting it.
 
-
-**Session current (2026-10-24) note.** Session current read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`2ac9622`** (remote == HEAD, local == HEAD, advanced from the handoff tip `01c1daa`); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**87** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
-
-**Session 210 note (this session).** Session 210 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`01c1daa`** (remote == HEAD, local == HEAD, advanced from the handoff tip `bafcf70` by one checkpoint commit touching only `research/HANDOFF.md`); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**86** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent."
+**Session current (2026-10-24) note.** Session current read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`d671d39`** (remote == HEAD, local == HEAD, advanced from the handoff tip `2ac9622`); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**87** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
