@@ -615,14 +615,17 @@ as a feature of the design rather than an obstacle to it.
 > pre-registration amendment only). `current_instruction` = **D-032 (free-only
 > route)** — no paid services, no GitHub Actions runs.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session re-verified the committed state (origin/main at `01c52fd`, tests 173 passed,
+> This session re-verified the committed state (origin/main at `6f4d36d`, tests 173 passed,
 > 0 failing) and reported the park honestly — no gate was advanced. Local HEAD equals `origin/main`,
 > no rebase was needed and no D-035 ledger conflict arose. **The remote had advanced past
-> the handoff tip `118060c` by one checkpoint commit** (`01c52fd`, session 192, touching
-> `research/HANDOFF.md`, `research/campaign_state.json`, `research/decision_log.md`,
-> `research/experiment_ledger.csv` and `research/prompt_changelog.md`, and recording E-068
-> against the append-only ledgers); local HEAD already tracked it, so the D-035
-> precondition was already resolved and no reconciliation was needed.
+> the handoff tip `118060c` by checkpoint commits through `6f4d36d`** (session 195's `6f4d36d`,
+> touching `research/HANDOFF.md` only; session 194's `837dba1`/`307c533`, touching HANDOFF.md,
+> `research/campaign_state.json`, `research/decision_log.md`, `research/experiment_ledger.csv`
+> and `research/prompt_changelog.md`; and session 193's `01c52fd`, touching HANDOFF.md,
+> `research/campaign_state.json`, `research/decision_log.md`, `research/experiment_ledger.csv`
+> and `research/prompt_changelog.md` and recording E-069 against the append-only ledgers);
+> local HEAD already tracked it, so the D-035 precondition was already resolved and no
+> reconciliation was needed.
 >
 > **One thing to check on arrival — and it bit this session.** `research/campaign_state.json`
 > **failed `json.load` on arrival** with `Invalid control character at: line 6 column 146`.
@@ -658,17 +661,20 @@ as a feature of the design rather than an obstacle to it.
 >
 > **FIRST — check whether the remote has moved.** Two runners can push here. Run
 > `git fetch origin main` and `git log --oneline origin/main -5` **before** you commit
-> anything. **This session the remote advanced past the handoff tip `118060c` by one
-> checkpoint commit** (`01c52fd`, touching `research/HANDOFF.md`,
-> `research/campaign_state.json`, `research/decision_log.md`,
+> anything. **This session the remote advanced past the handoff tip `118060c` by
+> checkpoint commits through `6f4d36d`** (session 195's `6f4d36d`, touching
+> `research/HANDOFF.md` only; session 194's `837dba1`/`307c533`, touching
+> `research/HANDOFF.md`, `research/campaign_state.json`, `research/decision_log.md`,
 > `research/experiment_ledger.csv` and `research/prompt_changelog.md`, and recording
-> E-068 against the append-only ledgers) — local HEAD already tracked it, so no rebase
-> was needed and no D-035 conflict arose. If the remote has advanced and your work appends
-> to `research/decision_log.md`, `research/experiment_ledger.csv` or
-> `research/source_ledger.csv`, the rebase **will** conflict — resolve it the way D-035
-> did: the published identifiers keep their numbers, yours take the next free numbers,
-> and record the mapping as a dated decision. Do not let a rebase conflict become a
-> retry loop.
+> E-068 against the append-only ledgers; session 193's `01c52fd`, touching HANDOFF.md,
+> `research/campaign_state.json`, `research/decision_log.md`, `research/experiment_ledger.csv`
+> and `research/prompt_changelog.md`, and recording E-069 against the append-only ledgers)
+> — local HEAD already tracked it, so no rebase was needed and no D-035 conflict arose.
+> If the remote has advanced and your work appends to `research/decision_log.md`,
+> `research/experiment_ledger.csv` or `research/source_ledger.csv`, the rebase **will**
+> conflict — resolve it the way D-035 did: the published identifiers keep their numbers,
+> yours take the next free numbers, and record the mapping as a dated decision. Do not let
+> a rebase conflict become a retry loop.
 >
 > **Your task (priority order).**
 > - **P0–P3 — DONE.** Do not re-do these phases.
@@ -1014,4 +1020,9 @@ Verification pass (session 191). `git fetch origin main` → origin/main at `09b
 
 ## 12. Session note (session 192 — this session)
 
-Verification pass (session 192). `git fetch origin main` → origin/main at **`118060c`** (remote == HEAD, local == HEAD, advanced from handoff tip `c9c17c2` by three checkpoint commits: `e36112d` (session 190, touching HANDOFF.md, campaign_state.json, decision_log.md, experiment_ledger.csv, prompt_changelog.md and recording E-067 against the append-only ledgers, thereby resolving the D-035 precondition); `09b37fe` (session 191, touching HANDOFF.md and campaign_state.json only); `118060c` (this session, touching HANDOFF.md only)); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. `research/campaign_state.json` parses (`json.load`, **76** notes); `updated_at` refreshed to 2026-10-24T01:27:13Z. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL; conditions 3–5 unverified for all 141 PH-1 rows)**, free delisted/terminal-return price coverage **not established (FAIL, re-audited live session 160, D-042/E-047)** — primary estimand remains **inconclusive_by_construction** on two of the three gates. Panel counts re-derived by parsing committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct timing cohorts (2024-05-10, 2024-05-23, 2024-06-14, 2024-07-09, 2024-10-04, 2024-12-26, 2025-05-28, 2025-12-10, 2025-12-18, 2025-12-23, 2026-02-13, 2026-09-09), all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Source ledger holds **100** records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` — 10 records, never appended — parse the file, do not trust a quoted count); decision log D-001…D-045; experiment ledger E-000…E-067 (this session adds E-068). `e36112d` already resolved the D-035 precondition; the later commits touched only HANDOFF.md and campaign_state.json, so no further reconciliation was needed. Prior agent task (park reported honestly, E-067, Iteration 45) remains complete; **no gate was advanced**. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent.
+Verification pass (session 192). `git fetch origin main` → origin/main at **`118060c`** (remote == HEAD, local == HEAD, advanced from handoff tip `c9c17c2` by three checkpoint commits: `e36112d` (session 190, touching HANDOFF.md, campaign_state.json, decision_log.md, experiment_ledger.csv, prompt_changelog.md and recording E-067 against the append-only ledgers, thereby resolving the D-035 precondition); `09b37fe` (session 191, touching HANDOFF.md and campaign_state.json only); `118060c` (this session, touching HANDOFF.md only)); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. `research/campaign_state.json` parses (`json.load`, **76** notes); `updated_at` refreshed to 2026-10-24T01:27:13Z. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL; conditions 3–5 unverified for all 141 PH-1 rows)**, free delisted/terminal-return price coverage **not established (FAIL, re-audited live session 160, D-042/E-047)** — primary estimand remains **inconclusive_by_construction** on two of the three gates. Panel counts re-derived by parsing committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct timing cohorts (2024-05-10, 2024-05-23, 2024-06-14, 2024-07-09, 2024-10-04, 2024-12-26, 2025-05-28, 2025-12-10, 2025-12-18, 2025-12-23, 2026-02-13, 2026-09-09), all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Source ledger holds **100** records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` — 10 records, never appended — parse the file, do not trust a quoted count); decision log D-001…D-045; experiment ledger E-000…E-067 (this session adds E-068). `e36112d` already resolved the D-035 precondition; the later commits touched only HANDOFF.md and campaign_state.json.
+
+
+## 12. Session note (session 196 — this session)
+
+Verification pass (session 196). `git fetch origin main` → origin/main at **`6f4d36d`** (remote == HEAD, local == HEAD, advanced from the handoff tip `118060c` by checkpoint commits through `6f4d36d`: session 193's `01c52fd` touching HANDOFF.md, campaign_state.json, decision_log.md, experiment_ledger.csv and prompt_changelog.md and recording E-069; session 194's `307c533`/`837dba1` touching HANDOFF.md, campaign_state.json, decision_log.md, experiment_ledger.csv and prompt_changelog.md; session 195's `6f4d36d` touching HANDOFF.md only); `git status` clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. `research/campaign_state.json` parses (`json.load`, **76** notes); `updated_at` refreshed to 2026-10-24T02:18:57Z. P0–P3 complete; campaign remains **PARKED — not validated, not rejected**. Frozen gates: **12 verified timing cohorts ≥ 12 (MET, session 137, D-039)**, **0 admitted treatment firms < 200 (FAIL; conditions 3–5 unverified for all 141 PH-1 rows)**, free delisted/terminal-return price coverage **not established (FAIL, re-audited live session 160, D-042/E-047)** — primary estimand remains **inconclusive_by_construction** on two of the three gates. Panel counts re-derived by parsing committed files (D-037): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct timing cohorts (2024-05-10 → 2026-09-09), all 141 rows `pending`, regenerates byte-identically from `scripts/build_panel.py`. Source ledger holds **100** records (S-01…S-99 plus S-105; S-100…S-104 exist only in `research/manifests/p1_carveout_check.jsonl` — 10 records, never appended — parse the file, do not trust a quoted count); decision log D-001…D-047; experiment ledger E-000…E-069 (row E-069 records session 193). Local HEAD == `origin/main`, no rebase needed, no D-035 reconciliation triggered. Prior agent task (park reported honestly, E-069, Iteration 47) remains complete; **no gate was advanced**. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent: do not compute outcome returns or open PH-1; the binding constraint is ≥200 admitted treatment firms (conditions 3–5 unverified for all 141 PH-1 rows) plus free delisted/terminal-return coverage. Report the park honestly if gates cannot be advanced.nd campaign_state.json, so no further reconciliation was needed. Prior agent task (park reported honestly, E-067, Iteration 45) remains complete; **no gate was advanced**. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent.
