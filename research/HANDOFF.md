@@ -1,3 +1,5 @@
+**Session 220 note (this session).** Session 220 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`d6056d2`** (remote == HEAD, local == HEAD, advanced from the session-219 tip `3d72ebe` by checkpoint commits `921f13c` and `d6056d2`, touching `research/HANDOFF.md` only); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**92** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
+
 **Session 219 note (this session).** Session 219 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`3d72ebe`** (remote == HEAD, local == HEAD, advanced from the session-218 tip `64808bf` by checkpoint commits `c0a0baa`? no — by `921f13c` and `3d72ebe`); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**92** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
 
 **Session 218 note (this session).** Session 218 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`64808bf`** (remote == HEAD, local == HEAD, advanced from the session-217 tip `bda2373` by checkpoint commits `c0a0baa` and `64808bf`, touching `research/HANDOFF.md` only); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**91** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
@@ -661,7 +663,7 @@ as a feature of the design rather than an obstacle to it.
 > pre-registration amendment only). `current_instruction` = **D-032 (free-only
 > route)** — no paid services, no GitHub Actions runs.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session (218) re-verified the committed state (origin/main at `aee7ac2`, tests 173 passed,
+> This session (220) re-verified the committed state (origin/main at `d6056d2`, tests 173 passed,
 > 0 failing) and reported the park honestly — no gate was advanced. Local HEAD equals `origin/main`,
 > no rebase was needed and no D-035 ledger conflict arose.
 >
