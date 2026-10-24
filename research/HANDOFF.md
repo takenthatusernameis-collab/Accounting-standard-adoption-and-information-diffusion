@@ -1,5 +1,7 @@
 **Session 212 note (this session).** Session 212 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`bab3cf0`** (remote == HEAD, local == HEAD, advanced from the handoff tip `f91bba6` by checkpoint commits); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**87** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
 
+**Session 213 note (this session).** Session 213 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`6e85aa6`** (remote == HEAD, local == HEAD, advanced from the session-212 tip `947cc32` by two checkpoint commits: `bab3cf0`, touching `research/decision_log.md` and `research/experiment_ledger.csv` only, and `6e85aa6`, touching `research/HANDOFF.md` only); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**88** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
+
 # ACCTCLOCK — Handoff
 
 **Session 211 note (this session).** Session 211 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`f91bba6`** (remote == HEAD, local == HEAD, advanced from the handoff tip `d671d39` by one checkpoint commit); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**87** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
@@ -635,7 +637,7 @@ as a feature of the design rather than an obstacle to it.
 > `research/specification_v1.4.md`, `research/preregistration_v1.4.md` (the registered
 > PH-1 arm), `research/specification_v1.1.md` (the design, §§1–7),
 > `research/data_acquisition_plan.md`, `research/data_route_assessment.md`,
-> `research/decision_log.md` (D-001 … D-048), `research/prompt_changelog.md`,
+> `research/decision_log.md` (D-001 … D-052), `research/prompt_changelog.md`,
 > `research/event_calendar.csv`, `research/experiment_ledger.csv`,
 > `research/source_ledger.csv`, `research/authorisation_request.md`, and
 > `research/results.md`. There is no `AGENTS.md` in this repository; the protocol
@@ -649,13 +651,13 @@ as a feature of the design rather than an obstacle to it.
 > pre-registration amendment only). `current_instruction` = **D-032 (free-only
 > route)** — no paid services, no GitHub Actions runs.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session re-verified the committed state (origin/main at `bab3cf0`, tests 173 passed,
+> This session re-verified the committed state (origin/main at `6e85aa6`, tests 173 passed,
 > 0 failing) and reported the park honestly — no gate was advanced. Local HEAD equals `origin/main`,
 > no rebase was needed and no D-035 ledger conflict arose.
 >
 > **Frozen gates (current).**
 > - **Timing cohorts — MET:** 12 verified, distinct T-A dates
->  2024-05-10 → 2026-09-09 (South Korea 2025-12-18, S-105, D-039). Requirement ≥ 12.
+> 2024-05-10 → 2026-09-09 (South Korea 2025-12-18, S-105, D-039). Requirement ≥ 12.
 >  **Do not re-verify to chase a 13th cohort** — more cohorts cannot by themselves
 >  unblock the arm (D-011: empty T_A stays empty, never inferred).
 > - **Treatment firms — FAIL:** 0 admitted < 200 required. All 141 PH-1 rows are
@@ -671,10 +673,11 @@ as a feature of the design rather than an obstacle to it.
 > all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Source
 > ledger holds 100 records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in
 > `research/manifests/p1_carveout_check.jsonl`, never appended to the ledger — parse
-> the file, do not trust a quoted count). Decision log D-001 … D-048; experiment
-> ledger E-000 … E-078 (row E-078 records this session; E-074 and E-076 are absent
-> from the file and exist only as prose references in earlier notes — the ledger's
-> identifier sequence is E-000 … E-073, E-075, E-077, E-078, a gap, not a renumbering).
+> the file, do not trust a quoted count). Decision log D-001 … D-052; experiment
+> ledger E-000 … E-072, E-080, E-081 (E-073 … E-079 are absent from the file and
+> exist only as prose references in earlier notes — a gap, not a renumbering; the
+> two E-080 rows are byte-identical duplicates committed by the upstream checkpoint
+> `bab3cf0` and are retained verbatim, not renumbered; E-081 records this session).
 >
 > **FIRST — check whether the remote has moved.** Two runners can push here. Run
 > `git fetch origin main` and `git log --oneline origin/main -5` **before** you commit
@@ -705,4 +708,4 @@ as a feature of the design rather than an obstacle to it.
 >  in the past because of truncated note strings (e.g. session 193). If it fails, restore
 >  from the last known-good parent rather than silently rewriting it.
 
-**Session 211 note (this session).** Session 211 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`f91bba6`** (remote == HEAD, local == HEAD, advanced from the handoff tip `d671d39` by one checkpoint commit); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**87** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
+**Session 213 note (this session).** Session 213 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`6e85aa6`** (remote == HEAD, local == HEAD, advanced from the session-212 tip `947cc32` by two checkpoint commits: `bab3cf0`, touching `research/decision_log.md` and `research/experiment_ledger.csv` only, and `6e85aa6`, touching `research/HANDOFF.md` only); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**88** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
