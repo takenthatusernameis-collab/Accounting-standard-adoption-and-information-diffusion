@@ -1,5 +1,7 @@
 # ACCTCLOCK — Handoff
 
+**Session 210 note (this session).** Session 210 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`01c1daa`** (remote == HEAD, local == HEAD, advanced from the handoff tip `bafcf70` by one checkpoint commit touching only `research/HANDOFF.md`); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**86** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
+
 **Session 209 note (this session).** Session 209 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`bafcf70`** (remote == HEAD, local == HEAD, advanced from the handoff tip `43acefe` by one checkpoint commit); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**85** notes). DNS not re-probed. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
 
 **Session 208 note (this session).** Session 208 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`43acefe`** (remote == HEAD, local == HEAD, advanced from the handoff tip `8f5a899` by one checkpoint commit); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**85** notes). DNS not re-probed. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
@@ -643,21 +645,21 @@ as a feature of the design rather than an obstacle to it.
 > pre-registration amendment only). `current_instruction` = **D-032 (free-only
 > route)** — no paid services, no GitHub Actions runs.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session re-verified the committed state (origin/main at `ce8e5c0`, tests 173 passed,
+> This session re-verified the committed state (origin/main at `01c1daa`, tests 173 passed,
 > 0 failing) and reported the park honestly — no gate was advanced. Local HEAD equals `origin/main`,
 > no rebase was needed and no D-035 ledger conflict arose.
 >
 > **Frozen gates (current).**
 > - **Timing cohorts — MET:** 12 verified, distinct T-A dates
->   2024-05-10 → 2026-09-09 (South Korea 2025-12-18, S-105, D-039). Requirement ≥ 12.
->   **Do not re-verify to chase a 13th cohort** — more cohorts cannot by themselves
->   unblock the arm (D-011: empty T_A stays empty, never inferred).
+>  2024-05-10 → 2026-09-09 (South Korea 2025-12-18, S-105, D-039). Requirement ≥ 12.
+>  **Do not re-verify to chase a 13th cohort** — more cohorts cannot by themselves
+>  unblock the arm (D-011: empty T_A stays empty, never inferred).
 > - **Treatment firms — FAIL:** 0 admitted < 200 required. All 141 PH-1 rows are
->   `pending`; conditions 3–5 are unverified. Firm-level data has not been acquired;
->   this is the binding constraint.
+>  `pending`; conditions 3–5 are unverified. Firm-level data has not been acquired;
+>  this is the binding constraint.
 > - **Delisted / terminal returns — FAIL:** free coverage not established (re-audited
->   live, D-042/E-047). Do not re-run those exact probes — try a source not yet tried,
->   or report the park.
+>  live, D-042/E-047). Do not re-run those exact probes — try a source not yet tried,
+>  or report the park.
 >
 > Because two of the three gates fail, the primary estimand remains **inconclusive by
 > construction**. `research/panel_v1.1.csv` holds 431 rows (8 Stratum A true, 423
@@ -665,8 +667,10 @@ as a feature of the design rather than an obstacle to it.
 > all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Source
 > ledger holds 100 records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in
 > `research/manifests/p1_carveout_check.jsonl`, never appended to the ledger — parse
-> the file, do not trust a quoted count). Decision log D-001 … D-048; experiment
-> ledger E-000 … E-077 (row E-077 records this session).
+> the file, do not trust a quoted count). Decision log D-001 … D-050; experiment
+> ledger E-000 … E-078 (row E-078 records this session; E-074 and E-076 are absent
+> from the file and exist only as prose references in earlier notes — the ledger's
+> identifier sequence is E-000 … E-073, E-075, E-077, E-078, a gap, not a renumbering).
 >
 > **FIRST — check whether the remote has moved.** Two runners can push here. Run
 > `git fetch origin main` and `git log --oneline origin/main -5` **before** you commit
@@ -679,24 +683,24 @@ as a feature of the design rather than an obstacle to it.
 > **Your task (priority order).**
 > - **P0–P3 — DONE.** Do not re-do these phases.
 > - **If you can advance a gate, do it from a free, lawful source** and record it as a
->   decision (D-001 … convention) plus an experiment-ledger row and a changelog
->   iteration. The EDGAR acquirer in `scripts/sec_edgar.py` is implemented,
->   unit-tested and ready to run against live filings; it serves condition 4 (a filing
->   route with an acceptance TIMESTAMP), not condition 5 (price coverage). Raw data is
->   cached outside the repo; only code, manifests, hashes and non-licensed aggregates
->   are committed (D-015).
+>  decision (D-001 … convention) plus an experiment-ledger row and a changelog
+>  iteration. The EDGAR acquirer in `scripts/sec_edgar.py` is implemented,
+>  unit-tested and ready to run against live filings; it serves condition 4 (a filing
+>  route with an acceptance TIMESTAMP), not condition 5 (price coverage). Raw data is
+>  cached outside the repo; only code, manifests, hashes and non-licensed aggregates
+>  are committed (D-015).
 > - **Otherwise, report the park honestly.** Do not compute or inspect any
->   outcome-period return, do not open PH-1, and do not lower the frozen ≥ 12 cohort /
->   ≥ 200 treatment-firm minima. `research/results.md` keeps reporting **no results**.
+>  outcome-period return, do not open PH-1, and do not lower the frozen ≥ 12 cohort /
+>  ≥ 200 treatment-firm minima. `research/results.md` keeps reporting **no results**.
 > - **The two open gates, in one line each.** (a) ≥ 200 admitted treatment firms —
->   0 today, because conditions 3–5 of the PH-1 membership rule are unverified for
->   all 141 PH-1 rows and firm-level data has not been acquired; (b) free
->   delisted/terminal-return price coverage — not established (D-042/E-047). The
->   cohort gate is MET (12 ≥ 12) and must not be chased for a 13th (D-011).
+>  0 today, because conditions 3–5 of the PH-1 membership rule are unverified for
+>  all 141 PH-1 rows and firm-level data has not been acquired; (b) free
+>  delisted/terminal-return price coverage — not established (D-042/E-047). The
+>  cohort gate is MET (12 ≥ 12) and must not be chased for a 13th (D-011).
 > - **Check `research/campaign_state.json` parses on arrival** — it has failed `json.load`
->   in the past because of truncated note strings (e.g. session 193). If it fails, restore
->   from the last known-good parent rather than silently rewriting it.
+>  in the past because of truncated note strings (e.g. session 193). If it fails, restore
+>  from the last known-good parent rather than silently rewriting it.
 
 
 **Session current (2026-10-24) note.** Session current re-verified the committed state against the handoff:
-`git fetch origin main` shows `origin/main` at `bafcf70` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates read: **12 verified timing cohorts ≥ 12 required (MET)**, **0 admitted treatment firms < 200 required (FAIL)**, free delisted/terminal-return price coverage not established (FAIL). No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly) remains complete. §9 initial task message updated for the next agent.
+`git fetch origin main` shows `origin/main` at `01c1daa` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates read: **12 verified timing cohorts ≥ 12 required (MET)**, **0 admitted treatment firms < 200 required (FAIL)**, free delisted/terminal-return price coverage not established (FAIL). No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-078, Iteration 55) remains complete. §9 initial task message updated for the next agent.
