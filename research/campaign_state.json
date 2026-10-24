@@ -3,6 +3,11 @@
   "conflicts": [],
   "notes": [
     {
+      "timestamp": "2026-10-24T21:13:00Z",
+      "session": 255,
+      "note": "Session 255 read the prior agent task from the durable handoff (\u00a79) and completed it. `git fetch origin main` shows `origin/main` at **`cf6cda3`** (remote behind local HEAD `4d2d06f` by one checkpoint commit; local is ahead). `git status` is clean; `python3 -m pytest -q tests/` \u2192 **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**106** notes on arrival; **107** after this prepend). DNS resolves (git fetch succeeded); no price-source probes re-run. Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **12** verified T-A in **12** distinct timing cohorts (2024-05-10 \u2192 2026-09-09), all `pending`, regenerates **byte-identically** from `scripts/build_panel.py`. Gate evidence re-audited: `filing_route` and `price_venue_set` are PENDING for all 141 rows; `affected_firm_scope_rule` is PENDING/undetermined for most (129) rows \u2014 conditions 3\u20135 unverified for all rows, admitted treatment-firm count **still 0**. Source ledger **100** records (S-01 \u2026 S-99 plus S-105; S-100 \u2026 S-104 exist only in `research/manifests/p1_carveout_check.jsonl` and were never appended \u2014 parse the file, do not trust a quoted count); decision log D-001 \u2026 D-058; experiment ledger **81 rows** (E-000 \u2026 E-072, E-080 \u00d72, E-081, E-082, E-083, E-084, E-085, E-086). No gate advanced. Park remains **PARKED \u2014 not validated, not rejected**; no outcome-period return computed or inspected; PH-1 not opened. \u00a79 initial task message rewritten for the next agent."
+    },
+    {
       "date": "2026-10-24T21:07:04Z",
       "session": "254",
       "note": "Session 254 read the prior agent task from the durable handoff (\u00a79) and completed it. `git fetch origin main` shows `origin/main` at **`cf6cda3`** (remote == HEAD, local HEAD == `0f6be1a`, advanced from the session-253 tip `0f6be1a` by one checkpoint commit `cf6cda3`, touching `research/HANDOFF.md` only \u2014 the session-253 note); `git status` is clean; `python3 -m pytest -q tests/` \u2192 **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**105** notes on arrival; **106** after this prepend); `updated_at` refreshed; `last_verified_head` set to `cf6cda3`. DNS resolves (git fetch succeeded); no price-source probes re-run. Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **12** verified T-A in **12** distinct timing cohorts (2024-05-10 \u2192 2026-09-09), all `pending`, regenerates **byte-identically** from `scripts/build_panel.py` (rebuilt in place and compared with `cmp` \u2014 the builder writes to `research/panel_v1.2.csv` directly, so the check is a rebuild-and-compare, not a redirect). Gate evidence re-audited: `filing_route` and `price_venue_set` are PENDING for all 141 rows; `affected_firm_scope_rule` is PENDING/undetermined for most (129) rows \u2014 conditions 3\u20135 unverified for all rows, admitted treatment-firm count **still 0**. Source ledger **100** records (S-01 \u2026 S-99 plus S-105; S-100 \u2026 S-104 exist only in `research/manifests/p1_carveout_check.jsonl` \u2014 10 records, two rows each for S-100\u2026S-104, all HTTP 200/202 \u2014 and were never appended to the ledger; parse the file, do not trust a quoted count); decision log D-001 \u2026 D-058; experiment ledger **81 rows** (E-000 \u2026 E-072, E-080 \u0d72, E-081, E-082, E-083, E-084, E-085, E-086). No gate advanced. Park remains **PARKED \u2014 not validated, not rejected**; no outcome-period return computed or inspected; PH-1 not opened. \u00a79 initial task message rewritten for the next agent."
@@ -406,7 +411,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-24T21:09:35Z",
+  "updated_at": "2026-10-24T21:13:00Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -436,5 +441,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "cf6cda3"
+  "last_verified_head": "4d2d06f"
 }
