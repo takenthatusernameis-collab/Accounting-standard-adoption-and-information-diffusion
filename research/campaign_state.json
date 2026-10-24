@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "2026-10-24 (session 211): verification pass. git fetch origin main -> origin/main at 6dcb1c3 (remote == HEAD, local == HEAD, advanced from the handoff tip 01c1daa by one checkpoint commit touching only research/HANDOFF.md, research/campaign_state.json, research/decision_log.md, research/experiment_ledger.csv and research/prompt_changelog.md - the session-210 checkpoint durable records); git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. research/campaign_state.json parses with json.load (86 notes before this prepend; 87 after). DNS resolves (git fetch succeeded); no price-source probes re-run. P0-P3 complete; campaign remains PARKED - not validated, not rejected. Frozen gates: 12 verified timing cohorts >= 12 (MET, session 137, D-039), 0 admitted treatment firms < 200 (FAIL; conditions 3-5 unverified for all 141 PH-1 rows), free delisted/terminal-return price coverage not established (FAIL, re-audited live session 160, D-042/E-047). Primary estimand inconclusive_by_construction on two of three gates. No gate advanced. No outcome-period return computed or inspected. PH-1 not opened. Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 verified T-A in 12 distinct cohorts, all pending, regenerates byte-identically. Source ledger 100 records; decision log D-001..D-051; experiment ledger E-000..E-079. Decision D-051; Iteration 56.",
     "2026-10-24 (session 210): verification pass. git fetch origin main -> origin/main at 01c1daa (remote == HEAD, local == HEAD, advanced from the handoff tip bafcf70 by one checkpoint commit touching only research/HANDOFF.md); git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. research/campaign_state.json parses with json.load (85 notes). DNS resolves (git fetch succeeded). P0-P3 complete; campaign remains PARKED - not validated, not rejected. Frozen gates: 12 verified timing cohorts >= 12 (MET, session 137, D-039), 0 admitted treatment firms < 200 (FAIL; conditions 3-5 unverified for all 141 PH-1 rows), free delisted/terminal-return price coverage not established (FAIL, re-audited live session 160, D-042/E-047). Prior agent task (park reported honestly, E-077, Iteration 54) remains complete. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. §9 initial task message rewritten for the next agent.",
     "2026-10-24 (session current): verification pass. git fetch origin main -> origin/main at 8f5a899 (remote == HEAD); git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. DNS resolves. research/campaign_state.json parses. P0-P3 complete; campaign remains PARKED - not validated, not rejected. Frozen gates: 12 verified timing cohorts >= 12 (MET), 0 admitted treatment firms < 200 (FAIL), free delisted/terminal-return price coverage not established (FAIL). Prior agent task (park reported honestly) remains complete. No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Section 9 initial task message updated for the next agent.",
     {
@@ -327,7 +328,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-24T05:52:00Z",
+  "updated_at": "2026-10-24T06:05:00Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -357,5 +358,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "01c1daa"
+  "last_verified_head": "6dcb1c3"
 }
