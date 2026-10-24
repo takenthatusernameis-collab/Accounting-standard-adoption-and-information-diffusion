@@ -645,7 +645,7 @@ as a feature of the design rather than an obstacle to it.
 > pre-registration amendment only). `current_instruction` = **D-032 (free-only
 > route)** — no paid services, no GitHub Actions runs.
 > **No outcome-period return has ever been computed or inspected; PH-1 is not opened.**
-> This session re-verified the committed state (origin/main at `01c1daa`, tests 173 passed,
+> This session re-verified the committed state (origin/main at `2ac9622`, tests 173 passed,
 > 0 failing) and reported the park honestly — no gate was advanced. Local HEAD equals `origin/main`,
 > no rebase was needed and no D-035 ledger conflict arose.
 >
@@ -702,5 +702,6 @@ as a feature of the design rather than an obstacle to it.
 >  from the last known-good parent rather than silently rewriting it.
 
 
-**Session current (2026-10-24) note.** Session current re-verified the committed state against the handoff:
-`git fetch origin main` shows `origin/main` at `01c1daa` (remote == HEAD); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. DNS resolves. P0-P3 all complete; campaign remains **PARKED — not validated, not rejected**; frozen gates read: **12 verified timing cohorts ≥ 12 required (MET)**, **0 admitted treatment firms < 200 required (FAIL)**, free delisted/terminal-return price coverage not established (FAIL). No new primary source read, no filing archive harvested, no paid provider contacted, no outcome-period return computed or inspected, no GitHub Actions run. Prior agent task (park reported honestly, E-078, Iteration 55) remains complete. §9 initial task message updated for the next agent.
+**Session current (2026-10-24) note.** Session current read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`2ac9622`** (remote == HEAD, local == HEAD, advanced from the handoff tip `01c1daa`); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**87** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent.
+
+**Session 210 note (this session).** Session 210 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`01c1daa`** (remote == HEAD, local == HEAD, advanced from the handoff tip `bafcf70` by one checkpoint commit touching only `research/HANDOFF.md`); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**86** notes). DNS resolves (git fetch succeeded); no price-source probes re-run. Park remains; no gate advanced; no outcome-period return computed or inspected. §9 initial task message rewritten for the next agent."
