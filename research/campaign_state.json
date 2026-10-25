@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "Session 358 note (this session). Read the prior agent task from the durable handoff (\u00a79) and completed it. git fetch origin main shows origin/main at cb45374 (remote == HEAD, local HEAD == cb45374); git status clean. python3 -m pytest -q tests/ ran live this session: 173 passed, 0 failing (1.18s). campaign_state.json parses with json.load (133 notes, 9 steps). Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 non-empty T_A in 12 distinct timing cohorts (2024-05-10 \u2192 2026-09-09), all pending, regenerates byte-identically from scripts/build_panel.py. Source ledger 100 records (S-01 \u2026 S-99 plus S-105; S-100 \u2026 S-104 exist only in research/manifests/p1_carveout_check.jsonl \u2014 parsed separately, not appended). Decision log D-001 \u2026 D-064; experiment ledger 93 data rows (E-000 \u2026 E-072, E-080 \u00d72, E-081 \u2026 E-097; E-073 \u2026 E-079 absent, gap not renumbering; E-087 second byte-identical duplicate of E-080 retained per D-035). Gate evidence unchanged: cohort gate MET (12 \u2265 12, do not chase 13th per D-011); admitted treatment-firm count 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Of 141 PH-1 rows, 129 carry affected_firm_scope_rule \"IFRS 18 affected-firm list NOT yet determined...\" and 12 carry \"IFRS 18 instrument verified; affected class per the instrument...\" \u2014 jurisdiction-level instrument verification only, NOT firm-level admission (admitted count still 0). Because two gates fail, primary estimand remains inconclusive by construction; PH-1 not opened. No gate advanced. Park remains PARKED \u2014 not validated, not rejected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified. \u00a79 initial task message remains current for the next agent.",
     "Session 355 verification pass: git fetch origin main shows origin/main at 7806d92 (remote == HEAD, local HEAD == 7806d92); git status clean; pytest 173 passed, 0 failing; campaign_state parses (132 notes, 9 steps). No gate advanced; park stands.",
     "2026-10-25 (session 352): verification pass. Local at 2783206, clean; origin/main == HEAD at 2783206 (advanced from the session-351 tip b3e7432 by checkpoint commits b3e7432 and 2783206 'session 351 verification pass and handoff update', touching HANDOFF.md, campaign_state.json, decision_log.md, experiment_ledger.csv and prompt_changelog.md only - the three append-only ledgers, so no rebase and no D-035 conflict; local HEAD already tracked the remote and git merge --ff-only origin/main is a no-op). pytest ran live: 173 passed, 0 failing (1.33s). campaign_state.json parses (131 notes on arrival, 132 after this append). Park remains PARKED - not validated, not rejected. Gates: 12 cohorts MET, 0 admitted treatment firms < 200 FAIL, free delisted/terminal-return coverage not established FAIL. No gate advanced. \u00a79 initial task message remains current for the next agent.",
     "2026-10-25 (session 351): verification pass. Local at b3e7432, clean; origin/main == HEAD at b3e7432 (advanced from the session-350 tip 72e73a6 by checkpoint commit b3e7432); pytest ran live: 173 passed, 0 failing (1.34s). campaign_state.json parses (130 notes on arrival, 131 after this append). Park remains PARKED \u2014 not validated, not rejected. Gates: 12 cohorts MET, 0 admitted treatment firms < 200 FAIL, free delisted/terminal-return coverage not established FAIL. No gate advanced. \u00a79 initial task message remains current for the next agent.",
@@ -757,7 +758,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-25T22:05:00Z",
+  "updated_at": "2026-10-25T22:46:36Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -787,5 +788,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "7806d92"
+  "last_verified_head": "cb45374"
 }
