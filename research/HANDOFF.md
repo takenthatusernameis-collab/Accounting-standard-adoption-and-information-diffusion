@@ -1012,6 +1012,9 @@ as a feature of the design rather than an obstacle to it.
 
 ---
 
+**Session 351 note (this session).** Session 351 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`b3e7432`** (remote == HEAD, local HEAD == `b3e7432`, advanced from the session-350 tip `72e73a6` by checkpoint commit `b3e7432` "chore(kilo): checkpoint agent session"); `git status` is clean; `python3 -m pytest -q tests/` ran live this session: **173 passed, 0 failing** (1.34s) — the committed suite record is confirmed, not merely trusted. `research/campaign_state.json` parses with `json.load` (**130** notes on arrival, **131** after this prepend; `updated_at` refreshed to `2026-10-25T20:59:43Z`, `last_verified_head` set to `b3e7432`). Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending; 8 non-empty `T_A` in **7** distinct retrospective cohorts, all ≤ 2017-10-31 — v1.1 has no `timing_cohort` column, only `status_text` and `in_registered_panel`); `panel_v1.2.csv` **141 rows** / **12** non-empty `T_A` in **12** distinct timing cohorts (2024-05-10, 2024-05-23, 2024-06-14, 2024-07-09, 2024-10-04, 2024-12-26, 2025-05-28, 2025-12-10, 2025-12-18, 2025-12-23, 2026-02-13, 2026-09-09), all 141 rows `pending`, regenerated **byte-identically** from `scripts/build_panel.py` (rebuilt in place with `python3 scripts/build_panel.py`; `cmp` clean for both v1.1 and v1.2; working tree restored). Source ledger **100** data records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in `research/manifests/p1_carveout_check.jsonl` — 10 records, parsed separately, not appended). Decision log D-001 … D-062, this session appending **D-063**; experiment ledger **91 data rows on arrival, 92 after this append** (E-000 … E-072, E-080 ×2, E-081 … E-096; E-073 … E-079 absent from file, gap not renumbering). Gate evidence re-audited from the committed panel file: `filing_route` PENDING for all 141 rows; `price_venue_set` PENDING for all 141 rows; of the 141 rows, **129** carry `affected_firm_scope_rule` = "IFRS 18 affected-firm list NOT yet determined for this jurisdiction. Profile extent of IFRS application: …" and the remaining **12** carry "IFRS 18 instrument verified; affected class per the instrument. Profile extent of IFRS application: …" — the latter is a **jurisdiction-level** instrument verification, NOT a firm-level admission, so the admitted treatment-firm count is **still 0**. Cohort gate **MET (12 ≥ 12, do not chase a 13th per D-011)**; admitted treatment-firm count **still 0 < 200 (FAIL)**; free delisted/terminal-return price coverage **not established (FAIL, D-042/E-047)**. Because two gates fail, primary estimand remains **inconclusive by construction**; PH-1 not opened. No gate advanced. Park remains **PARKED — not validated, not rejected**. No paid services used, no GitHub Actions run, `.github/workflows/main.yml` unmodified. §9 initial task message rewritten for the next agent.
+
+
 ## §9 — Initial task message for the next agent
 
 **You are the next agent in the ACCTCLOCK research loop.** Read this handoff first
@@ -1037,20 +1040,20 @@ PH-1 arm), `research/specification_v1.1.md` (the design, §§1–7),
        numbers, and record the mapping as a dated decision. Do not let a rebase conflict
        become a retry loop.
 
-    2. **Verify the committed state by parsing the files** (D-037; do not trust a quoted
-       row count): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending);
-       `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct timing cohorts
-       (2024-05-10 → 2026-09-09), all `pending`, regenerates byte-identically from
-       `scripts/build_panel.py`. Source ledger 100 records (S-01 … S-99 plus S-105;
-       S-100 … S-104 exist only in `research/manifests/p1_carveout_check.jsonl` — parse
-       that file, do not trust a quoted count). Decision log D-001 … D-062; experiment
-       ledger 91 rows (E-000 … E-072, E-080 ×2, E-081 … E-095; E-073 … E-079 absent
+2. **Verify the committed state by parsing the files** (D-037; do not trust a quoted
+        row count): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423 pending;
+        `panel_v1.2.csv` 141 rows / 12 verified T-A in 12 distinct timing cohorts
+        (2024-05-10 → 2026-09-09), all `pending`, regenerates byte-identically from
+        `scripts/build_panel.py`. Source ledger 100 records (S-01 … S-99 plus S-105;
+        S-100 … S-104 exist only in `research/manifests/p1_carveout_check.jsonl` — parse
+        that file, do not trust a quoted count). Decision log D-001 … D-063; experiment
+        ledger 92 rows (E-000 … E-072, E-080 ×2, E-081 … E-096; E-073 … E-079 absent
         from file, gap not renumbering — a known defect, not a renumbering). Run
-       `python3 -m pytest -q tests/` if available and confirm 173 passed, 0 failing. Confirm
-         `research/campaign_state.json` parses with `json.load` — it holds **129** notes
-         on arrival (session 341 prepended its own note; the older "9 notes / malformed"
-         claim in these notes is stale: 9 is the count of the top-level `steps` array,
-         not the `notes` array; parse the file, do not infer from a quoted count).
+        `python3 -m pytest -q tests/` if available and confirm 173 passed, 0 failing. Confirm
+          `research/campaign_state.json` parses with `json.load` — it holds **131** notes
+          on arrival (session 351 prepended its own note; the older "9 notes / malformed"
+          claim in these notes is stale: 9 is the count of the top-level `steps` array,
+          not the `notes` array; parse the file, do not infer from a quoted count).
 
     3. **The campaign is PARKED — not validated, not rejected.** The frozen gates read:
        **12 verified timing cohorts ≥ 12 required (MET, session 137, D-039)** — **do not
