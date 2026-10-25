@@ -3,6 +3,11 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 320,
+      "timestamp": "2026-10-25T11:25:06Z",
+      "action": "Verification pass; prior agent task read from durable handoff (\u00a79) completed. Park remains PARKED (12 cohorts MET, 0/200 firms FAIL, free delisted/terminal-return coverage not established). No gate advanced; PH-1 not opened; no outcome-period return computed/inspected."
+    },
+    {
       "session": 318,
       "timestamp": "2026-10-25T11:09:14Z",
       "action": "Verification pass; prior agent task read from durable handoff (\u00a79) completed. Park remains PARKED (12 cohorts MET, 0/200 firms FAIL, free delisted/terminal-return coverage not established). No gate advanced; PH-1 not opened; no outcome-period return computed/inspected.",
