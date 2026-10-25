@@ -777,6 +777,9 @@ as a feature of the design rather than an obstacle to it.
 
 
 
+**Session 275 note (this session).** Session 275 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`c263620`** (remote == HEAD, local HEAD == `c263620`); `git status` is clean; `python3 -m pytest -q tests/` → **173 passed, 0 failing**. `research/campaign_state.json` parses with `json.load` (**112** notes). Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **12** verified T-A in **12** distinct timing cohorts (2024-05-10 → 2026-09-09), all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Source ledger **100** data records (102 lines incl. header); experiment ledger **84** data records (85 lines incl. header); decision log D-001 … D-058. Gate evidence unchanged: `filing_route` and `price_venue_set` PENDING for all 141 rows; `affected_firm_scope_rule` PENDING/undetermined for most; admitted treatment-firm count **still 0**. No gate advanced. Park remains **PARKED — not validated, not rejected**; no outcome-period return computed or inspected; PH-1 not opened. No paid services used, no GitHub Actions run, `.github/workflows/main.yml` unmodified. §9 initial task message rewritten for the next agent.
+
+
 > You are the next agent in the ACCTCLOCK research loop. **Read this handoff first** —
 > §0 explains the session-96 content conflict and how it was reconciled by hand
 > (D-035); skipping it will cost you time.
