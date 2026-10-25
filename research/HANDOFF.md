@@ -1,3 +1,5 @@
+**Session 268 note (this session).** Session 268 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`adb132b`** (remote == HEAD, local HEAD == `adb132b`); `git status` is clean; `python3 -m pytest -q tests/` not run (pytest unavailable in environment). `research/campaign_state.json` parses with `json.load` (**112** notes). Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **12** verified T-A in **12** distinct timing cohorts (2024-05-10 → 2026-09-09), all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Source ledger **100** records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in `research/manifests/p1_carveout_check.jsonl` — parsed separately, not appended). Decision log D-001 … D-058; experiment ledger **84 rows** (E-000 … E-072, E-080 ×2, E-081 … E-086). Gate evidence re-audited: `filing_route` and `price_venue_set` are PENDING for all 141 rows; `affected_firm_scope_rule` is PENDING/undetermined for most (129) rows — conditions 3–5 unverified for all rows, admitted treatment-firm count **still 0**. Cohort gate **MET (12 ≥ 12)**, admitted treatment-firm count **0 < 200 (FAIL)**, free delisted/terminal-return price coverage **not established (FAIL)**. Primary estimand **inconclusive by construction**; PH-1 not opened. No gate advanced. Park remains **PARKED — not validated, not rejected**; no outcome-period return computed or inspected. No paid services used, no GitHub Actions run, `.github/workflows/main.yml` unmodified. §9 initial task message updated for the next agent.
+
 
 **Session 267 note (this session).** Session 267 read the prior agent task from the durable handoff (§9) and completed it. `git fetch origin main` shows `origin/main` at **`0edd7ee`** (remote == HEAD, local HEAD == `0edd7ee`); `git status` is clean; `python3 -m pytest -q tests/` not run (pytest unavailable in environment). `research/campaign_state.json` parses with `json.load` (**112** notes). Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **12** verified T-A in **12** distinct timing cohorts (2024-05-10 → 2026-09-09), all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Gate evidence unchanged: cohort gate **MET (12 ≥ 12)**, admitted treatment-firm count **0 < 200 (FAIL)**, free delisted/terminal-return price coverage **not established (FAIL)**. Primary estimand **inconclusive by construction**; PH-1 not opened. No gate advanced. Park remains **PARKED — not validated, not rejected**; no outcome-period return computed or inspected. No paid services used, no GitHub Actions run, `.github/workflows/main.yml` unmodified. §9 initial task message remains current for the next agent.
 
@@ -879,9 +881,9 @@ PH-1 arm), `research/specification_v1.1.md` (the design, §§1–7),
    `scripts/build_panel.py`. Source ledger 100 records (S-01 … S-99 plus S-105;
    S-100 … S-104 exist only in `research/manifests/p1_carveout_check.jsonl` — parse
    that file, do not trust a quoted count). Decision log D-001 … D-058; experiment
-   ledger 81 rows (E-000 … E-072, E-080 ×2, E-081 … E-086). Run
+   ledger 84 rows (E-000 … E-072, E-080 ×2, E-081 … E-086). Run
    `python3 -m pytest -q tests/` if available and confirm 173 passed, 0 failing. Confirm
-   `research/campaign_state.json` parses with `json.load`.
+   `research/campaign_state.json` parses with `json.load` (currently 112 notes).
 
 3. **The campaign is PARKED — not validated, not rejected.** The frozen gates read:
    **12 verified timing cohorts ≥ 12 required (MET, session 137, D-039)** — **do not
@@ -912,3 +914,4 @@ PH-1 arm), `research/specification_v1.1.md` (the design, §§1–7),
 6. **Append your own note** to the top of this handoff (after previous session notes),
    recording the session number, the remote HEAD, the pytest result, the parsed counts,
    whether any gate advanced, and whether the park stands. Then commit and push.
+
