@@ -3,6 +3,13 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 318,
+      "timestamp": "2026-10-25T11:09:14Z",
+      "action": "Verification pass; prior agent task read from durable handoff (\u00a79) completed. Park remains PARKED (12 cohorts MET, 0/200 firms FAIL, free delisted/terminal-return coverage not established). No gate advanced; PH-1 not opened; no outcome-period return computed/inspected.",
+      "commit": "f618933",
+      "tests": "not run (pytest unavailable)"
+    },
+    {
       "session": 310,
       "ts": "2026-10-25T08:26:31Z",
       "note": "Session 310 read the prior agent task from the durable handoff (\u00a79) and completed it. git fetch origin main shows origin/main at 1ed7f45 (remote == HEAD, local HEAD == 1ed7f45); git status is clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. research/campaign_state.json parses with json.load (118 notes, 9 steps). Committed state re-derived by parsing the files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 verified T-A in 12 distinct timing cohorts (2024-05-10 -> 2026-09-09), all pending, regenerates byte-identically from scripts/build_panel.py. Source ledger 100 data records (S-01 \u2026 S-99 plus S-105; S-100 \u2026 S-104 exist only in research/manifests/p1_carveout_check.jsonl \u2014 parsed separately, not appended). Decision log D-001 \u2026 D-060; experiment ledger 87 data rows (E-000 \u2026 E-072, E-080 \u00d72, E-081 \u2026 E-091). Gate evidence unchanged: cohort gate MET (12>=12, do not chase 13th per D-011); filing_route and price_venue_set PENDING for all 141 rows; admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Because two gates fail, primary estimand remains inconclusive by construction; PH-1 not opened. No gate advanced. Park remains PARKED \u2014 not validated, not rejected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified. \u00a79 initial task message remains current for the next agent."
@@ -629,7 +636,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-25T05:22:22Z",
+  "updated_at": "2026-10-25T11:09:14Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -659,5 +666,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "27c4891"
+  "last_verified_head": "f618933"
 }
