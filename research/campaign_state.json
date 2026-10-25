@@ -3,6 +3,33 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 281,
+      "timestamp": "2026-10-25T03:33:10Z",
+      "action": "verification pass and prior agent task completed",
+      "outcome": "park reported honestly; no gate advanced",
+      "head": "c637f8e",
+      "gates": {
+        "cohorts_met": true,
+        "treatment_firms": 0,
+        "treatment_firms_required": 200,
+        "delisted_terminal_coverage": false,
+        "outcome_computed": false,
+        "ph1_opened": false
+      },
+      "pytest": "173 passed, 0 failing",
+      "panel": {
+        "v1.1": "431 rows (8 in_registered_panel=true, 423 pending; 8 non-empty T-A in 7 retrospective cohorts)",
+        "v1.2": "141 rows / 12 verified T-A in 12 distinct timing cohorts (2024-05-10..2026-09-09), all pending, byte-identical from scripts/build_panel.py"
+      },
+      "ledgers": {
+        "source": "100 records (S-01..S-99 plus S-105; S-100..S-104 only in research/manifests/p1_carveout_check.jsonl)",
+        "decision": "D-001..D-060 (this session appends D-060)",
+        "experiment": "86 rows (E-000..E-072, E-080 x2, E-081..E-090)"
+      },
+      "campaign_state_notes": 113,
+      "note": "Session 281 read the prior agent task from the durable handoff (§9) and completed it. git fetch origin main -> origin/main at c637f8e (remote == HEAD, local == HEAD, advanced from session-280 tip 61b5e82 by one checkpoint commit c637f8e touching research/HANDOFF.md, research/campaign_state.json, research/decision_log.md, research/experiment_ledger.csv and research/prompt_changelog.md only - the session-280 note); git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing (pytest 9.1.1 / numpy 2.5.4 available). research/campaign_state.json parses with json.load (113 notes: 112 on arrival plus this session's prepended note; the older '9 notes/malformed' claim is stale: 9 is the steps array count, the notes array holds well-formed entries; parse the file, do not infer from a quoted count). Committed state re-derived by parsing the files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending; 8 non-empty T-A in 7 distinct retrospective cohorts, all <= 2017-10-31); panel_v1.2.csv 141 rows / 12 non-empty T-A in 12 distinct timing cohorts (2024-05-10, 2024-05-23, 2024-06-14, 2024-07-09, 2024-10-04, 2024-12-26, 2025-05-28, 2025-12-10, 2025-12-18, 2025-12-23, 2026-02-13, 2026-09-09), all 141 rows pending, regenerates byte-identically from scripts/build_panel.py (rebuilt in place, cmp clean, working tree restored). Source ledger 100 records in file (S-01..S-99 plus S-105; S-100..S-104 exist only in research/manifests/p1_carveout_check.jsonl - 10 records, two rows each for S-100..S-104, all HTTP 200/202, parsed separately, not appended). Decision log D-001..D-059 (this session appends D-060); experiment ledger 86 rows (E-000..E-072, E-080 x2, E-081..E-090). Gate evidence re-audited from the committed panel file: filing_route and price_venue_set are the same PENDING placeholder for all 141 rows; affected_firm_scope_rule is 'IFRS 18 affected-firm list NOT yet determined for this jurisdiction' for 129 rows and 'IFRS 18 instrument verified; affected class per the instrument' for the remaining 12 - neither column is an admitted firm count, so conditions 3-5 remain unverified for all rows and the admitted treatment-firm count is still 0. Cohort gate MET (12 >= 12), admitted treatment-firm count 0 < 200 (FAIL), free delisted/terminal-return price coverage not established (FAIL). Primary estimand inconclusive_by_construction; PH-1 not opened. No gate advanced. Park remains PARKED - not validated, not rejected; no outcome-period return computed or inspected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified. §9 initial task message rewritten for the next agent."
+    },
+    {
       "session": 280,
       "timestamp": "2026-10-25T03:27:05Z",
       "action": "verification pass and prior agent task completed",
@@ -489,7 +516,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-25T03:27:05Z",
+  "updated_at": "2026-10-25T03:33:10Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -519,5 +546,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "61b5e82"
+  "last_verified_head": "c637f8e"
 }
