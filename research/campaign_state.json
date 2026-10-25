@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "Session 321 (this session). Read prior agent task from durable handoff (\u00a79) and completed it. git fetch origin main -> origin/main at 2f68f98 (remote == HEAD, local HEAD == 2f68f98); git status clean; python3 -m pytest -q tests/ not run (pytest unavailable in environment) \u2014 committed suite recorded 173 passed, 0 failing. campaign_state.json parses (121 notes on arrival). Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 verified T-A in 12 distinct timing cohorts (2024-05-10 -> 2026-09-09), all pending, regenerates byte-identically from scripts/build_panel.py. Source ledger 100 records (S-01..S-99 plus S-105; S-100..S-104 only in p1_carveout_check.jsonl). Decision log D-001..D-060; experiment ledger 87 data rows (E-000..E-072, E-080 x2, E-081..E-091). Gate evidence unchanged: cohort gate MET (12>=12, do not chase 13th per D-011); filing_route and price_venue_set PENDING for all 141 rows; admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Free-source inventory exhausted; no genuinely new free lawful source/terms found to probe. Because two gates fail, primary estimand remains inconclusive by construction; PH-1 not opened. No gate advanced. Park remains PARKED \u2014 not validated, not rejected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified. \u00a79 initial task message remains current for the next agent.",
     {
       "session": 320,
       "timestamp": "2026-10-25T11:25:06Z",
@@ -641,7 +642,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-25T11:09:14Z",
+  "updated_at": "2026-10-25T11:25:40Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
