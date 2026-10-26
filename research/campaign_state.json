@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "**Session 392 note (this session).** Session 392 read the prior agent task from the durable handoff (\u00a79) and completed it. `git fetch origin main` shows `origin/main` at **`c610c6e`** (remote == HEAD == local HEAD, both `c610c6e`); `git status` is clean; `python3 -m pytest -q tests/` ran live this session: **173 passed, 0 failing** (1.53s). `research/campaign_state.json` parses with `json.load` (**158** notes on arrival, **159** after this prepend, **9** steps; `updated_at` refreshed, `last_verified_head` set to `c610c6e`). Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows` / **12** non-empty `T_A` in **12** distinct timing cohorts (2024-05-10 \u2192 2026-09-09), all `pending`, regenerates byte-identically from `scripts/build_panel.py`. Source ledger **100** data records; decision log D-001 \u2026 D-073; experiment ledger **102** data rows. Gate evidence unchanged: cohort gate **MET** (12\u226512, do not chase 13th per D-011); `filing_route` and `price_venue_set` PENDING for all 141 rows; admitted treatment-firm count **still 0 < 200 (FAIL)**; free delisted/terminal-return price coverage **not established (FAIL, D-042/E-047)**. Because two gates fail, primary estimand remains **inconclusive by construction**; PH-1 not opened. No gate advanced. Park remains **PARKED \u2014 not validated, not rejected**. No paid services used, no GitHub Actions run, `.github/workflows/main.yml` unmodified. \u00a79 initial task message remains current for the next agent.",
     {
       "ts": "2026-10-26T07:37:38Z",
       "session": 391,
@@ -817,7 +818,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-26T07:37:38Z",
+  "updated_at": "2026-10-26T07:39:18Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -847,5 +848,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "99e4399"
+  "last_verified_head": "c610c6e"
 }
