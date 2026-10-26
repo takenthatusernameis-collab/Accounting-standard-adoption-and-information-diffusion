@@ -1,3 +1,5 @@
+**Session 429 note (this session).** Session 429 read the prior agent task from the durable handoff (§9, Session 428) and completed it. `git fetch origin main` shows `origin/main` at **`7199c6a`** (remote == HEAD == local HEAD, both `7199c6a80adb745f530361004abf78dfc4198c77`); `git status` is clean; the only commit since the session-428 tip (`ba4c0ad`) is `7199c6a` "chore(research): session 428 verification pass and handoff update" touching `research/HANDOFF.md` and `research/campaign_state.json` only — **not** the three append-only ledgers, so no rebase and no D-035 conflict; `git merge --ff-only origin/main` is a no-op. `python3 -m pytest -q tests/` ran live this session: **173 passed, 0 failing** (1.40s). `research/campaign_state.json` parses with `json.load` (**191** notes on arrival, **192** after this prepend, **9** steps; `updated_at` refreshed to `2026-10-26T16:56:00Z`, `last_verified_head` set to `7199c6a80adb745f530361004abf78dfc4198c77`). Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending), `panel_v1.2.csv` **141 rows** / **12** non-empty `T_A` in **12** distinct timing cohorts (2024-05-10, 2024-05-23, 2024-06-14, 2024-07-09, 2024-10-04, 2024-12-26, 2025-05-28, 2025-12-10, 2025-12-18, 2025-12-23, 2026-02-13, 2026-09-09), all `pending`, regenerated **byte-identically** from `scripts/build_panel.py` (`cmp` clean for both v1.1 and v1.2 against `git show HEAD:research/panel_v1.x.csv`; working tree restored). Source ledger **100** data records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in `research/manifests/p1_carveout_check.jsonl` — 10 records, 5 distinct S-IDs, parsed separately, not appended). Decision log **D-001 … D-075** (**75** distinct D-numbers via `grep -oE 'D-[0-9]{3}' | sort -u`; **72** `## D-xxx` section headers — the 3-number gap is a numbering artefact, not a gap); experiment ledger **108** data rows. Manifests re-counted live: `ifrs_jurisdiction_profiles.jsonl` 171, `linguistic_sources.jsonl` 6, `p1_carveout_check.jsonl` 10, `price_provider_smoke_attempts.jsonl` 2, `source_ledger_verification.jsonl` 22; `research/free_source_inventory/inventory.csv` re-read (7 sources F-001 … F-007): F-001 verified, F-002 implemented, F-003 not_retrieved (HTTP 403 in environment), F-004 verified, F-005 Stooq and F-006 Yahoo `candidate_unverified` with delisted/terminal-returns coverage `Unclear`, F-007 verified (no price coverage). Gate evidence re-audited from the committed panel file: `filing_route` is the same PENDING placeholder ("PENDING A2 verification of a filing route that publishes an acceptance TIMESTAMP …") for all 141 rows; `price_venue_set` is the same PENDING placeholder ("PENDING A1 (price vendors and their licensing are not yet authorised)") for all 141 rows; `affected_firm_scope_rule` is 'IFRS 18 affected-firm list NOT yet determined for this jurisdiction. Profile extent of IFRS application: …' for **129** rows and 'IFRS 18 instrument verified; affected class per the instrument. Profile extent of IFRS application: …' for the remaining **12** — neither column is an admitted firm count, so **conditions 3, 4 and 5 remain unverified for all 141 rows and the admitted treatment-firm count is still 0**. Cohort gate **MET (12 ≥ 12, do not chase 13th per D-011)**; admitted treatment-firm count **0 < 200 (FAIL)**; free delisted/terminal-return price coverage **not established (FAIL, D-042/E-047)** — free-source inventory exhausted per prior audits, no genuinely new free lawful source/terms found to probe, the two prior price smoke probes (Sharadar, EODHD) failed on DNS in the environment and are not evidence of vendor rejection. Because two gates fail, primary estimand remains **inconclusive by construction**; PH-1 not opened. No gate advanced. Park remains **PARKED — not validated, not rejected**. No paid services used, no GitHub Actions run, `.github/workflows/main.yml` unmodified. §9 initial task message remains current for the next agent.
+
 **Session 427 note (this session).** Session 427 read the prior agent task from the durable handoff (§9, Session 426) and completed it. `git fetch origin main` shows `origin/main` at **`ee9d213`** (remote == HEAD == local HEAD, both `ee9d213a9b7f3465e8f2b3e4d5c6a7b8c9d0e1f2` context from log shows ee9d213); `git status` is clean. `python3 -m pytest -q tests/` ran live this session: **173 passed, 0 failing** (1.36s). `research/campaign_state.json` parses with `json.load` (**190** notes, **9** steps; `updated_at` refreshed to `2026-10-26T16:49:19Z`, `last_verified_head` set to `ee9d213`). Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **0** non-empty `T_A` in **0** distinct timing cohorts (all `pending`), regenerates byte-identically from `scripts/build_panel.py`. Source ledger **100** data records (S-01 … S-99 plus S-105; S-100 … S-104 exist only in `research/manifests/p1_carveout_check.jsonl` — 10 records parsed separately, not appended). Decision log **D-001 … D-073** (**72** distinct D-numbers; D-069 precedes D-068 in file order); experiment ledger **108** data rows. Gate evidence unchanged: cohort gate **MET** historically (12≥12, do not chase 13th per D-011); admitted treatment-firm count **still 0 < 200 (FAIL)** (jurisdiction-level instrument verification on 12 rows does not admit firms; 129 rows have affected-firm list not yet determined); free delisted/terminal-return price coverage **not established (FAIL, D-042/E-047)**. Because two gates fail, primary estimand remains **inconclusive by construction**; PH-1 not opened. No gate advanced. Park remains **PARKED — not validated, not rejected**. No paid services used, no GitHub Actions run, `.github/workflows/main.yml` unmodified. §9 initial task message remains current for the next agent.
 
 
@@ -1209,9 +1211,9 @@ as a feature of the design rather than an obstacle to it.
 `research/specification_v1.4.md`, `research/preregistration_v1.4.md` (the registered
 PH-1 arm), `research/specification_v1.1.md` (the design, §§1–7),
 `research/data_acquisition_plan.md`, `research/data_route_assessment.md`,
-`research/decision_log.md` (D-001 … D-073), `research/prompt_changelog.md`
+`research/decision_log.md` (D-001 … D-075), `research/prompt_changelog.md`
     (Iterations 1–82), `research/event_calendar.csv`, `research/experiment_ledger.csv`
-    (E-000 … E-072, E-080 ×2, E-081 … E-106), `research/source_ledger.csv`,
+    (E-000 … E-072, E-080 ×2, E-081 … E-108), `research/source_ledger.csv`,
     `research/authorisation_request.md`, and `research/results.md`.
 
     **Your task, in priority order.**
@@ -1227,32 +1229,33 @@ PH-1 arm), `research/specification_v1.1.md` (the design, §§1–7),
        `research/HANDOFF.md`, `research/campaign_state.json` and/or
        `research_state/workflow_run_diagnostics.jsonl` does **not** touch the
        append-only ledgers and therefore needs no rebase — check `git log` before
-       assuming one is required (sessions 352, 371, 374; D-064, D-071, D-073).
+       assuming one is required (sessions 352, 371, 374, 411, 416, 427, 428; D-064,
+       D-071, D-073).
 
-2. **Verify the committed state by parsing the files** (D-037; do not trust a quoted
-               row count): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423
-               pending — `status_text` is the profile text and v1.1 has no `timing_cohort`
-               column, only `in_registered_panel` and `status_text`); `panel_v1.2.csv` 141
-               rows / 12 verified T-A in 12 distinct timing cohorts (2024-05-10 → 2026-09-09),
-               all `pending` (`status` column absent from v1.2 — `status_text` is the profile
-               text, `timing_cohort` is the gate column), regenerates byte-identically from
-               `scripts/build_panel.py`. Source ledger 100 records (S-01 … S-99 plus S-105;
-               S-100 … S-104 exist only in `research/manifests/p1_carveout_check.jsonl` — 10
-               records, 5 distinct S-IDs each appearing twice — parse that file, do not trust
-               a quoted count). Decision log D-001 … D-073 (**73** distinct D-numbers; note
-               that D-069 precedes D-068 in file order — a numbering artefact, not a gap);
-                experiment ledger 102 rows (E-000 … E-072, E-080 ×2 — the second E-080 is a
-                **byte-identical** duplicate of the first, retained verbatim per D-035;
-                E-081 … E-106; E-073 … E-079 absent from file, gap not renumbering — a known
-               defect, not a renumbering; E-087 row 82 is a *distinct* phase3b row dated
-               2026-10-24 with outcome `done`, not a duplicate of row 81). Run
-               `python3 -m pytest -q tests/` if available and confirm 173 passed, 0 failing
-               (pytest and numpy may need installing to `~/.local` first). Confirm
-               `research/campaign_state.json` parses with `json.load` — it holds
-               **151** notes on arrival (session 382 prepended its own note; the older "9
-               notes / malformed" claim in these notes is stale: 9 is the count of the
-               top-level `steps` array, not the `notes` array; parse the file, do not infer
-               from a quoted count).
+    2. **Verify the committed state by parsing the files** (D-037; do not trust a quoted
+       row count): `panel_v1.1.csv` 431 rows (8 `in_registered_panel=true`, 423
+       pending — `status_text` is the profile text and v1.1 has no `timing_cohort`
+       column, only `in_registered_panel` and `status_text`); `panel_v1.2.csv` 141
+       rows / 12 non-empty `T_A` in 12 distinct timing cohorts (2024-05-10 → 2026-09-09),
+       all `pending` (`status` column absent from v1.2 — `status_text` is the profile
+       text, `timing_cohort` is the gate column), regenerates byte-identically from
+       `scripts/build_panel.py`. Source ledger 100 records (S-01 … S-99 plus S-105;
+       S-100 … S-104 exist only in `research/manifests/p1_carveout_check.jsonl` — 10
+       records, 5 distinct S-IDs each appearing twice — parse that file, do not trust
+       a quoted count). Decision log D-001 … D-075 (**75** distinct D-numbers via
+       `grep -oE 'D-[0-9]{3}' | sort -u`; **72** `## D-xxx` section headers — the
+       3-number gap is a numbering artefact, not a gap); experiment ledger 108 rows
+       (E-000 … E-072, E-080 ×2 — the second E-080 is a **byte-identical** duplicate
+       of the first, retained verbatim per D-035; E-081 … E-108; E-073 … E-079
+       absent from file, gap not renumbering — a known defect, not a renumbering;
+       E-087 row 82 is a *distinct* phase3b row dated 2026-10-24 with outcome `done`,
+       not a duplicate of row 81). Run `python3 -m pytest -q tests/` if available and
+       confirm 173 passed, 0 failing (pytest and numpy may need installing to
+       `~/.local` first). Confirm `research/campaign_state.json` parses with
+       `json.load` — it holds **192** notes on arrival (session 429 prepended its own
+       note; the older "9 notes / malformed" claim in these notes is stale: 9 is the
+       count of the top-level `steps` array, not the `notes` array; parse the file, do
+       not infer from a quoted count).
 
     3. **The campaign is PARKED — not validated, not rejected.** The frozen gates read:
            **12 verified timing cohorts ≥ 12 required (MET, session 137, D-039)** —
