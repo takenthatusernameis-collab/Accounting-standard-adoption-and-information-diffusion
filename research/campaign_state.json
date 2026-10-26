@@ -2,6 +2,11 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    {
+      "note": "Verification pass (session 419): prior agent task read from durable handoff (\u00a79) and completed. git fetch origin/main -> origin/main at 6f41954 (remote==HEAD==local HEAD); git status clean. python3 -m pytest -q tests/ -> 173 passed, 0 failing. campaign_state.json parses (183 notes on arrival, 184 after prepend). Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 non-empty T_A in 12 distinct timing cohorts (2024-05-10 -> 2026-09-09), all pending, regenerates byte-identically from scripts/build_panel.py. Source ledger 100 records (S-01..S-99 plus S-105; S-100..S-104 only in research/manifests/p1_carveout_check.jsonl). Decision log D-001..D-072; experiment ledger 107 rows on arrival, 108 after append (E-111). Manifests counted 171/6/10/2/22; inventory 7 sources F-001..F-007. Gates: cohort MET (12>=12, do not chase 13th per D-011); treatment-firm 0<200 FAIL; terminal-return coverage not established FAIL (D-042/E-047); F-005 Stooq and F-006 Yahoo candidate_unverified coverage Unclear; F-003 HTTP 403. Primary estimand inconclusive_by_construction; PH-1 closed. Park remains PARKED - not validated, not rejected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified. research/results.md reports no results. \u00a79 rewritten for next agent.",
+      "session": 419,
+      "ts": "2026-10-26T14:02:16Z"
+    },
     "**Session 418 note (this session).** Session 418 read the prior agent task from the durable handoff (\u00a79) and completed it. `git fetch origin main` shows `origin/main` at **`176672e`** (remote == HEAD == local HEAD, both `176672e2ed8a8e5008e1f1934347b5a2416c1ee7`); `git status` is clean; `python3 -m pytest -q tests/` ran live this session: **173 passed, 0 failing** (1.54s). `research/campaign_state.json` parses with `json.load` (**182** notes on arrival, **183** after this prepend, **9** steps; `updated_at` refreshed to `2026-10-26T13:59:39Z`, `last_verified_head` set to `176672e2ed8a8e5008e1f1934347b5a2416c1ee7`). Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **12** non-empty `T_A` in **12** distinct timing cohorts (2024-05-10 \u2192 2026-09-09), all `pending`, regenerates byte-identically from `scripts/build_panel.py` (`cmp` clean for both v1.1 and v1.2; working tree restored). Source ledger **100** data records (S-01 \u2026 S-99 plus S-105); decision log D-001 \u2026 D-072 (**72** section headers); experiment ledger **107** data rows. Manifests re-counted live: `ifrs_jurisdiction_profiles.jsonl` 171, `linguistic_sources.jsonl` 6, `p1_carveout_check.jsonl` 10, `price_provider_smoke_attempts.jsonl` 2, `source_ledger_verification.jsonl` 22; `research/free_source_inventory/inventory.csv` re-read (7 sources F-001 \u2026 F-007). Gate evidence unchanged: cohort gate **MET** (12\u226512, do not chase 13th per D-011); `filing_route` PENDING for all 141 rows; `price_venue_set` PENDING for all 141 rows; admitted treatment-firm count **still 0 < 200 (FAIL)**; free delisted/terminal-return price coverage **not established (FAIL, D-042/E-047)**; F-005 Stooq and F-006 Yahoo remain `candidate_unverified` with coverage `Unclear`; F-003 returned HTTP 403 in environment. Primary estimand remains **inconclusive_by_construction**; **PH-1 remains closed**. No gate advanced. Park remains **PARKED \u2014 not validated, not rejected**. No paid services used, no GitHub Actions run, `.github/workflows/main.yml` unmodified. \u00a79 initial task message remains current for the next agent.",
     {
       "session": 417,
@@ -919,7 +924,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-26T13:59:39Z",
+  "updated_at": "2026-10-26T14:02:16Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -949,5 +954,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "176672e2ed8a8e5008e1f1934347b5a2416c1ee7"
+  "last_verified_head": "6f41954c8bcfdd0ef0b47e0cb04da277a877660f"
 }
