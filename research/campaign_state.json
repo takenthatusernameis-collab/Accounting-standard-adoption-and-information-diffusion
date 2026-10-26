@@ -3,6 +3,12 @@
   "conflicts": [],
   "notes": [
     {
+      "ts": "2026-10-26T16:01:33Z",
+      "agent": "session-425",
+      "type": "handoff_update",
+      "text": "Session 425 verified state: remote HEAD 64b1f57, pytest 173 passed 0 failing, parsed panel_v1.2 141 rows/12 cohorts, campaign_state notes 188, gates unchanged (0 admitted <200, no free delisted/terminal coverage) \u2014 park stands."
+    },
+    {
       "session": 424,
       "timestamp": "2026-10-26T15:53:30Z",
       "action": "session_424_verification_pass",
