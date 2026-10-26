@@ -3,6 +3,10 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 386,
+      "text": "verification pass; 173 passed (1.51s); HEAD 6115f75 (remote == HEAD). campaign_state.json parses (153 notes on arrival, 154 after this append). Park remains PARKED \u2014 not validated, not rejected. Gates: 12 verified timing cohorts >= 12 (MET); 0 admitted treatment firms < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). No gate advanced. \u00a79 initial task message remains current for the next agent."
+    },
+    {
       "session": 384,
       "text": "verification pass; 173 passed (1.50s); HEAD 89e903e (remote == HEAD). campaign_state.json parses (151 notes on arrival, 152 after this append). Park remains PARKED \u2014 not validated, not rejected. Gates: 12 verified timing cohorts >= 12 (MET); 0 admitted treatment firms < 200 (FAIL); free delisted/terminal-return coverage not established (FAIL). No gate advanced. \u00a79 initial task message remains current for the next agent."
     },
@@ -802,7 +806,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-26T06:05:37Z",
+  "updated_at": "2026-10-26T06:06:30Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -832,5 +836,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "99b7ddf"
+  "last_verified_head": "6115f7507a959c73926d40da9ba6b4289fab396f"
 }
