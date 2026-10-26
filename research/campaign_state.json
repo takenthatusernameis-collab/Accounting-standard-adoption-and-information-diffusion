@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "Session 423 verification pass: prior agent task (\u00a79 Session 422) completed. git fetch origin main -> fc52760 (remote==HEAD==local HEAD); git status clean; pytest 173 passed, 0 failing (1.36s). campaign_state parses (186 notes). State re-derived (D-037): panel_v1.1.csv 431 rows (8 true/423 pending); panel_v1.2.csv 141 rows / 12 T_A / 12 cohorts, byte-identical rebuild. Gates: cohort MET (12>=12); treatment-firm 0<200 FAIL; terminal-return coverage not established FAIL (D-042/E-047). Primary estimand inconclusive_by_construction; PH-1 closed; park PARKED. No gate advanced.",
     "Session 421 verification pass: prior agent task (\u00a79 Session 420) completed. git fetch origin main -> 032c285 (remote==HEAD==local HEAD); git status clean; pytest 173 passed, 0 failing. campaign_state parses (185 notes on arrival, 186 after prepend). State re-derived (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 non-empty T_A in 12 cohorts. Gate evidence unchanged; two gates FAIL; park PARKED. No gate advanced.",
     "Session 420 verification pass: prior agent task (\u00a79 Session 419) completed. git fetch origin main -> 246d85e (remote==HEAD==local HEAD); git status clean; pytest 173 passed, 0 failing. campaign_state parses (184 notes on arrival, 185 after prepend). State re-derived (D-037): panel_v1.1.csv 431 rows (8 true/423 pending); panel_v1.2.csv 141 rows / 12 T_A / 12 cohorts, byte-identical rebuild. Gates: cohort MET (12>=12); treatment-firm 0<200 FAIL; terminal-return coverage not established FAIL (D-042/E-047). Primary estimand inconclusive_by_construction; PH-1 closed; park PARKED.",
     {
@@ -926,7 +927,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-26T14:43:48Z",
+  "updated_at": "2026-10-26T15:40:53Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -956,5 +957,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "d388b165ba3fffdcb78d39b4032e9b50a923e8c1"
+  "last_verified_head": "fc527602e8e616d8c09a15294d9b5b6f646e97dd"
 }
