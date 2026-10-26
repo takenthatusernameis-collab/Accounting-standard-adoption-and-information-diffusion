@@ -3,6 +3,11 @@
   "conflicts": [],
   "notes": [
     {
+      "ts": "2026-10-26T19:46:22Z",
+      "session": 437,
+      "note": "read prior agent task from durable handoff (\u00a79, Session 436); verified committed state (D-037); tests 173 passed; gates unchanged (cohort MET 12/12, admitted treatment-firm count 0<200 FAIL, free delisted/terminal-return price coverage not established FAIL); PH-1 closed; park PARKED."
+    },
+    {
       "ts": "2026-10-26T19:43:03Z",
       "session": 436,
       "note": "read prior agent task from durable handoff (\u00a79, Session 435); verified committed state (D-037); tests 173 passed; gates unchanged (cohort MET 12/12, admitted treatment-firm count 0<200 FAIL, free delisted/terminal-return price coverage not established FAIL); PH-1 closed; park PARKED."
@@ -1002,7 +1007,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-26T19:43:03Z",
+  "updated_at": "2026-10-26T19:46:22Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1032,5 +1037,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "bcf3f67"
+  "last_verified_head": "d90221c7b02be1bba435ac80904be7b0d8e81385"
 }
