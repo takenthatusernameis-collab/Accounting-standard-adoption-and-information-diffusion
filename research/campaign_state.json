@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "Session 421 verification pass: prior agent task (\u00a79 Session 420) completed. git fetch origin main -> 032c285 (remote==HEAD==local HEAD); git status clean; pytest 173 passed, 0 failing. campaign_state parses (185 notes on arrival, 186 after prepend). State re-derived (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 non-empty T_A in 12 cohorts. Gate evidence unchanged; two gates FAIL; park PARKED. No gate advanced.",
     "Session 420 verification pass: prior agent task (\u00a79 Session 419) completed. git fetch origin main -> 246d85e (remote==HEAD==local HEAD); git status clean; pytest 173 passed, 0 failing. campaign_state parses (184 notes on arrival, 185 after prepend). State re-derived (D-037): panel_v1.1.csv 431 rows (8 true/423 pending); panel_v1.2.csv 141 rows / 12 T_A / 12 cohorts, byte-identical rebuild. Gates: cohort MET (12>=12); treatment-firm 0<200 FAIL; terminal-return coverage not established FAIL (D-042/E-047). Primary estimand inconclusive_by_construction; PH-1 closed; park PARKED.",
     {
       "note": "Verification pass (session 419): prior agent task read from durable handoff (\u00a79) and completed. git fetch origin/main -> origin/main at 6f41954 (remote==HEAD==local HEAD); git status clean. python3 -m pytest -q tests/ -> 173 passed, 0 failing. campaign_state.json parses (183 notes on arrival, 184 after prepend). Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 non-empty T_A in 12 distinct timing cohorts (2024-05-10 -> 2026-09-09), all pending, regenerates byte-identically from scripts/build_panel.py. Source ledger 100 records (S-01..S-99 plus S-105; S-100..S-104 only in research/manifests/p1_carveout_check.jsonl). Decision log D-001..D-072; experiment ledger 107 rows on arrival, 108 after append (E-111). Manifests counted 171/6/10/2/22; inventory 7 sources F-001..F-007. Gates: cohort MET (12>=12, do not chase 13th per D-011); treatment-firm 0<200 FAIL; terminal-return coverage not established FAIL (D-042/E-047); F-005 Stooq and F-006 Yahoo candidate_unverified coverage Unclear; F-003 HTTP 403. Primary estimand inconclusive_by_construction; PH-1 closed. Park remains PARKED - not validated, not rejected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified. research/results.md reports no results. \u00a79 rewritten for next agent.",
@@ -925,7 +926,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-26T14:40:05Z",
+  "updated_at": "2026-10-26T14:43:15Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -955,5 +956,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "246d85e034c590d587c88184a9fb45d273cb6340"
+  "last_verified_head": "032c2851b59d62873e230e7fc0f26eef56d8a79c"
 }
