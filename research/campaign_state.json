@@ -3,6 +3,11 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 402,
+      "timestamp": "2026-10-26T10:06:03Z",
+      "note": "Session 402 verification pass; handoff updated; park reported honestly; gates unchanged."
+    },
+    {
       "session": 401,
       "timestamp": "2026-10-26T09:51:49Z",
       "note": "Session 401 verification pass; handoff updated; park reported honestly; gates unchanged."
@@ -838,7 +843,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-26T09:51:49Z",
+  "updated_at": "2026-10-26T10:06:03Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -868,5 +873,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "6b917b3e58c4d53a906bb9238fe9587e95b7b00a"
+  "last_verified_head": "298085a306387131d77fa5416543829ea6f8256b"
 }
