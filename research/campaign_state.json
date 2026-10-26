@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "Session 414 verification pass: origin/main == HEAD == 4cb2453712cecaf6e3e6c80ad7ad87ffb7e90b52; git status clean; pytest 173 passed; gate evidence unchanged; park remains PARKED.",
     "Session 413 verification pass: origin/main==HEAD 436cfc2; pytest 173 passed; park unchanged.",
     "Session 412 verification pass: origin/main==HEAD 16d2ae9; pytest 173 passed; park unchanged.",
     {
@@ -885,7 +886,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-26T13:01:45Z",
+  "updated_at": "2026-10-26T13:02:18Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -915,5 +916,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "436cfc24a8cde0e6a032f5337d4f2915988df6b2"
+  "last_verified_head": "4cb2453712cecaf6e3e6c80ad7ad87ffb7e90b52"
 }
