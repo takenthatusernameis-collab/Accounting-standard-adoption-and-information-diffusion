@@ -3,6 +3,27 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 430,
+      "ts": "2026-10-26T17:43:56Z",
+      "head": "db1284a27c74107c1e0beb34bbbed64489bb63",
+      "pytest": "173 passed, 0 failing (1.23s)",
+      "panel_v1.1": "431 rows (8 in_registered_panel=true, 423 pending)",
+      "panel_v1.2": "141 rows / 12 non-empty T_A in 12 distinct timing cohorts, all pending",
+      "source_ledger": "100 records (S-01..S-99 plus S-105; S-100..S-104 only in p1_carveout_check.jsonl)",
+      "decision_log": "D-001..D-075 (75 distinct D-numbers, 72 section headers)",
+      "experiment_ledger": "108 data rows",
+      "manifests": "ifrs_jurisdiction_profiles 171, linguistic_sources 6, p1_carveout_check 10, price_provider_smoke_attempts 2, source_ledger_verification 22",
+      "free_inventory": "7 sources F-001..F-007 (F-001 verified, F-002 implemented, F-003 not_retrieved HTTP 403, F-004 verified, F-005 Stooq candidate_unverified, F-006 Yahoo candidate_unverified, F-007 verified)",
+      "gates": "cohort MET (12>=12); admitted treatment firms 0<200 FAIL; free delisted/terminal-return price coverage not established FAIL (D-042/E-047)",
+      "estimand": "inconclusive_by_construction",
+      "PH-1": "closed",
+      "park": "PARKED — not validated, not rejected",
+      "gate_advanced": false,
+      "paid_services": false,
+      "gh_actions_run": false,
+      "workflows_main_modified": false
+    },
+    {
       "session": 429,
       "ts": "2026-10-26T16:56:00Z",
       "head": "7199c6a80adb745f530361004abf78dfc4198c77",
@@ -962,7 +983,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-26T16:56:00Z",
+  "updated_at": "2026-10-26T17:43:56Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -992,5 +1013,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "7199c6a80adb745f530361004abf78dfc4198c77"
+  "last_verified_head": "db1284a27c74107c1e0beb34bbbed64489bb63"
 }
