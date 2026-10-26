@@ -3,6 +3,11 @@
   "conflicts": [],
   "notes": [
     {
+      "timestamp": "2026-10-26T12:05:48Z",
+      "session": 410,
+      "note": "Verification pass; prior agent task read from the durable handoff (\u00a79) and completed (session 410). git fetch origin main -> origin/main at 5b3c113 (remote == HEAD == local HEAD); git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. campaign_state.json parsed (174 notes on arrival, 175 after prepend). Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 non-empty T_A in 12 distinct timing cohorts (2024-05-10 -> 2026-09-09), all pending, regenerates byte-identically from scripts/build_panel.py. Gates unchanged: cohort MET (12>=12, do not chase 13th per D-011); treatment-firm 0 < 200 (FAIL, conditions 3-5 unverified for all 141 PH-1 rows); terminal-return coverage not established (FAIL, D-042/E-047). Primary estimand inconclusive_by_construction; PH-1 not opened. Park remains PARKED - not validated, not rejected."
+    },
+    {
       "session": 409,
       "timestamp": "2026-10-26T11:04:01Z",
       "note": "Session 409 verification pass; remote==HEAD 6b04a7c; pytest 173 passed; campaign_state parses; panel v1.1 431 rows, v1.2 141 rows/12 cohorts; gates unchanged; park reported honestly."
@@ -873,7 +878,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-26T11:04:01Z",
+  "updated_at": "2026-10-26T12:05:48Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -903,5 +908,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "6b04a7c5871ab1b996d73c64d51897be15520073"
+  "last_verified_head": "5b3c113"
 }
