@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "Session 389: verified committed state. git fetch origin main: origin/main == HEAD == b6c9655 (clean). pytest: 173 passed. campaign_state parses (155 notes on arrival). panel_v1.1.csv 431 rows (8 registered), panel_v1.2.csv 141 rows / 12 T_A in 12 cohorts, regenerates byte-identically. Gates unchanged: cohort MET, treatment-firm 0<200 FAIL, price coverage not established FAIL. Park remains PARKED. No gate advanced.",
     "Session 388: verified committed state. git fetch origin main: origin/main == HEAD == 24c43af (clean). pytest: 173 passed. campaign_state parses (154 notes on arrival). panel_v1.1.csv 431 rows (8 registered), panel_v1.2.csv 141 rows / 12 T_A in 12 cohorts, regenerates byte-identically. Gates unchanged: cohort MET, treatment-firm 0<200 FAIL, price coverage not established FAIL. Park remains PARKED. No gate advanced.",
     {
       "session": 386,
@@ -807,7 +808,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-26T06:10:41Z",
+  "updated_at": "2026-10-26T07:16:11Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -837,5 +838,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "24c43af2cf1bc05bc8be93cc04e78b16b483241d"
+  "last_verified_head": "b6c9655421d45cad58ef620d468fea6f87e9a2b3"
 }
