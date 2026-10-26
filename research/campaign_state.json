@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "Session 413 verification pass: origin/main==HEAD 436cfc2; pytest 173 passed; park unchanged.",
     "Session 412 verification pass: origin/main==HEAD 16d2ae9; pytest 173 passed; park unchanged.",
     {
       "timestamp": "2026-10-26T12:54:55Z",
@@ -884,7 +885,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-26T13:05:00Z",
+  "updated_at": "2026-10-26T13:01:45Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -914,5 +915,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "16d2ae9ae5c3bcd1616cce38ff8e994b61c37152"
+  "last_verified_head": "436cfc24a8cde0e6a032f5337d4f2915988df6b2"
 }
