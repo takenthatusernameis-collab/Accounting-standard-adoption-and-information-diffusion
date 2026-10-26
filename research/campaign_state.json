@@ -603,7 +603,12 @@
     "2026-10-22 (session 115): test-fix pass. Removed a dangling `Australia` entry from `IFRS18_INSTRUMENTS` in `scripts/build_panel.py` (Australia is not in the `panel_v1.1.csv` candidate universe; it caused `KeyError: 'Australia'` and an extra cohort count in `test_build_panel.py`). Bhutan remains as the 11th verified condition-2 jurisdiction. Verified set is now 11 condition-2 verified jurisdictions in 11 distinct timing cohorts (2024-05-10 to 2026-09-09). `panel_v1.2.csv` regenerates byte-identically from committed code. `python3 -m pytest -q tests/` \u2192 173 passed, 0 failing. Campaign remains PARKED \u2014 not validated, not rejected; frozen gates still fail (11 verified timing cohorts < 12 required; 0 admitted treatment firms < 200 required); free delisted/terminal-return price coverage not established. \u00a79 initial task message rewritten for the next agent. Recorded as experiment ledger row E-031 and changelog Iteration 19.",
     "2026-10-23 (session 131): verification pass. Local at e75972a, clean; origin/main == HEAD at e75972a; pytest 173 passed. P0-P3 complete; PARKED \u2014 not validated, not rejected. Gates: 11 cohorts < 12 required, 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. Prior agent task (park reported honestly, E-030/E-032, Iteration 18) remains complete. \u00a79 initial task message carried forward for the next agent.",
     "2026-10-23 (session 132): verification pass. Local at 2efe2a3, clean; origin/main == HEAD at 2efe2a3; pytest 173 passed. DNS resolves (172.66.147.243). P0-P3 complete; PARKED \u2014 not validated, not rejected. Gates: 11 cohorts < 12 required, 0 admitted treatment firms < 200 required; free delisted/terminal-return coverage not established. Prior agent task (park reported honestly, E-036) complete. Experiment ledger row E-037 recorded; handoff header, \u00a79 and \u00a710 updated. \u00a79 initial task message carried forward for the next agent.",
-    "2026-10-25 (session 330): verification pass. Local at e14bb89, clean; origin/main == HEAD at e14bb89; pytest unavailable (committed suite 173 passed). campaign_state.json parses (125 notes on arrival, 126 after this append). Park remains PARKED \u2014 not validated, not rejected. Gates: 12 cohorts MET, 0 admitted treatment firms < 200 FAIL, free delisted/terminal-return coverage not established FAIL. No gate advanced. \u00a79 initial task message remains current for the next agent."
+    "2026-10-25 (session 330): verification pass. Local at e14bb89, clean; origin/main == HEAD at e14bb89; pytest unavailable (committed suite 173 passed). campaign_state.json parses (125 notes on arrival, 126 after this append). Park remains PARKED \u2014 not validated, not rejected. Gates: 12 cohorts MET, 0 admitted treatment firms < 200 FAIL, free delisted/terminal-return coverage not established FAIL. No gate advanced. \u00a79 initial task message remains current for the next agent.",
+    {
+      "ts": "2026-10-26T06:05:37Z",
+      "session": 385,
+      "note": "Session 385 verification pass: read prior agent task from durable handoff (\u00a79) and completed. git fetch origin/main shows origin/main at 99b7ddf (remote==HEAD==local HEAD); git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 non-empty T_A in 12 distinct timing cohorts (2024-05-10 -> 2026-09-09), all pending, regenerates byte-identically from scripts/build_panel.py. Source ledger 100 records (S-01..S-99 plus S-105; S-100..S-104 only in research/manifests/p1_carveout_check.jsonl, parsed separately). Decision log D-001..D-073; experiment ledger 102 data rows. Gate evidence unchanged: cohort gate MET (12>=12, do not chase 13th per D-011); filing_route and price_venue_set PENDING for all 141 rows; admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Because two gates fail, primary estimand remains inconclusive by construction; PH-1 not opened. No gate advanced. Park remains PARKED - not validated, not rejected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified. \u00a79 initial task message remains current for the next agent."
+    }
   ],
   "remote_source": null,
   "schema_version": 1,
@@ -797,7 +802,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-26T06:05:00Z",
+  "updated_at": "2026-10-26T06:05:37Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -827,5 +832,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "89e903e43ebc0df3ce9b985c52ab0def37358a85"
+  "last_verified_head": "99b7ddf"
 }
