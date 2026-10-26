@@ -3,6 +3,11 @@
   "conflicts": [],
   "notes": [
     {
+      "ts": "2026-10-26T20:43:00Z",
+      "session": 444,
+      "note": "read prior agent task from durable handoff (\u00a79, Session 443); verified committed state (D-037); git fetch origin main shows origin/main == HEAD 6c14fbdccd41facbccdc96d9439d169b747ac1fb; git status clean; tests 173 passed; panels 431/141, 12 non-empty T_A in 12 cohorts; admitted treatment-firm count 0<200 FAIL; free delisted/terminal-return price coverage not established FAIL D-042/E-047; park remains PARKED; no gate advanced"
+    },
+    {
       "ts": "2026-10-26T20:42:00Z",
       "session": 443,
       "note": "read prior agent task from durable handoff (\u00a79, Session 442); verified committed state (D-037); git fetch origin main shows origin/main == HEAD 665ea2e52b2fed693dc6ed1d4a41101f312dc40f; git status clean; tests 173 passed; panels 431/141, 12 non-empty T_A in 12 cohorts; admitted treatment-firm count 0<200 FAIL; free delisted/terminal-return price coverage not established FAIL D-042/E-047; park remains PARKED; no gate advanced"
@@ -1037,7 +1042,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-26T20:42:00Z",
+  "updated_at": "2026-10-26T20:43:00Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1067,5 +1072,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "665ea2e52b2fed693dc6ed1d4a41101f312dc40f"
+  "last_verified_head": "6c14fbdccd41facbccdc96d9439d169b747ac1fb"
 }
