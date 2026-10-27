@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "Session 466 note (this session). Session 466 read the prior agent task from the durable handoff (\u00a79, Session 465) and completed it. `git fetch origin main` shows `origin/main` at **`6729075`** (remote == HEAD == local HEAD); `git status` is clean. `python3 -m pytest -q tests/` ran live: **173 passed, 0 failing** (1.07s). `research/campaign_state.json` parses with `json.load` (**228** notes on arrival, **229** after this prepend, **9** steps). Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **0** non-empty `T_A` in **0** distinct timing cohorts after rebuild via `scripts/build_panel.py` (byte-identical to committed; `cmp` clean), all `pending`. Source ledger **100** data records; decision log **D-001 \u2026 D-080** (**80** distinct); experiment ledger **115** data rows. Manifests re-counted: `ifrs_jurisdiction_profiles.jsonl` **171**, `linguistic_sources.jsonl` **6**, `p1_carveout_check.jsonl` **10**, `price_provider_smoke_attempts.jsonl` **2**, `source_ledger_verification.jsonl` **22**; `research/free_source_inventory/inventory.csv` re-read (7 sources F-001 \u2026 F-007). Gate evidence unchanged: cohort gate **MET** historically (12\u226512, do not chase 13th per D-011); `filing_route` PENDING for all 141 rows; `price_venue_set` PENDING for all 141 rows; admitted treatment-firm count **still 0 < 200 (FAIL)** (jurisdiction-level instrument verification on 12 rows does not admit firms; 129 rows have undetermined affected-firm list); free delisted/terminal-return price coverage **not established (FAIL, D-042/E-047)**. Primary estimand remains **inconclusive_by_construction**; **PH-1 remains closed**. No gate advanced. Park remains **PARKED \u2014 not validated, not rejected**. No paid services used, no GitHub Actions run, `.github/workflows/main.yml` unmodified. \u00a79 initial task message rewritten for the next agent (Session 467).",
     {
       "date": "2026-10-27T01:38:55Z",
       "session": 465,
@@ -1082,7 +1083,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T01:38:55Z",
+  "updated_at": "2026-10-27T01:39:49.554891+00:00",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1112,5 +1113,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "8485e569834fcc7129fe6bfec2fe417a9f3a169e"
+  "last_verified_head": "672907576ea2b75dfe22f3867884447192fcf7ef"
 }
