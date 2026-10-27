@@ -2,6 +2,14 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    {
+      "id": "N-313",
+      "session": 560,
+      "timestamp": "2026-10-27T23:21:13Z",
+      "type": "verification",
+      "summary": "Session 560 verification pass: read handoff \u00a79 (Session 559 -> written for Session 560), verified git HEAD/origin clean (e035fa8/e035fa8); pytest not available (173 passed/0 failing last recorded). Re-derived D-037: panel_v1.1.csv 431 (8 true/423 pending), panel_v1.2.csv 141/12 cohorts all pending, byte-identical rebuild. Gates: cohort MET (12>=12, do not chase 13th per D-011); filing_route/price_venue_set PENDING for all 141; 129 affected-firm undetermined, 12 jurisdiction-instrument-only verified -> treatment-firm 0<200 FAIL; free delisted/terminal-return coverage not established FAIL (D-042/E-047). Primary estimand inconclusive_by_construction; PH-1 closed; park PARKED. No gate advanced; no outcome-period return computed; no paid services; .github/workflows/main.yml unmodified.",
+      "head": "e035fa8d7fc820e7bb45c1369b0c28045c891b31"
+    },
     "Session 559: verification pass (remote HEAD 3fdd049 == local HEAD 3fdd04983e4cde222151cd768480e0b089a2c7b4); pytest not available (last live 173 passed, 0 failing); panel_v1.1 431 rows, panel_v1.2 141 rows / 12 cohorts all pending; gates unchanged (cohort MET, treatment-firm 0<200 FAIL, terminal-return coverage FAIL); PH-1 closed; park PARKED. No gate advanced.",
     "Session 558: verification pass (remote HEAD bc81690 == local HEAD bc8169036049b4725e67b79c84d99acd941084cd); pytest not available (last live 173 passed, 0 failing); panel_v1.1 431 rows, panel_v1.2 141 rows / 12 timing_cohort across 39 rows (2024-05-10 -> 2026-09-09), all pending; source 100, D-001..D-090, experiment 152 (last E-152). Gates unchanged: cohort MET (12>=12), admitted treatment-firm 0 < 200 (FAIL), free delisted/terminal-return coverage not established (FAIL). Primary estimand inconclusive by construction; PH-1 closed. Park PARKED. No gates advanced.",
     {
@@ -1392,7 +1400,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T22:26:48Z",
+  "updated_at": "2026-10-27T23:21:13Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1422,6 +1430,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "3fdd04983e4cde222151cd768480e0b089a2c7b4",
+  "last_verified_head": "e035fa8d7fc820e7bb45c1369b0c28045c891b31",
   "notes_count": 312
 }
