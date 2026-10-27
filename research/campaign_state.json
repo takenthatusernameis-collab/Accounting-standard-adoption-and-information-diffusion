@@ -3,6 +3,21 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-310",
+      "ts": "2026-10-27T22:22:20Z",
+      "session": 557,
+      "type": "verification",
+      "summary": "Session 557 verification pass: read handoff \u00a79 (Session 556 -> written for Session 557), verified git HEAD/origin clean (cfa5ff0/cfa5ff0), re-derived committed state (D-037), confirmed panel_v1.2 byte-identical from build_panel.py, audited gates/ledgers/manifests/inventory, updated HANDOFF \u00a79 for Session 558 and campaign_state",
+      "head": "cfa5ff0be7dc9168d2316155796905eab99de912",
+      "artifacts": [
+        "research/HANDOFF.md",
+        "research/campaign_state.json",
+        "research/experiment_ledger.csv"
+      ],
+      "outcome": "no_change",
+      "status": "park"
+    },
+    {
       "id": "N-309",
       "ts": "2026-10-27T22:21:01Z",
       "session": 556,
@@ -1375,7 +1390,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T22:21:01Z",
+  "updated_at": "2026-10-27T22:22:20Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1405,6 +1420,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "e7108151a5992b4f8a9ca3b7227ff6a31319a639",
+  "last_verified_head": "cfa5ff0be7dc9168d2316155796905eab99de912",
   "notes_count": 308
 }
