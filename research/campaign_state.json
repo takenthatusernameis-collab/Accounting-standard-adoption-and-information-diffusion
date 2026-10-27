@@ -3,6 +3,10 @@
   "conflicts": [],
   "notes": [
     {
+      "timestamp": "2026-10-27T03:37:04Z",
+      "note": "Session 475 (this session): read prior agent task from durable handoff (\u00a79, Session 474) and completed it. git fetch origin main shows origin/main at 5830eee == HEAD (remote == local). git status clean. python3 -m pytest -q tests/ ran live: 173 passed, 0 failing (1.20s). campaign_state.json parses (237 notes on arrival, 238 after prepend, 9 steps). Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 non-empty T_A in 12 distinct timing cohorts (2024-05-10 \u2192 2026-09-09), all pending, regenerates byte-identically from scripts/build_panel.py. Source ledger 100 data records; decision log D-001 \u2026 D-080; experiment ledger 117 data rows. Manifests re-counted: ifrs_jurisdiction_profiles.jsonl 171, linguistic_sources.jsonl 6, p1_carveout_check.jsonl 10, price_provider_smoke_attempts.jsonl 2, source_ledger_verification.jsonl 22; free_source_inventory/inventory.csv re-read (7 sources). Gate evidence unchanged: cohort gate MET (12\u226512, do not chase 13th per D-011); filing_route and price_venue_set PENDING for all 141 rows; admitted treatment-firm count still 0 < 200 (FAIL) (jurisdiction-level instrument verification on 12 rows does not admit firms; 129 rows have affected-firm list not yet determined); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Primary estimand remains inconclusive by construction; PH-1 remains closed. No gate advanced. Park remains PARKED \u2014 not validated, not rejected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified. \u00a79 rewritten for Session 476."
+    },
+    {
       "timestamp": "2026-10-27T03:35:04Z",
       "session": 474,
       "note": "Session 474 verification pass: read prior task from handoff \u00a79; git fetch origin/main clean (HEAD==origin/main e33d72c); pytest 173 passed 0 failing; campaign_state notes 236->237; panel_v1.1 431, panel_v1.2 141 (12 timing cohorts, all pending), rebuild byte-identical; source 100, decision D-001..D-080, exp 116 on arrival; gates unchanged (cohort MET 12>=12, treatment firms 0<200 FAIL, terminal-return coverage not established FAIL) -> inconclusive by construction, PH-1 closed, park PARKED; no gate advance, no outcome returns computed; handoff \u00a79 rewritten for session 475."
@@ -1107,7 +1111,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T03:35:04Z",
+  "updated_at": "2026-10-27T03:37:04Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1137,5 +1141,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "e33d72c"
+  "last_verified_head": "5830eee71e5819f522060cbf92c8a0a6f98d479c"
 }
