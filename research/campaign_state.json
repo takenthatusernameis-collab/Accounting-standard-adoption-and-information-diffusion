@@ -3,6 +3,21 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-309",
+      "ts": "2026-10-27T22:21:01Z",
+      "session": 556,
+      "type": "verification",
+      "summary": "Session 556 verification pass: read handoff \u00a79 (Session 555), verified git HEAD/origin clean (e710815/6d26314), re-derived committed state (D-037), confirmed panel_v1.2 byte-identical from build_panel.py, audited gates/ledgers/manifests/inventory, updated HANDOFF \u00a79 for Session 557 and campaign_state",
+      "head": "e7108151a5992b4f8a9ca3b7227ff6a31319a639",
+      "artifacts": [
+        "research/HANDOFF.md",
+        "research/campaign_state.json",
+        "research/experiment_ledger.csv"
+      ],
+      "outcome": "no_change",
+      "status": "park"
+    },
+    {
       "id": "N-308",
       "timestamp": "2026-10-27T21:45:40Z",
       "summary": "Session 555 verification pass: read handoff \u00a79 (session 554 completed; \u00a79 written for Session 555), verified git HEAD/origin clean (bb25fea858a65584b05dd3ce4c40eb964db16520 / origin/main at bb25fea), working tree clean. pytest not available (173 passed/0 failing last recorded). Re-derived D-037: panel_v1.1.csv 431 (8 true/423 pending), panel_v1.2.csv 141/12 cohorts all pending, byte-identical rebuild from scripts/build_panel.py (cmp clean; working tree restored). Source 100 (S-100-S-104 in p1_carveout_check.jsonl only), D sections 72 (highest D-073 in headings; D-090/D-091 noted in recent sessions), exp 150 (last E-150). Manifests 171/6/10/2/22; inventory 7 (F-001 verified,F-002 implemented,F-003 not_retrieved HTTP 403,F-004 verified,F-005/F-006 candidate_unverified,F-007 verified). Gates: cohort MET (12>=12); filing_route/price_venue_set PENDING for all 141; 129 affected-firm undetermined, 12 jurisdiction-instrument-only verified -> treatment-firm 0<200 FAIL; free delisted/terminal-return coverage not established FAIL (D-042/E-047). Primary estimand inconclusive_by_construction; PH-1 closed; park PARKED \u2014 not validated, not rejected. No gate advanced; no outcome-period return computed/inspected; no paid services; .github/workflows/main.yml unmodified. Updated HANDOFF.md \u00a79 for Session 556, appended E-151."
@@ -1360,7 +1375,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T22:18:48Z",
+  "updated_at": "2026-10-27T22:21:01Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1390,6 +1405,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "6d2631436901698f8d0e3a2605ea6533d016ba8f",
+  "last_verified_head": "e7108151a5992b4f8a9ca3b7227ff6a31319a639",
   "notes_count": 308
 }
