@@ -3,6 +3,11 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 514,
+      "timestamp": "2026-10-27T13:17:43Z",
+      "summary": "Session 514 read prior agent task from durable handoff (\u00a79, Session 513) and completed it. git fetch origin main shows origin/main at a2a748e (remote == HEAD == local HEAD a2a748e); git status clean. python3 -m pytest -q tests/ ran live: 173 passed, 0 failing. campaign_state.json parsed (272 notes, 9 steps). Re-derived committed state: panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct timing_cohort values non-empty across 39 rows (2024-05-10..2026-09-09), all 141 rows pending; regenerates byte-identically from scripts/build_panel.py. Gate evidence: cohort gate MET (12>=12, do not chase 13th per D-011); filing_route and price_venue_set PENDING for all 141 PH-1 rows; jurisdiction-level instrument verification on 12 rows does not admit firms (129 rows affected-firm list not yet determined) -> admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Primary estimand inconclusive by construction; PH-1 remains closed. research/results.md reports no results. No gate advanced. Park remains PARKED - not validated, not rejected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified. \u00a79 updated with initial task message for Session 515."
+    },
+    {
       "session": 513,
       "timestamp": "2026-10-27T13:15:52Z",
       "summary": "Session 513 read prior agent task from durable handoff (\u00a79, Session 512) and completed it. git fetch origin main shows origin/main at da51a28 (remote == HEAD == local HEAD da51a28); git status clean. python3 -m pytest -q tests/ ran live: 173 passed, 0 failing. campaign_state.json parsed (271 notes, 9 steps). Re-derived committed state: panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct timing_cohort values non-empty across 39 rows (2024-05-10,2024-05-23,2024-06-14,2024-07-09,2024-10-04,2024-12-26,2025-05-28,2025-12-10,2025-12-18,2025-12-23,2026-02-13,2026-09-09), all 141 rows pending; regenerates byte-identically from scripts/build_panel.py. Gate evidence: cohort gate MET (12>=12, do not chase 13th per D-011); filing_route and price_venue_set PENDING for all 141 PH-1 rows; jurisdiction-level instrument verification on 12 rows does not admit firms (129 rows affected-firm list not yet determined) -> admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Primary estimand inconclusive by construction; PH-1 remains closed. research/results.md reports no results. No gate advanced. Park remains PARKED - not validated, not rejected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified. \u00a79 updated with initial task message for Session 514."
@@ -1202,7 +1207,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T13:15:52Z",
+  "updated_at": "2026-10-27T13:17:43Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1232,6 +1237,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "da51a28",
-  "notes_count": 271
+  "last_verified_head": "a2a748e",
+  "notes_count": 273
 }
