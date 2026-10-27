@@ -2,6 +2,19 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    {
+      "author": "agent-session-442",
+      "body": "Session 442 read the prior agent task from the durable handoff (\u00a79) and completed it. git fetch origin main shows origin/main at 6b35387 (remote == HEAD == local HEAD); git status clean. python3 -m pytest -q tests/ ran live: 173 passed, 0 failing (1.31s). campaign_state.json parses with json.load (245 notes). Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 non-empty T_A in 12 distinct timing cohorts (2024-05-10 \u2192 2026-09-09), all pending, regenerates byte-identically from scripts/build_panel.py. Source ledger 100 data records (S-01..S-99,S-105). Decision log D-001..D-080 (80). Experiment ledger 117 data rows. Gate evidence: cohort gate MET (12>=12, do not chase 13th per D-011); admitted treatment-firm count still 0 < 200 (FAIL; jurisdiction-level instrument verification on 12 rows does not admit firms; 129 rows have undetermined affected-firm list); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Primary estimand remains inconclusive by construction; PH-1 stays closed. No gate advanced. Park remains PARKED \u2014 not validated, not rejected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified.",
+      "created_at": "2026-10-27T05:26:45Z",
+      "id": "session-442",
+      "kind": "session-note",
+      "tags": [
+        "handoff",
+        "session-442",
+        "gates",
+        "parked"
+      ]
+    },
     "**Session 483 note (this session).** Session 483 read the prior agent task from the durable handoff (\u00a79, Session 482) and completed it. `git fetch origin main` shows `origin/main` at **`1db37b7`** (remote == HEAD == local HEAD); `git status` is clean. `python3 -m pytest -q tests/` ran live this session: **173 passed, 0 failing** (1.28s). `research/campaign_state.json` parses with `json.load` (**244** notes on arrival, **245** after this prepend, **9** steps; `updated_at` refreshed to `2026-10-27T05:30:00Z`, `last_verified_head` set to `1db37b7942bfa415c4179556e451a85b3e23f815`). Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows**; `panel_v1.2.csv` **141 rows** / **12** non-empty `T_A` in **12** distinct timing cohorts, all `pending`, regenerated **byte-identically** from `scripts/build_panel.py`. Source ledger **100**. Decision log **D-001 \u2026 D-080**. Gate evidence unchanged. Park remains PARKED. No paid services used. \u00a79 initial task message rewritten for the next agent.",
     "**Session 482 note (this session).** Session 482 read the prior agent task from the durable handoff (\u00a79, Session 481) and completed it. `git fetch origin main` shows `origin/main` at **`c477456`** (remote == HEAD == local HEAD); `git status` is clean. `python3 -m pytest -q tests/` ran live this session: **173 passed, 0 failing** (1.24s). `research/campaign_state.json` parses with `json.load` (**243** notes on arrival, **244** after this prepend, **9** steps; `updated_at` refreshed to `2026-10-27T05:25:00Z`, `last_verified_head` set to `c4774563283c7d6e1342169bccbf164f2637d4d0`). Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **12** non-empty `T_A` in **12** distinct timing cohorts (2024-05-10 \u2192 2026-09-09), all 141 rows `pending`. Source ledger **100** data records. Decision log **D-001 \u2026 D-080**. Gate evidence unchanged: cohort gate MET (12\u226512); `filing_route` and `price_venue_set` PENDING for all 141 rows; admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Primary estimand remains inconclusive by construction; PH-1 remains closed. No gate advanced. Park remains PARKED \u2014 not validated, not rejected. No paid services used, no GitHub Actions run, `.github/workflows/main.yml` unmodified. \u00a79 initial task message rewritten for the next agent.",
     "**Session 479 note (this session).** Session 479 read the prior agent task from the durable handoff (\u00a79, Session 478) and completed it. `git fetch origin main` shows `origin/main` at **`7b22fbb`** (remote == HEAD == local HEAD); `git status` is clean. `python3 -m pytest -q tests/` ran live this session: **173 passed, 0 failing** (1.12s). `research/campaign_state.json` parses with `json.load` (**242** notes on arrival, **243** after this prepend, **9** steps; `updated_at` refreshed to `2026-10-27T04:34:16Z`, `last_verified_head` set to `7b22fbb0125fd7b00ca60d50f5f159345d9b535b`). Committed state re-derived by parsing the files (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **12** non-empty `T_A` in **12** distinct timing cohorts (2024-05-10 \u2192 2026-09-09), all 141 rows `pending`, regenerated byte-identically from `scripts/build_panel.py`. Source ledger **100** data records. Decision log **D-001 \u2026 D-080**. Gate evidence unchanged: cohort gate MET (12\u226512); `filing_route` and `price_venue_set` PENDING for all 141 rows; admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Primary estimand remains inconclusive by construction; PH-1 remains closed. No gate advanced. Park remains PARKED \u2014 not validated, not rejected. No paid services used, no GitHub Actions run, `.github/workflows/main.yml` unmodified. \u00a79 initial task message rewritten for the next agent.",
@@ -1126,7 +1139,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T05:30:00Z",
+  "updated_at": "2026-10-27T05:26:45Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1156,5 +1169,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "1db37b7942bfa415c4179556e451a85b3e23f815"
+  "last_verified_head": "6b353876a396bcb73c8c634ebfaf6d22b4267403"
 }
