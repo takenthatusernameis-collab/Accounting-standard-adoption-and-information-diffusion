@@ -3,6 +3,21 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-317",
+      "session": 564,
+      "ts": "2026-10-27T23:29:29Z",
+      "type": "verification",
+      "summary": "Session 564: verification pass; handoff updated, \u00a79 rewritten for Session 565",
+      "evidence": [
+        "git fetch origin/main a4a301d==HEAD",
+        "pytest not available (173 passed, 0 failing recorded)",
+        "campaign_state N-316 parsed; notes prepended",
+        "panel_v1.1 431/8 true; panel_v1.2 141/12 cohorts (39 rows with cohorts), all pending",
+        "ledgers: expt up to E-153; src 100; dec up to D-091",
+        "gates: filing_route/price_venue_set pending all; 129 no firm list, 12 jurisdiction-only -> firm count 0<200 FAIL; delisted/terminal returns not established FAIL; PH-1 closed; results.md empty; park PARKED"
+      ]
+    },
+    {
       "id": "N-316",
       "timestamp_utc": "2026-10-27T23:30:00Z",
       "session": 563,
@@ -1478,7 +1493,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T23:30:00Z",
+  "updated_at": "2026-10-27T23:29:29Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1508,6 +1523,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "a45bffdde1d3a0a0ca7eea5ecfb527ac203d3f53",
+  "last_verified_head": "a4a301d4932ddbe46f48b753e98efa72605409bc",
   "notes_count": 312
 }
