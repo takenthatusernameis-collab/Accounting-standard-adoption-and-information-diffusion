@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "Session 491 read the prior agent task from the durable handoff (\u00a79, Session 490) and completed it. `git fetch origin main` shows `origin/main` at `a26d094` (remote == HEAD == local HEAD); `git status` clean. `python3 -m pytest -q tests/` ran live: 173 passed, 0 failing (1.08s). `research/campaign_state.json` parses with `json.load` (253 notes on arrival, 254 after this prepend). Committed state re-derived by parsing files (D-037): `panel_v1.1.csv` 431 rows (8 in_registered_panel=true); `panel_v1.2.csv` 141 rows / 0 non-empty T_A in 0 cohorts (all pending), regenerates byte-identically from `scripts/build_panel.py` (cmp clean). Source ledger 100 records; decision log D-001\u2026D-073 (72 distinct); experiment ledger 118 data rows. Gate evidence unchanged: cohort gate MET historically (12\u226512, do not chase 13th per D-011) but current parse shows 0 verified T_A; admitted treatment-firm count still 0 < 200 (FAIL; jurisdiction-level instrument verification on 12 rows does not admit firms; 129 rows have undetermined affected-firm list); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Primary estimand remains inconclusive by construction; PH-1 remains closed. No gate advanced; park remains PARKED \u2014 not validated, not rejected. No paid services used, no GitHub Actions run, `.github/workflows/main.yml` unmodified.",
     {
       "type": "session_note",
       "session": 490,
@@ -1170,7 +1171,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T07:26:44Z",
+  "updated_at": "2026-10-27T07:29:52Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1200,5 +1201,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "499dbfb01ab8370e65236a3bb7e0d7fbd1c780fc"
+  "last_verified_head": "a26d0942bdbe29644027de427940b28c1715d83a",
+  "notes_count": 254
 }
