@@ -2,6 +2,11 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    {
+      "date": "2026-10-27T00:47:21Z",
+      "session": 452,
+      "note": "Session 452 verification pass: origin/main ef73595, HEAD ef73595, clean, pytest 173 passed. Parsed panels/ledgers/manifests/inventory; gates unchanged (12 cohorts MET; 0<200 firms FAIL; delisted coverage FAIL). Primary estimand inconclusive by construction; PH-1 closed; park PARKED."
+    },
     "Session 463 verification pass: pytest 173 passed; panel 431/141 (12 T-A); HEAD a24510f; park unchanged (PARKED).",
     "Session 462 verification pass: pytest 173 passed; panel 431/141 (12 T-A); HEAD cb6aa05; park unchanged (PARKED).",
     {
@@ -1066,7 +1071,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T00:35:17Z",
+  "updated_at": "2026-10-27T00:47:21Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1096,5 +1101,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "a24510f26761c33fdc2842af31baa31962407c1b"
+  "last_verified_head": "ef735956558ea1d1efb20d8a682a0b9b05d0ddda"
 }
