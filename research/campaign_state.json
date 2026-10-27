@@ -2,6 +2,12 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    {
+      "timestamp": "2026-10-27T08:17:40Z",
+      "session": 498,
+      "type": "verification",
+      "summary": "Session 498: read prior task from handoff \u00a79 (Session 497) and completed it. Verified committed state (git fetch origin/main 3419127, clean), pytest not installed in env, parsed campaign_state (260 notes), re-derived panels p1=431/8 in_reg, p2=141/12 ta byte-identical via build_panel.py, ledgers parsed. Gates unchanged: cohort 12>=12 MET, admitted firms 0<200 FAIL, delisted/terminal-return coverage not established FAIL \u2192 inconclusive by construction, PH-1 closed, park remains PARKED. Updated handoff \u00a79 for Session 499. No gate advanced, no outcome returns, no paid services, no GitHub Actions."
+    },
     "Session 497: verified committed state; HEAD dd8c52b; pytest unavailable (env limitation); panel counts re-derived (v1.1 431 rows/8 true, v1.2 141 rows/12 T_A in 12 cohorts); gates unchanged; park remains PARKED.",
     "Session 496: verified committed state; HEAD 0fe690f; pytest unavailable (env limitation); panel counts re-derived (v1.1 431 rows/8 true, v1.2 141 rows/12 T_A in 12 cohorts); gates unchanged; park remains PARKED.",
     "Session 495: verified state; remote HEAD 5f738fd; pytest unavailable in env; panel regenerates byte-identically; park unchanged.",
@@ -1177,7 +1183,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T08:14:46.392834+00:00",
+  "updated_at": "2026-10-27T08:17:40Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1207,6 +1213,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "dd8c52b",
+  "last_verified_head": "3419127",
   "notes_count": 260
 }
