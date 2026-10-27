@@ -865,6 +865,11 @@
       "ts": "2026-10-26T06:05:37Z",
       "session": 385,
       "note": "Session 385 verification pass: read prior agent task from durable handoff (\u00a79) and completed. git fetch origin/main shows origin/main at 99b7ddf (remote==HEAD==local HEAD); git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 non-empty T_A in 12 distinct timing cohorts (2024-05-10 -> 2026-09-09), all pending, regenerates byte-identically from scripts/build_panel.py. Source ledger 100 records (S-01..S-99 plus S-105; S-100..S-104 only in research/manifests/p1_carveout_check.jsonl, parsed separately). Decision log D-001..D-073; experiment ledger 102 data rows. Gate evidence unchanged: cohort gate MET (12>=12, do not chase 13th per D-011); filing_route and price_venue_set PENDING for all 141 rows; admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Because two gates fail, primary estimand remains inconclusive by construction; PH-1 not opened. No gate advanced. Park remains PARKED - not validated, not rejected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified. \u00a79 initial task message remains current for the next agent."
+    },
+    {
+      "ts": "2026-10-27T00:32:29Z",
+      "session": 443,
+      "note": "Session 443 verification pass: read prior agent task from durable handoff (\u00a79) and completed. git fetch origin/main shows origin/main at 6325d89 (remote==HEAD==local HEAD); git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 non-empty T_A in 12 distinct timing cohorts (2024-05-10 -> 2026-09-09), all pending, regenerates byte-identically from scripts/build_panel.py. Source ledger 100 records; decision log D-001..D-077; experiment ledger 111 data rows. Gate evidence unchanged: cohort gate MET (12>=12, do not chase 13th per D-011); admitted treatment-firm count still 0 < 200 (FAIL; jurisdiction-level instrument verification on 12 rows does not admit firms; 129 rows have undetermined affected-firm list); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Because two gates fail, primary estimand remains inconclusive by construction; PH-1 remains closed. No gate advanced. Park remains PARKED - not validated, not rejected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified. \u00a79 initial task message remains current for the next agent."
     }
   ],
   "remote_source": null,
@@ -1059,7 +1064,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-26T23:39:28Z",
+  "updated_at": "2026-10-27T00:32:29Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1089,5 +1094,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "04a2c07"
+  "last_verified_head": "6325d894f77714b1fb26118871fcf08333fbeab7"
 }
