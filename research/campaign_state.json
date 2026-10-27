@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "Session 511 (2026-10-27T12:25Z): read prior task from \u00a79 (Session 510); verified committed state (HEAD db3d343, origin/db3d343), pytest 173 passed, parsed panel_v1.1 431/8 and panel_v1.2 141/12 non-empty T_A in 12 cohorts byte-identical rebuild; gates remain cohort MET (12>=12), admitted treatment firms 0<200 (FAIL), price coverage not established (FAIL) \u2014 PH-1 closed, park PARKED; updated \u00a79 for Session 512; no gates advanced.",
     "Session 510 (2026-10-27T12:15Z): read prior task from \u00a79 (Session 509) and completed. git fetch origin/main -> b4293ed (HEAD==origin/main), clean. pytest 173 passed, 0 failing. Parsed counts: panel_v1.1 431 (8 in_registered_panel), panel_v1.2 141 rows / 12 T_A in 12 cohorts (2024-05-10..2026-09-09), all pending; byte-identical rebuild confirmed. Gates: cohort MET (12>=12); admitted treatment firms 0<200 FAIL; free delisted/terminal-return coverage not established FAIL (D-042/E-047). Primary estimand inconclusive by construction; PH-1 closed. No gate advanced. Park PARKED - not validated, not rejected. No paid services; workflows/main.yml unmodified.",
     "Session 509 (2026-10-27T11:20Z): read prior task from \u00a79 (Session 508) and completed. git fetch origin/main -> b4293ed (HEAD==origin/main). pytest 173 passed, 0 failing. Parsed counts: panel_v1.1 431 (8 in_registered_panel), panel_v1.2 141 rows / 12 T_A in 12 cohorts (2024-05-10..2026-09-09), all pending. Gates: cohort MET (12>=12); admitted treatment firms 0<200 FAIL; free delisted/terminal-return coverage not established FAIL (D-042/E-047). Primary estimand inconclusive by construction; PH-1 closed. No gate advanced; no outcome returns computed. Park PARKED - not validated, not rejected. No paid services; workflows/main.yml unmodified.",
     "Session 508 verification pass and handoff update: git fetch origin/main -> 9f0d1d0 (remote==HEAD==local); git status clean; pytest 173 passed, 0 failing. Parsed panels: v1.1 431 rows (8 in_registered_panel=true), v1.2 141 rows (12 non-empty T_A in 12 cohorts) \u2014 both regenerate byte-identically from scripts/build_panel.py. Gates: cohort MET (12>=12), admitted treatment firms 0<200 FAIL, free delisted/terminal-return coverage not established FAIL. Primary estimand inconclusive_by_construction; PH-1 closed. Park PARKED \u2014 not validated, not rejected. No gate advanced; no outcome-period returns computed; no paid services; workflows/main.yml unchanged.",
@@ -1195,7 +1196,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T12:14:43.058163+00:00",
+  "updated_at": "2026-10-27T12:27:59.714608Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1225,6 +1226,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "b4293ed",
+  "last_verified_head": "db3d343",
   "notes_count": 260
 }
