@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "Session 495: verified state; remote HEAD 5f738fd; pytest unavailable in env; panel regenerates byte-identically; park unchanged.",
     "Session 494: verified state; pytest 173 passed; HEAD 5502373; panel counts unchanged; no gate advanced; park unchanged.",
     "Session 493 read the prior agent task from the durable handoff (\u00a79, Session 493) and completed it. git fetch origin main shows origin/main at 28fe66a (remote == HEAD == local HEAD 28fe66a965874e085c3a9ed2e448bade546afd77); git status clean. python3 -m pytest -q tests/ -> 173 passed, 0 failing (1.09s). campaign_state.json parses (255 notes on arrival, 256 after prepend, 9 steps). Committed state re-derived: panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending; 8 non-empty T_A in 7 distinct retrospective cohorts); panel_v1.2.csv 141 rows / 12 verified T-A in 12 distinct timing cohorts (2024-05-10 -> 2026-09-09), all pending, byte-identical rebuild from scripts/build_panel.py. Source ledger 100 records; decision log D-001..D-080; experiment ledger 118 rows. Manifests: ifrs_jurisdiction_profiles.jsonl 171, linguistic_sources.jsonl 6, p1_carveout_check.jsonl 10, price_provider_smoke_attempts.jsonl 2, source_ledger_verification.jsonl 22; inventory.csv 7 sources F-001..F-007. Gate evidence unchanged: cohort gate MET historically (12>=12); admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Primary estimand inconclusive by construction; PH-1 closed. Park PARKED. No gate advanced. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified. \u00a79 rewritten for Session 494.",
     "Session 492 read the prior agent task from the durable handoff (\u00a79, Session 492) and completed it. git fetch origin main: origin/main == HEAD == 8e3d14d6d85370c249b5c4a4b60c28f720bb4290; git status clean. python3 -m pytest -q tests/ -> 173 passed, 0 failing. campaign_state.json parses (254 notes on arrival, 255 after prepend, 9 steps). Committed state re-derived: panel_v1.1.csv 431 rows; panel_v1.2.csv 141 rows / 12 verified T-A in 12 distinct timing cohorts, byte-identical rebuild from scripts/build_panel.py. Source ledger 100 records; decision log D-001..D-073; experiment ledger 118 rows. Gate evidence unchanged: cohort gate MET historically (12>=12); admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Primary estimand inconclusive by construction; PH-1 closed. Park PARKED. \u00a79 rewritten for next agent.",
@@ -1174,7 +1175,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T07:36:56.744342+00:00",
+  "updated_at": "2026-10-27T08:11:21.718847+00:00",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1204,6 +1205,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "55023737f0ae1abe688c72f220a9fee881b82306",
-  "notes_count": 257
+  "last_verified_head": "5f738fd96e6335f14566ca547bb1f89f80ca557b",
+  "notes_count": 258
 }
