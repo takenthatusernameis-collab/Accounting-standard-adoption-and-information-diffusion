@@ -3,6 +3,39 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-316",
+      "timestamp_utc": "2026-10-27T23:30:00Z",
+      "session": 563,
+      "type": "verification_pass",
+      "actor": "kilo",
+      "summary": "Session 563 verification pass: read handoff \u00a79 (Session 562 -> written for Session 563), verified git HEAD/origin clean (a45bffd/a45bffd); pytest not available (173 passed/0 failing last recorded). Re-derived D-037: panel_v1.1.csv 431 (8 true/423 pending), panel_v1.2.csv 141/12 cohorts all pending. Gates unchanged; park PARKED. No gate advanced.",
+      "details": {
+        "git_head": "a45bffdde1d3a0a0ca7eea5ecfb527ac203d3f53",
+        "git_origin_main": "a45bffdde1d3a0a0ca7eea5ecfb527ac203d3f53",
+        "git_clean": true,
+        "pytest": "not_available_last_recorded_173_passed_0_failing",
+        "panel_v1_1": 431,
+        "panel_v1_1_registered": 8,
+        "panel_v1_1_pending": 423,
+        "panel_v1_2": 141,
+        "panel_v1_2_distinct_nonempty_cohorts": 12,
+        "cohort_gate": "MET (>=12; do not chase 13th per D-011)",
+        "primary_estimand": "inconclusive_by_construction",
+        "ph1_status": "closed",
+        "park_status": "PARKED \u2014 not validated, not rejected",
+        "gate_advanced": false,
+        "outcome_period_returns_computed": false,
+        "paid_services_used": false,
+        "workflow_modified": false
+      },
+      "tags": [
+        "verification",
+        "session_563",
+        "handoff",
+        "park"
+      ]
+    },
+    {
       "id": "N-315",
       "timestamp_utc": "2026-10-27T23:26:31Z",
       "session": 562,
@@ -1445,7 +1478,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T23:26:31Z",
+  "updated_at": "2026-10-27T23:30:00Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1475,6 +1508,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "b5ab48692e604c93c5f03432083b3ec58d71b4d6",
+  "last_verified_head": "a45bffdde1d3a0a0ca7eea5ecfb527ac203d3f53",
   "notes_count": 312
 }
