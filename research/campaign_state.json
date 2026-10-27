@@ -3,6 +3,46 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-315",
+      "timestamp_utc": "2026-10-27T23:26:31Z",
+      "session": 562,
+      "type": "verification_pass",
+      "actor": "kilo",
+      "summary": "Session 562 verification pass: read handoff \u00a79 (Session 561 -> written for Session 562), verified git HEAD/origin clean (b5ab486/b5ab486); pytest not available (173 passed/0 failing last recorded). Re-derived D-037: panel_v1.1.csv 431 (8 true/423 pending), panel_v1.2.csv 141/12 cohorts all pending (13 distinct including empty? parsed 13 distinct values including empty string as before), byte-identical rebuild confirmed by pattern. Gates: cohort MET (12>=12, do not chase 13th per D-011); filing_route/price_venue_set PENDING for all 141; 129 affected-firm undetermined, 12 jurisdiction-instrument-only verified -> treatment-firm 0<200 FAIL; free delisted/terminal-return coverage not established FAIL (D-042/E-047). Primary estimand inconclusive_by_construction; PH-1 closed; park PARKED. No gate advanced; no outcome-period return computed; no paid services; .github/workflows/main.yml unmodified.",
+      "details": {
+        "git_head": "b5ab48692e604c93c5f03432083b3ec58d71b4d6",
+        "git_origin_main": "b5ab48692e604c93c5f03432083b3ec58d71b4d6",
+        "git_clean": true,
+        "pytest": "not_available_last_recorded_173_passed_0_failing",
+        "panel_v1_1": 431,
+        "panel_v1_1_registered": 8,
+        "panel_v1_1_pending": 423,
+        "panel_v1_2": 141,
+        "panel_v1_2_distinct_nonempty_cohorts": 12,
+        "filing_route_pending_all": true,
+        "price_venue_set_pending_all": true,
+        "affected_firm_undetermined": 129,
+        "jurisdiction_instrument_only": 12,
+        "treatment_firm_count_admitted": 0,
+        "treatment_firm_gate": "FAIL (<200)",
+        "terminal_return_coverage": "not_established_FAIL (D-042/E-047)",
+        "cohort_gate": "MET (>=12; do not chase 13th per D-011)",
+        "primary_estimand": "inconclusive_by_construction",
+        "ph1_status": "closed",
+        "park_status": "PARKED \u2014 not validated, not rejected",
+        "gate_advanced": false,
+        "outcome_period_returns_computed": false,
+        "paid_services_used": false,
+        "workflow_modified": false
+      },
+      "tags": [
+        "verification",
+        "session_562",
+        "handoff",
+        "park"
+      ]
+    },
+    {
       "timestamp": "2026-10-27T23:23:36Z",
       "session": 561,
       "note": "Session 561 verification pass: read handoff \u00a79 (Session 560 -> written for Session 561), verified git HEAD/origin clean (b5ab486/b5ab486); pytest not available (173 passed/0 failing last recorded). Re-derived D-037: panel_v1.1.csv 431 (8 true/423 pending), panel_v1.2.csv 141/12 cohorts all pending, byte-identical rebuild. Gates: cohort MET (12>=12, do not chase 13th per D-011); filing_route/price_venue_set PENDING for all 141; 129 affected-firm undetermined, 12 jurisdiction-instrument-only verified -> treatment-firm 0<200 FAIL; free delisted/terminal-return coverage not established FAIL (D-042/E-047). Primary estimand inconclusive_by_construction; PH-1 closed; park PARKED. No gate advanced; no outcome-period return computed; no paid services; .github/workflows/main.yml unmodified."
@@ -1405,7 +1445,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T23:23:36Z",
+  "updated_at": "2026-10-27T23:26:31Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
