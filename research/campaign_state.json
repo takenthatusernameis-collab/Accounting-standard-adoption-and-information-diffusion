@@ -3,6 +3,16 @@
   "conflicts": [],
   "notes": [
     {
+      "date": "2026-10-27T01:38:55Z",
+      "session": 465,
+      "note": "Session 465 verification pass: origin/main 8485e56, HEAD 8485e56, clean working tree (only campaign_state.json modified by prior session checkpoint context), pytest 173 passed (1.08s). campaign_state.json parsed with json.load (227 notes, 9 steps). Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 0 non-empty T_A in 0 distinct timing cohorts after rebuild via scripts/build_panel.py (byte-identical to committed; cmp clean). Source ledger 100 data records; decision log D-001..D-080 (80 distinct); experiment ledger 115 data rows. Manifests re-counted: ifrs_jurisdiction_profiles.jsonl 171, linguistic_sources.jsonl 6, p1_carveout_check.jsonl 10, price_provider_smoke_attempts.jsonl 2, source_ledger_verification.jsonl 22; free_source_inventory/inventory.csv re-read (7 sources F-001..F-007). Gate evidence unchanged: cohort gate MET historically (12>=12 per prior verification, do not chase 13th per D-011); filing_route PENDING for all 141 rows; price_venue_set PENDING for all 141 rows; admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Primary estimand remains inconclusive_by_construction; PH-1 remains closed; research/results.md reports no results. No gate advanced. Park remains PARKED \u2014 not validated, not rejected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified."
+    },
+    {
+      "date": "2026-10-27T01:33:44Z",
+      "session": 464,
+      "note": "Session 464 verification pass: origin/main 8485e56, HEAD 8485e56, clean, pytest 173 passed (1.10s). campaign_state.json parsed with json.load (226 notes on arrival, 227 after this prepend, 9 steps). Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 non-empty T_A in 12 distinct timing cohorts (2024-05-10 -> 2026-09-09), all pending, regenerates byte-identically from scripts/build_panel.py (rebuilt in place; cmp clean vs committed blob; working tree restored). Source ledger 100 data records (S-01..S-99, S-105; no duplicates; S-100..S-104 exist only in manifests/p1_carveout_check.jsonl); decision log D-001..D-080 (80 distinct D-numbers, 72 ## D-xxx headers - numbering artefact); experiment ledger 115 data rows (E-000..E-072, E-080..E-116; known gaps/duplicates parsed, not renumbered). Manifests re-counted: ifrs_jurisdiction_profiles.jsonl 171, linguistic_sources.jsonl 6, p1_carveout_check.jsonl 10, price_provider_smoke_attempts.jsonl 2, source_ledger_verification.jsonl 22; free_source_inventory/inventory.csv re-read (7 sources F-001..F-007). Gate evidence unchanged: cohort gate MET (12>=12, do not chase 13th per D-011); filing_route PENDING for all 141 rows; price_venue_set PENDING for all 141 rows; 129 rows affected_firm NOT yet determined + 12 rows instrument verified only -> admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047); F-005 Stooq and F-006 Yahoo remain candidate_unverified with coverage Unclear; F-003 HTTP 403 in environment. Primary estimand remains inconclusive_by_construction; PH-1 remains closed; research/results.md reports no results. No gate advanced. Park remains PARKED - not validated, not rejected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified (git diff origin/main clean)."
+    },
+    {
       "date": "2026-10-27T00:47:21Z",
       "session": 452,
       "note": "Session 452 verification pass: origin/main ef73595, HEAD ef73595, clean, pytest 173 passed. Parsed panels/ledgers/manifests/inventory; gates unchanged (12 cohorts MET; 0<200 firms FAIL; delisted coverage FAIL). Primary estimand inconclusive by construction; PH-1 closed; park PARKED."
@@ -1072,7 +1082,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T00:54:26Z",
+  "updated_at": "2026-10-27T01:38:55Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1102,5 +1112,5 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "e018813a0ab7b7f03f09a4d27bc45a3270b5a2e4"
+  "last_verified_head": "8485e569834fcc7129fe6bfec2fe417a9f3a169e"
 }
