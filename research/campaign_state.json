@@ -2,6 +2,11 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    {
+      "session": 550,
+      "ts": "2026-10-27T20:26:06Z",
+      "note": "Session 550 verification pass: read handoff \u00a79 (session 549 completed; \u00a79 written for Session 550). Verified git HEAD/origin clean (4c7145c vs origin/main 4c7145c); pytest not available (173 passed/0 failing last recorded). Re-derived D-037: panel_v1.1.csv 431 (8 true/423 pending), panel_v1.2.csv 141/12 cohorts all pending, byte-identical rebuild. Gates: cohort MET (12>=12, do not chase 13th per D-011); filing_route/price_venue_set PENDING for all 141; 129 affected-firm undetermined, 12 jurisdiction-instrument-only verified \u2192 treatment-firm 0<200 FAIL; free delisted/terminal-return coverage not established FAIL (D-042/E-047). Primary estimand inconclusive_by_construction; PH-1 closed; park PARKED. No gate advanced; no outcome-period return computed; no paid services; .github/workflows/main.yml unmodified."
+    },
     "Session 549 verification pass: HEAD 823a799, park unchanged.",
     "**Session 548 note (this session).** Session 548 read the prior agent task from the durable handoff (\u00a79, Session 547) and completed the cycle. `git fetch origin main` shows `origin/main` at **`fd68441`** (remote == HEAD == local HEAD `fd68441060bbf5684375c7b57c7eba39267c7f6f`); `git status` clean. `python3 -m pytest -q tests/` **not available** (`No module named pytest`; committed suite last recorded live **173 passed, 0 failing**). `research/campaign_state.json` parses with `json.load` (**299** notes on arrival; refreshed `updated_at`, `last_verified_head` set to `fd68441060bbf5684375c7b57c7eba39267c7f6f`). Re-derived committed state (D-037): `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **12** distinct non-empty `timing_cohort` values across **39** rows (2024-05-10 \u2192 2026-09-09), all 141 rows `pending`, regenerated **byte-identically** from `scripts/build_panel.py` (rebuilt in place; `cmp` clean; working tree restored). Ledgers: experiment ledger **143** data rows on arrival (last E-143, Session 545); source ledger **100** records; decision log **D-001\u2026D-089** (**89** distinct). Manifests: **171/6/10/2/22**; inventory **7** sources (F-001 verified, F-002 implemented, F-003 not_retrieved, F-004 verified, F-005/F-006 candidate_unverified, F-007 verified). Gate evidence re-audited: `filing_route` and `price_venue_set` PENDING for all 141 PH-1 rows; **129** rows affected-firm list NOT yet determined, **12** rows carry jurisdiction-level instrument verification only (Bhutan, Brazil, EU, Hong Kong Sar, Indonesia, Malaysia, New Zealand, Philippines, Saudi Arabia, Singapore, South Korea, United Kingdom) \u2192 admitted treatment-firm count **still 0 < 200 (FAIL)**. Free delisted/terminal-return price coverage **not established (FAIL, D-042/E-047)**. Primary estimand remains **inconclusive by construction**; **PH-1 remains closed**. `research/results.md` reports no results. No gate advanced. Park remains **PARKED \u2014 not validated, not rejected**. No paid services used, no GitHub Actions run, `.github/workflows/main.yml` unmodified. Updated `research/HANDOFF.md` (prepended session 548 note, \u00a79 rewritten for Session 549), `research/campaign_state.json`, `research/experiment_ledger.csv` (E-144).",
     "Session 547: verification pass at git 441e689 (checkpoint commit 441e68928e8e04fc38296f4ca7ee602af00cfab0, remote==HEAD==local HEAD); pytest unavailable (last 173 passed 0 failing); panel_v1.2 141 rows/12 cohorts byte-identical from build_panel.py; gates unchanged (filing_route/price_venue_set PENDING, admitted firms 0<200 FAIL, free delisted/terminal-return coverage not established FAIL); PH-1 closed; park PARKED. Updated HANDOFF (session 547 note, \u00a79 for Session 548), experiment_ledger E-144, decision_log D-090, prompt_changelog Iteration 91.",
@@ -1326,7 +1331,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T20:23:53Z",
+  "updated_at": "2026-10-27T20:26:06Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1356,6 +1361,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "823a799870ab7c70a19c8266d22c94a5641d8384",
+  "last_verified_head": "4c7145cd78d93cf4cf57ac38b25ce3e8b1574bb2",
   "notes_count": 301
 }
