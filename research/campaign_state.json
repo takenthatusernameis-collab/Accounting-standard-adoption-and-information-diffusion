@@ -2,6 +2,12 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    {
+      "date": "2026-10-27",
+      "session": 533,
+      "type": "verification_pass",
+      "summary": "Session 533 read prior agent task from durable handoff (\u00a79 Session 532) and completed it. git fetch origin main -> origin/main at 603ed53 (remote==HEAD==local HEAD 603ed53); git status clean. pytest not available in this environment (last live 173 passed, 0 failing). campaign_state.json parsed (287 notes). panel_v1.1.csv 431 rows (8 in_registered_panel true). panel_v1.2.csv 141 rows / 12 cohorts (2024-05-10..2026-09-09), status all pending/None; 12 rows instrument-verified (jurisdiction-level only), 129 NOT yet determined -> admitted treatment firms 0 < 200 FAIL. filing_route and price_venue_set PENDING for all PH-1 rows. Free delisted/terminal-return coverage not established (FAIL, D-042/E-047). Primary estimand inconclusive_by_construction; PH-1 closed. results.md reports no results. No gate advanced. Park PARKED. No paid services; workflows/main.yml unmodified. Updated HANDOFF.md (\u00a79 rewritten for Session 534), campaign_state.json, experiment_ledger.csv (E-132)."
+    },
     "Session 532: read prior agent task from durable handoff (\u00a79 Session 531) and completed. git fetch origin main -> origin/main at 809599b (remote advanced from 6157ad6 to 809599b; HEAD not yet updated to remote tip in this environment but fetch done). git status clean. pytest not available (173 passed,0 failing last recorded). Re-derived committed state (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true,423 pending); panel_v1.2.csv 141 rows/12 cohorts (2024-05-10->2026-09-09), byte-identical regenerate confirmed. Ledgers: experiment 130 rows (last E-130), source 100, decision log D-001..D-088. Gate evidence: filing_route/price_venue_set PENDING for all 141 PH-1 rows; admitted treatment firms 0<200 FAIL; free delisted/terminal-return coverage not established FAIL (D-042/E-047). Primary estimand inconclusive_by_construction; PH-1 closed. Park PARKED - not validated, not rejected. No gate advanced; no outcome-period return computed/inspected; no paid services; workflows/main.yml unmodified. Updated HANDOFF.md (\u00a79 rewritten for Session 533), campaign_state.",
     {
       "id": "N-286",
@@ -1284,7 +1290,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T17:21:48.003+00:00",
+  "updated_at": "2026-10-27T17:24:35.686+00:00",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1314,6 +1320,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "6157ad62225b6e39be91ff4b5aa550304fb67a38",
+  "last_verified_head": "603ed53",
   "notes_count": 287
 }
