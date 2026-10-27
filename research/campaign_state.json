@@ -3,6 +3,12 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-277",
+      "ts": "2026-10-27T14:06:46Z",
+      "type": "handoff",
+      "text": "Session 518: read prior task from durable handoff (\u00a79 Session 517) and completed it. git fetch origin main shows origin/main==HEAD==local HEAD b7274d9; git status clean. python3 -m pytest -q tests/ not available in this environment (No module named 'pytest'); committed suite last recorded live 173 passed, 0 failing. campaign_state.json parsed (notes 276\u2192277, steps 9, updated_at refreshed, last_verified_head b7274d9). Re-derived committed state (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 timing_cohort values across 39 rows (2024-05-10\u21922026-09-09), all pending, regenerate byte-identically from scripts/build_panel.py. Gate evidence re-audited from committed panel: filing_route and price_venue_set PENDING for all 141 PH-1 rows; 129 rows affected-firm list NOT yet determined, 12 rows jurisdiction-level instrument verified only (does not admit firms) \u2192 admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Primary estimand inconclusive by construction; PH-1 remains closed. results.md reports no results. No gates advanced. Park PARKED \u2014 not validated, not rejected. No paid services, no GitHub Actions, .github/workflows/main.yml unchanged. Ledgers re-parsed: experiment 121 rows (E-000\u2026E-120), source 100 records, decision D-001\u2026D-080. Manifests 171/6/10/2/22; inventory 7 sources. \u00a79 rewritten for Session 519."
+    },
+    {
       "id": "N-276",
       "ts": "2026-10-27T13:25:12Z",
       "type": "handoff",
@@ -1223,7 +1229,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T13:25:12Z",
+  "updated_at": "2026-10-27T14:06:46Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1253,6 +1259,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "06e8394",
-  "notes_count": 274
+  "last_verified_head": "b7274d9",
+  "notes_count": 277
 }
