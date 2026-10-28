@@ -3,6 +3,13 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-324",
+      "ts": "2026-10-28T01:10:53Z",
+      "session": 571,
+      "kind": "verification",
+      "summary": "Session 571 verification pass: read handoff \u00a79 (Session 570->571), verified state, park remains PARKED"
+    },
+    {
       "id": "N-323",
       "ts": "2026-10-28T01:07:16Z",
       "session": 570,
@@ -1582,7 +1589,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T01:07:16Z",
+  "updated_at": "2026-10-28T01:10:53Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1612,6 +1619,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "53e3d095267dfe7fdad407abe01032f9e27523c4",
-  "notes_count": 322
+  "last_verified_head": "4643c8aad753845b3437a714794e1f97913a573f",
+  "notes_count": 324
 }
