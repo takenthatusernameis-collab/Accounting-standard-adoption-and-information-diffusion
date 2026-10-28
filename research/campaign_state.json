@@ -3,6 +3,21 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-318",
+      "ts": "2026-10-28T00:06:58Z",
+      "session": 565,
+      "type": "verification_pass",
+      "summary": "Session 565 verification pass: read handoff \u00a79 (session 564), verified git HEAD/origin clean (5739e88/a4a301d lineage), re-derived committed state (D-037), confirmed panel_v1.2 byte-identical from build_panel.py, audited gates/ledgers/manifests/inventory, updated HANDOFF \u00a79 for Session 566 and campaign_state; appended E-158.",
+      "evidence": [
+        "git fetch origin main; git status clean; HEAD==origin/main 5739e88 (local tracked a4a301d context)",
+        "python3 -m pytest -q tests/ not available (last live 173 passed,0 failing)",
+        "research/campaign_state.json parsed (317 notes)",
+        "panel_v1.1.csv 431 (8 true/423 pending); panel_v1.2.csv 141/12 cohorts (2024-05-10\u21922026-09-09) all pending, byte-identical rebuild",
+        "ledgers: exp 157\u2192158, src 100, dec D-001..D-091",
+        "manifests 171/6/10/2/22, inventory 7"
+      ]
+    },
+    {
       "id": "N-317",
       "session": 564,
       "ts": "2026-10-27T23:29:29Z",
@@ -1493,7 +1508,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-27T23:29:29Z",
+  "updated_at": "2026-10-28T00:06:58Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1523,6 +1538,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "a4a301d4932ddbe46f48b753e98efa72605409bc",
+  "last_verified_head": "5739e88",
   "notes_count": 312
 }
