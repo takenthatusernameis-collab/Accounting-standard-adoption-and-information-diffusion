@@ -3,6 +3,14 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-729",
+      "ts": "2026-10-28T14:22:01Z",
+      "session": 632,
+      "type": "verification_pass",
+      "title": "Session 632 verification pass: read prior agent task from durable handoff (\u00a79, Session 631 \u2192 written for Session 632) and completed cycle.",
+      "body": "git fetch origin main -> 056356826c10a62aa630a9069ff049728a8d07f1 (remote==HEAD==local HEAD); git status clean. python3 -m pytest -q tests/ not available (No module named pytest; committed suite last recorded live 173 passed, 0 failing). campaign_state parsed with json.load (380 notes on arrival, 381 after prepend N-729). Re-derived committed state (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows (2024-05-10 -> 2026-09-09), all 141 rows gate-pending; regenerated via scripts/build_panel.py and compared byte-identical (git diff clean after rebuild). Ledgers: experiment ledger last ID E-214 (appended E-215 this session); source ledger S-105 (100 records); decision log D-001..D-103. Manifests 5 files (171/6/10/2/22 lines); research/free_source_inventory/inventory.csv 7 sources. Gate evidence re-audited unchanged: filing_route and price_venue_set PENDING for all 141 PH-1 rows; 129 affected-firm list NOT yet determined, 12 jurisdiction-level instrument verification only -> admitted treatment-firm count still 0 < 200 (FAIL). Free delisted/terminal-return price coverage NOT established (FAIL, D-042/E-047). Cohort gate MET (12>=12). Primary estimand remains inconclusive_by_construction; PH-1 remains closed. research/results.md reports no results. No gate advanced. Park remains PARKED - not validated, not rejected. No paid services used; no GitHub Actions run; .github/workflows/main.yml unmodified."
+    },
+    {
       "id": "N-728",
       "ts": "2026-10-28T14:21:06Z",
       "session": 631,
@@ -2040,7 +2048,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T14:21:06Z",
+  "updated_at": "2026-10-28T14:22:01Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2070,6 +2078,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "3d149c73d05826d07eb39953701a413db208ab57",
-  "notes_count": 380
+  "last_verified_head": "056356826c10a62aa630a9069ff049728a8d07f1",
+  "notes_count": 381
 }
