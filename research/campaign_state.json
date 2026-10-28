@@ -3,6 +3,14 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-725",
+      "ts": "2026-10-28T12:57:13Z",
+      "session": 628,
+      "type": "verification_pass",
+      "title": "Session 628 verification pass",
+      "summary": "Read prior agent task from durable handoff (\u00a79, Session 627 -> written for Session 628) and completed cycle. git fetch origin main -> d2b62f7 (remote==HEAD==local HEAD); git status clean. python3 -m pytest -q tests/ not available (No module named pytest; committed suite last recorded live 173 passed, 0 failing). campaign_state parsed (376 notes on arrival, 377 after prepend N-725). Re-derived committed state (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows (2024-05-10 -> 2026-09-09), all 141 rows gate-pending; regenerated via scripts/build_panel.py and compared byte-identical (git diff clean). Ledgers: experiment ledger last ID E-210; source ledger S-105 (100 records); decision log D-001..D-103. Manifests 5 files (171/6/10/2/22 lines); inventory 7 sources. Gate evidence unchanged: filing_route and price_venue_set PENDING for all 141 PH-1 rows; 129 affected-firm list NOT yet determined, 12 jurisdiction-level instrument verification only -> admitted treatment-firm count still 0 < 200 (FAIL). Free delisted/terminal-return price coverage NOT established (FAIL, D-042/E-047). Cohort gate MET (12>=12). Primary estimand remains inconclusive_by_construction; PH-1 remains closed. No gate advanced; park remains PARKED - not validated, not rejected. No paid services; no GitHub Action; .github/workflows/main.yml unmodified."
+    },
+    {
       "id": "N-724",
       "ts": "2026-10-28T12:10:35Z",
       "session": 627,
@@ -2000,7 +2008,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T12:10:35Z",
+  "updated_at": "2026-10-28T12:57:13Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2030,6 +2038,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "2eaec5794f74fc8e605de053f118a402b51c911f",
-  "notes_count": 376
+  "last_verified_head": "d2b62f7372f4f3fe29c8d0d6e3a6a42b13fc2c72",
+  "notes_count": 377
 }
