@@ -3,6 +3,11 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-332",
+      "session": 579,
+      "text": "Verification pass (session 579): read prior task from durable handoff (\u00a79 Session 578); verified state vs origin/main 60d5ecc; re-derived panels (431/141, 12 cohorts), audited gates; park remains PARKED; only cohort gate passes; treatment-firm 0<200 FAIL; terminal-return coverage not established FAIL; PH-1 closed. No gate advanced."
+    },
+    {
       "id": "N-331",
       "ts": "2026-10-28T02:15:08Z",
       "session": 578,
@@ -1678,7 +1683,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T02:15:08Z",
+  "updated_at": "2026-10-28T02:16:34Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1708,6 +1713,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "4fca63aaeb25f9b8f935543cfecdf419b943b8c0",
+  "last_verified_head": "60d5ecc70105a5c3869cf199760fb48703ae3b18",
   "notes_count": 328
 }
