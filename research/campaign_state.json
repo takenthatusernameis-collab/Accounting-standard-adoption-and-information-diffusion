@@ -3,6 +3,13 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-407",
+      "session": 661,
+      "ts": "2026-10-28T23:41:11Z",
+      "head": "5168e77",
+      "text": "Session 661 verification pass: read prior agent task from durable handoff (\u00a79, Session 660 -> written for Session 661) and completed cycle. git fetch origin main -> origin/main 5168e77 (remote==HEAD==local HEAD verified); git status clean. python3 -m pytest -q tests/ not available (No module named pytest; committed suite last recorded live 173 passed, 0 failing). campaign_state.json parsed with json.load (406 notes on arrival; prepended N-407, notes_count=407, updated_at refreshed, last_verified_head set to 5168e77226f8acb73c834bbe2e3eb6a0c0a76dbd). Re-derived committed state (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows (2024-05-10 -> 2026-09-09), all 141 rows gate-pending; regenerated via scripts/build_panel.py and compared byte-identical (git diff clean after rebuild). Ledgers: experiment ledger last ID E-240 (appended E-241 this session); source ledger S-105, 100 records; decision log D-001..D-106. Free gates unchanged: filing_route and price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count still 0 < 200 (FAIL). Free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098). Cohort gate MET (12 >= 12). PH-1 remains closed; primary estimand inconclusive by construction. research/results.md reports no results. No gate advanced."
+    },
+    {
       "id": "N-406",
       "ts": "2026-10-28T21:50:34Z",
       "session": 660,
@@ -2224,7 +2231,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T21:50:34Z",
+  "updated_at": "2026-10-28T23:41:11Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2254,6 +2261,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "aaae0eaa9fc7ca3f5bab8c07719b069613f7800a",
-  "notes_count": 406
+  "last_verified_head": "5168e77226f8acb73c834bbe2e3eb6a0c0a76dbd",
+  "notes_count": 407
 }
