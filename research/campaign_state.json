@@ -3,6 +3,13 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-740",
+      "ts": "2026-10-28T16:33:08Z",
+      "session": 646,
+      "type": "session_note",
+      "summary": "Verification pass (Session 646): read prior agent task from durable handoff (\u00a79, Session 645 \u2192 written for Session 646); verified origin/main 4e984e7 clean, pytest unavailable (173 passed/0 failing historical), campaign_state notes_count 391 (N-740 added), panels verified (p1 431/8-in-registered, p2 141/12 cohorts/39 rows), gates unchanged (filing_route/price_venue_set pending, admitted <200, delisted/terminal coverage not established, FCA NSM root navigation closed D-098), cohort gate MET, PH-1 remains closed, no results, park unchanged. No paid services, no GitHub Actions."
+    },
+    {
       "id": "N-739",
       "ts": "2026-10-28T16:27:13.713058Z",
       "author": "kilo",
@@ -2119,7 +2126,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T16:30:30Z",
+  "updated_at": "2026-10-28T16:33:08Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2149,6 +2156,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "39ef5e802b745c0c4ae7549a341b4a8134ac6f0a",
-  "notes_count": 391
+  "last_verified_head": "4e984e76a0d70e5d29cf4b995b381809e93d5859",
+  "notes_count": 392
 }
