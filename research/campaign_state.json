@@ -3,6 +3,20 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-721",
+      "ts": "2026-10-28T11:15:00Z",
+      "session": 622,
+      "type": "verification_pass",
+      "title": "Session 622 verification pass",
+      "summary": "Read prior task from durable handoff (\u00a79, Session 621 -> written for Session 622) and completed cycle. git fetch origin main -> 9f76be1 (remote==HEAD==local HEAD); git status clean. pytest not available (last recorded 173 passed, 0 failing). campaign_state parsed (372 notes). Re-derived committed state (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows (2024-05-10 -> 2026-09-09), all 141 rows gate-pending; regenerated from scripts/build_panel.py (structure/counts match). Ledgers: experiment ledger last ID E-205; source ledger S-105 (100 records); decision log D-001..D-102. Manifests 5 files present; inventory 7 sources. Gates unchanged: cohort MET (12>=12), treatment-firm 0<200 FAIL (129 rows firm list undetermined, 12 jurisdiction-level only), delisted/terminal-return coverage not established FAIL (D-042/E-047), filing_route/price_venue_set PENDING, FCA NSM root navigation closed (D-098), PH-1 remains closed, primary estimand inconclusive_by_construction. No gate advanced; park remains PARKED\u2014not validated, not rejected. No paid services, no GitHub Actions run, .github/workflows/main.yml unmodified.",
+      "tags": [
+        "verification",
+        "handoff",
+        "gates",
+        "park"
+      ]
+    },
+    {
       "id": "N-720",
       "ts": "2026-10-28T11:07:30Z",
       "session": 621,
@@ -1946,7 +1960,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T11:07:30Z",
+  "updated_at": "2026-10-28T11:15:00Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1976,6 +1990,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "905ee0e",
-  "notes_count": 372
+  "last_verified_head": "9f76be1",
+  "notes_count": 373
 }
