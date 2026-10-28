@@ -3,17 +3,30 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-320",
+      "ts": "2026-10-28T00:14:42Z",
+      "session": 567,
+      "type": "verification_pass",
+      "summary": "Session 567 verification pass: read handoff \u00a79 (Session 566 \u2192 written for Session 567), verified git HEAD/origin clean (0e9d0343/0e9d0343 lineage), re-derived committed state (D-037), confirmed panel_v1.2 byte-identical from build_panel.py, audited gates/ledgers/manifests/inventory, updated HANDOFF \u00a79 for Session 568 and campaign_state; appended E-160.",
+      "evidence": [
+        "git fetch origin main; git status clean; HEAD==origin/main 0e9d0343",
+        "python3 -m pytest -q tests/ not available (No module named pytest); committed suite last recorded live 173 passed, 0 failing",
+        "panel_v1.1 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2 141 rows / 12 timing_cohort across 39 rows (2024-05-10\u21922026-09-09), byte-identical rebuild; manifests 171/6/10/2/22; inventory 7 sources",
+        "src 101 records (last S-105), dec max D-092, exp last E-159 (E-160 appended), campaign_state 319 notes (N-320 prepended)"
+      ]
+    },
+    {
       "id": "N-319",
       "ts": "2026-10-28T00:09:13Z",
       "session": 566,
       "type": "verification_pass",
-      "summary": "Session 566 verification pass: read handoff §9 (Session 565 → written for Session 566), verified git HEAD/origin clean (b17928c/b17928c lineage), re-derived committed state (D-037), confirmed panel_v1.2 byte-identical from build_panel.py, audited gates/ledgers/manifests/inventory, updated HANDOFF §9 for Session 567 and campaign_state; appended E-159.",
+      "summary": "Session 566 verification pass: read handoff \u00a79 (Session 565 \u2192 written for Session 566), verified git HEAD/origin clean (b17928c/b17928c lineage), re-derived committed state (D-037), confirmed panel_v1.2 byte-identical from build_panel.py, audited gates/ledgers/manifests/inventory, updated HANDOFF \u00a79 for Session 567 and campaign_state; appended E-159.",
       "evidence": [
         "git fetch origin main; git status clean; HEAD==origin/main b17928c",
         "python3 -m pytest -q tests/ not available (last live 173 passed,0 failing)",
         "research/campaign_state.json parsed (318 notes)",
-        "panel_v1.1.csv 431 (8 true/423 pending); panel_v1.2.csv 141/12 cohorts (2024-05-10→2026-09-09) all pending, byte-identical rebuild",
-        "ledgers: exp 158→159, src 100, dec D-001..D-091",
+        "panel_v1.1.csv 431 (8 true/423 pending); panel_v1.2.csv 141/12 cohorts (2024-05-10\u21922026-09-09) all pending, byte-identical rebuild",
+        "ledgers: exp 158\u2192159, src 100, dec D-001..D-091",
         "manifests 171/6/10/2/22, inventory 7"
       ]
     },
@@ -1523,7 +1536,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T00:06:58Z",
+  "updated_at": "2026-10-28T00:14:42Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1553,6 +1566,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "5739e88",
+  "last_verified_head": "0e9d0343b1a6da02fbec6e64e07b662792b96320",
   "notes_count": 312
 }
