@@ -3,6 +3,13 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-395",
+      "ts": "2026-10-28T17:28:27Z",
+      "session": 649,
+      "type": "session_note",
+      "summary": "Verification pass (Session 649): read prior agent task from durable handoff (\u00a79, Session 648 \u2192 written for Session 649); verified origin/main caf7b4c clean, pytest unavailable (173 passed/0 failing historical), gates unchanged, cohort MET, PH-1 closed; prepended N-743, updated handoff \u00a79."
+    },
+    {
       "id": "N-741",
       "ts": "2026-10-28T16:35:01Z",
       "session": 647,
@@ -2133,7 +2140,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T17:26:31Z",
+  "updated_at": "2026-10-28T17:28:27.885Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2163,6 +2170,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "b43eda93f756ae84b7854777721a989dc9957519",
+  "last_verified_head": "caf7b4c75bb1143c5017bfcbd1922e0651aedb42",
   "notes_count": 394
 }
