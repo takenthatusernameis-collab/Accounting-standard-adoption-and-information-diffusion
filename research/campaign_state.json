@@ -3,6 +3,13 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-732",
+      "ts": "2026-10-28T15:23:19Z",
+      "author": "kilo",
+      "type": "cycle",
+      "text": "Session 636 verification pass: read prior agent task from durable handoff (\u00a79, Session 635 \u2192 written for Session 636) and completed cycle. git fetch origin main -> 5923fa5 (remote==HEAD==local HEAD); git status clean. pytest not available (committed suite last recorded live 173 passed, 0 failing). campaign_state parsed; notes_count updated. Re-derived committed state: panel_v1.1.csv 431 rows (8 in_registered_panel=true), panel_v1.2.csv 141 rows / 12 cohorts. Gates unchanged: cohort MET (12>=12); treatment-firm 0<200 FAIL; free delisted/terminal-return coverage not established FAIL (D-042/E-047). Primary estimand inconclusive by construction; PH-1 closed. Park remains PARKED \u2014 not validated, not rejected. No gates advanced; no paid services used; workflows unchanged. Handoff updated for Session 637."
+    },
+    {
       "id": "N-731",
       "timestamp": "2026-10-28T14:32:34.467898Z",
       "actor": "agent",
@@ -2063,7 +2070,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T14:32:34.470170Z",
+  "updated_at": "2026-10-28T15:23:19Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2093,6 +2100,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "23fd4d9b143c3300b28ae56ac77892668b921cfb",
-  "notes_count": 383
+  "last_verified_head": "5923fa572ab3605b450ba754298d968937b7c240",
+  "notes_count": 384
 }
