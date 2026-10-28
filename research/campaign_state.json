@@ -3,6 +3,12 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-693",
+      "ts": "2026-10-28T05:14:06.488658Z",
+      "session": 594,
+      "text": "Session 594: verified origin/main acf0674 clean; panels 431/141 (12 cohorts); gates unchanged (0<200 firms FAIL, terminal-return coverage not established FAIL); PH-1 closed/inconclusive_by_construction; park PARKED. No gate advanced. Updated HANDOFF \u00a79 for Session 595. No paid services; no GitHub Actions; .github/workflows/main.yml unmodified."
+    },
+    {
       "id": "N-346",
       "timestamp": "2026-10-28T04:17:49Z",
       "session": 593,
@@ -1779,7 +1785,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T05:12:39Z",
+  "updated_at": "2026-10-28T05:14:06.488677Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1809,6 +1815,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "948e9988f192af00058bfedc80509b263df67221",
+  "last_verified_head": "acf06748a04265a175398e2c55e10e04bb569262",
   "notes_count": 345
 }
