@@ -1705,7 +1705,14 @@
       "session": 443,
       "note": "Session 443 verification pass: read prior agent task from durable handoff (\u00a79) and completed. git fetch origin/main shows origin/main at 6325d89 (remote==HEAD==local HEAD); git status clean; python3 -m pytest -q tests/ -> 173 passed, 0 failing. Committed state re-derived by parsing files (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 non-empty T_A in 12 distinct timing cohorts (2024-05-10 -> 2026-09-09), all pending, regenerates byte-identically from scripts/build_panel.py. Source ledger 100 records; decision log D-001..D-077; experiment ledger 111 data rows. Gate evidence unchanged: cohort gate MET (12>=12, do not chase 13th per D-011); admitted treatment-firm count still 0 < 200 (FAIL; jurisdiction-level instrument verification on 12 rows does not admit firms; 129 rows have undetermined affected-firm list); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Because two gates fail, primary estimand remains inconclusive by construction; PH-1 remains closed. No gate advanced. Park remains PARKED - not validated, not rejected. No paid services used, no GitHub Actions run, .github/workflows/main.yml unmodified. \u00a79 initial task message remains current for the next agent."
     },
-    "Session 453: verify committed state (HEAD e018813), pytest 173 passed, panel_v1.1 431 / v1.2 141 (12 T_A cohorts 2024-05-10\u21922026-09-09), source 101, D 80, exp 115. Gates unchanged: cohort MET (12>=12), admitted treatment-firm 0 < 200 (FAIL), free delisted/terminal-return coverage not established (FAIL). Primary estimand inconclusive by construction; PH-1 closed. Park PARKED \u2014 not validated, not rejected. No gates advanced; no paid services; workflow unchanged."
+    "Session 453: verify committed state (HEAD e018813), pytest 173 passed, panel_v1.1 431 / v1.2 141 (12 T_A cohorts 2024-05-10\u21922026-09-09), source 101, D 80, exp 115. Gates unchanged: cohort MET (12>=12), admitted treatment-firm 0 < 200 (FAIL), free delisted/terminal-return coverage not established (FAIL). Primary estimand inconclusive by construction; PH-1 closed. Park PARKED \u2014 not validated, not rejected. No gates advanced; no paid services; workflow unchanged.",
+    {
+      "id": "N-368",
+      "timestamp": "2026-10-28T10:07:01Z",
+      "session": 616,
+      "type": "verification",
+      "summary": "Session 616 verification pass: read prior agent task from durable handoff (\u00a79 Session 615\u2192written for Session 616), re-verified committed state (panels byte-identical, gates unchanged), no gate advancement, park PARKED, updated handoff for Session 617."
+    }
   ],
   "remote_source": null,
   "schema_version": 1,
@@ -1899,7 +1906,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T09:10:05Z",
+  "updated_at": "2026-10-28T10:07:01Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1929,6 +1936,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "b67207024456d5e9e2eb9823194326b8349d7c29",
+  "last_verified_head": "dbfacdc55e7d0b51885dacd3618db12eb88863e4",
   "notes_count": 367
 }
