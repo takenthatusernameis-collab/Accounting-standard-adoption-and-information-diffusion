@@ -3,6 +3,13 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-403",
+      "ts": "2026-10-28T21:45:49Z",
+      "session": 657,
+      "head": "618471f58fce8ddfe3735bdb7d29cd056c89c90e",
+      "text": "Session 657 verification pass: read prior agent task from durable handoff (\u00a79, Session 656 -> written for Session 657) and completed cycle. git fetch origin main -> origin/main 618471f (remote==HEAD==local HEAD verified); git status clean. python3 -m pytest -q tests/ not available (No module named pytest; committed suite last recorded live 173 passed, 0 failing, 173 def test_ across 12 files). campaign_state.json parsed with json.load (402 notes on arrival; prepended N-403, notes_count=403, updated_at refreshed, last_verified_head set to 618471f58fce8ddfe3735bdb7d29cd056c89c90e). Re-derived committed state (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows (2024-05-10 -> 2026-09-09), all 141 rows gate-pending; regenerated via scripts/build_panel.py and compared byte-identical (git diff clean after rebuild). Ledgers: experiment ledger last ID E-237; source ledger S-105, 100 records; decision log D-001..D-106. Free gates unchanged: filing_route and price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count still 0 < 200 (FAIL). Free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098). Cohort gate MET (12 >= 12). PH-1 remains closed; primary estimand inconclusive by construction. research/results.md reports no results. No gate advanced."
+    },
+    {
       "id": "N-402",
       "ts": "2026-10-28T21:05:00Z",
       "session": 656,
@@ -2196,7 +2203,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T21:05:00Z",
+  "updated_at": "2026-10-28T21:45:49Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2226,6 +2233,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "fb38938e8c6b5e9d12d7b0ddfe0951ae4a0091ad",
-  "notes_count": 402
+  "last_verified_head": "618471f58fce8ddfe3735bdb7d29cd056c89c90e",
+  "notes_count": 403
 }
