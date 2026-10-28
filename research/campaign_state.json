@@ -3,6 +3,20 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-321",
+      "ts": "2026-10-28T00:17:00Z",
+      "session": 568,
+      "type": "verification_pass",
+      "summary": "Session 568 verification pass: read handoff \u00a79 (Session 567 \u2192 written for Session 568), verified git HEAD/origin clean (e5cc41d/e5cc41d lineage), re-derived committed state (D-037), confirmed panel_v1.2 counts (141 rows/12 cohorts/39 cohort rows), audited gates/ledgers; PH-1 remains closed; primary estimand inconclusive_by_construction.",
+      "evidence": [
+        "git fetch origin main; git status clean; HEAD==origin/main e5cc41d0629f637638a716a5b16e51bfb02ce6cb",
+        "python3 -m pytest -q tests/ not available (No module named pytest); last live 173 passed, 0 failing",
+        "research/campaign_state.json parses with json.load (320 notes on arrival; prepended N-321)",
+        "panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct timing_cohort across 39 rows",
+        "gate evidence: filing_route & price_venue_set PENDING for all 141 PH-1 rows; 129 affected-firm lists undetermined; 12 jurisdiction-level only; admitted treatment-firm count 0<200 FAIL; free delisted/terminal-return price coverage not established FAIL"
+      ]
+    },
+    {
       "id": "N-320",
       "ts": "2026-10-28T00:14:42Z",
       "session": 567,
@@ -1536,7 +1550,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T00:14:42Z",
+  "updated_at": "2026-10-28T00:17:00Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1566,6 +1580,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "0e9d0343b1a6da02fbec6e64e07b662792b96320",
+  "last_verified_head": "e5cc41d0629f637638a716a5b16e51bfb02ce6cb",
   "notes_count": 312
 }
