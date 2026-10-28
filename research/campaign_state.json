@@ -3,6 +3,10 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-341",
+      "text": "Session 588 verification pass: read prior task from durable handoff (\u00a79 Session 587 -> written for Session 588) and completed cycle. git fetch origin main shows origin/main at b5fc9ed (remote==HEAD==local HEAD b5fc9ed7c8ceff0ab3d8fe778a73a64b86a93567); git status clean. pytest not available (last live 173 passed,0 failing). campaign_state parsed (340 notes on arrival; prepended N-341). Re-derived committed state (D-037): panel_v1.1 431 rows (8 in_registered_panel=true,423 pending); panel_v1.2 141 rows/12 cohorts (2024-05-10->2026-09-09), all pending, byte-identical from scripts/build_panel.py. Ledgers: exp last E-177; src S-105 101 records; dec D-001..D-093. Manifests 171/6/10/2/22; inventory 7 sources. Gates: filing_route/price_venue_set PENDING all 141 PH-1; 129 affected-firm undetermined, 12 jurisdiction-instrument only -> admitted treatment-firm 0<200 FAIL; free delisted/terminal-return coverage not established FAIL (D-042/E-047). Primary estimand inconclusive_by_construction; PH-1 closed. results.md no results. Park PARKED. No gate advanced."
+    },
+    {
       "id": "N-340",
       "text": "Session 587 verification pass: read prior task from durable handoff (\u00a79 Session 586 -> written for Session 587) and completed cycle. git fetch origin main shows origin/main at 3baf6b3 (remote==HEAD==local HEAD 3baf6b3da3821867d500dfc72bbc465f22507595); git status clean. pytest not available (last live 173 passed,0 failing). campaign_state 339 notes parsed; prepended N-340. Re-derived committed state (D-037): panel_v1.1 431 rows (8 in_registered_panel=true,423 pending); panel_v1.2 141 rows/12 cohorts (2024-05-10->2026-09-09), all pending, byte-identical from scripts/build_panel.py. Ledgers: exp last E-176; src S-105 101 records; dec D-001..D-093. Manifests 171/6/10/2/22; inventory 7 sources. Gates: filing_route/price_venue_set PENDING all 141 PH-1; 129 affected-firm undetermined, 12 jurisdiction-instrument only -> admitted treatment-firm 0<200 FAIL; free delisted/terminal-return coverage not established FAIL (D-042/E-047). Primary estimand inconclusive_by_construction; PH-1 closed. results.md no results. Park PARKED. No gate advanced."
     },
@@ -1717,7 +1721,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T03:16:28Z",
+  "updated_at": "2026-10-28T04:10:37Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1747,6 +1751,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "3baf6b3da3821867d500dfc72bbc465f22507595",
-  "notes_count": 340
+  "last_verified_head": "b5fc9ed7c8ceff0ab3d8fe778a73a64b86a93567",
+  "notes_count": 341
 }
