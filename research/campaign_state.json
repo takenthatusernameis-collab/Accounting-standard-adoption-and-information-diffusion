@@ -3,6 +3,19 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-344",
+      "ts": "2026-10-28T04:16:33.280711+00:00",
+      "session": 591,
+      "head": "ad87423627960cc8c6bfb05d3e0486ddd7c6ff9c",
+      "summary": "Session 591 verification pass: read handoff \u00a79 (Session 590->591); verified origin/main ad87423 == HEAD clean; pytest unavailable (173/0); panels 431/141 (12 cohorts) byte-identical; gates unchanged (0<200 firms FAIL, terminal-return coverage not established FAIL); PH-1 closed/inconclusive_by_construction; park PARKED. No gate advanced. Updated HANDOFF \u00a79 for Session 592.",
+      "tags": [
+        "verification",
+        "park",
+        "ph1",
+        "no-gate-advance"
+      ]
+    },
+    {
       "id": "N-343",
       "ts": "2026-10-28T04:13:00Z",
       "session": 590,
@@ -1747,7 +1760,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T04:12:51.980341+00:00",
+  "updated_at": "2026-10-28T04:16:33.280711+00:00",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -1777,6 +1790,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "159b568",
-  "notes_count": 343
+  "last_verified_head": "ad87423627960cc8c6bfb05d3e0486ddd7c6ff9c",
+  "notes_count": 344
 }
