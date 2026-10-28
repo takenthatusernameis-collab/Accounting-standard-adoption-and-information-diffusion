@@ -3,6 +3,13 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-331",
+      "ts": "2026-10-28T02:15:08Z",
+      "session": 578,
+      "type": "verification_pass",
+      "summary": "Session 578 read prior task from durable handoff (\u00a79 Session 577); verified state vs origin/main 4fca63a; re-derived panels, audited gates"
+    },
+    {
       "id": "N-330",
       "timestamp": "2026-10-28T02:11:04Z",
       "session": 577,
@@ -1671,7 +1678,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T02:11:04Z",
+  "updated_at": "2026-10-28T02:15:08Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
