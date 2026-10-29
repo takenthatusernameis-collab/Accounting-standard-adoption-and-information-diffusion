@@ -3,6 +3,27 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-434",
+      "session": 690,
+      "timestamp": "2026-10-29T05:46:26Z",
+      "note": "Session 690 verification pass: read prior agent task from durable handoff (§9, Session 689 -> written for Session 690) and completed cycle. git fetch origin main -> origin/main 6e37d66 (remote==HEAD==local HEAD verified at 6e37d66f64e1d9172436b78c3ef3f1ea3f0a6e3a); git status clean. pytest unavailable (no pytest module; committed suite last recorded live 173 passed, 0 failing). campaign_state.json parsed with json.load (notes_count 433 -> N-434 prepended, notes_count=434); refreshed updated_at and set last_verified_head to 6e37d66f64e1d9172436b78c3ef3f1ea3f0a6e3a. Re-derived committed state (D-037) by parsing files directly with the csv module: panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows (2024-05-10 -> 2026-09-09), all 141 rows gate-pending on filing_route and price_venue_set; regenerated via scripts/build_panel.py (141 rows, 12 condition-2 verified) and compared byte-identical (git diff clean after rebuild). Ledgers counted live: source ledger S-01..S-99 plus S-105 = 100 records; decision log D-001..D-109 (109 unique entries); experiment ledger E-000..E-268 (last E-268, 268 data rows) -> appended E-269 (269 total). Gates unchanged: cohort MET (12>=12); admitted treatment-firm count still 0 < 200 (FAIL; conditions 3-5 unverified for all 141 PH-1 rows); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047); filing_route and price_venue_set PENDING for all 141 PH-1 rows; FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) candidate_unverified; primary estimand inconclusive_by_construction; PH-1 remains closed; research/results.md reports no results. No gate advanced; no outcome-period return computed; no paid services; .github/workflows/main.yml unmodified. Handoff updated: Session 690 note prepended, §9 rewritten for Session 691, campaign_state.json updated, experiment ledger appended E-269.",
+      "head_sha": "6e37d66f64e1d9172436b78c3ef3f1ea3f0a6e3a",
+      "gates": {
+        "cohort_met": true,
+        "treatment_firm_count_ge_200": false,
+        "terminal_return_coverage_established": false,
+        "filing_route": "PENDING",
+        "price_venue_set": "PENDING"
+      },
+      "panel_counts": {
+        "v1_1_rows": 431,
+        "v1_1_true": 8,
+        "v1_2_rows": 141
+      },
+      "tests_passed": null,
+      "tests_failed": null
+    },
+    {
       "id": "N-433",
       "session": 688,
       "timestamp": "2026-10-29T05:39:31Z",
@@ -2469,7 +2490,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-29T05:39:31Z",
+  "updated_at": "2026-10-29T05:46:26Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2499,6 +2520,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "389f8112c40c3f66358c3275338ab1acf2446cff",
-  "notes_count": 433
+  "last_verified_head": "6e37d66f64e1d9172436b78c3ef3f1ea3f0a6e3a",
+  "notes_count": 434
 }
