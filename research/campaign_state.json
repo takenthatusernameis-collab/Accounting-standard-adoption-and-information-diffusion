@@ -2,6 +2,20 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    {
+      "id": "N-462",
+      "session": 722,
+      "timestamp": "2026-10-29T19:35:56Z",
+      "note": "Session 722 verification pass: read prior agent task from durable handoff (\u00a79 Session 721 -> written for Session 722) and completed cycle. git fetch origin main -> origin/main 8f99658214491c939b7f0f6b973f61010d62ff49 (remote==HEAD==local HEAD verified). git status clean. pytest not available. Re-derived committed state (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct timing_cohort across 39 rows; regenerated via scripts/build_panel.py byte-identical. Ledgers: source 101 records; decision log last D-120; experiment ledger 295 -> E-296 appended. Gates unchanged. No gate advanced; PH-1 remains closed; primary estimand inconclusive by construction. Park reported honestly.",
+      "head_sha": "8f99658214491c939b7f0f6b973f61010d62ff49",
+      "gates": {
+        "cohort_met": true,
+        "treatment_firm_count_ge_200": false,
+        "terminal_return_coverage_established": false,
+        "filing_route_pending_all": true,
+        "price_venue_set_pending_all": true
+      }
+    },
     "N-461: Session 721 verification pass (HEAD 237e279 verified)",
     {
       "id": "N-460",
@@ -2738,6 +2752,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "88a577814fed8991fe9de371a487891956d6590d",
-  "notes_count": 456
+  "last_verified_head": "8f99658214491c939b7f0f6b973f61010d62ff49",
+  "notes_count": 457
 }
