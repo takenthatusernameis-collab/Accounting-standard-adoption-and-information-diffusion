@@ -3,6 +3,13 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-427",
+      "timestamp": "2026-10-29T04:49:00Z",
+      "session": 682,
+      "head": "5312b1f18496280efdd5c19b17a24ae1345a3ef7",
+      "summary": "Session 682 verification pass: read prior agent task from durable handoff (\u00a79, Session 681 \u2192 written for Session 682) and completed cycle. git fetch origin main -> origin/main 5312b1f (remote == HEAD == local HEAD verified); git status clean. python3 -m pytest -q tests/ -> 173 passed, 0 failing. campaign_state.json parsed (426 notes on arrival; prepended N-427, notes_count=427). Panels re-derived from committed CSVs with csv module (panel_v1.1.csv 431 rows / 8 in_registered_panel=true / 423 pending; panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows (2024-05-10 \u2192 2026-09-09), all 141 rows gate-pending on filing_route and price_venue_set) and scripts/build_panel.py rebuild confirmed byte-identical (git diff clean after rebuild). Ledgers counted live: source ledger S-01\u2026S-99 plus S-105 = 100 records; decision log D-001\u2026D-109; experiment ledger E-111\u2026E-261 = 151 data rows (last E-261). Free gates unchanged: cohort MET (12\u226512); admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047); filing_route and price_venue_set PENDING for all 141 PH-1 rows; FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) candidate_unverified, no free survivorship-clean route; primary estimand inconclusive_by_construction; PH-1 remains closed; research/results.md reports no results. No gate advanced. Prepended N-427, set notes_count=427, set last_verified_head to 5312b1f18496280efdd5c19b17a24ae1345a3ef7, updated handoff \u00a79 for Session 683."
+    },
+    {
       "id": "N-426",
       "timestamp": "2026-10-29T04:00:39Z",
       "session": 681,
@@ -2392,6 +2399,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "d61939da04a97e163280f445404fbab3ad636a16",
-  "notes_count": 426
+  "last_verified_head": "5312b1f18496280efdd5c19b17a24ae1345a3ef7",
+  "notes_count": 427
 }
