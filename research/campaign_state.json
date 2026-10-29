@@ -3,11 +3,18 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-411",
+      "session": 665,
+      "ts": "2026-10-29T00:41:56Z",
+      "head": "42c771513ffb20e4a706e3261bf008704a6ad8cd",
+      "text": "Session 665 verification pass: read prior agent task from durable handoff (\u00a79, Session 664 -> written for Session 665) and completed cycle. git fetch origin main -> origin/main 42c771513ffb20e4a706e3261bf008704a6ad8cd (remote==HEAD==local HEAD verified); git status clean. python3 -m pytest -q tests/ not available (No module named pytest; committed suite last recorded live 173 passed, 0 failing). campaign_state.json parsed with json.load (410 notes on arrival; prepended N-411, notes_count=411, updated_at refreshed, last_verified_head set to 42c771513ffb20e4a706e3261bf008704a6ad8cd). Re-derived committed state (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows (2024-05-10 -> 2026-09-09), all 141 rows gate-pending; regenerated via scripts/build_panel.py and compared byte-identical (git diff clean after rebuild). Ledgers: experiment ledger last ID E-244 -> appended E-245; source ledger S-105, 100 records (101 data rows incl. header); decision log D-001..D-108. Free gates unchanged: filing_route and price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count still 0 < 200 (FAIL). Free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098). Cohort gate MET (12 >= 12). PH-1 remains closed; primary estimand inconclusive by construction. research/results.md reports no results. No gate advanced."
+    },
+    {
       "id": "N-410",
       "session": 664,
       "ts": "2026-10-28T23:46:45Z",
       "head": "8c32ba4f6f0405d27623312a55cad865413dac9b",
-      "text": "Session 664 verification pass: read prior agent task from durable handoff (§9, Session 663 -> written for Session 664) and completed cycle. git fetch origin main -> origin/main 8c32ba4f6f0405d27623312a55cad865413dac9b (remote==HEAD==local HEAD verified); git status clean. python3 -m pytest -q tests/ not available (No module named pytest; committed suite last recorded live 173 passed, 0 failing). campaign_state.json parsed with json.load (409 notes on arrival; prepended N-410, notes_count=410, updated_at refreshed, last_verified_head set to 8c32ba4f6f0405d27623312a55cad865413dac9b). Re-derived committed state (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows (2024-05-10 -> 2026-09-09), all 141 rows gate-pending; regenerated via scripts/build_panel.py and compared byte-identical (git diff clean after rebuild). Ledgers: experiment ledger last ID E-243 -> appended E-244; source ledger S-105, 100 records (101 data rows incl. header); decision log D-001..D-107 -> appended D-108. Free gates unchanged: filing_route and price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count still 0 < 200 (FAIL). Free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098). Cohort gate MET (12 >= 12). PH-1 remains closed; primary estimand inconclusive by construction. research/results.md reports no results. No gate advanced."
+      "text": "Session 664 verification pass: read prior agent task from durable handoff (\u00a79, Session 663 -> written for Session 664) and completed cycle. git fetch origin main -> origin/main 8c32ba4f6f0405d27623312a55cad865413dac9b (remote==HEAD==local HEAD verified); git status clean. python3 -m pytest -q tests/ not available (No module named pytest; committed suite last recorded live 173 passed, 0 failing). campaign_state.json parsed with json.load (409 notes on arrival; prepended N-410, notes_count=410, updated_at refreshed, last_verified_head set to 8c32ba4f6f0405d27623312a55cad865413dac9b). Re-derived committed state (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows (2024-05-10 -> 2026-09-09), all 141 rows gate-pending; regenerated via scripts/build_panel.py and compared byte-identical (git diff clean after rebuild). Ledgers: experiment ledger last ID E-243 -> appended E-244; source ledger S-105, 100 records (101 data rows incl. header); decision log D-001..D-107 -> appended D-108. Free gates unchanged: filing_route and price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count still 0 < 200 (FAIL). Free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098). Cohort gate MET (12 >= 12). PH-1 remains closed; primary estimand inconclusive by construction. research/results.md reports no results. No gate advanced."
     },
     {
       "id": "N-409",
@@ -2252,7 +2259,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-28T23:46:45Z",
+  "updated_at": "2026-10-29T00:41:56Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2282,6 +2289,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "8c32ba4f6f0405d27623312a55cad865413dac9b",
-  "notes_count": 410
+  "last_verified_head": "42c771513ffb20e4a706e3261bf008704a6ad8cd",
+  "notes_count": 411
 }
