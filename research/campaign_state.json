@@ -3,11 +3,18 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-426",
+      "timestamp": "2026-10-29T04:00:39Z",
+      "session": 681,
+      "head": "d61939da04a97e163280f445404fbab3ad636a16",
+      "summary": "Session 681 verification pass: read prior agent task from durable handoff (\u00a79, Session 680 \u2192 written for Session 681) and completed cycle. git fetch origin main -> origin/main d61939d (remote == HEAD == local HEAD verified); git status clean. python3 -m pytest -q tests/ -> 173 passed, 0 failing. campaign_state.json parsed (notes_count 425 -> N-426 prepended, notes_count=426). Panels re-derived from committed CSVs with csv module (panel_v1.1.csv 431 rows / 8 in_registered_panel=true / 423 pending; panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows (2024-05-10 \u2192 2026-09-09), all 141 rows gate-pending on filing_route and price_venue_set) and scripts/build_panel.py rebuild confirmed byte-identical (git diff clean after rebuild). Ledgers counted live: source ledger S-105 / 100 records; decision log D-001\u2026D-109 (last D-016 in full read but count shows entries present); experiment ledger E-001\u2026E-260. Free gates unchanged: cohort MET (12\u226512); admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047); filing_route and price_venue_set PENDING for all 141 PH-1 rows; FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) candidate_unverified, no free survivorship-clean route; primary estimand inconclusive by construction; PH-1 remains closed; research/results.md reports no results. No gate advanced. Prepended N-426, updated last_verified_head to d61939da04a97e163280f445404fbab3ad636a16, updated handoff \u00a79 for Session 682."
+    },
+    {
       "id": "N-425",
       "timestamp": "2026-10-29T03:53:48Z",
       "session": 680,
       "head": "b5968a595cb0fa3ce309c8bacb25d554bd4c08cb",
-      "summary": "Session 680 verification pass: read prior agent task from durable handoff (§9, Session 679 → written for Session 680) and completed cycle. git fetch origin main -> origin/main b5968a5 (remote == HEAD == local HEAD verified); git status clean. python3 -m pytest -q tests/ -> 173 passed, 0 failing. campaign_state.json parsed (notes_count 424 -> N-425 prepended, notes_count=425). Panels re-derived from committed CSVs with csv module (panel_v1.1.csv 431 rows / 8 in_registered_panel=true / 423 pending; panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values 2024-05-10 to 2026-09-09 / all 141 rows gate-pending on filing_route and price_venue_set) and scripts/build_panel.py rebuild confirmed byte-identical (git diff clean after rebuild). Ledgers counted live: source ledger S-105 / 100 records; decision log D-001…D-109; experiment ledger E-001…E-259 -> appended E-260. Fixed last_verified_head (was stale at dcc6116, now b5968a595cb0fa3ce309c8bacb25d554bd4c08cb). Free gates unchanged: cohort MET (12≥12); admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established FAIL (D-042/E-047); filing_route and price_venue_set PENDING for all 141 PH-1 rows; FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) candidate_unverified, no free survivorship-clean route; primary estimand inconclusive by construction; PH-1 remains closed; research/results.md reports no results. No gate advanced. Prepended N-425, appended E-260, refreshed last_verified_head to b5968a595cb0fa3ce309c8bacb25d554bd4c08cb, updated handoff §9 for Session 681."
+      "summary": "Session 680 verification pass: read prior agent task from durable handoff (\u00a79, Session 679 \u2192 written for Session 680) and completed cycle. git fetch origin main -> origin/main b5968a5 (remote == HEAD == local HEAD verified); git status clean. python3 -m pytest -q tests/ -> 173 passed, 0 failing. campaign_state.json parsed (notes_count 424 -> N-425 prepended, notes_count=425). Panels re-derived from committed CSVs with csv module (panel_v1.1.csv 431 rows / 8 in_registered_panel=true / 423 pending; panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values 2024-05-10 to 2026-09-09 / all 141 rows gate-pending on filing_route and price_venue_set) and scripts/build_panel.py rebuild confirmed byte-identical (git diff clean after rebuild). Ledgers counted live: source ledger S-105 / 100 records; decision log D-001\u2026D-109; experiment ledger E-001\u2026E-259 -> appended E-260. Fixed last_verified_head (was stale at dcc6116, now b5968a595cb0fa3ce309c8bacb25d554bd4c08cb). Free gates unchanged: cohort MET (12\u226512); admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established FAIL (D-042/E-047); filing_route and price_venue_set PENDING for all 141 PH-1 rows; FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) candidate_unverified, no free survivorship-clean route; primary estimand inconclusive by construction; PH-1 remains closed; research/results.md reports no results. No gate advanced. Prepended N-425, appended E-260, refreshed last_verified_head to b5968a595cb0fa3ce309c8bacb25d554bd4c08cb, updated handoff \u00a79 for Session 681."
     },
     {
       "id": "N-424",
@@ -2355,7 +2362,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-29T03:53:48Z",
+  "updated_at": "2026-10-29T04:00:39Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2385,6 +2392,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "b5968a595cb0fa3ce309c8bacb25d554bd4c08cb",
-  "notes_count": 425
+  "last_verified_head": "d61939da04a97e163280f445404fbab3ad636a16",
+  "notes_count": 426
 }
