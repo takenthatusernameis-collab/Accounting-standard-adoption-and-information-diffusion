@@ -3,6 +3,13 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-413",
+      "session": 667,
+      "ts": "2026-10-29T00:46:38Z",
+      "head": "70af81cf377b45ab272be32cbf56e5eb5c11a847",
+      "text": "Session 667 verification pass: read prior agent task from durable handoff (\u00a79, Session 666 -> written for Session 667) and completed cycle. git fetch origin main -> origin/main 70af81cf377b45ab272be32cbf56e5eb5c11a847 (remote==HEAD==local HEAD verified); git status clean. python3 -m pytest -q tests/ not available (No module named pytest; committed suite last recorded live 173 passed, 0 failing). campaign_state.json parsed (412 notes on arrival; prepended N-413, notes_count=413). Re-derived committed state (D-037): panel_v1.1 431 rows (8 true/423 pending); panel_v1.2 141 rows / 12 cohorts across 39 rows; rebuild byte-identical. Free gates unchanged; PH-1 closed; no outcome returns computed. Prepended N-413, appended E-247, updated handoff \u00a79 for Session 668."
+    },
+    {
       "id": "N-412",
       "session": 666,
       "ts": "2026-10-29T00:45:36Z",
@@ -2266,7 +2273,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-29T00:45:36Z",
+  "updated_at": "2026-10-29T00:46:38Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2296,6 +2303,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "26366f28a3d2d1e88e66e281ceb445f0ff53a9b2",
-  "notes_count": 412
+  "last_verified_head": "70af81cf377b45ab272be32cbf56e5eb5c11a847",
+  "notes_count": 413
 }
