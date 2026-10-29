@@ -3,6 +3,27 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-430",
+      "session": 685,
+      "timestamp": "2026-10-29T04:56:23Z",
+      "note": "Session 685 verification pass: read prior agent task from durable handoff (\u00a79, Session 684 -> written for Session 685) and completed cycle. git fetch origin main -> origin/main ca0dbdb (remote==HEAD==local HEAD verified); git status clean. python3 -m pytest -q tests/ -> 173 passed, 0 failing. campaign_state.json parsed; panels re-derived from committed CSVs (panel_v1.1.csv 431 rows / 8 true / 423 pending; panel_v1.2.csv 141 rows / 12 cohorts / 39 non-empty rows, all gate-pending) and scripts/build_panel.py rebuild byte-identical. Ledgers counted live: source S-01..S-105 (100 records); decision D-001..D-109; experiment E-111..E-264. Gates unchanged: cohort MET (12>=12); treatment-firm 0<200 FAIL; terminal-return coverage not established FAIL (D-042/E-047); filing_route/price_venue_set PENDING all 141 PH-1 rows; FCA root navigation closed (D-098); primary estimand inconclusive_by_construction; PH-1 closed; research/results.md reports no results. No gate advanced; no outcome-period return computed; no paid services.",
+      "head_sha": "ca0dbdb43581bf2c5604284079d2158ded6b1503",
+      "gates": {
+        "cohort_met": true,
+        "treatment_firm_count_ge_200": false,
+        "terminal_return_coverage_established": false,
+        "filing_route": "PENDING",
+        "price_venue_set": "PENDING"
+      },
+      "panel_counts": {
+        "v1_1_rows": 431,
+        "v1_1_true": 8,
+        "v1_2_rows": 141
+      },
+      "tests_passed": 173,
+      "tests_failed": 0
+    },
+    {
       "id": "N-429",
       "timestamp": "2026-10-29T04:54:30Z",
       "session": 684,
