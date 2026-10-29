@@ -3,6 +3,14 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-428",
+      "timestamp": "2026-10-29T04:53:10Z",
+      "session": 683,
+      "type": "verification_pass",
+      "summary": "Session 683: read prior handoff \u00a79 (Session 682), verified committed state (git fetch origin/main up to date at ca0dbdb43581bf2c5604284079d2158ded6b1503; tests 173 passed), rebuilt panels (panel_v1.1 431 rows/8 true, panel_v1.2 141 rows/12 cohorts) byte-identical, ledgers counted (S-100, D-001..D-109, E-262), gates unchanged (cohort MET, treatment-firm 0<200 FAIL, price coverage not established FAIL), PH-1 closed; updated handoff for Session 684.",
+      "commit": "ca0dbdb43581bf2c5604284079d2158ded6b1503"
+    },
+    {
       "id": "N-427",
       "timestamp": "2026-10-29T04:49:00Z",
       "session": 682,
@@ -2369,7 +2377,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-29T04:00:39Z",
+  "updated_at": "2026-10-29T04:53:10Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2399,6 +2407,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "5312b1f18496280efdd5c19b17a24ae1345a3ef7",
-  "notes_count": 427
+  "last_verified_head": "ca0dbdb43581bf2c5604284079d2158ded6b1503",
+  "notes_count": 428
 }
