@@ -3,11 +3,11 @@
   "conflicts": [],
   "notes": [
     {
-        "note_id": "N-452",
-        "timestamp": "2026-10-29T11:22:51Z",
-        "session": 711,
-        "type": "verification",
-        "summary": "N-452 Session 711 verification pass (2026-10-29T11:22:51Z): read prior agent task from durable handoff (§9 Session 710 -> written for Session 711) and completed cycle. git fetch origin main -> origin/main b7c773d (remote==HEAD==local HEAD verified at b7c773dacd3000ea99b086cfd10e199aaa3e5455); git status clean. pytest not available in this environment (No module named pytest; committed suite last recorded live 173 passed, 0 failing). research/campaign_state.json parsed with json.load (notes_count 451 -> 452 with N-452 prepended, refreshed updated_at, last_verified_head corrected from stale 66b0d0485e8afbc267801a1faf82ae0d99fb6535 to b7c773dacd3000ea99b086cfd10e199aaa3e5455). Re-derived committed state (D-037) by parsing files directly with the csv module: panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows (2024-05-10 -> 2026-09-09), all 141 rows gate-pending on filing_route and price_venue_set; regenerated via scripts/build_panel.py (141 rows, 12 condition-2 verified) and compared byte-identical (cmp clean for both v1.1 and v1.2; working tree restored). Ledgers counted live: source ledger 100 data records (S-01..S-99 plus S-105); decision log last entry D-118; experiment ledger 287 data rows (last E-287) -> E-288 appended. Manifests re-counted live: ifrs_jurisdiction_profiles.jsonl 171, linguistic_sources.jsonl 6, p1_carveout_check.jsonl 10, price_provider_smoke_attempts.jsonl 2, source_ledger_verification.jsonl 22; research/free_source_inventory/inventory.csv 7 sources (F-001..F-007). Free gates unchanged: filing_route and price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count still 0 < 200 (FAIL). Free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) candidate_unverified. Cohort gate MET (12 >= 12). PH-1 remains closed; primary estimand inconclusive by construction. research/results.md reports no results. No gate advanced. No outcome-period return computed; no paid services; .github/workflows/main.yml unmodified."
+      "note_id": "N-452",
+      "timestamp": "2026-10-29T11:22:51Z",
+      "session": 711,
+      "type": "verification",
+      "summary": "N-452 Session 711 verification pass (2026-10-29T11:22:51Z): read prior agent task from durable handoff (\u00a79 Session 710 -> written for Session 711) and completed cycle. git fetch origin main -> origin/main b7c773d (remote==HEAD==local HEAD verified at b7c773dacd3000ea99b086cfd10e199aaa3e5455); git status clean. pytest not available in this environment (No module named pytest; committed suite last recorded live 173 passed, 0 failing). research/campaign_state.json parsed with json.load (notes_count 451 -> 452 with N-452 prepended, refreshed updated_at, last_verified_head corrected from stale 66b0d0485e8afbc267801a1faf82ae0d99fb6535 to b7c773dacd3000ea99b086cfd10e199aaa3e5455). Re-derived committed state (D-037) by parsing files directly with the csv module: panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows (2024-05-10 -> 2026-09-09), all 141 rows gate-pending on filing_route and price_venue_set; regenerated via scripts/build_panel.py (141 rows, 12 condition-2 verified) and compared byte-identical (cmp clean for both v1.1 and v1.2; working tree restored). Ledgers counted live: source ledger 100 data records (S-01..S-99 plus S-105); decision log last entry D-118; experiment ledger 287 data rows (last E-287) -> E-288 appended. Manifests re-counted live: ifrs_jurisdiction_profiles.jsonl 171, linguistic_sources.jsonl 6, p1_carveout_check.jsonl 10, price_provider_smoke_attempts.jsonl 2, source_ledger_verification.jsonl 22; research/free_source_inventory/inventory.csv 7 sources (F-001..F-007). Free gates unchanged: filing_route and price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count still 0 < 200 (FAIL). Free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) candidate_unverified. Cohort gate MET (12 >= 12). PH-1 remains closed; primary estimand inconclusive by construction. research/results.md reports no results. No gate advanced. No outcome-period return computed; no paid services; .github/workflows/main.yml unmodified."
     },
     {
       "note_id": "N-451",
@@ -2664,7 +2664,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-29T11:22:51Z",
+  "updated_at": "2026-10-29T16:26:44Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2694,6 +2694,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "b7c773dacd3000ea99b086cfd10e199aaa3e5455",
-  "notes_count": 453
+  "last_verified_head": "eefa33f16aa8b221a193525c252a6d0e762ee1c1",
+  "notes_count": 454
 }
