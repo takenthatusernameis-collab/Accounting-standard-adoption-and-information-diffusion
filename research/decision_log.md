@@ -2316,3 +2316,7 @@ Session 523 read prior agent task from durable handoff (§9, Session 522) and co
 **Decision.** No gate advancement possible under the free-only route (D-032); FCA, Stooq and Yahoo navigation all remain closed/exhausted (D-098); record verification pass E-277, decision D-112, and rewrite §9 for Session 699.
 
 **Effect.** Handoff updated (`research/HANDOFF.md`, `research/campaign_state.json` N-442, `research/experiment_ledger.csv` E-277, `research/decision_log.md` D-112).
+
+**D-113 — Verification pass (Session 699), no gate advancement.**
+
+No gate advancement possible under free-only route (D-032). Park remains PARKED. Handoff updated for Session 700.
