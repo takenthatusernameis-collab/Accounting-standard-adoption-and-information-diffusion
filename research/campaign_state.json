@@ -3,6 +3,20 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-469",
+      "session": 735,
+      "timestamp": "2026-10-29T21:47:33Z",
+      "note": "Session 735 verification pass: read prior agent task from durable handoff (\u00a79, Session 734 \u2192 written for Session 735) and completed cycle. git fetch origin main -> origin/main 3e7925a (remote==HEAD==local HEAD verified at 3e7925aa86f8b1788c2dff5bfc5e962e4012ae4f); git status clean. pytest not available in this environment. research/campaign_state.json parsed with json.load (notes_count field 465 but actual len(notes) 464 \u2014 stale field corrected to 465 with N-469 prepended; last_verified_head corrected from stale 0b8d5c93b40380d582059164c5157e0adaae4328 to 3e7925aa86f8b1788c2dff5bfc5e962e4012ae4f; updated_at refreshed). Re-derived committed state (D-037) by parsing files directly with the csv module: panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows, all 141 rows gate-pending on filing_route and price_venue_set; regenerated via scripts/build_panel.py (141 rows, 12 condition-2 verified) and compared byte-identical (git diff clean after rebuild). Ledgers counted live: source ledger 100 data records (last S-105); decision log 72 D-entries, last D-073 (the handoff's D-120 was not re-derived; live parse shows D-073); experiment ledger 309 data rows -> E-309 appended. Gates unchanged: cohort gate MET (12>=12); filing_route and price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count still 0 < 200 (FAIL). Free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) remain candidate_unverified. PH-1 remains closed; primary estimand inconclusive by construction. research/results.md reports no results. No gate advanced; no outcome-period return computed; no paid services; .github/workflows/main.yml unmodified.",
+      "head_sha": "3e7925aa86f8b1788c2dff5bfc5e962e4012ae4f",
+      "gates": {
+        "cohort_met": true,
+        "treatment_firm_count_ge_200": false,
+        "terminal_return_coverage_established": false,
+        "filing_route_pending_all": true,
+        "price_venue_set_pending_all": true
+      }
+    },
+    {
       "id": "N-468",
       "session": 733,
       "timestamp": "2026-10-29T21:50:00Z",
@@ -2804,7 +2818,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-29T21:46:29Z",
+  "updated_at": "2026-10-29T21:47:33Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2834,6 +2848,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "0b8d5c93b40380d582059164c5157e0adaae4328",
+  "last_verified_head": "3e7925aa86f8b1788c2dff5bfc5e962e4012ae4f",
   "notes_count": 465
 }
