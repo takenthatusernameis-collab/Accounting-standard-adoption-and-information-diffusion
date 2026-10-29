@@ -3,6 +3,13 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-419",
+      "timestamp": "2026-10-29T02:46:36Z",
+      "session": 674,
+      "head": "23bbbf7db73a82ac0874fd1c779d9d6611a5d804",
+      "summary": "Session 674 verification pass: read prior agent task from durable handoff (\u00a79, Session 673 -> written for Session 674) and completed cycle."
+    },
+    {
       "note_id": "N-418",
       "timestamp": "2026-10-29T01:49:16Z",
       "agent_session": 672,
@@ -2306,7 +2313,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-29T01:50:33Z",
+  "updated_at": "2026-10-29T02:46:36Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2336,6 +2343,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "e2d10be4bbd3e031bd8a927979b3bfadd9c16f4e",
-  "notes_count": 418
+  "last_verified_head": "23bbbf7db73a82ac0874fd1c779d9d6611a5d804",
+  "notes_count": 419
 }
