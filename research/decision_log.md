@@ -2328,3 +2328,14 @@ No gate advancement possible under free-only route (D-032). Park remains PARKED.
 **D-115 — Verification pass (Session 701), no gate advancement.**
 
 No gate advancement possible under free-only route (D-032). Park remains PARKED. Handoff updated for Session 702.
+
+
+**D-116 — Verification pass (Session 704), no gate advancement.**
+
+**Context.** Verification pass per durable handoff §9 (Session 703 → written for Session 704). `git fetch origin main` → origin/main at **`93dd16e`** (remote == HEAD == local HEAD verified at `93dd16e...` same as origin); `git status` clean. `python3 -m pytest -q tests/` **not available in this environment** (`No module named pytest`; committed suite last recorded live **173 passed, 0 failing**). `research/campaign_state.json` parses with `json.load` (**446** notes on arrival, **447** after this prepend; `updated_at` refreshed, `last_verified_head` **`0eeeca66bdcc084d09e58c7c90f8aeb92f51a3ce`**). Re-derived committed state (D-037) by parsing the CSVs directly with the `csv` module: `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **12** distinct non-empty `timing_cohort` values across **39** rows, all 141 rows gate-pending on `filing_route` and `price_venue_set`; regenerated via `scripts/build_panel.py` (141 rows, 12 condition-2 verified) and compared **byte-identical** (`git diff` clean after rebuild). Ledgers counted live: source ledger **100** data records (S-01 … S-99 plus S-105); decision log **D-001 … D-115** on arrival, **D-116** after this append; experiment ledger **281** data rows on arrival (last **E-281**), **282** after this append (**E-282**).
+
+**Gate evidence re-audited from committed files.** Cohort gate **MET (12 ≥ 12)**. `filing_route` and `price_venue_set` PENDING for all 141 PH-1 rows; admitted treatment-firm count **still 0 < 200 (FAIL)**. Free delisted/terminal-return price coverage **not established (FAIL, D-042/E-047)**. FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) remain `candidate_unverified`. Primary estimand **inconclusive_by_construction**; PH-1 remains closed. `research/results.md` continues to report no results. No gate advanced; no outcome-period return computed; no paid services; `.github/workflows/main.yml` unmodified.
+
+**Decision.** No gate advancement possible under the free-only route (D-032); record verification pass E-282, decision D-116, and rewrite §9 for Session 705.
+
+**Effect.** Handoff updated (`research/HANDOFF.md`, `research/campaign_state.json` N-447, `research/experiment_ledger.csv` E-282, `research/decision_log.md` D-116).

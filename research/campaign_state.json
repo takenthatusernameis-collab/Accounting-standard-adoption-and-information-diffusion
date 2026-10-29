@@ -2,6 +2,13 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    {
+      "note_id": "N-447",
+      "timestamp": "2026-10-29T09:41:38Z",
+      "session": 704,
+      "type": "verification",
+      "summary": "N-447 Session 704 verification pass (2026-10-29T09:41:38Z): read prior agent task from durable handoff (\u00a79 Session 703 -> written for Session 704) and completed cycle. git fetch origin main -> origin/main 93dd16e (remote==HEAD==local HEAD verified); git status clean. pytest unavailable (No module named pytest; committed suite last recorded live 173 passed, 0 failing). campaign_state parsed with json.load (notes_count 446 -> N-447 prepended, notes_count=447, last_verified_head remains 0eeeca66bdcc084d09e58c7c90f8aeb92f51a3ce). Re-derived committed state (D-037) by parsing files directly with the csv module: panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows, all 141 rows gate-pending on filing_route and price_venue_set; regenerated via scripts/build_panel.py (141 rows, 12 condition-2 verified) and compared byte-identical (git diff clean after rebuild). Ledgers counted live: source ledger 100 records (S-01..S-99 plus S-105); decision log last entry D-115; experiment ledger last id E-281. Gates unchanged: cohort MET (12>=12); admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047); filing_route and price_venue_set PENDING for all 141 PH-1 rows; FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) candidate_unverified. Primary estimand inconclusive_by_construction; PH-1 remains closed; research/results.md reports no results. No gate advanced; no outcome-period return computed; no paid services; .github/workflows/main.yml unmodified."
+    },
     "N-446 Session 703 verification pass (2026-10-29T09:36:12Z): read prior agent task from durable handoff (\u00a79 Session 702 -> written for Session 703) and completed cycle. git fetch origin/main verified at 0eeeca6; git status clean. pytest unavailable (no pytest module). campaign_state parsed, panels re-derived via csv module and regenerated via scripts/build_panel.py byte-identical. Ledgers counted live.",
     {
       "note_id": "N-445",
@@ -2636,7 +2643,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-29T09:37:20Z",
+  "updated_at": "2026-10-29T09:41:38Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2666,6 +2673,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "0eeeca66bdcc084d09e58c7c90f8aeb92f51a3ce",
-  "notes_count": 446
+  "last_verified_head": "93dd16e29333b342ba1db3ca0336371b76d00179",
+  "notes_count": 447
 }
