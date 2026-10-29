@@ -3,6 +3,13 @@
   "conflicts": [],
   "notes": [
     {
+      "note_id": "N-445",
+      "timestamp": "2026-10-29T08:41:15Z",
+      "session": 701,
+      "type": "verification",
+      "summary": "Session 701 verification pass: read prior agent task from durable handoff (\u00a79 Session 700\u2192written for Session 701), re-verified committed state (panels byte-identical, gates unchanged), no gate advancement, park PARKED, updated handoff for Session 702."
+    },
+    {
       "note_id": "N-444",
       "timestamp": "2026-10-29T08:40:38Z",
       "session": 700,
@@ -2628,7 +2635,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-29T08:40:38Z",
+  "updated_at": "2026-10-29T08:41:15Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2658,6 +2665,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "e453ef0bd446d64b11a57c71db09b7b12d802595",
-  "notes_count": 444
+  "last_verified_head": "afbac9a5b8bad8677710688e4eb969dedce603a9",
+  "notes_count": 445
 }
