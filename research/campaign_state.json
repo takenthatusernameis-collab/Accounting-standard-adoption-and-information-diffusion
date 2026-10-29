@@ -3,6 +3,13 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-412",
+      "session": 666,
+      "ts": "2026-10-29T00:45:36Z",
+      "head": "26366f28a3d2d1e88e66e281ceb445f0ff53a9b2",
+      "text": "Session 666 verification pass: read prior agent task from durable handoff (\u00a79, Session 665 -> written for Session 666) and completed cycle. git fetch origin main -> origin/main 26366f28a3d2d1e88e66e281ceb445f0ff53a9b2 (remote==HEAD==local HEAD verified); git status clean. python3 -m pytest -q tests/ not available (No module named pytest; committed suite last recorded live 173 passed, 0 failing). campaign_state.json parsed with json.load (411 notes on arrival; prepended N-412, notes_count=412, updated_at refreshed, last_verified_head set to 26366f28a3d2d1e88e66e281ceb445f0ff53a9b2). Re-derived committed state (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values across 39 rows (2024-05-10 -> 2026-09-09), all 141 rows gate-pending; regenerated via scripts/build_panel.py and compared byte-identical (git diff clean after rebuild). Ledgers counted live: source ledger S-105, 100 records (101 data rows incl. header); decision log D-001..D-108; experiment ledger E-245 last (245 data rows). Free gates unchanged: filing_route and price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count still 0 < 200 (FAIL). Free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098). Cohort gate MET (12 >= 12). PH-1 remains closed; primary estimand inconclusive by construction. research/results.md reports no results. No gate advanced."
+    },
+    {
       "id": "N-411",
       "session": 665,
       "ts": "2026-10-29T00:41:56Z",
@@ -2259,7 +2266,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-29T00:41:56Z",
+  "updated_at": "2026-10-29T00:45:36Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2289,6 +2296,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "42c771513ffb20e4a706e3261bf008704a6ad8cd",
-  "notes_count": 411
+  "last_verified_head": "26366f28a3d2d1e88e66e281ceb445f0ff53a9b2",
+  "notes_count": 412
 }
