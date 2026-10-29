@@ -3,6 +3,12 @@
   "conflicts": [],
   "notes": [
     {
+      "note_id": "N-440",
+      "session": 696,
+      "timestamp": "2026-10-29T07:34:27Z",
+      "summary": "Session 696 verification pass"
+    },
+    {
       "id": "N-439",
       "session": 695,
       "timestamp": "2026-10-29T06:52:31Z",
@@ -2595,7 +2601,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-29T06:52:31Z",
+  "updated_at": "2026-10-29T07:34:27Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2626,5 +2632,5 @@
     ]
   },
   "last_verified_head": "025b210a76eb129bfce34a04c1ab47b3d3ac8fa9",
-  "notes_count": 439
+  "notes_count": 440
 }
