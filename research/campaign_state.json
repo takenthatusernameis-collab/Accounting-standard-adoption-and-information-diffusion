@@ -3,6 +3,20 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-468",
+      "session": 733,
+      "timestamp": "2026-10-29T21:50:00Z",
+      "note": "Session 733 verification pass: read prior agent task from durable handoff (\u00a79 Session 732 \u2192 written for Session 733) and completed cycle. git fetch origin main -> origin/main 0b8d5c9 (remote==HEAD==local HEAD verified at 0b8d5c93b40380d582059164c5157e0adaae4328); git status clean. pytest not available. campaign_state parsed; last_verified_head corrected from stale 99cd672 to 0b8d5c9. Panel counts re-derived: v1.1 431 rows (8 registered), v1.2 141 rows / 12 cohorts; rebuild byte-identical. Ledgers: source 100, decision last D-120, experiment 310 -> E-307 appended. Gates unchanged. PH-1 closed; primary estimand inconclusive. No results. No paid services; workflow unmodified.",
+      "head_sha": "0b8d5c93b40380d582059164c5157e0adaae4328",
+      "gates": {
+        "cohort_met": true,
+        "treatment_firm_count_ge_200": false,
+        "terminal_return_coverage_established": false,
+        "filing_route_pending_all": true,
+        "price_venue_set_pending_all": true
+      }
+    },
+    {
       "id": "N-467",
       "session": 730,
       "timestamp": "2026-10-29T20:44:00Z",
@@ -2790,7 +2804,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-29T21:45:00Z",
+  "updated_at": "2026-10-29T21:50:00Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2820,6 +2834,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "99cd6725e522e7873ce804bd5b0e282275e845f3",
+  "last_verified_head": "0b8d5c93b40380d582059164c5157e0adaae4328",
   "notes_count": 464
 }
