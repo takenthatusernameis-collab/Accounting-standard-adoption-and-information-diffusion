@@ -3,6 +3,12 @@
   "conflicts": [],
   "notes": [
     {
+      "note_id": "N-417",
+      "timestamp": "2026-10-29T01:47:55Z",
+      "agent_session": 671,
+      "summary": "Session 671 verification pass: read prior handoff \u00a79 (Session 670), verified committed state (origin/main 435e9bc, HEAD d8b8c12 context; git clean), tests 173 passed, campaign_state parsed (notes_count 416\u2192417), panels re-derived via build_panel.py (panel_v1.1 431/8, panel_v1.2 141/12 cohorts/39 rows) byte-identical, ledgers counted live (S-105/100, D-001\u2026D-073, E-250 last). Gates unchanged: cohort MET (12\u226512), filing_route/price_venue_set PENDING for all 141, admitted treatment firms 0<200 FAIL, free delisted/terminal-return price coverage not established FAIL, PH-1 remains closed, primary estimand inconclusive by construction, results.md reports no results. No gate advanced."
+    },
+    {
       "id": "N-416",
       "session": 670,
       "ts": "2026-10-29T01:45:31Z",
@@ -2294,7 +2300,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-29T01:45:31Z",
+  "updated_at": "2026-10-29T01:47:55Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2324,6 +2330,6 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "435e9bc55c79749a5f322d9cac30eb39268bb621",
-  "notes_count": 416
+  "last_verified_head": "435e9bc9a15d2150b678b7e28bd5f5925994230e",
+  "notes_count": 417
 }
