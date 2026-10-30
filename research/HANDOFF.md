@@ -88,5 +88,3 @@ Preserve PH-1 closure, the 200-treatment-firm minimum, source licensing and prov
 7. **Ledger append caution.** `research/experiment_ledger.csv` contains embedded newlines inside quoted fields. Append new rows with a raw text append, never with `csv.writer`.
 
 8. If no advancement possible, leave gates unchanged and report park honestly.
-
-8. If no advancement possible, leave gates unchanged and report park honestly.
