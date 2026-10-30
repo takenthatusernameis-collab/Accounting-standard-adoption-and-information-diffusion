@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "Session 781 verification pass: git fetch origin main -> 94347df (remote==HEAD==local, clean). pytest unavailable. campaign_state parsed (480 notes -> 481). Panel counts re-derived: v1.1 431 rows (8 in_registered_panel), v1.2 141 rows / 12 distinct timing cohorts; rebuilt byte-identical. Source ledger 100 data records; experiment ledger 348 data rows (max E-349? check). Gates unchanged: cohort MET (12>=12); filing_route/price_venue_set PENDING all 141; admitted firms 0<200 FAIL; free delisted/terminal-return coverage not established FAIL. PH-1 closed; primary estimand inconclusive by construction. No gate advanced.",
     {
       "session": 778,
       "timestamp": "2026-10-30T06:10:05Z",
@@ -2939,7 +2940,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-30T06:13:45Z",
+  "updated_at": "2026-10-30T06:16:00Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2969,7 +2970,7 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "cbc2cd3be7256562b2924a0be316b8719cc6f913",
+  "last_verified_head": "94347dfc859a46f9eac711c26470f39350f1d861",
   "notes_count": 485,
   "gates": {
     "cohort_met": true,
