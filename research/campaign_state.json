@@ -3,6 +3,11 @@
   "conflicts": [],
   "notes": [
     {
+      "ts": "2026-10-30T05:08:35Z",
+      "session": 774,
+      "note": "Session 774 verification pass; handoff updated for session 775"
+    },
+    {
       "session": 773,
       "timestamp": "2026-10-30T04:20:04Z",
       "summary": "Session 773 verification pass; park reported honestly; no gate advanced. HEAD b89caa425e82d333189786b11a6ff18d6d33a26a, clean, pytest unavailable. Gates: 12 cohorts MET; 0/200 firms FAIL; delisted coverage not established. PH-1 closed; no outcome computed. last_verified_head confirmed."
@@ -2924,7 +2929,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-30T04:20:04Z",
+  "updated_at": "2026-10-30T05:08:35Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2954,8 +2959,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "b89caa425e82d333189786b11a6ff18d6d33a26a",
-  "notes_count": 476,
+  "last_verified_head": "08e5db3a53150da931aa67d87627aa879a1df106",
+  "notes_count": 478,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
