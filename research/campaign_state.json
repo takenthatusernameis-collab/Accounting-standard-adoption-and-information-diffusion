@@ -3,6 +3,11 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 771,
+      "timestamp": "2026-10-30T04:14:24Z",
+      "summary": "Session 771 verification pass; park reported honestly; no gate advanced. HEAD dc6cb309e0342ad8ca99e8f37c1ae7ab8b2ef3e0, clean, pytest unavailable. Gates: 12 cohorts MET; 0/200 firms FAIL; delisted coverage not established. PH-1 closed; no outcome computed."
+    },
+    {
       "session": 768,
       "type": "verification",
       "summary": "Session 768 verification pass: read prior agent task from durable handoff (\u00a79 Session 767->768) and completed cycle. git fetch origin main -> origin/main 147119b == HEAD 147119b5d0db553fd7eaacf920f0d5dbc7f478cf clean. campaign_state.json parsed; last_verified_head corrected to 147119b5d0db553fd7eaacf920f0d5dbc7f478cf; notes_count incremented. Re-derived committed state: panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 cohorts, all 141 gate-pending on filing_route and price_venue_set; regenerated via scripts/build_panel.py byte-identical. Ledgers: source_ledger 100 data records; experiment_ledger 325 data rows -> E-335. Gates unchanged. PH-1 closed; primary estimand inconclusive by construction; results.md no results. No gate advanced; no paid services; workflow unmodified."
@@ -2909,7 +2914,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-30T04:11:36Z",
+  "updated_at": "2026-10-30T04:14:24Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2939,8 +2944,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "d2d17fddc9dd20184e0810851fdfe6bff5e059cf",
-  "notes_count": 474,
+  "last_verified_head": "dc6cb309e0342ad8ca99e8f37c1ae7ab8b2ef3e0",
+  "notes_count": 475,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
