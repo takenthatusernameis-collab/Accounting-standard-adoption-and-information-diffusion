@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "**Session 833 note.** Verified committed state: `origin/main` == HEAD == `3ce2501` (remote==HEAD==local verified at `3ce2501de84b24d4288e2f88f639c366f5e4fa44`); `git status` clean; working tree clean. Re-derived (D-037) with csv module: `panel_v1.1.csv` 431 data rows (`in_registered_panel` true 8 / pending 423); `panel_v1.2.csv` 141 data rows / 12 distinct `timing_cohort` (2024-05-10, 2024-05-23, 2024-06-14, 2024-07-09, 2024-10-04, 2024-12-26, 2025-05-28, 2025-12-10, 2025-12-18, 2025-12-23, 2026-02-13, 2026-09-09), all 141 rows gate-pending on `filing_route` and `price_venue_set` (non-empty values present but still marked PENDING per gate). `scripts/build_panel.py` rebuild byte-identical for both v1.1 and v1.2. Ledgers: `source_ledger.csv` 100 data records; `experiment_ledger.csv` 342 data rows; `decision_log.md` contains D- entries up to D-121 (869 token occurrences). Gates unchanged: cohort MET (12>=12); filing_route/price_venue_set PENDING all 141; admitted treatment firms 0<200 FAIL; free delisted/terminal-return price coverage not established FAIL (D-042/E-047). FCA root navigation closed (D-098). Stooq (F-005) and Yahoo (F-006) remain `candidate_unverified` per prior probes (Stooq serves JS anti-bot; Yahoo chart returns 200 for listed names but 404 for delisted/acquired tested tickers, v7 quote 401). PH-1 closed; primary estimand inconclusive by construction; `research/results.md` no results. `campaign_state.json` `notes_count` 514==len(notes); `last_verified_head` was stale (`b96cea8`) vs HEAD (`3ce2501`) \u2014 updated to `3ce2501de84b24d4288e2f88f639c366f5e4fa44`.",
     {
       "session": 829,
       "timestamp": "2026-10-30T17:57:25Z",
@@ -3177,8 +3178,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "b96cea8c97fc4868a626b1b2f668742ffa8ef718",
-  "notes_count": 514,
+  "last_verified_head": "3ce2501de84b24d4288e2f88f639c366f5e4fa44",
+  "notes_count": 515,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
