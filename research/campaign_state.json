@@ -3,6 +3,13 @@
   "conflicts": [],
   "notes": [
     {
+      "id": 513,
+      "session": 827,
+      "timestamp": "2026-10-30T16:58:49Z",
+      "type": "verification",
+      "note": "Session 827 verified committed state at 11654aea418494a5acd8e1f4e81fad17fe943de0 (origin/main==HEAD clean); re-derived panels/ledgers (v1.1 431/8, v1.2 141/12 cohorts; source 100, experiment 342, decision_log D-001..D-121); no gate advanced; PH-1 closed; primary estimand inconclusive by construction."
+    },
+    {
       "id": 512,
       "session": 825,
       "timestamp": "2026-10-30T16:53:49Z",
@@ -3134,7 +3141,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-30T16:06:00Z",
+  "updated_at": "2026-10-30T16:58:49Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -3164,8 +3171,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "121eeda",
-  "notes_count": 1,
+  "last_verified_head": "11654aea418494a5acd8e1f4e81fad17fe943de0",
+  "notes_count": 513,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
