@@ -2909,7 +2909,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-30T04:06:54Z",
+  "updated_at": "2026-10-30T04:10:38Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2940,7 +2940,7 @@
     ]
   },
   "last_verified_head": "147119b5d0db553fd7eaacf920f0d5dbc7f478cf",
-  "notes_count": 478,
+  "notes_count": 479,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
