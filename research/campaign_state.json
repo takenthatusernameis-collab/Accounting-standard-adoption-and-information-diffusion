@@ -3,6 +3,25 @@
     "conflicts": [],
     "notes": [
         {
+            "session": 761,
+            "type": "verification",
+            "summary": "Session 761 verification pass: read prior agent task from durable handoff (\u00a79 Session 760->761) and completed cycle. git fetch origin main -> origin/main 6eac30b == HEAD 6eac30bad84134536205f446dcb022ef945cf1b7 clean; git status clean. campaign_state.json parsed with json.load (len(notes) 470; notes_count field corrected 468->470; last_verified_head corrected from stale eb2cada68f3 to 6eac30bad84134536205f446dcb022ef945cf1b7; updated_at refreshed to 2026-10-30T02:29:30Z). Re-derived committed state by parsing files directly with the csv module: panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values, all 141 rows gate-pending on filing_route and price_venue_set; regenerated via scripts/build_panel.py and compared byte-identical (git diff clean after rebuild). Ledgers counted live: source_ledger 100 data records (102 lines); experiment_ledger 324 data rows (325 lines), max run_id E-327. Gates unchanged: cohort gate MET (12 >= 12). filing_route and price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count still 0 < 200 (FAIL). Free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) remain candidate_unverified. PH-1 remains closed; primary estimand inconclusive by construction. research/results.md reports no results. No gate advanced; no outcome-period return computed; no paid services; .github/workflows/main.yml unmodified.",
+            "head_sha": "6eac30bad84134536205f446dcb022ef945cf1b7",
+            "updated_at": "2026-10-30T02:29:30Z",
+            "gates": {
+                "cohort_met": true,
+                "treatment_firm_count_ge_200": false,
+                "terminal_return_coverage_established": false,
+                "filing_route_pending_all": true,
+                "price_venue_set_pending_all": true
+            },
+            "panel_counts": {
+                "v1_1_rows": 431,
+                "v1_1_true": 8,
+                "v1_2_rows": 141
+            }
+        },
+        {
             "session": 760,
             "type": "verification",
             "summary": "Session 760 verification pass: read prior agent task from durable handoff (\u00a79 Session 759\u2192760) and completed cycle. git fetch origin main -> origin/main eb2cada == HEAD eb2cada68f3 clean; git status clean. campaign_state.json parsed; last_verified_head set to eb2cada68f362875f86ecbb29d1da4aa1cdc0fd6; updated_at refreshed. Re-derived: panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 cohorts all gate-pending on filing_route/price_venue_set; rebuild byte-identical. Ledgers: source_ledger 100 data records (102 lines), experiment_ledger 323 data rows (324 lines). Gates unchanged: cohort MET (12>=12), admitted treatment firms 0<200 FAIL, delisted/terminal-return coverage not established FAIL. FCA root closed D-098; Stooq/Yahoo candidate_unverified. PH-1 closed; primary estimand inconclusive. No results; no paid services; workflow unmodified."
@@ -2847,7 +2866,7 @@
             "status": "pending"
         }
     ],
-    "updated_at": "2026-10-30T02:27:10Z",
+    "updated_at": "2026-10-30T02:29:30Z",
     "current_instruction": {
         "decision_id": "D-032",
         "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2877,8 +2896,8 @@
             "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
         ]
     },
-    "last_verified_head": "eb2cada68f362875f86ecbb29d1da4aa1cdc0fd6",
-    "notes_count": 468,
+    "last_verified_head": "6eac30bad84134536205f446dcb022ef945cf1b7",
+    "notes_count": 471,
     "gates": {
         "cohort_met": true,
         "treatment_firm_count_ge_200": false,
