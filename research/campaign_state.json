@@ -3,6 +3,10 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 753,
+      "note": "Session 753 verification pass; park reported honestly; gates unchanged."
+    },
+    {
       "ts": "2026-10-29T23:26:55Z",
       "session": 745,
       "type": "verification",
@@ -2838,7 +2842,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-30T01:21:54Z",
+  "updated_at": "2026-10-30T01:22:32Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2868,7 +2872,7 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "91c126ee83d20d0cac74caf88e3e2463de0fd62a",
+  "last_verified_head": "3c45e447372e59c0b35fbe951895cea4533d60b4",
   "notes_count": 468,
   "gates": {
     "cohort_met": true,
