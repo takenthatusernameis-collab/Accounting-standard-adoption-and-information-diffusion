@@ -3,6 +3,12 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-808",
+      "session": 808,
+      "timestamp": "2026-10-30T12:17:49Z",
+      "note": "**Session 808 note.** Session 808 read prior agent task from durable handoff (\u00a79, Session 807 \u2192 written for Session 808) and completed the cycle. `git fetch origin main` shows `origin/main` at **`6ba96f2`** (remote == HEAD == local HEAD verified at **`6ba96f26f1d705262a9061fba90735d783563510`**); `git status` clean. pytest not available in this environment (`No module named pytest`; committed suite last recorded live **173 passed, 0 failing**). `research/campaign_state.json` parsed with `json.load`; `notes_count` **498** == len(notes) on arrival (no correction needed); `last_verified_head` matches verified commit **`6ba96f26f1d705262a9061fba90735d783563510`**. Re-derived committed state (D-037) by parsing files directly with the `csv` module: `panel_v1.1.csv` **431 rows** (8 `in_registered_panel=true`, 423 pending); `panel_v1.2.csv` **141 rows** / **12** distinct non-empty `timing_cohort` values, all 141 rows gate-pending on `filing_route` and `price_venue_set`; regenerated via `scripts/build_panel.py` (141 rows, 12 condition-2 verified) and compared **byte-identical** for both v1.1 and v1.2 (`cmp` IDENTICAL; working tree restored clean). Ledgers counted live: source_ledger **100** data rows; experiment_ledger **341** data rows, **334** distinct ids, max **E-353**; decision_log **D-001 \u2026 D-073** (72 unique D-entries, last header **D-073**). Gates unchanged: cohort gate **MET (12 \u2265 12)**. `filing_route` and `price_venue_set` PENDING for all 141 PH-1 rows; admitted treatment-firm count **still 0 < 200 (FAIL)**. Free delisted/terminal-return price coverage **not established (FAIL, D-042/E-047)**. FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) remain `candidate_unverified`. PH-1 remains closed; primary estimand inconclusive by construction. `research/results.md` continues to report no results. No gate advanced; no outcome-period return computed; no paid services; `.github/workflows/main.yml` unmodified. No new experiment_ledger row appended."
+    },
+    {
       "id": "N-807",
       "session": 807,
       "timestamp": "2026-10-30T12:16:14Z",
@@ -3049,7 +3055,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-30T12:16:14Z",
+  "updated_at": "2026-10-30T12:17:49Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -3080,7 +3086,7 @@
     ]
   },
   "last_verified_head": "6ba96f26f1d705262a9061fba90735d783563510",
-  "notes_count": 498,
+  "notes_count": 499,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
