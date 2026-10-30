@@ -3164,8 +3164,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "5129962f1bc924e32c436e5183cffca0763c2f4b",
-  "notes_count": 512,
+  "last_verified_head": "121eeda",
+  "notes_count": 1,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
