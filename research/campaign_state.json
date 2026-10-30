@@ -3,6 +3,12 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-811",
+      "session": 811,
+      "timestamp": "2026-10-30T13:15:00Z",
+      "summary": "Session 811 cycle: read prior agent task from durable handoff (\u00a79 Session 810 \u2192 written for Session 811) and completed cycle. git fetch origin main shows origin/main at 2491977 (remote==HEAD==local HEAD verified at 24919770eab8a5bd785f82c5e2f9d08d671b96fb); git status clean. pytest not available in this environment (No module named pytest; committed suite last recorded live 173 passed, 0 failing). research/campaign_state.json parsed with json.load: 501 notes on arrival == notes_count 501 (no correction needed); last_verified_head corrected from stale 6ba96f26f1d705262a9061fba90735d783563510 -> 24919770eab8a5bd785f82c5e2f9d08d671b96fb; updated_at refreshed. Re-derived committed state (D-037) by parsing files directly with the csv module: panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values (2024-05-10, 2024-05-23, 2024-06-14, 2024-07-09, 2024-10-04, 2024-12-26, 2025-05-28, 2025-12-10, 2025-12-18, 2025-12-23, 2026-02-13, 2026-09-09), all 141 rows gate-pending on filing_route and price_venue_set; regenerated via scripts/build_panel.py (141 rows, 12 condition-2 verified) and compared byte-identical for both v1.1 and v1.2 (cmp IDENTICAL; working tree restored clean). Ledgers counted live: source_ledger 100 data records (S-01..S-99 plus S-105; S-100..S-104 exist only in research/manifests/p1_carveout_check.jsonl, parsed separately, not appended); experiment_ledger 353 data rows on arrival (max E-353) -> append E-354; decision_log D-001..D-073 (91 header occurrences, 72 unique D-entries, last header D-073). Free-source re-probe run live this session (D-042 re-audit, environment DNS now resolving): sec.gov HTTP 200; efts.sec.gov LATEST search-index HTTP 200 (returns JSON hits, e.g. 6-K filings); stooq.com HTTP 301 -> https, and https stooq.com/q/d/l/?s=aaa.us&i=d returns HTTP 200 but the body is an HTML anti-bot challenge page requiring JavaScript crypto verification (no CSV) \u2014 F-005 still no CSV reachable, unchanged; Yahoo Finance chart API (query1.finance.yahoo.com/v8/finance/chart/{sym}) re-probed for live AAPL (HTTP 200, data returned) and for five delisted tickers LNKD, XLNX, VMW, SCTY, LEH (each HTTP 404 with body {\"chart\":{\"result\":null,\"error\":{\"code\":\"Not Found\",\"description\":\"No data found, symbol may be delisted\"}}) \u2014 the prior D-042 429 rate-limit finding no longer reproduces, but Yahoo now returns a definitive NEGATIVE for delisted symbols, so delisted/terminal-return coverage is still not established (FAIL, D-042); no price series acquired or cached. Gates unchanged: cohort gate MET (12 >= 12); filing_route and price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) remain candidate_unverified. PH-1 remains closed; primary estimand inconclusive by construction. research/results.md continues to report no results. No gate advanced; no outcome-period return computed or inspected; no paid services; .github/workflows/main.yml unmodified."
+    },
+    {
       "id": "N-810",
       "session": 810,
       "timestamp": "2026-10-30T13:08:23Z",
@@ -3067,7 +3073,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-30T13:08:23Z",
+  "updated_at": "2026-10-30T13:15:00Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -3097,8 +3103,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "6ba96f26f1d705262a9061fba90735d783563510",
-  "notes_count": 501,
+  "last_verified_head": "24919770eab8a5bd785f82c5e2f9d08d671b96fb",
+  "notes_count": 502,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
