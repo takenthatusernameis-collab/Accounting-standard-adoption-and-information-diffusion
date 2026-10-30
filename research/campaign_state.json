@@ -4,6 +4,13 @@
   "notes": [
     {
       "id": "N-745",
+      "ts": "2026-10-30T08:10:00Z",
+      "session": 786,
+      "type": "verification",
+      "summary": "Session 786 verification pass: read prior agent task from durable handoff (§9 Session 785 -> written for Session 786) and completed cycle. git fetch origin main -> 7689dc5 (remote==HEAD==local HEAD verified at 7689dc5fdd8d48fd3384b9f020cb02a1575cdf48); git status clean; only commit since session-785 tip is 7689dc5 itself touching research/HANDOFF.md only, so no rebase and no D-035 conflict. pytest not available in this environment (No module named pytest; committed suite last recorded live 173 passed, 0 failing). research/campaign_state.json parsed with json.load (483 notes on arrival, notes_count already 483 == len(notes), no correction needed; last_verified_head already 7689dc5fdd8d48fd3384b9f020cb02a1575cdf48; updated_at refreshed). Re-derived committed state (D-037) by parsing files directly with the csv module: panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values (2024-05-10, 2024-05-23, 2024-06-14, 2024-07-09, 2024-10-04, 2024-12-26, 2025-05-28, 2025-12-10, 2025-12-18, 2025-12-23, 2026-02-13, 2026-09-09), all 141 rows gate-pending on filing_route and price_venue_set (single PENDING placeholder each, per recorded values); regenerated via scripts/build_panel.py (141 rows, 12 condition-2 verified) and compared byte-identical for both v1.1 and v1.2 (cmp clean; working tree restored). Ledgers counted live: source_ledger 100 data records (S-01..S-99 plus S-105; S-100..S-104 exist only in research/manifests/p1_carveout_check.jsonl - 10 records, 5 distinct S-IDs each appearing twice, parsed separately, not appended); decision_log D-001..D-121 (121 unique D-entries, last D-121); experiment_ledger 340 data rows on arrival (max E-352) -> append E-353. Manifests re-counted live: ifrs_jurisdiction_profiles.jsonl 171, linguistic_sources.jsonl 6, p1_carveout_check.jsonl 10, price_provider_smoke_attempts.jsonl 2, source_ledger_verification.jsonl 22. Free-source inventory re-read (research/free_source_inventory/inventory.csv, 7 sources F-001..F-007): F-001 verified, F-002 implemented, F-003 not_retrieved (HTTP 403 in environment, D-098 closed), F-004 verified, F-005 Stooq and F-006 Yahoo candidate_unverified with delisted/terminal-returns coverage Unclear, F-007 verified (no price coverage). Gate evidence re-audited from committed panel file: filing_route is the single PENDING placeholder (PENDING A2 verification of a filing route that publishes an acceptance TIMESTAMP; a date alone is insufficient per specification_v1.1.md section 1.1 condition j) for all 141 rows; price_venue_set is the single PENDING placeholder (PENDING A1; price vendors and their licensing are not yet authorised) for all 141 rows; affected_firm_scope_rule is IFRS 18 affected-firm list NOT yet determined for this jurisdiction for 129 rows and IFRS 18 instrument verified for the remaining 12 -- the latter is a jurisdiction-level instrument verification, NOT a firm-level admission, so conditions 3, 4 and 5 remain unverified for all 141 rows and the admitted treatment-firm count is still 0 < 200 (FAIL). Cohort gate MET (12 >= 12), do not chase a 13th per D-011; free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). Primary estimand inconclusive_by_construction; PH-1 remains closed. research/results.md continues to report no results. No gate advanced; no outcome-period return computed; no paid services; .github/workflows/main.yml unmodified."
+    },
+    {
+      "id": "N-745",
       "ts": "2026-10-30T07:18:00Z",
       "session": 784,
       "type": "verification",
@@ -2952,7 +2959,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-30T07:18:00Z",
+  "updated_at": "2026-10-30T08:10:00Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -2982,8 +2989,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "f0e3d1ba7fc8ae97a09c955c4940465964df447b",
-  "notes_count": 483,
+  "last_verified_head": "7689dc5fdd8d48fd3384b9f020cb02a1575cdf48",
+  "notes_count": 484,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
