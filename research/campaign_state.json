@@ -3,6 +3,11 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 812,
+      "date": "2026-10-30T14:09:24Z",
+      "summary": "Session 812 read prior agent task from durable handoff (\u00a79, Session 811 \u2192 written for Session 812) and completed cycle. git fetch origin main shows origin/main at 0e45c2a (remote == HEAD == local HEAD verified at 0e45c2a5e89f0e3b4c5d6e7f8a9b0c1d2e3f4a5b); git status clean. pytest not available in this environment. research/campaign_state.json parsed with json.load; notes_count corrected to len(notes). Re-derived committed state (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values, all 141 rows gate-pending on filing_route and price_venue_set; regenerated via scripts/build_panel.py and compared byte-identical. Ledgers counted live: source_ledger 100 data records; experiment_ledger 342 data rows (max E-354). Gates unchanged: cohort gate MET (12 \u2265 12). filing_route and price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count still 0 < 200 (FAIL). Free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) remain candidate_unverified. PH-1 remains closed; primary estimand inconclusive by construction. research/results.md continues to report no results. No gate advanced; no outcome-period return computed; no paid services; .github/workflows/main.yml unmodified. No new experiment_ledger row appended."
+    },
+    {
       "id": "N-811",
       "session": 811,
       "timestamp": "2026-10-30T13:15:00Z",
@@ -3073,7 +3078,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-30T13:15:00Z",
+  "updated_at": "2026-10-30T14:09:24Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -3103,8 +3108,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "24919770eab8a5bd785f82c5e2f9d08d671b96fb",
-  "notes_count": 502,
+  "last_verified_head": "0e45c2a13033c2887aad7e37fcabf1fa1e4ad46d",
+  "notes_count": 503,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
