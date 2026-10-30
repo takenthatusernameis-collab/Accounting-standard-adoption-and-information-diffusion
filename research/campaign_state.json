@@ -3,6 +3,12 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-824",
+      "session": 824,
+      "timestamp": "2026-10-30T15:57:57Z",
+      "summary": "Session 824 cycle: read prior agent task from durable handoff (\u00a79, Session 823 \u2192 written for Session 824) and completed cycle. git fetch origin main shows origin/main at c340e9d (remote == HEAD == local HEAD verified at c340e9dbb8e946ad38912af34e29c69e68c9cb21); git status clean. Re-derived committed state (D-037): panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values, all 141 rows gate-pending on filing_route and price_venue_set. Ledgers counted live: source_ledger 100 data records; experiment_ledger 342 data rows; decision_log D-001 \u2026 D-121 present. Gates unchanged: cohort gate MET (12 \u2265 12). filing_route and price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count still 0 < 200 (FAIL). Free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) remain candidate_unverified. PH-1 remains closed; primary estimand inconclusive by construction. research/results.md continues to report no results. No gate advanced; no outcome-period return computed or inspected; no paid services; .github/workflows/main.yml unmodified. No new experiment_ledger row appended. campaign_state.json notes_count set to len(notes)."
+    },
+    {
       "id": "N-822",
       "session": 822,
       "timestamp": "2026-10-30T15:26:00Z",
@@ -3114,7 +3120,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-30T15:55:29Z",
+  "updated_at": "2026-10-30T15:57:57Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -3144,8 +3150,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "1d4226194d6d204a00e59e9da0484e388f0f2230",
-  "notes_count": 509,
+  "last_verified_head": "c340e9dbb8e946ad38912af34e29c69e68c9cb21",
+  "notes_count": 510,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
