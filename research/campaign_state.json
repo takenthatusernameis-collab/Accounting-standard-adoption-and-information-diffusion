@@ -3,6 +3,12 @@
   "conflicts": [],
   "notes": [
     {
+      "id": "N-752",
+      "session": 800,
+      "timestamp": "2026-10-30T10:15:08Z",
+      "summary": "Session 800 cycle: verified committed state (git fetch origin main at d563e17, HEAD==origin==d563e17190cf927cc339a7d467613f1397381410, clean). Parsed campaign_state (notes_count 490==len 490, last_verified_head 548039392c5a1e3f45668072eabaad2a19df95ee ok). Panels: v1.1 431 (8 in_registered), v1.2 141 / 12 cohorts, build_panel byte-identical. Ledgers: source 100, experiment 341 data rows (max E-353). Gates unchanged: cohort MET (12>=12); filing_route/price_venue_set PENDING all 141; admitted 0<200 FAIL; delisted coverage not established FAIL (D-042/E-047). PH-1 closed; primary estimand inconclusive by construction. results.md no results. No gate advanced, no outcome data inspected, no paid services, workflow unmodified. Handoff updated (\u00a79 for Session 801)."
+    },
+    {
       "id": "N-751",
       "ts": "2026-10-30T10:12:28Z",
       "session": 797,
@@ -3001,7 +3007,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-30T10:13:18Z",
+  "updated_at": "2026-10-30T10:15:08Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -3032,7 +3038,7 @@
     ]
   },
   "last_verified_head": "548039392c5a1e3f45668072eabaad2a19df95ee",
-  "notes_count": 490,
+  "notes_count": 491,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
