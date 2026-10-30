@@ -3,6 +3,11 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 828,
+      "timestamp": "2026-10-30T17:56:37Z",
+      "note": "**Session 828 note.** Verified committed state: `origin/main` == HEAD == `adedb95` (remote==HEAD==local verified); `git status` clean. Re-derived: panel_v1.1 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2 141 rows / 12 distinct cohorts; source_ledger 102 data records; experiment_ledger 343 data rows; decision_log D-001..D-121. build_panel.py rebuild produced clean diff. Gates unchanged: cohort MET (12>=12); filing_route/price_venue_set PENDING all 141; admitted treatment firms 0<200 FAIL; terminal-return coverage not established FAIL. PH-1 closed; primary estimand inconclusive by construction; results.md no results. campaign_state updated (last_verified_head adedb95)."
+    },
+    {
       "id": 513,
       "session": 827,
       "timestamp": "2026-10-30T16:58:49Z",
@@ -3171,8 +3176,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "11654aea418494a5acd8e1f4e81fad17fe943de0",
-  "notes_count": 513,
+  "last_verified_head": "adedb95016b49f5b69cece64f2138b62208cf56a",
+  "notes_count": 514,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
