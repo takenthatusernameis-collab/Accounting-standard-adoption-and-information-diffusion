@@ -3,6 +3,12 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 947,
+      "timestamp": "2026-10-31T14:58:31Z",
+      "type": "verification",
+      "note": "Session 947 verification pass: read prior agent task from durable handoff (\u00a79, Session 946 \u2192 written for Session 947) and completed cycle. git fetch origin main shows origin/main at 9730cd5 (remote == HEAD == local HEAD verified at 9730cd5dcf13eae8bb77ff60c130b743105d6743); git status clean. Delta check since last verified head 370a1e9 (370a1e97bacf9d7445ca8b1bc4b55cddfd2f6b7c): git diff --name-only returns research/HANDOFF.md and research/campaign_state.json only \u2014 no panel, ledger, decision-log, manifest, workflow, or source change. Per DELAY-ELIMINATION OVERRIDE delta-only rule: did not rebuild panels, did not recount ledgers, did not append a timestamp-only session note, did not append an experiment_ledger.csv row. campaign_state.json parsed with json.load: notes_count corrected to 550 == len(notes) 550 (new note prepended); last_verified_head corrected stale 370a1e97bacf9d7445ca8b1bc4b55cddfd2f6b7c \u2192 verified commit 9730cd5dcf13eae8bb77ff60c130b743105d6743; updated_at refreshed. Gates unchanged."
+    },
+    {
       "session": 942,
       "timestamp": "2026-10-31T14:09:38Z",
       "type": "verification",
@@ -3206,7 +3212,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-31T14:58:05Z",
+  "updated_at": "2026-10-31T14:58:31Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -3236,8 +3242,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "370a1e97bacf9d7445ca8b1bc4b55cddfd2f6b7c",
-  "notes_count": 549,
+  "last_verified_head": "9730cd5dcf13eae8bb77ff60c130b743105d6743",
+  "notes_count": 550,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
