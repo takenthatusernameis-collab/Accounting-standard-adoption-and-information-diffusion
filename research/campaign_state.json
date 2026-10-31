@@ -3,6 +3,12 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 941,
+      "timestamp": "2026-10-31T14:07:08Z",
+      "type": "verification",
+      "note": "Session 941 verification pass: read prior agent task from durable handoff (\u00a79, Session 940 \u2192 written for Session 941) and completed cycle. git fetch origin main shows origin/main at b5374e5 (remote == HEAD == local HEAD verified at b5374e5733bff1cccd3b9405922f1a7e76c5d7d5); git status clean. Delta check since last verified head b45b232 (b45b2322a25c20335ed9a4f0466d1527838d6da8): git diff --name-only returns research/HANDOFF.md and research/campaign_state.json only \u2014 no panel, ledger, decision-log, manifest, workflow, or source change. Per DELAY-ELIMINATION OVERRIDE delta-only rule: did not rebuild panels, did not recount ledgers, did not append a timestamp-only session note, did not append an experiment_ledger.csv row. campaign_state.json parsed with json.load: notes_count corrected to 548 == len(notes) 548 (new note prepended); last_verified_head corrected stale b45b2322a25c20335ed9a4f0466d1527838d6da8 \u2192 verified commit b5374e5733bff1cccd3b9405922f1a7e76c5d7d5; updated_at refreshed. Gates unchanged: cohort gate MET (12 \u2265 12); filing_route and price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count still 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) remain candidate_unverified. PH-1 remains closed; primary estimand inconclusive by construction; research/results.md reports no results. No gate advanced; no outcome-period return computed; no paid services; .github/workflows/main.yml unmodified. No free-source re-probe run this session."
+    },
+    {
       "session": 933,
       "timestamp": "2026-10-31T12:55:03Z",
       "type": "verification",
@@ -3194,7 +3200,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-31T14:03:31Z",
+  "updated_at": "2026-10-31T14:07:08Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -3224,8 +3230,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "b45b2322a25c20335ed9a4f0466d1527838d6da8",
-  "notes_count": 547,
+  "last_verified_head": "b5374e5733bff1cccd3b9405922f1a7e76c5d7d5",
+  "notes_count": 548,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
