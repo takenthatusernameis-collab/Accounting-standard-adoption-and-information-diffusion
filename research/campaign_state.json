@@ -3173,7 +3173,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-31T09:53:38Z",
+  "updated_at": "2026-10-31T09:54:32Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -3203,7 +3203,7 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "77016217b6eac9fc29d9a8bc48314a8985a69f2b",
+  "last_verified_head": "58033ddd62be6ff236ca182ef1629c8859597fdb",
   "notes_count": 536,
   "gates": {
     "cohort_met": true,
