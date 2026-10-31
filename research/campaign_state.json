@@ -303,7 +303,7 @@
       "type": "verification",
       "summary": "Session 763 verification pass: read prior agent task from durable handoff (§9 Session 762->763) and completed cycle. git fetch origin main -> origin/main 5b6a05f (remote == HEAD == local HEAD verified at 5b6a05f9e67155a37aa550181fac806fec71ffb0); git status clean. pytest not available in this environment. research/campaign_state.json parsed with json.load; last_verified_head corrected from stale b596e2c488cc36cc49bbfedd37c4773993ee3a2b to 5b6a05f9e67155a37aa550181fac806fec71ffb0; notes_count corrected 472 -> 473; updated_at refreshed to 2026-10-30T03:21:06Z. Re-derived committed state by parsing files directly with the csv module: panel_v1.1.csv 431 rows (8 in_registered_panel=true, 423 pending); panel_v1.2.csv 141 rows / 12 distinct non-empty timing_cohort values, all 141 rows gate-pending on filing_route and price_venue_set; regenerated via scripts/build_panel.py and compared byte-identical (clean). Ledgers counted live: source_ledger 100 data records; experiment_ledger max run_id E-329 -> appended E-330. Gates unchanged: cohort gate MET (12 >= 12). filing_route and price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count still 0 < 200 (FAIL). Free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) remain candidate_unverified. PH-1 remains closed; primary estimand inconclusive by construction. research/results.md reports no results. No gate advanced; no outcome-period return computed; no paid services; .github/workflows/main.yml unmodified.",
       "head_sha": "5b6a05f9e67155a37aa550181fac806fec71ffb0",
-      "updated_at": "2026-10-30T03:21:06Z",
+      "updated_at": "2026-10-31T14:55:37Z",
       "gates": {
         "cohort_met": true,
         "treatment_firm_count_ge_200": false,
@@ -3236,7 +3236,7 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "bddc6a453a29255a45e642e523d88f87c7c43c28",
+  "last_verified_head": "2800e67caecb7aa692f711fed956e29a6a731637",
   "notes_count": 549,
   "gates": {
     "cohort_met": true,
