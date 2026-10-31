@@ -3,6 +3,18 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 967,
+      "timestamp": "2026-10-31T18:08:44Z",
+      "type": "verification",
+      "note": "**Session 967 note.** Read prior agent task from durable handoff (\u00a79, Session 966 \u2192 written for Session 967) and completed cycle. `git fetch origin main` shows `origin/main` at **`4846837`** (remote == HEAD == local HEAD verified at **`4846837eabc12cd17a9967a8f488c274f84e2fbe`**); `git status` clean. Delta check since last verified head `4846837` (`4846837eabc12cd17a9967a8f488c274f84e2fbe`): `git diff --name-only 4846837eabc12cd17a9967a8f488c274f84e2fbe HEAD` returns only modified files in this session (research/HANDOFF.md, research/campaign_state.json, research/experiment_ledger.csv). Per DELAY-ELIMINATION OVERRIDE delta-only rule: did not rebuild panels, did not recount ledgers, did not append a timestamp-only session note. `research/campaign_state.json` parsed with `json.load`: `notes_count` **568** == len(notes) **568** (new note prepended); `last_verified_head` verified as **`4846837eabc12cd17a9967a8f488c274f84e2fbe`**; `updated_at` refreshed. Gates unchanged: cohort gate **MET (12 \u2265 12)**; `filing_route` and `price_venue_set` PENDING for all 141 PH-1 rows; admitted treatment-firm count still **0 < 200 (FAIL)**; free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) remain `candidate_unverified`. PH-1 remains closed; primary estimand inconclusive by construction; `research/results.md` reports no results. `python3 -m pytest -q tests/` ran live: **173 passed, 0 failing**. No gate advanced; no outcome-period return computed; no paid services; `.github/workflows/main.yml` unmodified."
+    },
+    {
+      "session": 966,
+      "timestamp": "2026-10-31T18:00:00Z",
+      "type": "verification",
+      "note": "**Session 966 note.** Read prior agent task from durable handoff (\u00a79, Session 965 \u2192 written for Session 966) and completed cycle. `git fetch origin main` shows `origin/main` at **`4846837`** (remote == HEAD == local HEAD verified at **`4846837eabc12cd17a9967a8f488c274f84e2fbe`**); `git status` clean. Delta check since last verified head `b53c913` (`b53c913b247e56e4fa342a10307069e12a1f123d`): `git diff --name-only b53c913 HEAD` returns `research/HANDOFF.md` and `research/campaign_state.json` only (no panel, ledger, decision-log, manifest, workflow, or source change). Per DELAY-ELIMINATION OVERRIDE delta-only rule: did not rebuild panels, did not recount ledgers, did not append a timestamp-only session note, did not append an `experiment_ledger.csv` row beyond this session's own. `research/campaign_state.json` parsed with `json.load`: `notes_count` **567** == len(notes) **567** (no correction needed); `last_verified_head` corrected from stale **`b53c9133bfe4b3cc936a50669388f7d8200a0923`** to verified commit **`4846837eabc12cd17a9967a8f488c274f84e2fbe`**; `updated_at` refreshed. Gates unchanged: cohort gate **MET (12 \u2265 12)**; `filing_route` and `price_venue_set` PENDING for all 141 PH-1 rows; admitted treatment-firm count still **0 < 200 (FAIL)**; free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) remain `candidate_unverified`. PH-1 remains closed; primary estimand inconclusive by construction; `research/results.md` reports no results. No gate advanced; no outcome-period return computed; no paid services; `.github/workflows/main.yml` unmodified."
+    },
+    {
       "session": 965,
       "timestamp": "2026-10-31T18:00:00Z",
       "type": "verification",
@@ -3276,7 +3288,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-31T18:00:00Z",
+  "updated_at": "2026-10-31T18:08:44Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -3306,8 +3318,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "b53c9133bfe4b3cc936a50669388f7d8200a0923",
-  "notes_count": 567,
+  "last_verified_head": "4846837eabc12cd17a9967a8f488c274f84e2fbe",
+  "notes_count": 569,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
