@@ -3,6 +3,12 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 970,
+      "timestamp": "2026-10-31T19:04:24Z",
+      "type": "verification",
+      "note": "Session 970 note prepended to HANDOFF.md; verified head 384225f."
+    },
+    {
       "session": 969,
       "timestamp": "2026-10-31T19:01:52Z",
       "type": "verification",
@@ -3300,7 +3306,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-31T19:01:52Z",
+  "updated_at": "2026-10-31T19:04:24Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -3330,8 +3336,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "3db0680b89f2fe4ad8b3c1e8db0a0a8c2896f4b2",
-  "notes_count": 571,
+  "last_verified_head": "384225f3717e4031e840624c4e03ae5ca091bbab",
+  "notes_count": 572,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
