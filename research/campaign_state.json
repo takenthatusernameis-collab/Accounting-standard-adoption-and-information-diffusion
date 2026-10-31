@@ -3,6 +3,12 @@
   "conflicts": [],
   "notes": [
     {
+      "session": 973,
+      "timestamp": "2026-10-31T19:09:00Z",
+      "type": "verification",
+      "note": "Session 973 note. Read prior agent task from durable handoff (\u00a79, Session 972 \u2192 written for Session 973) and completed cycle. git fetch origin main shows origin/main at 18d15e8 (remote == HEAD == local HEAD verified). Delta check since last verified head dbb8f69: returns research/HANDOFF.md and research/campaign_state.json only. Per delta-only rule: no rebuild, no recount, no ledger append. pytest 173 passed. Gates unchanged. PH-1 closed; primary estimand inconclusive. No gate advanced."
+    },
+    {
       "session": 972,
       "timestamp": "2026-10-31T19:07:59Z",
       "type": "verification",
@@ -3318,7 +3324,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-31T19:07:59Z",
+  "updated_at": "2026-10-31T19:09:00Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -3348,8 +3354,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "dbb8f692b273c9c46826ce652d4c531c70f9aa87",
-  "notes_count": 574,
+  "last_verified_head": "18d15e88b4acdb5db2b803c7d0a4fbcda79d7c8f",
+  "notes_count": 575,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
