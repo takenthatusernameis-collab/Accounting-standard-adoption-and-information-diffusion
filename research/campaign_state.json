@@ -2,6 +2,12 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    {
+      "session": 952,
+      "timestamp": "2026-10-31T16:00:07Z",
+      "type": "verification",
+      "note": "**Session 952 note.** Read prior agent task from durable handoff (\u00a79, Session 951 \u2192 written for Session 952) and completed cycle. `git fetch origin main` shows `origin/main` at **`f46d83e`** (remote == HEAD == local HEAD verified at **`f46d83e04e2c91ab5e15daf040dd90e24e429522`**); `git status` clean. Delta check since last verified head `0a5eea4` (`0a5eea4f2dec8d2e3e3218fda00f0e50c672a424`): `git diff --name-only 0a5eea4f2dec8d2e3e3218fda00f0e50c672a424 HEAD` returns `research/HANDOFF.md` and `research/campaign_state.json` only (no panel, ledger, decision-log, manifest, workflow, or source change). Per DELAY-ELIMINATION OVERRIDE delta-only rule: did not rebuild panels, did not recount ledgers, did not append a timestamp-only session note, did not append an `experiment_ledger.csv` row. `research/campaign_state.json` parsed with `json.load`: `notes_count` **554** == len(notes) **554** (new note prepended); `last_verified_head` corrected to verified commit **`f46d83e04e2c91ab5e15daf040dd90e24e429522`**; `updated_at` refreshed. Gates unchanged: cohort gate **MET (12 \u2265 12)**; `filing_route` and `price_venue_set` PENDING for all 141 PH-1 rows; admitted treatment-firm count still **0 < 200 (FAIL)**; free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) remain `candidate_unverified`. PH-1 remains closed; primary estimand inconclusive by construction; `research/results.md` reports no results. No gate advanced; no outcome-period return computed; no paid services; `.github/workflows/main.yml` unmodified. No free-source re-probe run this session."
+    },
     "**Session 951 note.** Read prior agent task from durable handoff (\u00a79, Session 950 \u2192 written for Session 951) and completed cycle. `git fetch origin main` shows `origin/main` at **`0a5eea4`** (remote == HEAD == local HEAD verified at **`0a5eea4f2dec8d2e3e3218fda00f0e50c672a424`**); `git status` clean. Delta check since last verified head `9013dc1` (`9013dc13ef6c551a0e7a23b54f3a9e423693fc96`): `git diff --name-only 9013dc13ef6c551a0e7a23b54f3a9e423693fc96 HEAD` returns `research/HANDOFF.md` and `research/campaign_state.json` only (no panel, ledger, decision-log, manifest, workflow, or source change). Per DELAY-ELIMINATION OVERRIDE delta-only rule: did not rebuild panels, did not recount ledgers, did not append a timestamp-only session note, did not append an `experiment_ledger.csv` row. `research/campaign_state.json` parsed with `json.load`: `notes_count` **554** == len(notes) **554** (new note prepended); `last_verified_head` corrected to verified commit **`0a5eea4f2dec8d2e3e3218fda00f0e50c672a424`**; `updated_at` refreshed. Gates unchanged: cohort gate **MET (12 \u2265 12)**; `filing_route` and `price_venue_set` PENDING for all 141 PH-1 rows; admitted treatment-firm count still **0 < 200 (FAIL)**; free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) remain `candidate_unverified`. PH-1 remains closed; primary estimand inconclusive by construction; `research/results.md` reports no results. No gate advanced; no outcome-period return computed; no paid services; `.github/workflows/main.yml` unmodified. No free-source re-probe run this session.",
     {
       "session": 950,
@@ -3231,7 +3237,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-10-31T15:58:12Z",
+  "updated_at": "2026-10-31T16:00:07Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -3261,8 +3267,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "0a5eea4f2dec8d2e3e3218fda00f0e50c672a424",
-  "notes_count": 554,
+  "last_verified_head": "f46d83e04e2c91ab5e15daf040dd90e24e429522",
+  "notes_count": 555,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
