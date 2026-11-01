@@ -2,6 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes": [
+    "**Session 1008 note.** Read prior agent task from durable handoff (\u00a79, Session 1007 \u2192 written for Session 1008) and completed cycle. `git fetch origin main` shows `origin/main` at **`8ba8fb0`** (remote == HEAD == local HEAD verified at **`8ba8fb063efc073b8328eb724ec2b961b2d459f6`**); `git status` clean. Delta since last verified head `7b7016b` (`7b7016bf760b912c3f6ec8b18a81bf49833a9c12`): `git diff --name-only 7b7016bf760b912c3f6ec8b18a81bf49833a9c12 HEAD` returns `research/HANDOFF.md` and `research/campaign_state.json` only (Session 1007 checkpoint commit `8ba8fb0`; no panel, ledger, decision-log, manifest, workflow, or source change affecting gates). Per DELAY-ELIMINATION OVERRIDE delta-only rule: did not rebuild panels, did not recount ledgers, did not append an `experiment_ledger.csv` row. `research/campaign_state.json` parsed with `json.load`: `notes_count` corrected to **599** (was stale 598; this note prepended); `last_verified_head` corrected from stale **`7b7016bf760b912c3f6ec8b18a81bf49833a9c12`** to verified commit **`8ba8fb063efc073b8328eb724ec2b961b2d459f6`**; `updated_at` refreshed to **2026-11-01T00:49:55Z`**. `python3 -m pytest -q tests/` ran live: **173 passed, 0 failing**. Gates unchanged: cohort gate **MET (12 \u2265 12)**; `filing_route` and `price_venue_set` PENDING for all 141 PH-1 rows; admitted treatment-firm count still **0 < 200 (FAIL)**; free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). FCA root navigation closed (D-098); Stooq (F-005) and Yahoo (F-006) remain `candidate_unverified`. PH-1 remains closed; primary estimand inconclusive by construction; `research/results.md` reports no results. No gate advanced; no outcome-period return computed; no paid services; `.github/workflows/main.yml` unmodified.",
     {
       "session": 1005,
       "timestamp": "2026-10-31T23:59:19Z",
@@ -3456,7 +3457,7 @@
       "status": "pending"
     }
   ],
-  "updated_at": "2026-11-01T00:46:15Z",
+  "updated_at": "2026-11-01T00:49:55Z",
   "current_instruction": {
     "decision_id": "D-032",
     "superseded": "D-031 (paid-provider route) and the earlier A1-A5 authorisation request; D-032 governs the data route.",
@@ -3486,8 +3487,8 @@
       "the EU member-state carve-out check and the remaining local-equivalent jurisdictions"
     ]
   },
-  "last_verified_head": "7b7016bf760b912c3f6ec8b18a81bf49833a9c12",
-  "notes_count": 598,
+  "last_verified_head": "8ba8fb063efc073b8328eb724ec2b961b2d459f6",
+  "notes_count": 599,
   "gates": {
     "cohort_met": true,
     "treatment_firm_count_ge_200": false,
