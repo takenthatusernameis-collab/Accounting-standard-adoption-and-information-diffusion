@@ -2,14 +2,14 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes_count": 669,
-  "last_verified_head": "b7910443d9cce74f49aff57614d82131f12067c9",
-  "updated_at": "2026-11-01T20:29:00Z",
+  "last_verified_head": "1ffd0f4229f231224c30df1e52798a7b5664bed6",
+  "updated_at": "2026-11-01T21:12:03Z",
   "notes": [
     {
       "session": 1112,
       "timestamp": "2026-11-01T20:29:00Z",
       "action": "verification_pass",
-      "summary": "Session 1112 read prior agent task from durable handoff (§9, Session 1111→1112) and completed cycle. HEAD b791044 == origin/main; git status clean. Delta-only: HANDOFF.md, campaign_state.json. Re-derived: panel_v1.2 141 rows/12 cohorts/12 T_A firms<200/141 pending; panel_v1.1 431 rows (8 true/423 pending). exp ledger 344 non-empty (E-276..E-357); source 100; decision log 121. pytest 173 passed. Gates frozen (cohort MET 12>=12; filing_route/price_venue_set PENDING all; admitted firms 12<200 FAIL; free delisted/terminal coverage not established). PH-1 closed; primary estimand inconclusive by construction; results.md no results. No gate advanced."
+      "summary": "Session 1112 read prior agent task from durable handoff (\u00a79, Session 1111\u21921112) and completed cycle. HEAD b791044 == origin/main; git status clean. Delta-only: HANDOFF.md, campaign_state.json. Re-derived: panel_v1.2 141 rows/12 cohorts/12 T_A firms<200/141 pending; panel_v1.1 431 rows (8 true/423 pending). exp ledger 344 non-empty (E-276..E-357); source 100; decision log 121. pytest 173 passed. Gates frozen (cohort MET 12>=12; filing_route/price_venue_set PENDING all; admitted firms 12<200 FAIL; free delisted/terminal coverage not established). PH-1 closed; primary estimand inconclusive by construction; results.md no results. No gate advanced."
     },
     {
       "session": 1105,
