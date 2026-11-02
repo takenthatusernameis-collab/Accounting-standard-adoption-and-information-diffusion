@@ -1,10 +1,15 @@
 {
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
-  "notes_count": 730,
-  "last_verified_head": "e9c9b4a7d7be1f7d3d1921323c0bb4e0b0cf163a",
-  "updated_at": "2026-11-02T23:09:29Z",
+  "notes_count": 731,
+  "last_verified_head": "db046930bfacd2486fbd32245e8a089634a5ee1b",
+  "updated_at": "2026-11-02T23:10:01Z",
   "notes": [
+    {
+      "session": 1237,
+      "timestamp": "2026-11-02T23:10:01Z",
+      "note": "Session 1237 verification pass: delta-only, no gate advanced."
+    },
     {
       "session": 1236,
       "timestamp": "2026-11-02T23:09:29Z",
