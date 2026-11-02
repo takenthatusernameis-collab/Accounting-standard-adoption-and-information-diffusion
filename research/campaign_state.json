@@ -1,10 +1,15 @@
 {
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
-  "notes_count": 734,
-  "last_verified_head": "c82feb0c369461aad656d2fae60a62b8a11c2d0c",
-  "updated_at": "2026-11-02T23:12:55Z",
+  "notes_count": 735,
+  "last_verified_head": "c40ad77cb5087df4de576fa4c20907cd8e0fb68b",
+  "updated_at": "2026-11-02T23:16:16Z",
   "notes": [
+    {
+      "session": 1241,
+      "timestamp": "2026-11-02T23:16:16Z",
+      "summary": "Session 1241 read prior agent task from durable handoff (\u00a79, Session 1240\u21921241) and completed cycle. HEAD c40ad77 == origin/main; git status clean. Delta since c82feb0: HANDOFF.md,campaign_state.json,decision_log.md,experiment_ledger.csv only. Per DELAY-ELIMINATION OVERRIDE delta-only: no panels rebuilt, no ledgers recounted beyond note, no extra experiment row beyond E-365. Gates frozen (cohort MET 12>=12; filing/price PENDING; admitted 12<200 FAIL; delisted coverage not established). PH-1 closed, inconclusive_by_construction; no gate advanced; no outcomes inspected; no paid services; workflow unmodified. Appended D-129, E-365, updated \u00a79 for Session 1242."
+    },
     "**Session 1240 note.** Read prior agent task from durable handoff (\u00a79, Session 1239 \u2192 written for Session 1240) and completed cycle. `git fetch origin main` shows `origin/main` at `c82feb0` (remote == HEAD == local HEAD verified at `c82feb0c369461aad656d2fae60a62b8a11c2d0c`); `git status` clean. Delta since last verified head `277e76859ca00e213a9ac4b9fc9e4709aff3ff19`: `git diff --name-only 277e76859ca00e213a9ac4b9fc9e4709aff3ff19 HEAD` returns `research/HANDOFF.md, research/campaign_state.json, research/decision_log.md, research/experiment_ledger.csv` only (Session 1239's checkpoint commit). Per DELAY-ELIMINATION OVERRIDE delta-only rule: no panels rebuilt, no ledgers recounted beyond this note, no timestamp-only session note beyond this, no `experiment_ledger.csv` row beyond E-364. `research/campaign_state.json` parsed with `json.load` (733 notes on arrival == notes_count 733, no correction); `last_verified_head` corrected from stale `277e76859ca00e213a9ac4b9fc9e4709aff3ff19` to verified commit `c82feb0c369461aad656d2fae60a62b8a11c2d0c`; `updated_at` refreshed. Gates unchanged: cohort gate MET (12 \u2265 12); `filing_route`/`price_venue_set` PENDING for all 141 PH-1 rows; admitted treatment-firm count 12 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). PH-1 remains closed; primary estimand inconclusive by construction; `research/results.md` reports no results. No gate advanced; no outcome-period return computed or inspected; no paid services; `.github/workflows/main.yml` unmodified. Appended decision **D-128**, experiment row **E-364**, updated \u00a79 for next agent.",
     "Session 1239 note. Read prior agent task from durable handoff (\u00a79, Session 1238 \u2192 written for Session 1239) and completed cycle. git fetch origin main shows origin/main at 277e768 (remote == HEAD == local HEAD verified at 277e76859ca00e213a9ac4b9fc9e4709aff3ff19); git status clean. Delta since last verified head 3fe6d4c97a80c3e2cfe2b0d472bddf52a75b7f7c: research/HANDOFF.md, research/campaign_state.json, research/decision_log.md, research/experiment_ledger.csv only (Session 1238 checkpoint). Per DELAY-ELIMINATION OVERRIDE delta-only rule: no panels rebuilt, no ledgers recounted. campaign_state.json parsed with json.load (732 notes on arrival == notes_count 732, no correction); last_verified_head corrected from stale 3fe6d4c to 277e768; updated_at refreshed. Gates unchanged. Appended decision D-127, experiment row E-363, updated \u00a79 for next agent.",
     {
