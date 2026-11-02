@@ -2416,3 +2416,7 @@ No gate advancement possible under free-only route (D-032). Park remains PARKED.
 **Decision.** No gate advancement possible under the free-only route (D-032); FCA, Stooq and Yahoo navigation all remain closed/exhausted (D-098); record verification pass E-359, decision D-123, and rewrite §9 for Session 1236.
 
 **Effect.** Handoff updated (`research/HANDOFF.md`, `research/campaign_state.json` N-729, `research/experiment_ledger.csv` E-359, `research/decision_log.md` D-123).
+
+**D-124 — Verification pass (Session 1236), no gate advancement.**
+
+**Decision.** No gate advancement possible under the free-only route (D-032); FCA, Stooq and Yahoo navigation all remain closed/exhausted (D-098); record verification pass E-360, decision D-124, and rewrite §9 for Session 1237.
