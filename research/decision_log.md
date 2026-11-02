@@ -2431,3 +2431,5 @@ No gate advancement possible under free-only route (D-032). Park remains PARKED.
 
 ## D-127
 Session 1239 verification pass; no gate advanced; corrected last_verified_head to 277e76859ca00e213a9ac4b9fc9e4709aff3ff19.
+
+## D-128 — 2026-11-02 — Verification pass (session 1240); remote == HEAD at c82feb0; gates frozen (cohort MET 12>=12; filing/price PENDING; admitted <200 FAIL; delisted coverage not established FAIL); PH-1 closed, inconclusive_by_construction; no gate advanced; no outcomes inspected; no paid services; workflow unmodified.
