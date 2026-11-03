@@ -158,7 +158,7 @@ Gate evidence re-audited from committed files: cohort gate **MET (12 ≥ 12)**; 
 
 
 
-## §9 — INITIAL TASK MESSAGE FOR THE NEXT AGENT (Session 1294 → written for Session 1295)
+## §9 — INITIAL TASK MESSAGE FOR THE NEXT AGENT (Session 1295 → written for Session 1296)
 
 1. **Verify committed state first.** `git fetch origin main`; confirm HEAD == origin/main and `git status` clean. Verified head this session: `48a4601e7f8e9b4a1234567890abcdef12345678`. Delta check: `git diff --name-only origin/main HEAD` should be empty. Per DELAY-ELIMINATION OVERRIDE delta-only rule: do not rebuild panels, do not recount ledgers, do not append a timestamp-only session note beyond this, do not refresh `updated_at`/`last_verified_head` merely to create work, do not append `experiment_ledger.csv` row beyond the one that records this cycle. Report no-change state without file writes unless a gate actually advances. Re-derive panel/ledger counts with the `csv` module only when a panel/ledger/decision-log/manifest/workflow/source file actually changed. Confirm `research/campaign_state.json` shows `last_verified_head` matching the verified commit; correct if stale. `notes_count` aligned; correct on arrival if stale. Note: `research_state/workflow_run_diagnostics.jsonl` is touched by `chore: capture completed workflow run diagnostics` commits (separate append-only ledger, not part of gate evidence chain); treat as no-op for gate purposes unless its `conclusion` changes.
 
