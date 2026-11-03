@@ -1,10 +1,11 @@
 {
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
-  "notes_count": 739,
-  "last_verified_head": "bfb0edc59df0420216541aa609400bdb78f6c8b0",
-  "updated_at": "2026-11-03T00:27:12Z",
+  "notes_count": 740,
+  "last_verified_head": "b9cbcc64f8fab28dd32fad6ba971c41ba143f028",
+  "updated_at": "2026-11-03T00:29:07Z",
   "notes": [
+    "Session 1246 note. Read prior agent task from durable handoff (§9, Session 1245 → written for Session 1246) and completed cycle. git fetch origin main shows origin/main at b9cbcc6 (remote==HEAD==local HEAD verified at b9cbcc64f8fab28dd32fad6ba971c41ba143f028); git status clean. Delta since last verified head bfb0edc59df0420216541aa609400bdb78f6c8b0: diff returns research/HANDOFF.md, research/campaign_state.json, research/decision_log.md, research/experiment_ledger.csv only (Session 1245 checkpoint commit b9cbcc64f8fab28dd32fad6ba971c41ba143f028). Per DELAY-ELIMINATION OVERRIDE delta-only rule: no panels rebuilt, no ledgers recounted, no experiment_ledger.csv row, no decision_log.md entry. campaign_state.json parsed with json.load: notes_count 739 == len(notes) on arrival; after prepend 740 == len(notes). last_verified_head corrected from stale bfb0edc59df0420216541aa609400bdb78f6c8b0 to verified commit b9cbcc64f8fab28dd32fad6ba971c41ba143f028; updated_at refreshed. Gates unchanged: cohort MET (12>=12); filing_route/price_venue_set PENDING all 141 PH-1 rows; admitted treatment-firm count 12 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047). PH-1 closed; primary estimand inconclusive_by_construction; research/results.md reports no results. No gate advanced; no outcome-period return computed or inspected; no paid services; .github/workflows/main.yml unmodified. Prepended session note, corrected campaign_state.json, updated §9 for Session 1247.",
     "Session 1245 verification pass: remote == HEAD at bfb0edc (bfb0edc59df0420216541aa609400bdb78f6c8b0); gates frozen; no advancement.",
     {
       "session": 1244,
