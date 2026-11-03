@@ -1,10 +1,15 @@
 {
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
-  "notes_count": 742,
-  "last_verified_head": "74aaa4bdd542b34d7518c0a42697521a8da9478f",
-  "updated_at": "2026-11-03T01:18:00Z",
+  "notes_count": 743,
+  "last_verified_head": "f419744423ff420764e5771089c36cc5c8472609",
+  "updated_at": "2026-11-03T01:21:00Z",
   "notes": [
+    {
+      "session": 1249,
+      "timestamp": "2026-11-03T01:21:00Z",
+      "note": "Session 1249 verification pass: delta-only, no gate advanced; handoff updated with session 1249 note and §9 rewritten for Session 1250."
+    },
     {
       "session": 1248,
       "timestamp": "2026-11-03T01:18:00Z",
