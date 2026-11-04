@@ -2575,3 +2575,23 @@ Session 1256 verification pass. Verified committed state: `git fetch origin main
 **Conclusion for B2.** No free, terms-permitting source probed — including under the now-live network — produces a delisted/terminal-return daily price series. Free delisted/terminal-return price coverage **remains not established (FAIL, D-042/E-047)**. B2 is not reversed. No price series was acquired or cached.
 
 **Reverses if.** A free, terms-permitting source produces (a) a filing acceptance TIMESTAMP for any PH-1 row, (b) a firm-level admission of the affected class for ≥200 firms, or (c) a delisted/terminal-return daily price series; or the committed state changes materially.
+
+
+## D-148, 2026-11-04T04:29:00Z, Phase 3b (PH-1 park / price coverage), NEW — Yahoo Finance pre-2017 historical HTML (Wayback) gives parseable OHLCV for delisted tickers; boundary-limited, does not reverse B2
+
+**Trigger:** Session 1391 (this cycle) identified a previously untested free avenue via Wayback Machine: archived snapshots of the OLD Yahoo Finance historical-price HTML page (`finance.yahoo.com/q/hp?s=TICKER`, pre-2017 layout) for delisted tickers, parseable to OHLCV rows.
+
+**Evidence (free, no paid services):**
+- Wayback holds archived snapshots of `finance.yahoo.com/q/hp?s=LEH` (and others) with the pre-2017 page layout; extracting/stitched across snapshots yields usable OHLCV.
+- Stitched **LEH** across **14 snapshots** yields **578 unique rows** spanning **22-Jul-03 to 5-Mar-08** (coverage through Lehman bankruptcy and terminal delisting).
+- **VMW, XLNX, EN, ENL, JCP, BIG, YHOO** also confirmed parseable via the same route.
+- Prior sessions tested post-2017 JSON/CSV Yahoo endpoints and the Wayback *availability* API / CDX for Stooq; those returned empty/negative for delisted names; the old `q/hp` HTML snapshots were **not** tested before (new finding).
+
+**Gates / scope (does NOT change frozen gates):**
+- Coverage is **pre-2017 only** and does **not** reach the **PH-1 outcome window (2027-01-01 T_E)**. Cannot produce outcome-period returns for the PH-1 estimand.
+- Does **not** satisfy conditions for A1/A2, does **not** establish firm-level admission for ≥200 firms, and does **not** reverse **B2 (free delisted/terminal-return price coverage)** which remains **not established (FAIL, D-042/E-047)**.
+- **PH-1 remains closed**; primary estimand **inconclusive_by_construction**. No outcome-period return computed or inspected; no paid services.
+
+**Action:** Document as a free, lawful avenue with explicit boundary conditions. Do not change gates or compute outcome returns. Update experiment ledger (E-386) and handoff.
+
+**Reverses if:** A free source provides delisted/terminal-return coverage that reaches the PH-1 outcome window for covered rows, or otherwise satisfies an open gate condition.
