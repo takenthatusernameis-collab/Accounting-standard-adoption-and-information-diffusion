@@ -1,10 +1,11 @@
 {
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
-  "notes_count": 72,
-  "last_verified_head": "5484ad192e23a660040aa674ec77a6a333f299e9",
-  "updated_at": "2026-11-05T01:44:38Z",
+  "notes_count": 66,
+  "last_verified_head": "76efe181312e2bc2e4b2b20c8776d4bd0e2fd4c3",
+  "updated_at": "2026-11-05T01:46:16Z",
   "notes": [
+    "Session 1508: verified HEAD 76efe181312e2bc2e4b2b20c8776d4bd0e2fd4c3 (origin/main clean); delta only handoff/state (checkpoint); gates unchanged (cohort 12/12 MET, treatment firms 12<200 FAIL, price coverage not established FAIL); PH-1 closed, primary estimand inconclusive_by_construction; no outcome-period returns; updated handoff \u00a79 for session 1509.",
     "Session 1500 verification pass: HEAD==origin/main==6105b4a; delta empty, working tree clean; no gate-evidence files changed; no panels rebuilt; last_verified_head corrected 2c9457f\u21926105b4a (stale by checkpoint commit); park reported honestly (12 cohorts MET; 12<200 firms FAIL; delisted coverage not established FAIL).",
     "Session 1499 verification pass: HEAD==origin/main==2c9457f; delta empty, working tree clean; no gate-evidence files changed; no panels rebuilt; last_verified_head corrected 4704e2f\u21922c9457f; park reported honestly (12 cohorts MET; 12<200 firms FAIL; delisted coverage not established FAIL).",
     "Session 1498 verification pass: HEAD==origin/main==4704e2f; delta only handoff/campaign_state; no gate-evidence files changed; no panels rebuilt; park reported honestly (12 cohorts MET; 12<200 firms FAIL; delisted coverage not established FAIL).",
