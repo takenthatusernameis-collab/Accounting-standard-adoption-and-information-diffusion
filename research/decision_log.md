@@ -2595,3 +2595,27 @@ Session 1256 verification pass. Verified committed state: `git fetch origin main
 **Action:** Document as a free, lawful avenue with explicit boundary conditions. Do not change gates or compute outcome returns. Update experiment ledger (E-386) and handoff.
 
 **Reverses if:** A free source provides delisted/terminal-return coverage that reaches the PH-1 outcome window for covered rows, or otherwise satisfies an open gate condition.
+
+## D-149, 2026-11-05T11:37:12Z, Phase 3b (park / A2 route re-probe), NEW — Environment network is LIVE; SEC EDGAR SGML filing route confirmed returning real acceptance timestamps; stale B3 superseded; non-US A2 routes still not established
+
+**Trigger:** Session 1585 cycle. The durable handoff and ~20 prior session notes record blocker **B3** as "Network/DNS - environment limitation preventing external fetches", and cite it as a reason free-source advancement was not possible. That record is now **stale**: outbound HTTPS works from this environment.
+
+**Evidence (free, read-only, rate-limited, manifest-recorded; no paid services, no workflow changes, no credentials):**
+- DNS resolves and HTTPS connects for sec.gov, github.com, yahoo.com, worldbank.org, stooq.com, ifrs.org, esma.europa.eu, eur-lex.europa.eu.
+- `https://www.sec.gov/Archives/edgar/data/<CIK>/<accession>/<accession>.txt` returns HTTP 200 with the real SGML header. Two FY2018 10-Ks — the first annual reports under ASC 606 (EV-101, T_E 2018-01-01), i.e. the registered panel's own T-R rows — produced parseable acceptance timestamps:
+  - Qualcomm FY2018 10-K (CIK 804328, accession 0001728949-18-000095): ACCEPTANCE-DATETIME `20181107161548` ET → **2018-11-07T21:15:48Z**
+  - JPMorgan Chase FY2018 10-K (CIK 19617, accession 0000019617-19-000054): ACCEPTANCE-DATETIME `20190226165725` ET → **2019-02-26T21:57:25Z**
+- `https://efts.sec.gov/LATEST/search-index` returns real hits, joinable on `adsh`/`ciks`/`file_date` (not on ticker).
+- Raw artefacts cached to `$ACCTCLOCK_CACHE` (external, never the repository, per D-015); provenance manifests appended to `research/manifests/sec_edgar.jsonl`.
+- Non-US A2 routes re-probed and **still not established**: FCA RNS `data.fca.org.uk/rns/search` HTTP 403 (AccessDenied; F-003 stays `not_retrieved`, D-098 closed); `tadawul.com.sa` does not resolve from this environment; ESMA ESEF filing-portal deep links 404; EUR-Lex `/eli/.../oj` deep links return empty bodies.
+
+**Gates / scope (does NOT change frozen gates):**
+- This is a **route/feasibility finding, not a gate advance**. Demonstrating that the SEC EDGAR SGML route works supplies the *timestamp mechanism* for US rows; it does **not** admit firms to the treatment class, does **not** change the admitted-firm count (**0 < 200 FAIL**), and does **not** change the cohort count (**12 ≥ 12 MET**).
+- No `panel_v1.1.csv` or `panel_v1.2.csv` row was modified; all 141 PH-1 rows remain `filing_route` = PENDING A2 and `price_venue_set` = PENDING A1.
+- **B2 (free delisted/terminal-return price coverage) remains not established (FAIL, D-042/E-047).** Stooq price endpoints 404 here; Yahoo delisted-ticker endpoints 404; the pre-2017 Wayback Yahoo route (D-148) still does not reach the PH-1 outcome window.
+- **B3 is superseded** and is corrected in `research/free_source_inventory/feasibility_notes.md` and `inventory.md`. It no longer blocks any route.
+- PH-1 remains closed; primary estimand **inconclusive_by_construction**; `research/results.md` reports no results. No outcome-period return computed or inspected; no paid services; `.github/workflows/main.yml` unmodified.
+
+**Action:** Record the live A2 route and the corrected environment status; do not re-open closed gates or compute outcome returns. Update experiment ledger (E-387) and handoff.
+
+**Reverses if:** A free, terms-permitting source produces (a) a filing acceptance TIMESTAMP for a non-US registered-panel row, (b) a firm-level admission of the affected class for ≥200 firms, or (c) a delisted/terminal-return daily price series reaching the PH-1 outcome window; or the committed state changes materially.
