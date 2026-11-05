@@ -2619,3 +2619,24 @@ Session 1256 verification pass. Verified committed state: `git fetch origin main
 **Action:** Record the live A2 route and the corrected environment status; do not re-open closed gates or compute outcome returns. Update experiment ledger (E-387) and handoff.
 
 **Reverses if:** A free, terms-permitting source produces (a) a filing acceptance TIMESTAMP for a non-US registered-panel row, (b) a firm-level admission of the affected class for ≥200 firms, or (c) a delisted/terminal-return daily price series reaching the PH-1 outcome window; or the committed state changes materially.
+
+---
+
+## D-150, 2026-11-05T13:28Z, Phase 3b (park / A2 route re-probe), NEW — Non-US A2 routes re-probed jurisdiction by jurisdiction; CVM EDGAR (Brazil) filing-search route found RETIRED (HTTP 410); DART (Korea) reachable but requires an API key (not free-terms); no gate advance
+
+**Trigger:** Session 1593 cycle. The durable handoff (§9, Session 1592) names the actionable gap as **firm-level admission with timestamped filing evidence**, specifically A2 acceptance timestamps for the non-US `panel_v1.2` T_A jurisdictions (Bhutan, Brazil, EU, Hong Kong SAR, Indonesia, Malaysia, New Zealand, Philippines, Saudi Arabia, Singapore, South Korea, UK) and/or A1 delisted-firm terminal-return/venue coverage. Prior probes had covered FCA, Tadawul, ESMA, EUR-Lex, HKEX, SGX, Companies House and NZ API but had **never probed CVM EDGAR (Brazil) or DART (Korea)**. This cycle probes both, plus a full re-sweep of the remaining routes.
+
+**Evidence (free, read-only, rate-limited, manifest-recorded; no paid services, no workflow changes, no credentials requested):**
+- **CVM EDGAR (Brazil) — NEW finding, route RETIRED.** `www.cvm.gov.br/edgar/` and every `/edgar/BuscaDeArquivo*.do` variant (`BuscaDeArquivo.do`, `BuscaDeArquivos.do`, with and without `?view=1`) answer **HTTP 410 Gone** (verified 2026-11-05). This is a hard retirement, not a transient block. Prior sessions had not probed CVM EDGAR at all, so this is a genuinely new finding. Brazil's A2 remains **pending**; no acceptance TIMESTAMP is obtainable from this source. New inventory rows **F-008** (CVM EDGAR) and **F-009** (DART) added to `research/free_source_inventory/inventory.csv`.
+- **DART / OpenDART (Korea FSS) — reachable but not free-terms.** `opendart.fss.or.kr` and `dart.fss.or.kr` resolve and answer HTTP 200, but every unauthenticated API path returns `{"message":"잘못된 URL입니다. 확인해주세요(/...)", "status":"101"}` and the public notice list (`/api/list.json`, `/api/document.xml`, `/api/v1/notice`, `/api/noticeList.json`) returns only the OpenDART HTML shell, not a machine-readable filing list. An acceptance TIMESTAMP requires an OpenDART API key, which is a **registration/credential route, not a free terms-permitting route under D-032**. Korea's A2 therefore remains **pending**.
+- **Re-confirmed negative (all 2026-11-05):** FCA RNS `data.fca.org.uk/rns/search` and `/rns` HTTP 403 (F-003 stays `not_retrieved`, D-098 closed); FCA NSM page 404; Bursa Malaysia `/en/announcements/search` 403; IDX `/en/announcements/search` 403; PSE `/stockMarket/announcements/search` 403; NZX `/api/announcements/search` 404 and `api.nzx.com` 403; KRX English page 404; ESMA `/financial-reporting-en` and `/esma-activities/financial-reporting-and-interpretation-group` 404; EUR-Lex deep links empty body. HKEXnews still 403; Tadawul still unresolvable. SGX root 200 but `api.sgx.com` 403.
+
+**Gates / scope (does NOT change frozen gates):**
+- This is a **route/feasibility finding, not a gate advance**. It does **not** admit firms to the treatment class, does **not** change the admitted-firm count (**0 < 200 FAIL**), and does **not** change the cohort count (**12 ≥ 12 MET**).
+- No `panel_v1.1.csv` or `panel_v1.2.csv` row was modified; all 141 PH-1 rows remain `filing_route` = PENDING A2 and `price_venue_set` = PENDING A1.
+- **B2 (free delisted/terminal-return price coverage) remains not established (FAIL, D-042/E-047)** — no price route probed this cycle, unchanged.
+- PH-1 remains closed; primary estimand **inconclusive_by_construction**; `research/results.md` reports no results. No outcome-period return computed or inspected; no paid services; no credentials requested; `.github/workflows/main.yml` unmodified.
+
+**Action:** Record the CVM EDGAR 410 retirement and the DART key-gated finding in `research/free_source_inventory/feasibility_notes.md`, `inventory.md` and `inventory.csv`; do not re-open closed gates or compute outcome returns. Update experiment ledger (E-388) and handoff.
+
+**Reverses if:** A free, terms-permitting source produces (a) a filing acceptance TIMESTAMP for a non-US registered-panel row, (b) a firm-level admission of the affected class for ≥200 firms, or (c) a delisted/terminal-return daily price series reaching the PH-1 outcome window; or CVM EDGAR is resurrected under a new URL, or the committed state changes materially.

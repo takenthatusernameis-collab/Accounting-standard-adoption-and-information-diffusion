@@ -24,6 +24,37 @@
 - **B3 (network/DNS):** **SUPERSEDED 2026-11-05 (Session 1585).** The previously recorded "DNS resolution issues; external network requests may fail before HTTP" is stale. Outbound HTTPS is live: DNS resolves for sec.gov, github.com, yahoo.com, worldbank.org, stooq.com; `https://www.sec.gov/Archives/edgar/data/<CIK>/<accession>/<accession>.txt` returns HTTP 200 with a real `<ACCEPTANCE-DATETIME>` SGML stamp; `https://efts.sec.gov/LATEST/search-index` returns real hits. B3 no longer blocks any route. (Residual: `api.stooq.com` and `data.sec.gov/submissions/CIK*.json` 404; `data.fca.org.uk/rns/search` 403; `tadawul.com.sa` does not resolve from this environment.)
 - **B4 (conditions 3,4,5 unverified for all rows):** Unchanged.
 
+## Session 1593 (2026-11-05) - non-US A2 route re-probe, jurisdiction by jurisdiction
+
+**CVM EDGAR (Brazil) — NEW finding, route RETIRED.** `www.cvm.gov.br/edgar/` and every
+`/edgar/BuscaDeArquivo*.do` variant now answer **HTTP 410 Gone** (verified 2026-11-05:
+`BuscaDeArquivos.do`, `BuscaDeArquivo.do`, `/edgar/` root, with and without `?view=1`).
+This is a hard retirement, not a transient block, and it is a *new* finding: prior sessions
+had not probed the CVM EDGAR filing-search route at all. Brazil's A2 remains **pending**;
+no acceptance TIMESTAMP is obtainable from this source.
+
+**DART / OpenDART (Korea FSS electronic disclosure) — reachable but not free-terms.**
+`opendart.fss.or.kr` and `dart.fss.or.kr` resolve and answer HTTP 200, but the API surface
+rejects every unauthenticated path with `{"message":"잘못된 URL입니다. 확인해주세요(/...)", "status":"101"}` and the public notice list (`/api/list.json`, `/api/document.xml`,
+`/api/v1/notice`, `/api/noticeList.json`) returns only the OpenDART HTML shell, not a
+machine-readable filing list. An acceptance TIMESTAMP requires an OpenDART API key, which
+is a registration/credential route, **not** a free terms-permitting route under D-032.
+Korea's A2 therefore remains **pending**.
+
+**Re-confirmed negative (all 2026-11-05):** FCA RNS `data.fca.org.uk/rns/search` and
+`/rns` HTTP 403 (F-003 stays `not_retrieved`, D-098 closed); FCA NSM page 404; Bursa
+Malaysia `/en/announcements/search` 403; IDX `/en/announcements/search` 403; PSE
+`/stockMarket/announcements/search` 403; NZX `/api/announcements/search` 404 and
+`api.nzx.com` 403; KRX English page 404; ESMA `/financial-reporting-en` and
+`/esma-activities/financial-reporting-and-interpretation-group` 404; EUR-Lex deep links
+empty body. HKEXnews still 403; Tadawul still unresolvable.
+
+**Does NOT advance the gate.** Admitted-firm count still 0 < 200 FAIL; cohort count
+unchanged (12 ≥ 12 MET); no `panel_v1.1.csv` or `panel_v1.2.csv` row modified; all 141
+PH-1 rows remain `filing_route` = PENDING A2 and `price_venue_set` = PENDING A1; no
+outcome-period return computed or inspected; no paid services; no credentials requested;
+`.github/workflows/main.yml` unmodified.
+
 ## Session 1585 (2026-11-05) - A2 route re-probe
 - **A2 (filing route with acceptance timestamp) is LIVE for US rows.** SEC EDGAR SGML route confirmed returning real acceptance timestamps:
   - Qualcomm FY2018 10-K (CIK 804328, 0001728949-18-000095): ACCEPTANCE-DATETIME `20181107161548` ET -> **2018-11-07T21:15:48Z**

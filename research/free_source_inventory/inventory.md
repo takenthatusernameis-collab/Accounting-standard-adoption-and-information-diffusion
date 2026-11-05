@@ -43,6 +43,28 @@ ESEF portal 404). UK/EU/Saudi panel rows stay A2-pending.
 
 **B2 (delisted/terminal-return price coverage) remains not established (FAIL,
 D-042/E-047).** Stooq's price endpoints 404 in this environment and Yahoo's
-delisted-ticker endpoints 404; the pre-2017 Wayback Yahoo route (D-148) does not
-reach the PH-1 outcome window. No free source produces a survivorship-clean
+delisted-ticker endpoints 404; the pre-2017 Wayback Yahoo route (D-148) does not reach
+the PH-1 outcome window. No free source produces a survivorship-clean
 delisted/terminal-return series here.
+
+## Session 1593 re-probe (2026-11-05) — non-US A2 routes, jurisdiction by jurisdiction
+
+| Host / route | Result |
+|---|---|
+| `www.cvm.gov.br/edgar/` and `/edgar/BuscaDeArquivo*.do` | **HTTP 410 Gone** — the CVM EDGAR filing-search route is *retired*, not merely unreachable. New finding this session (prior sessions never probed it). Brazil A2 stays pending. |
+| `opendart.fss.or.kr`, `dart.fss.or.kr` | HTTP 200, but every unauthenticated API path returns `{"message":"잘못된 URL입니다.","status":"101"}` and the public notice list returns only the OpenDART HTML shell. An acceptance TIMESTAMP requires an API key (registration/credential route, not free terms-permitting under D-032). Korea A2 stays pending. |
+| `data.fca.org.uk/rns/search`, `/rns` | HTTP 403 (F-003 stays `not_retrieved`, D-098 closed) |
+| `www.fca.org.uk/firms/fca-national-storage-mechanism` | HTTP 404 |
+| `www.bursamalaysia.com/en/announcements/search` | HTTP 403 |
+| `www.idx.co.id/en/announcements/search` | HTTP 403 |
+| `www.pse.com.ph/stockMarket/announcements/search` | HTTP 403 |
+| `www.nzx.com/api/announcements/search` | HTTP 404; `api.nzx.com` HTTP 403 |
+| `www.krx.co.kr/eng/...` | HTTP 404 |
+| `www.esma.europa.eu/financial-reporting-en` | HTTP 404 |
+| `eur-lex.europa.eu` deep links | HTTP 200 but empty body |
+| `www.hkexnews.hk` | HTTP 403 (unchanged) |
+| `tadawul.com.sa` | does not resolve (unchanged) |
+
+**Does NOT advance the gate.** Admitted-firm count still 0 < 200 FAIL; cohort count
+unchanged; no panel row modified; no outcome-period return computed or inspected; no
+paid services; no credentials requested; `.github/workflows/main.yml` unmodified.
