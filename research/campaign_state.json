@@ -1,12 +1,12 @@
 {
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
-  "notes_count": 66,
-  "last_verified_head": "0c94c59872c2805751dcd0e6228618ea223503cc",
-  "updated_at": "2026-11-05T00:46:53Z",
+  "notes_count": 67,
+  "last_verified_head": "f540f6236ebc2348dbb24b9503632393b10fa515",
+  "updated_at": "2026-11-05T00:47:58Z",
   "notes": [
-    "Session 1500 verification pass: HEAD==origin/main==6105b4a; delta empty, working tree clean; no gate-evidence files changed; no panels rebuilt; last_verified_head corrected 2c9457f→6105b4a (stale by checkpoint commit); park reported honestly (12 cohorts MET; 12<200 firms FAIL; delisted coverage not established FAIL).",
-    "Session 1499 verification pass: HEAD==origin/main==2c9457f; delta empty, working tree clean; no gate-evidence files changed; no panels rebuilt; last_verified_head corrected 4704e2f→2c9457f; park reported honestly (12 cohorts MET; 12<200 firms FAIL; delisted coverage not established FAIL).",
+    "Session 1500 verification pass: HEAD==origin/main==6105b4a; delta empty, working tree clean; no gate-evidence files changed; no panels rebuilt; last_verified_head corrected 2c9457f\u21926105b4a (stale by checkpoint commit); park reported honestly (12 cohorts MET; 12<200 firms FAIL; delisted coverage not established FAIL).",
+    "Session 1499 verification pass: HEAD==origin/main==2c9457f; delta empty, working tree clean; no gate-evidence files changed; no panels rebuilt; last_verified_head corrected 4704e2f\u21922c9457f; park reported honestly (12 cohorts MET; 12<200 firms FAIL; delisted coverage not established FAIL).",
     "Session 1498 verification pass: HEAD==origin/main==4704e2f; delta only handoff/campaign_state; no gate-evidence files changed; no panels rebuilt; park reported honestly (12 cohorts MET; 12<200 firms FAIL; delisted coverage not established FAIL).",
     "Session 1497 verification pass: HEAD==origin/main==c03a82b; no gate-evidence files changed; no panels rebuilt; pytest unavailable; park reported honestly (12 cohorts MET; 12<200 firms FAIL; delisted coverage not established FAIL).",
     "Session 1496 verification pass: HEAD==origin/main==37a71f5; pytest unavailable (No module named pytest); no gate advanced; park reported honestly (12 cohorts MET; 12<200 firms FAIL; delisted coverage not established FAIL).",
