@@ -2,7 +2,7 @@
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
   "notes_count": 112,
-  "last_verified_head": "581462006b1792a93e1a1acf12afd173c2bcb4ce",
+  "last_verified_head": "acf2676bfa7e599ce192dc66270784d6b0678cb6",
   "updated_at": "2026-11-05T13:42:29Z",
   "notes": [
     "Session 1596 note. Read prior agent task from durable handoff (§9, Session 1595 → written for Session 1596) and completed delta-only cycle. `git fetch origin main`: HEAD == origin/main at 581462006b1792a93e1a1acf12afd173c2bcb4ce (clean). Delta from campaign_state last_verified_head 755e43a774ede94f4e577e559ad024c8bfa8bc94 to HEAD: only research/HANDOFF.md and research/campaign_state.json (checkpoint commits 5814620, 755e43a context); no gate-evidence files changed, so per DELTA-ONLY OVERRIDE no panels rebuilt, no ledgers recounted, no experiment_ledger.csv row, no decision_log.md entry. Read-only csv verification unchanged: cohort gate MET (12 ≥ 12); panel_v1.2.csv 141 rows / 12 non-empty T_A / 12 cohorts / 0 in_registered_panel; all 141 filing_route pending A2, price_venue_set pending A1; panel_v1.1.csv 431 rows / 8 in_registered_panel. Admitted treatment-firm count 0 < 200 FAIL. Free delisted/terminal-return price coverage not established FAIL (D-042/E-047, D-148 boundary-limited). PH-1 closed; primary estimand inconclusive_by_construction; results.md reports no results. Network LIVE (B3 superseded, D-149); SEC EDGAR SGML A2 feasibility finding only. Non-US A2 routes exhausted on free, terms-permitting sources (D-150: CVM EDGAR retired 410 Gone; DART requires credentials). Corrected campaign_state.json last_verified_head 755e43a→5814620 and notes_count; prepended session note and rewrote §9 for Session 1597. No paid services; .github/workflows/main.yml unmodified.",
