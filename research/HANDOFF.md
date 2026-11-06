@@ -1,3 +1,5 @@
+**Session 1794 note.** Read prior agent task from durable handoff (§9, Session 1793 → written for Session 1794) and completed delta-only cycle. `git fetch origin main`: HEAD == origin/main at `0f99248e6264e66d2a73d796e2924fcacb6dcdc7` (clean); `git status` clean. Delta from last verified head `0f99248e6264e66d2a73d796e2924fcacb6dcdc7` to HEAD: only `research/HANDOFF.md` and `research/campaign_state.json` (checkpoint; no gate-evidence files). Per DELTA-ONLY OVERRIDE: no panels rebuilt, no ledgers recounted, no `experiment_ledger.csv` row, no `decision_log.md` entry. Read-only verification: cohort gate **MET (12 ≥ 12)** — `panel_v1.2.csv` **141** rows / **12** non-empty `T_A` / **12** distinct `timing_cohort` values / **0** `in_registered_panel=true`; all 141 `filing_route` pending A2, `price_venue_set` pending A1. Admitted treatment-firm count **0 < 200 FAIL**; free delisted/terminal-return price coverage **not established FAIL (D-042/E-047, D-148 boundary-limited)**. PH-1 closed; primary estimand **inconclusive_by_construction**; `research/results.md` reports no results. `campaign_state.json.last_verified_head` matches verified commit `0f99248e6264e66d2a73d796e2924fcacb6dcdc7`; `notes_count` 242 (live array); refreshed `updated_at`. Prepended HANDOFF session note and rewrote §9 for Session 1795. No paid services; `.github/workflows/main.yml` unmodified.
+
 **Session 1793 note.** Read prior agent task from durable handoff (§9, Session 1792 → written for Session 1793) and completed delta-only cycle. `git fetch origin main`: HEAD == origin/main at `0f99248e6264e66d2a73d796e2924fcacb6dcdc7` (clean); `git status` clean. Delta from last verified head `b16f8491902f1a8350e4309bef27426d597eb39c` to HEAD: only `research/HANDOFF.md` and `research/campaign_state.json` (checkpoint; no gate-evidence files). Per DELTA-ONLY OVERRIDE: no panels rebuilt, no ledgers recounted, no `experiment_ledger.csv` row, no `decision_log.md` entry. Read-only verification: cohort gate **MET (12 ≥ 12)**; admitted treatment-firm count **0 < 200 FAIL**; free delisted/terminal-return price coverage **not established FAIL (D-042/E-047, D-148 boundary-limited)**. PH-1 closed; primary estimand **inconclusive_by_construction**; `research/results.md` reports no results. `campaign_state.json.last_verified_head` corrected to `0f99248e6264e66d2a73d796e2924fcacb6dcdc7`; `notes_count` 242; refreshed `updated_at`. Prepended HANDOFF session note and rewrote §9 for Session 1794. No paid services; `.github/workflows/main.yml` unmodified.
 
 **Session 1792 note.** Read prior agent task from durable handoff (§9, Session 1791 → written for Session 1792) and completed delta-only cycle. `git fetch origin main`: HEAD == origin/main at `b16f8491902f1a8350e4309bef27426d597eb39c` (clean); `git status` clean. Delta from last verified head `8130e267b0d3d4ba4d477a9c617840ffdcb59be1` to HEAD: only `research/HANDOFF.md` and `research/campaign_state.json` (checkpoint commits; no gate-evidence files). Per DELTA-ONLY OVERRIDE: no panels rebuilt, no ledgers recounted, no `experiment_ledger.csv` row, no `decision_log.md` entry. Read-only verification: cohort gate **MET (12 ≥ 12)** — `panel_v1.2.csv` **141** rows / **12** non-empty `T_A` / **12** distinct `timing_cohort` values / **0** `in_registered_panel=true`; all 141 `filing_route` pending A2, `price_venue_set` pending A1. Admitted treatment-firm count **0 < 200 FAIL**. Free delisted/terminal-return price coverage **not established FAIL (D-042/E-047, D-148 boundary-limited)**. PH-1 closed; primary estimand **inconclusive_by_construction**; `research/results.md` reports no results. `scripts/build_panel.py` regenerates `panel_v1.2.csv` with `git diff` clean. `campaign_state.json.last_verified_head` corrected to `b16f8491902f1a8350e4309bef27426d597eb39c`; `notes_count` 241; refreshed `updated_at`. Prepended HANDOFF session note and rewrote §9 for Session 1793. No paid services; `.github/workflows/main.yml` unmodified.
@@ -460,26 +462,9 @@
 
 
 
-## §9 — INITIAL TASK MESSAGE FOR THE NEXT AGENT (Session 1794)
+## §9 — INITIAL TASK MESSAGE FOR THE NEXT AGENT (Session 1795)
 
 1. Verify committed state first: `git fetch origin main`, check `git status`, parse `research/campaign_state.json` with `json.load`, re-derive panel counts with `csv` module, confirm `panel_v1.2.csv` regenerates from `scripts/build_panel.py` (git diff clean). Confirm `last_verified_head` matches verified commit (`0f99248e6264e66d2a73d796e2924fcacb6dcdc7` unless origin/main moved); correct if stale.
-
-2. Report park honestly: cohort gate MET (12>=12); filing_route/price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count 0<200 FAIL; free delisted/terminal-return price coverage not established FAIL (D-042/E-047, D-148). Primary estimand inconclusive by construction; PH-1 closed. Do not compute outcome-period returns or inspect outcome data. results.md must report no results.
-
-3. Only advance gates via free, lawful sources (D-032). Do not purchase data, provision credentials, run GitHub Actions, or modify .github/workflows/main.yml.
-
-4. Do not repeat closed probes (FCA RNS timestamp, Stooq/Yahoo unverified, non-US A2 exhausted) unless environment changes.
-
-5. Update durable handoff: prepend session note, rewrite §9, update campaign_state.json (last_verified_head, notes_count, updated_at, prepend note). Append to experiment_ledger.csv only for a new substantive row (raw text append, never csv.writer).
-
-6. Two-runner caution: git fetch before commit; rebase conflicts on append-only ledgers resolve per D-035.
-
-7. experiment_ledger.csv has embedded newlines in quoted fields — append with raw text append only.
-
-8. workflow_run_diagnostics.jsonl is append-only non-gate evidence; never edit by hand.
-
-
-1. Verify committed state first: `git fetch origin main`, check `git status`, parse `research/campaign_state.json` with `json.load`, re-derive panel counts with `csv` module, confirm `panel_v1.2.csv` regenerates from `scripts/build_panel.py` (git diff clean). Confirm `last_verified_head` matches verified commit (`b16f8491902f1a8350e4309bef27426d597eb39c` unless origin/main moved); correct if stale.
 
 2. Report park honestly: cohort gate MET (12>=12); filing_route/price_venue_set PENDING for all 141 PH-1 rows; admitted treatment-firm count 0<200 FAIL; free delisted/terminal-return price coverage not established FAIL (D-042/E-047, D-148). Primary estimand inconclusive by construction; PH-1 closed. Do not compute outcome-period returns or inspect outcome data. results.md must report no results.
 
