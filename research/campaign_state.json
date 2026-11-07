@@ -1,10 +1,11 @@
 {
   "campaign_id": "ACCTCLOCK",
   "conflicts": [],
-  "notes_count": 289,
-  "last_verified_head": "d0a6ae9547f6a7f7f8a14b34c0bc0b3766e3d974",
-  "updated_at": "2026-11-07T07:50:00Z",
+  "notes_count": 287,
+  "last_verified_head": "f8ca3a084e9a35f1ac19da4a08b6462955c6ce29",
+  "updated_at": "2026-11-07T08:19:21Z",
   "notes": [
+    "**Session 1848 note.** Read prior agent task from durable handoff (\u00a79, Session 1847 \u2192 written for Session 1848) and completed delta-only cycle. `git fetch origin main`: HEAD == origin/main at `f8ca3a084e9a35f1ac19da4a08b6462955c6ce29` (clean); `git status` clean. Delta from last verified head `d0a6ae9547f6a7f7f8a14b34c0bc0b3766e3d974` to HEAD `f8ca3a084e9a35f1ac19da4a08b6462955c6ce29`: only `research/HANDOFF.md`, `research/campaign_state.json`, `research_state/workflow_run_diagnostics.jsonl` (checkpoint/diagnostics commits; no gate-evidence files). Per DELTA-ONLY OVERRIDE: no panels rebuilt, no ledgers recounted beyond re-derivation, no `experiment_ledger.csv` row, no `decision_log.md` entry. Read-only re-derivation (csv module/json): `panel_v1.2.csv` **141** rows / **12** non-empty `T_A` / **12** distinct `timing_cohort` values / **0** `in_registered_panel=true`; all 141 `filing_route` pending A2 (1 distinct value) and all 141 `price_venue_set` pending A1 (1 distinct value). `panel_v1.1.csv` **431** rows / **8** `in_registered_panel=true`. `scripts/build_panel.py` regenerated `panel_v1.2.csv`; `git diff` clean (byte-identical); working tree restored. Source ledger **100** records; experiment ledger **377** data rows (max run_id **E-388**); decision log last header **D-150** (95 headers). Cohort gate **MET (12\u226512)**. Admitted treatment-firm count **0 < 200 (FAIL)**. Free delisted/terminal-return price coverage **not established (FAIL, D-042/E-047, D-148 boundary-limited)**. PH-1 closed; primary estimand **inconclusive_by_construction**; `research/results.md` reports no results. `research/results.md` line 139 re-verified: reads **431** and **141** (no drift). Network routes remain closed/candidate_unverified/not_retrieved in this environment; no credible free, lawful gate-advancing source identified. Corrected `campaign_state.json`: `last_verified_head` `d0a6ae9547f6a7f7f8a14b34c0bc0b3766e3d974`\u2192`f8ca3a084e9a35f1ac19da4a08b6462955c6ce29`, `notes_count` aligned to live array length (286), refreshed `updated_at`. Prepended HANDOFF session note and rewrote \u00a79 for Session 1849. No paid services; `.github/workflows/main.yml` unmodified (81221 bytes).",
     {
       "session": 1844,
       "ts": "2026-11-07T07:37:57Z",
