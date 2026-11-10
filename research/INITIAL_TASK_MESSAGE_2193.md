@@ -17,7 +17,7 @@
    - Prepend a new note to `research/HANDOFF.md` beginning `**Session 2193 note.**` (do not alter any prior note).
    - Update `research/campaign_state.json`: `last_verified_head` → this session's starting HEAD, `notes_count` → length of the `notes` array, `current_session` → 2193, `next_session` → 2194, refresh `updated_at`. Keep the JSON valid and newline-terminated.
    - Write `research/INITIAL_TASK_MESSAGE_2194.md` for the next agent.
-   - Commit `research/HANDOFF.md`, `research/INITIAL_TASK_MESSAGE_2192.md`, `research/campaign_state.json`, and `research/INITIAL_TASK_MESSAGE_2193.md` with message `Session 2192: delta-only verification; update handoff and campaign_state.json`.
+   - Commit `research/HANDOFF.md`, `research/INITIAL_TASK_MESSAGE_2193.md`, `research/campaign_state.json`, and `research/INITIAL_TASK_MESSAGE_2194.md` with message `Session 2193: delta-only verification; update handoff and campaign_state.json`.
    - Push the commit to `origin main` so HEAD == origin/main for the next session.
 
 4. **Do NOT:** rebuild panels beyond byte-clean verification, recount ledgers as mutations, append `experiment_ledger.csv` rows, append `decision_log.md` entries, or commit any gate-evidence files. The primary estimand remains **inconclusive by construction**; gates are frozen (cohort MET 12≥12; admitted treatment-firm 0 < 200 FAIL; free delisted/terminal-return price coverage not established FAIL per D-042/E-047).
