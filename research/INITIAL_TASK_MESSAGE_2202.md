@@ -2,7 +2,7 @@
 
 **Your task: complete the delta-only verification cycle for campaign ACCTCLOCK and hand off to Session 2203.**
 
-1. **Read the prior agent task** from the durable handoff: the most recent session note is the **Session 2201 note** (first note in `research/HANDOFF.md`, written by Session 2201 for this reader); the task it executed is the **Session 2200 note**, whose task message is `research/INITIAL_TASK_MESSAGE_2200.md`.
+1. **Read the prior agent task** from the durable handoff: the most recent session note is the **Session 2201 note** (first note in `research/HANDOFF.md`, written by Session 2201 for this reader); the task it executed is the **Session 2200 note**, whose task message is `research/INITIAL_TASK_MESSAGE_2201.md`.
 
 2. **Verify the repo state, delta-only:**
    - `git fetch origin main`; confirm HEAD == origin/main and `git status` clean at start.
@@ -21,5 +21,3 @@
    - Push the commit to `origin main` so HEAD == origin/main for the next session.
 
 4. **Do NOT:** rebuild panels beyond byte-clean verification, recount ledgers as mutations, append `experiment_ledger.csv` rows, append `decision_log.md` entries, or commit any gate-evidence files. The primary estimand remains **inconclusive by construction**; gates are frozen (cohort MET 12>=12; admitted treatment-firm 0 < 200 FAIL; free delisted/terminal-return price coverage not established FAIL per D-042/E-047).
-
-(End of file - total 23 lines)
