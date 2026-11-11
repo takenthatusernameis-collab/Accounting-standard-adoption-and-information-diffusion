@@ -1,16 +1,1 @@
-{
-  "campaign": "ACCTCLOCK",
-  "repo": "takenthatusernameis-collab/Accounting-standard-adoption-and-information-diffusion",
-  "current_session": 2333,
-  "next_session": 2334,
-  "last_verified_head": "f0677f1f6a923fd65e4b7d5d07adffc722c30450",
-  "notes_count": 6,
-  "updated_at": "2026-11-11T22:53:49Z",
-  "status": "delta_only_verification_ongoing",
-  "gates": {
-    "cohort": { "met": true, "value": 12, "threshold": 12 },
-    "admitted_treatment_firm": { "met": false, "value": 0, "threshold": 200 },
-    "free_delisted_terminal_return_price_coverage": { "met": false, "established": false, "ref": "D-042/E-047" }
-  },
-  "primary_estimand": "inconclusive_by_construction"
-}
+{"campaign":"ACCTCLOCK","repo":"takenthatusernameis-collab/Accounting-standard-adoption-and-information-diffusion","current_session":2334,"next_session":2335,"last_verified_head":"b8e068711815f6dd684666664a40e3e28895e88c","notes_count":7,"updated_at":"2026-11-11T23:48:27Z","status":"delta_only_verification_ongoing","gates":{"cohort":{"met":true,"value":12,"threshold":12},"admitted_treatment_firm":{"met":false,"value":0,"threshold":200},"free_delisted_terminal_return_price_coverage":{"met":false,"established":false,"ref":"D-042/E-047"}},"primary_estimand":"inconclusive_by_construction"}
