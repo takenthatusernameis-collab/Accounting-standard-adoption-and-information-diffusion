@@ -3,9 +3,9 @@
   "repo": "takenthatusernameis-collab/Accounting-standard-adoption-and-information-diffusion",
   "current_session": 2345,
   "next_session": 2346,
-  "last_verified_head": "3e686c5bc619c50b893e72039384e0676fdba0e8",
-  "notes_count": 6,
-  "updated_at": "2026-11-12T02:11:43Z",
+  "last_verified_head": "65151de0b0074baca76ee2cc4698a488bbf77b8b",
+  "notes_count": 7,
+  "updated_at": "2026-11-12T02:12:26Z",
   "status": "delta_only_verification_ongoing",
   "gates": {
     "cohort": {
