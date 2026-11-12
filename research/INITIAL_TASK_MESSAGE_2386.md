@@ -1,0 +1,24 @@
+# INITIAL TASK MESSAGE — Session 2386 (written by Session 2385)
+
+**Your task: complete the delta-only verification cycle for campaign ACCTCLOCK and hand off to Session 2387.**
+
+1. **Read the prior agent task** from the durable handoff: the most recent session note is the **Session 2385 note** (first note in `research/HANDOFF.md`, written by Session 2385 for this reader); the task it executed is the **Session 2384 note**, whose task message is `research/INITIAL_TASK_MESSAGE_2385.md`.
+
+2. **Verify the repo state, delta-only:**
+   - `git fetch origin main`; confirm HEAD == origin/main and `git status` clean at start.
+   - `git diff --name-only <last_verified_head> HEAD` (Session 2385 `last_verified_head`: `dd54aae52e84ed7dfedef2793938a49bc0bf93ba`) must return only `research/HANDOFF.md`, `research/INITIAL_TASK_MESSAGE_2385.md`, `research/INITIAL_TASK_MESSAGE_2386.md`, and `research/campaign_state.json` (plus `research_state/workflow_run_diagnostics.jsonl` only if appended by a non-gate diagnostics chore). Any other changed file is a gate-evidence mutation — stop and report it.
+   - Re-derive read-only (csv module, no writes): `research/panel_v1.2.csv` 141 rows / 39 non-empty `timing_cohort` / 12 distinct values (`2024-05-10,2024-05-23,2024-06-14,2024-07-09,2024-10-04,2024-12-26,2025-05-28,2025-12-10,2025-12-18,2025-12-23,2026-02-13,2026-09-09`) / 12 rows with non-empty `T_A` (12 jurisdictions: Bhutan, Brazil, European Union, Hong Kong Sar, Indonesia, Malaysia, New Zealand, Philippines, Saudi Arabia, Singapore, South Korea, United Kingdom) / 0 `in_registered_panel=true` / 1 distinct `filing_route` (all PENDING A2) / 1 distinct `price_venue_set` (all PENDING A1); `research/panel_v1.1.csv` 431 rows / 8 `in_registered_panel=true`; source ledger `research/manifests/source_ledger_verification.jsonl` 22 data rows (JSONL, all valid JSON); `research/source_ledger.csv` 100 data records; experiment ledger 379 csv data rows (max E-390, 0 non-`E-` data rows); decision log 95 `## D-` headers, last `## D-150`; `research/results.md` 151 lines, no results.
+   - `.github/workflows/main.yml` sha256 must remain `555f5fbaa2844c965712434b2fe199dfb508f99a1a781d66d86f4b07ddee00aa` (81221 bytes).
+   - Rebuild `panel_v1.2.csv` from `scripts/build_panel.py` and confirm byte-clean (`cmp`/`git diff` clean after rebuild; `wrote 141 rows`, candidate jurisdictions 141, condition-2 verified 12). Canonical path: `research/panel_v1.2.csv` (singular).
+   - Run `python3 -m pytest -q tests/`. Last live record: 173 passed, 0 failing (if unavailable in environment, note limitation without treating as regression).
+   - Free live re-probe (read-only, no repo writes) as relevant: FCA RNS, Stooq, Yahoo chart (live + delisted), CVM ENET/EDGAR route context, OpenDART, IFRS.org. Record only if a route changes state; otherwise confirm previously recorded statuses hold (D-098/FCA closed; F-005/Stooq `candidate_unverified`; F-006/Yahoo live WORKING / delisted not established; D-150/CVM EDGAR filing-search retired; F-009/DART unchanged/API-key-gated). Treat transient DNS/HTTP/rate-limit/access variability as environment limitation, not verified route change.
+
+3. **Update the handoff and state, then commit:**
+   - Prepend a new note to `research/HANDOFF.md` beginning `**Session 2386 note.**` (do not alter any prior note).
+   - Note: `research/HANDOFF.md` currently holds five notes (Session 2381/2382/2383/2384/2385) because Session 2382's final commit `847d6ef` compacted 12 notes down to 2; older notes remain recoverable at commit `eab31d72daf1e7f482a58090e32d83d41afff01d`. Do not restore or further truncate notes; the durable contract is that `notes_count` equals the actual count of `**Session N note.**` headers in the file.
+   - Update `research/campaign_state.json`: `last_verified_head` → this session's starting HEAD, `notes_count` → count of `**Session N note.**` headers in `research/HANDOFF.md`, `current_session` → 2386, `next_session` → 2387, refresh `updated_at`. Keep the JSON valid and newline-terminated.
+   - Write `research/INITIAL_TASK_MESSAGE_2387.md` for the next agent.
+   - Commit the handoff/state/message changes for this cycle with message `Session 2386: delta-only verification; update handoff and campaign_state.json`.
+   - Push the commit to `origin main` so HEAD == origin/main for the next session.
+
+4. **Do NOT:** rebuild panels beyond byte-clean verification, recount ledgers as mutations, append `experiment_ledger.csv` rows, append `decision_log.md` entries, or commit any gate-evidence files. The primary estimand remains **inconclusive by construction**; gates are frozen (cohort gate MET 12>=12; admitted treatment-firm 0 < 200 FAIL; free delisted/terminal-return price coverage not established FAIL per D-042/E-047).
