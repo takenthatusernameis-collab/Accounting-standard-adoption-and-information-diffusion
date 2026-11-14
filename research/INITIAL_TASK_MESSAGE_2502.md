@@ -1,0 +1,15 @@
+Session 2501 completed delta-only verification from Session 2500 last_verified_head `656671b983729dee532f68cc3e142df14fd0141b` to Session 2501 starting HEAD `7fd077fead7121fb93f628744e3dd879384add8a` (Session 2500 commit, HEAD == origin/main; clean working tree). Delta: `research/HANDOFF.md`, `research/INITIAL_TASK_MESSAGE_2501.md`, `research/campaign_state.json` — no gate-evidence files (handoff-set only). Verification: temp `scripts/build_panel.py` rebuild **byte-identical** to `research/panel_v1.2.csv`; `python3 -m pytest -q tests/` → **173 passed**. Gate artifacts re-verified: panel_v1.2 **141 rows** / **21 cols** / **39 non-empty timing_cohort** / **12 distinct** (`2024-05:10, 2024:05:23, 2024:06:14, 2024:07:09, 2024:10:04, 2024:12:26, 2025:05:28, 2025:12:10, 2025:12:18, 2025:12:23, 2026:02:13, 2026:09:09`) / **12 T_A** (Bhutan, Brazil, EU, Hong Kong, Indonesia, Malaysia, NZ, Philippines, Saudi Arabia, Singapore, South Korea, UK) / **0 in_registered_panel=true** / **PENDING A2** filing_route / **PENDING A1** price_venue; panel_v1.1 **431 rows** / **8 in_registered_panel=true**; source_ledger **102 lines** / **22 verification rows**; experiment_ledger **396 raw** / **379 E-**; decision_log **95 D-** / **114 ##**; results **151 lines**; workflow **sha256 verified**. Gates unchanged: **cohort MET** (12≥12); **admitted treatment-firm FAIL** (0<200); **free delisted/terminal-return price coverage FAIL** (D-042/E-047). Primary estimand **inconclusive_by_construction**. No gate-advance commits; workflow unchanged. Prior Session notes (2500–2488) intact.
+
+**Session 2502 task (delta-only unless conditions require full verification):**
+
+1. `git fetch origin main`; confirm HEAD == origin/main and clean start. Compute `git diff --name-only <Session 2501 last_verified_head=656671b983729dee532f68cc3e142df14fd0141b>..HEAD` (use the actual starting HEAD you record). If delta shows only non-gate handoff/diagnostics changes, delta-only verification suffices.
+
+2. Read only the first `**Session 2501 note.**` block in `research/HANDOFF.md` as the durable handoff; treat later notes as prior history. Execute delta-only checks appropriate to the diff (read-only re-derivation of gate artifacts/counts/hashes and/or tests/rebuild only if required).
+
+3. Do **not** advance gates, compute outcome-period returns, use paid services, or modify `.github/workflows/main.yml`. Maintain append-only integrity; commit gate-evidence files only if a gate actually advances (none expected).
+
+4. Prepend a `**Session 2502 note.**` directly below the handoff header recording: starting HEAD (`last_verified_head` for next reader), fetch/status, delta summary, anomalies (if any), re-derivation/test/rebuild results performed, gate status unchanged, and that prior notes remain intact.
+
+5. Update `research/campaign_state.json` (`current_session`, `next_session`, `last_verified_head`, `notes_count`, `updated_at`) and write `research/INITIAL_TASK_MESSAGE_2503.md` with a clear task for the next agent.
+
+6. Commit handoff artifacts and push to `origin main`. Reply with a concise summary of what was verified and what you wrote for the next agent.
