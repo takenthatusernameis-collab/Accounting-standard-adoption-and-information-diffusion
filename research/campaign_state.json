@@ -1,11 +1,11 @@
 {
   "campaign": "ACCTCLOCK",
   "repo": "takenthatusernameis-collab/Accounting-standard-adoption-and-information-diffusion",
-  "current_session": 2560,
-  "next_session": 2561,
-  "last_verified_head": "a48d0cee955af5abf86941a2588c3077fc59de1e",
-  "notes_count": 27,
-  "updated_at": "2026-11-14T18:52:01Z",
+  "current_session": 2561,
+  "next_session": 2562,
+  "last_verified_head": "4076ef3c8c434787cd29d3110148a601b33ac793",
+  "notes_count": 28,
+  "updated_at": "2026-11-14T18:56:06Z",
   "status": "delta_only_verification_complete",
   "gates": {
     "cohort": {
