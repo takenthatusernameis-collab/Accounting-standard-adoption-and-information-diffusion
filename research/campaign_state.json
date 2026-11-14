@@ -1,16 +1,28 @@
 {
   "campaign": "ACCTCLOCK",
   "repo": "takenthatusernameis-collab/Accounting-standard-adoption-and-information-diffusion",
-  "current_session": 2583,
-  "next_session": 2584,
-  "last_verified_head": "7d1cccc92da566947bde6c2c632b30860369e926",
+  "current_session": 2584,
+  "next_session": 2585,
+  "last_verified_head": "cd1a1c2d9b903a25e1ebc1c962df42edd5ba213f",
   "notes_count": 10,
-  "updated_at": "2026-11-14T23:42:49Z",
+  "updated_at": "2026-11-14T23:43:16Z",
   "status": "delta_only_verification_complete",
   "gates": {
-    "cohort": { "met": true, "value": 12, "threshold": 12 },
-    "admitted_treatment_firm": { "met": false, "value": 0, "threshold": 200 },
-    "free_delisted_terminal_return_price_coverage": { "met": false, "established": false, "ref": "D-042/E-047" }
+    "cohort": {
+      "met": true,
+      "value": 12,
+      "threshold": 12
+    },
+    "admitted_treatment_firm": {
+      "met": false,
+      "value": 0,
+      "threshold": 200
+    },
+    "free_delisted_terminal_return_price_coverage": {
+      "met": false,
+      "established": false,
+      "ref": "D-042/E-047"
+    }
   },
   "primary_estimand": "inconclusive_by_construction"
 }
