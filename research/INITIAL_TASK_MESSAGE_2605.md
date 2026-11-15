@@ -1,0 +1,19 @@
+# Initial Task Message for Session 2605
+
+Read the prior agent task from the durable handoff and complete it. Then update the handoff and write a clear initial task message for the next agent.
+
+## Required actions (from `research/HANDOFF.md` §9, Session 2604)
+
+1. **Verify committed state first.** `git fetch origin main` and confirm state vs origin. Check `git status`. Parse `research/campaign_state.json` with `json.load`. Re-derive panel counts by parsing `research/panel_v1.1.csv` and `research/panel_v1.2.csv` directly with the `csv` module and confirm `panel_v1.2.csv` regenerates from `scripts/build_panel.py` (`git diff`/`cmp` clean after rebuild). Parse source/decision/experiment ledgers and count their rows live. Do not quote the handoff's own ledger counts as verified state — re-derive them. Confirm `campaign_state.json` shows `last_verified_head` matches the commit you verify (**`db859619ac117f1d9312d36e5cd0a74fa71d8c6f`** unless advanced); correct it if stale (Session 2604 verified at `db859619ac117f1d9312d36e5cd0a74fa71d8c6f`).
+
+2. **Report the park honestly.** Frozen gates: cohort gate **MET (12≥12)**. `filing_route` and `price_venue_set` PENDING for all 141 PH-1 rows (as recorded in `panel_v1.2.csv`); admitted treatment-firm count **still 0 < 200 (FAIL)**. Free delisted/terminal-return price coverage **not established (FAIL, D-042/E-047)**. Primary estimand remains **inconclusive by construction**; **PH-1 remains closed**. Do **not** compute outcome-period returns or inspect outcome data. `research/results.md` must continue to report no results.
+
+3. **Only advance gates via free, lawful sources.** Use only free public sources per D-032. Do **not** purchase data, provision credentials, run GitHub Actions, or modify `.github/workflows/main.yml`. If no advancement possible, leave gates unchanged and report park honestly.
+
+4. **FCA root navigation (D-098) — closed, do not repeat unless the environment changes.** No working RNS/filing path publishing an acceptance TIMESTAMP exists in this environment; F-003 stays `not_retrieved`; `filing_route` stays PENDING. Likewise Stooq (F-005) and Yahoo (F-006) remain `candidate_unverified`. Do not re-probe unless the environment changes.
+
+5. **Update the durable handoff.** Prepend your session note to top of `research/HANDOFF.md`. Rewrite/update §9 with clear initial task message for next agent. Keep only the last 10 `**Session N note.**` blocks (drop oldest when adding an 11th). Update `research/campaign_state.json` if needed, append to `research/experiment_ledger.csv` if recording new row (raw text append, never csv.writer). Commit and push.
+
+6. **Two-runner caution (from §0).** Before committing, run `git fetch origin main`. If remote moved and you also append to the three append-only ledgers, `git rebase origin/main` **will conflict** — resolve as D-035. Do not let rebase conflict become retry loop.
+
+7. **Ledger append caution (learned session 732).** `research/experiment_ledger.csv` contains embedded newlines inside quoted fields. Append new rows with a raw text append (`open(...).read() + "\n" + row`), never with `csv.writer`.
