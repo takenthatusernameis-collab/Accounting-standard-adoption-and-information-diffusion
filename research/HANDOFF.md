@@ -34,9 +34,9 @@ Park report: cohort gate **MET (12>=12)**. `filing_route` and `price_venue_set` 
 
 Park report: cohort gate **MET (12>=12)**. `filing_route` and `price_venue_set` PENDING for all 141 PH-1 rows (`panel_v1.2.csv`, values `pending`/`PENDING A2`/`PENDING A1`); admitted treatment-firm count **still 0 < 200 (FAIL)**. Free delisted/terminal-return price coverage **not established (FAIL, D-042/E-047)**. Primary estimand remains **inconclusive by construction**; **PH-1 remains closed**. Do **not** compute outcome-period returns or inspect outcome data. `research/results.md` must continue to report no results. No gate advanced; no outcome-period return computed or inspected; no paid data purchased; no credentials provisioned; no GitHub Actions run; `.github/workflows/main.yml` unmodified.
 
-## §9 — INITIAL TASK MESSAGE FOR THE NEXT AGENT (Session 2661)
+## §9 — INITIAL TASK MESSAGE FOR THE NEXT AGENT (Session 2662)
 
-1. **Verify committed state first.** Run `git fetch origin main` and confirm state vs origin. Check `git status`. Parse `research/campaign_state.json` with `json.load`. Re-derive panel counts by parsing `research/panel_v1.1.csv` and `research/panel_v1.2.csv` directly with the `csv` module, and confirm `panel_v1.2.csv` regenerates from `scripts/build_panel.py` (`cmp` clean after a rebuild to e.g. `/tmp/panel_rebuild_2662.csv`). Parse `research/source_ledger.csv`, `research/experiment_ledger.csv`, `research/decision_log.md`, `research/results.md` and count their rows live. Do **not** quote the handoff's own ledger counts as verified state — re-derive them. Confirm `campaign_state.json` shows `last_verified_head` matches the commit you verify (**`6c207c26ae74eddfb8ed3db9bb90fd48b8ca6581`** unless advanced); correct it if stale. Treat commit messages/checkpoint labels as non-authoritative; verify by delta and handoff notes.
+1. **Verify committed state first.** Run `git fetch origin main` and confirm state vs origin. Check `git status`. Parse `research/campaign_state.json` with `json.load`. Re-derive panel counts by parsing `research/panel_v1.1.csv` and `research/panel_v1.2.csv` directly with the `csv` module, and confirm `panel_v1.2.csv` regenerates from `scripts/build_panel.py` (`cmp` clean after a rebuild to e.g. `/tmp/panel_rebuild_2663.csv`). Parse `research/source_ledger.csv`, `research/experiment_ledger.csv`, `research/decision_log.md`, `research/results.md` and count their rows live. Do **not** quote the handoff's own ledger counts as verified state — re-derive them. Confirm `campaign_state.json` shows `last_verified_head` matches the commit you verify (**`68744b1b041e921d8dda50041fc21ebe9fb43330`** unless advanced); correct it if stale. Treat commit messages/checkpoint labels as non-authoritative; verify by delta and handoff notes.
 
 2. **Report the park honestly.** Frozen gates: cohort gate **MET (12>=12)**. `filing_route` and `price_venue_set` PENDING for all 141 PH-1 rows (`panel_v1.2.csv`, values `pending`/`PENDING A2`/`PENDING A1`); admitted treatment-firm count **still 0 < 200 (FAIL)**. Free delisted/terminal-return price coverage **not established (FAIL, D-042/E-047)**. Primary estimand remains **inconclusive by construction**; **PH-1 remains closed**. Do **not** compute outcome-period returns or inspect outcome data. `research/results.md` must continue to report no results.
 
@@ -50,11 +50,11 @@ Park report: cohort gate **MET (12>=12)**. `filing_route` and `price_venue_set` 
 
 7. **Ledger append caution (learned session 732).** `research/experiment_ledger.csv` contains embedded newlines inside quoted fields. Append new rows with a raw text append (`open(...).read() + "\n" + row`), never with `csv.writer`.
 
-## Verified park snapshot (Session 2661, re-derive if state changed)
+## Verified park snapshot (Session 2662, re-derive if state changed)
 
 - `panel_v1.2.csv` sha256 `d075c3a77f7dac79f9aa82023d0b5a53252d5095a88a7761abeb471153c700eb`; 141 rows / 21 cols; 39 non-empty `timing_cohort` / 12 distinct (`2024-05-10, 2024-05-23, 2024-06-14, 2024-07-09, 2024-10-04, 2024-12-26, 2025-05-28, 2025-12-10, 2025-12-18, 2025-12-23, 2026-02-13, 2026-09-09`); 0 `in_registered_panel=true` (values `pending`); 141 `filing_route` PENDING A2; 141 `price_venue_set` PENDING A1; 129 rows with empty `T_A`.
 - `panel_v1.1.csv` 431 rows / 19 cols / 8 `in_registered_panel=true` / 423 empty `T_A` (sha256 `40f3c19f38c70810fe8984e36d18f9ddc4e973e68c537106d2d72b13efa899df`).
-- `source_ledger.csv` 102 physical lines / 100 data rows (99 non-empty `retrieved_utc`).
-- `experiment_ledger.csv` 467 physical lines / 447 E- rows (line-start regex) / 437 distinct E- ids / max **E-459** (E-403/E-404 share one physical line; 10 historical duplicate ids).
+- `source_ledger.csv` 102 physical lines / 101 data rows (99 non-empty `retrieved_utc`).
+- `experiment_ledger.csv` 468 physical lines / 448 E- rows (line-start regex) / 438 distinct E- ids / max **E-460** (E-403/E-404 share one physical line; 10 historical duplicate ids).
 - `decision_log.md` 2642 lines / 95 `## D-` (last D-150). `results.md` 151 lines (no results).
 - `.github/workflows/main.yml` sha256 `555f5fbaa2844c965712434b2fe199dfb508f99a1a781d66d86f4b07ddee00aa` unchanged.
