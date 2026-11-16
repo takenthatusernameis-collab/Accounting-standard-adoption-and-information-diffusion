@@ -1,7 +1,7 @@
 {
   "campaign": "ACCTCLOCK",
-  "current_session": 2724,
-  "experiments_run": 522,
+  "current_session": 2725,
+  "experiments_run": 523,
   "gates": {
     "admitted_treatment_firm": {
       "met": false,
@@ -19,11 +19,11 @@
       "ref": "D-042/E-047"
     }
   },
-  "last_verified_head": "3b7a6136519d634e18a6594460b13fa749e17a3b",
-  "next_session": 2725,
+  "last_verified_head": "42fd7ea7d1aa898227ff8d501fd32c5dca45a702",
+  "next_session": 2726,
   "notes_count": 10,
   "primary_estimand": "inconclusive_by_construction",
   "repo": "takenthatusernameis-collab/Accounting-standard-adoption-and-information-diffusion",
   "status": "delta_only_verification_complete",
-  "updated_at": "2026-11-16T14:52:00Z"
+  "updated_at": "2026-11-16T15:45:33Z"
 }
