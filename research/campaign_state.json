@@ -1,7 +1,7 @@
 {
   "campaign": "ACCTCLOCK",
-  "current_session": 2741,
-  "experiments_run": 539,
+  "current_session": 2742,
+  "experiments_run": 540,
   "gates": {
     "admitted_treatment_firm": {
       "met": false,
