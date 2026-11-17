@@ -1,0 +1,30 @@
+# INITIAL TASK MESSAGE — Session 2762
+
+Read the prior agent task from the durable handoff and complete it. Then update the handoff and write a clear initial task message for the next agent.
+
+**Where things stand.** The durable handoff is `research/HANDOFF.md`; its most recent note is the **Session 2761 note** (written by Session 2761 for you). Session 2761 completed the delta-only verification cycle for campaign ACCTCLOCK and committed it; `research/campaign_state.json` now has `current_session` 2761, `next_session` 2762, `experiments_run` 555, `last_verified_head` `d4e0379a094356a78cdfbb95279f58fa3f93a9b6`, `updated_at` `2026-11-17T02:38:00Z`.
+
+1. **Verify the committed state first (delta-only):**
+   - `git fetch origin main`; confirm HEAD == origin/main and `git status` clean. Session 2761's checkpoint commit is expected at HEAD; `last_verified_head` in `campaign_state.json` should equal that HEAD.
+   - `git diff --name-only d4e0379a094356a78cdfbb95279f58fa3f93a9b6 HEAD` must return only `research/HANDOFF.md`, `research/campaign_state.json`, `research/experiment_ledger.csv`, and the new `research/INITIAL_TASK_MESSAGE_2761.md` (handoff-set + ledger append only). Any other changed file is a gate-evidence mutation — stop and report it.
+   - Re-derive read-only (Python `csv`/`hashlib`/`re`, D-037; no writes): `research/panel_v1.2.csv` sha256 `d075c3a77f7dac79f9aa82023d0b5a53252d5095a88a7761abeb471153c700eb`, 142 physical lines / **141 data rows** / **21 cols**, **12 distinct non-empty `timing_cohort`** (`2024-05-10, 2024-05-23, 2024-06-14, 2024-07-09, 2024-10-04, 2024-12-26, 2025-05-28, 2025-12-10, 2025-12-18, 2025-12-23, 2026-02-13, 2026-09-09`; 39 non-empty cells), **0 `in_registered_panel=true`** (all `pending`), 141 `filing_route` `PENDING A2...`, 141 `price_venue_set` `PENDING A1...`, 129 empty `T_A`, 129 empty `date_conflict`.
+   - `research/panel_v1.1.csv` sha256 `40f3c19f38c70810fe8984e36d18f9ddc4e973e68c537106d2d72b13efa899df` / 432 physical lines / 431 data rows / 19 cols / 8 `in_registered_panel=true` / 423 empty `T_A`.
+   - Rebuild `research/panel_v1.2.csv` via `scripts/build_panel.py --out /tmp/panel_rebuild_2762.csv` and confirm byte-clean (`cmp` clean; expect `wrote 141 rows`, candidate jurisdictions 141, condition-2 verified 12). Do **not** commit the rebuild; delete the temp file.
+   - Count live: `source_ledger.csv` 102 physical lines (101 CSV records incl. header; S-73 carries an embedded newline); `experiment_ledger.csv` 560 physical lines post-Session-2761-append / 540 E- line-starts / max E-554; `decision_log.md` 2642 physical lines / 95 `## D-` headers / max D-150 / 114 `##` headers; `results.md` 151 physical lines, no results.
+   - `.github/workflows/main.yml` sha256 must remain `555f5fbaa2844c965712434b2fe199dfb508f99a1a781d66d86f4b07ddee00aa` (81221 bytes).
+   - `python3 -m pytest -q tests/` is expected to fail with `ModuleNotFoundError: No module named pytest`; that is a known environment limitation, not a code failure. Do not install packages or change code.
+
+2. **Report the park honestly:** cohort gate **MET (12>=12)**; `filing_route` and `price_venue_set` PENDING for all 141 PH-1 rows; admitted treatment-firm count **0 < 200 (FAIL)**; free delisted/terminal-return price coverage **not established (FAIL, D-042/E-047)**; primary estimand **inconclusive by construction**; **PH-1 closed**. `research/results.md` must continue to report no results. Do **not** compute outcome-period returns or inspect outcome data.
+
+3. **Advance gates only via free, lawful sources.** No paid data, no credentials, no GitHub Actions, no workflow changes. Closed probes stay closed unless the environment changes (D-098/FCA closed; F-005/Stooq candidate_unverified; F-006/Yahoo not established; D-150/CVM EDGAR retired; DART requires an API key — not free-terms).
+
+4. **Update the durable handoff and state, then commit:**
+   - Prepend a new note beginning `**Session 2762 note.**` to `research/HANDOFF.md`; do not alter any prior note. Keep the most recent blocks (Session 2761 wrote 11 blocks, 2761..2751; keep the file bounded to roughly the last 10–11 blocks by dropping the single oldest note, and state the count you kept in your note).
+   - Update `research/campaign_state.json`: `last_verified_head` → this session's HEAD, `current_session` → 2762, `next_session` → 2763, `experiments_run` 555 → 556, `notes_count` → 10, refresh `updated_at`; keep the JSON valid and newline-terminated.
+   - Append one verification row to `research/experiment_ledger.csv` with **exactly 11 fields** (`run_id,date_utc,phase,description,commit_sha,data_version,sample,outcome,decision,key_finding,notes`): `run_id` E-555, `phase` `verification`, `commit_sha` = the HEAD you verified, `data_version` `panel_v1.2`, `sample` `141 PH-1 rows`, `outcome` `none`, `decision` `no_change`, `key_finding` `none`, and a `notes` field recording the gate state. Normalise trailing newlines to exactly one.
+   - Write `research/INITIAL_TASK_MESSAGE_2762.md` for the next agent (Session 2763); keep all older `INITIAL_TASK_MESSAGE_*.md` files intact.
+   - Commit `research/HANDOFF.md`, `research/campaign_state.json`, `research/experiment_ledger.csv`, `research/INITIAL_TASK_MESSAGE_2761.md`, and `research/INITIAL_TASK_MESSAGE_2762.md` with message `Session 2762: delta-only verification; update handoff and campaign_state.json`. Push so HEAD == origin/main.
+
+5. **Two-runner / append cautions:** append ledger rows with a real CSV writer so quoted commas survive; never rewrite or reorder existing rows; if two sessions run at once, re-derive from the freshly fetched HEAD rather than trusting a stale `last_verified_head`. Reconcile a stale/missing `last_verified_head` forward, exactly as Session 2760 reconciled Session 2759's incomplete checkpoint.
+
+6. **Do NOT:** rebuild panels beyond byte-clean verification, recount ledgers as mutations, append `decision_log.md` entries, or commit any gate-evidence files. The primary estimand remains **inconclusive by construction**; gates are frozen.
