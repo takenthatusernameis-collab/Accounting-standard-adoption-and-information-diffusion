@@ -1,0 +1,17 @@
+## §9 — INITIAL TASK MESSAGE FOR THE NEXT AGENT (Session 2850)
+
+1. **Verify committed state first.** `git fetch origin main` and confirm local `HEAD` matches `origin/main`; check `git status` is clean. Parse `research/campaign_state.json` with `json.load` and confirm `last_verified_head` is the Session 2849 checkpoint HEAD before this session's new checkpoint commit. Re-derive panel counts and hashes by parsing `research/panel_v1.1.csv` and `research/panel_v1.2.csv` with `csv`/`hashlib`; confirm `research/panel_v1.2.csv` regenerates byte-identically from `scripts/build_panel.py --out <tmp>` (`cmp` clean). Count `research/source_ledger.csv`, `research/decision_log.md`, and `research/experiment_ledger.csv` live (physical lines, max IDs, and parsed E-data rows). Run `python3 -m pytest -q tests/` and report the count.
+
+2. **Verify prior session checkpoint completeness.** Confirm the Session 2849 checkpoint artifacts are present and coherent: the top `Session 2849 note` in `research/HANDOFF.md`, `research/INITIAL_TASK_MESSAGE_2848.md` (for Session 2850), `research/campaign_state.json`, and experiment-ledger row E-642. Inspect `git diff --name-only <Session 2848 checkpoint HEAD>..HEAD` to confirm the delta is handoff-set plus ledger appends only (no gate-evidence files). Reconcile any omission before starting new work.
+
+3. **Gates (unchanged unless evidenced).** Cohort gate MET (12 >= 12). `filing_route` and `price_venue_set` remain PENDING for all 141 PH-1 rows; admitted treatment-firm count is 0 < 200 (FAIL). Free delisted/terminal-return price coverage is not established (FAIL, D-042/E-047). Primary estimand is `inconclusive_by_construction`; PH-1 is closed. Do not compute outcome-period returns or inspect outcome data. `research/results.md` must continue to report no results.
+
+4. **No paid data, no credentials, no GitHub Actions run, no workflow edits.** `.github/workflows/main.yml` must remain unmodified unless explicitly authorized with evidence.
+
+5. **Update durable handoff for Session 2850.** Prepend a Session 2850 verification note to the top of `research/HANDOFF.md` (keep rolling 10 session blocks: 2850..2841; drop 2840). Write `research/INITIAL_TASK_MESSAGE_2849.md` for Session 2851. Update `research/campaign_state.json` (`last_verified_head` to the newly verified checkpoint HEAD, `current_session` 2850, `next_session` 2851, `experiments_run` 643, `notes_count` 10, `updated_at`). Append verification row E-643 to `research/experiment_ledger.csv` using a raw text append, never `csv.writer`. Commit and push.
+
+6. **Two-runner caution.** Before committing, run `git fetch origin main`. If remote moved and you also append to the append-only ledgers, `git rebase origin/main` **will conflict**; resolve as D-035 and avoid a retry loop.
+
+7. **Ledger append caution.** `research/experiment_ledger.csv` has historically contained malformed/embedded line breaks. Append one complete 11-field row with raw text append and immediately parse it back with `csv.reader` to confirm the new row width is 11.
+
+Park report to preserve: cohort gate MET (12 >= 12); `filing_route` and `price_venue_set` PENDING for all 141 PH-1 rows; admitted treatment-firm count 0 < 200 (FAIL); free delisted/terminal-return price coverage not established (FAIL, D-042/E-047); primary estimand inconclusive by construction; PH-1 closed. No gate advanced; no outcome-period return computed or inspected; no paid services.
