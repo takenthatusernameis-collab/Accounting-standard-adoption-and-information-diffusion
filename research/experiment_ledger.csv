@@ -707,3 +707,4 @@ E-691,2026-11-19T01:26:31Z,verification,Session 2897 verification pass (park unc
 E-692,Session 2898 verification pass; HEAD e74a2504; gates unchanged; no code changed
 E-693,Session 2899 verification pass; HEAD 6da4b959; gates unchanged; no code changed
 E-694,Session 2900 verification pass; HEAD f3ee201e; last_verified_head corrected to f3ee201e; gates unchanged; no code changed
+E-695,2026-11-19T02:29:21Z,verification,Session 2901 verification pass (park unchanged),18f4241894a5d478b0eddef893c86cecaf63bddb,v1.2,panel_v1.2.csv (141 rows),no gate advanced,none,primary estimand inconclusive by construction; PH-1 closed,verification only; no outcome-period returns computed or inspected
