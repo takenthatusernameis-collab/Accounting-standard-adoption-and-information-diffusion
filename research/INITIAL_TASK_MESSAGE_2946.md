@@ -1,0 +1,3 @@
+Session 2947 task: delta-only verification pass.
+
+Read durable handoff `research/HANDOFF.md` and `research/campaign_state.json`. Run `git fetch origin main`; verify working tree clean and origin/main == HEAD == local. Parse campaign_state.json with `json.load`; reconcile `last_verified_head` if stale (currently `d5a4c767c6d09919abe4b42dfa685f018f914c7b`). Re-derive committed state (D-037). Append verification E-741. Update campaign_state. Prepend Session 2947 note. Write `research/INITIAL_TASK_MESSAGE_2947.md` for Session 2948. Gates unchanged expected. Do not compute outcome-period returns. pytest unavailable. Report park honestly.
