@@ -2,7 +2,7 @@ Session 3162 task: delta-only verification pass.
 
 Read the durable handoff `research/HANDOFF.md` and `research/campaign_state.json` (currently
 `current_session` 3161, `next_session` 3162, `experiments_run` 956,
-`last_verified_head` d75764d117ed37efb0f430545dafcf6618dd8b4d). Then:
+`last_verified_head` 9f507821a23c4345e77b8c38565d95330192a6c1). Then:
 
 1. Run `git fetch origin main`. Verify the working tree is clean and that `origin/main` == `HEAD` == local HEAD. If HEAD has advanced, record the new sha and reconcile `last_verified_head` (do not edit code).
 2. Re-derive committed state (D-037) and compare against the handoff note:
