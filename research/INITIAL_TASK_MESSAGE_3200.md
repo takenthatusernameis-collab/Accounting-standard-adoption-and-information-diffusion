@@ -1,0 +1,3 @@
+**Session 3200 task: delta-only verification pass.**
+
+Read research/HANDOFF.md and research/campaign_state.json (current_session 3199, next_session 3200, experiments_run 994, last_verified_head d97d827d29c75f0f09ed7b7642dfe385bbe9f862). Then perform verification pass: fetch, reconcile HEAD, re-derive state, append E-994, update campaign_state, prepend HANDOFF note, write INITIAL_TASK_MESSAGE_3200.md. Gates unchanged. Do not compute outcome returns.
