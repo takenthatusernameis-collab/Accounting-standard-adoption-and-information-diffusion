@@ -1,0 +1,3 @@
+**Session 3266 task: delta-only verification pass.**
+
+Read research/HANDOFF.md and research/campaign_state.json (current_session 3265, next_session 3266, experiments_run 1059, last_verified_head 4dc61359982de89f416c1496a7fba829f6c22afd). Then perform verification pass: fetch, reconcile HEAD, re-derive state, append E-1060, update campaign_state, prepend HANDOFF note, write INITIAL_TASK_MESSAGE_3267.md. Gates unchanged. Do not compute outcome returns. Note: the duplicate E-3243 row (typo of E-1037, from Session 3243) is still present in experiment_ledger.csv and awaits a cleanup decision.
