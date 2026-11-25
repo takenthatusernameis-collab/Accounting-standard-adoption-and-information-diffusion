@@ -2659,3 +2659,7 @@ Session 1256 verification pass. Verified committed state: `git fetch origin main
 **Action:** Record E-1067 and this D-151; keep the campaign **PARKED**. Single highest-value next action: either (a) one further bounded no-cost task — **identity-linkage validation** of the 12 timing cohorts (confirm each cohort maps to a distinct jurisdiction/standard with no shared treatment), or (b) formally close the campaign as PARKED/INCONCLUSIVE with this quantified gap. Do not compute outcome returns, do not open PH-1, do not use paid sources.
 
 **Reverses if:** A free, terms-permitting source yields ≥200 admitted treatment firms with timestamped filing evidence **and** delisted/terminal-return daily price coverage reaching the PH-1 outcome window (which would make the 12-cluster design powerable), or the committed panel/membership state changes materially.
+
+## Formal close (Session 3275)
+
+Campaign **PARKED / INCONCLUSIVE**. Quantified gap: 0 admitted treatment firms vs 200 threshold; 12 timing cohorts (MET) but no timestamped filing-route evidence; free delisted/terminal-return price coverage not established. Single highest-value next action: obtain ≥200 admitted treatment firms with timestamped filing evidence plus delisted/terminal-return daily price coverage to the PH-1 outcome window (or formally abandon). No outcome returns computed; PH-1 not opened.
