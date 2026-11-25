@@ -1,1 +1,29 @@
-{"campaign":"ACCTCLOCK","current_session":3311,"experiments_run":1068,"gates":{"admitted_treatment_firm":{"met":false,"threshold":200,"value":0},"cohort":{"met":true,"threshold":12,"value":12},"free_delisted_terminal_return_price_coverage":{"established":false,"met":false,"ref":"D-042/E-047"}},"last_verified_head":"9da76e3bd98d4bf4305b2352a007d6d626903470","next_session":3312,"notes_count":10,"primary_estimand":"inconclusive_by_construction","repo":"takenthatusernameis-collab/Accounting-standard-adoption-and-information-diffusion","status":"campaign_closed_parked_inconclusive","updated_at":"2026-11-25T21:46:00Z"}
+{
+  "campaign": "ACCTCLOCK",
+  "current_session": 3312,
+  "experiments_run": 1068,
+  "gates": {
+    "admitted_treatment_firm": {
+      "met": false,
+      "threshold": 200,
+      "value": 0
+    },
+    "cohort": {
+      "met": true,
+      "threshold": 12,
+      "value": 12
+    },
+    "free_delisted_terminal_return_price_coverage": {
+      "established": false,
+      "met": false,
+      "ref": "D-042/E-047"
+    }
+  },
+  "last_verified_head": "bd9dd1d07429024925408cc5ec74ca4f8bdcafbf",
+  "next_session": 3313,
+  "notes_count": 10,
+  "primary_estimand": "inconclusive_by_construction",
+  "repo": "takenthatusernameis-collab/Accounting-standard-adoption-and-information-diffusion",
+  "status": "campaign_closed_parked_inconclusive",
+  "updated_at": "2026-11-25T21:46:30Z"
+}
