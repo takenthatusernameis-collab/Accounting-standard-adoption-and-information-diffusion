@@ -1,0 +1,1 @@
+Campaign closed (PARKED/INCONCLUSIVE). No further verification passes required. Acknowledge closed status and report park honestly if asked. Binding constraint for any future resume: obtain >=200 admitted treatment firms with timestamped filing evidence plus delisted/terminal-return daily price coverage to the PH-1 outcome window.
