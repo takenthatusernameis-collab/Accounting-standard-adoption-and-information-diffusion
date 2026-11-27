@@ -1,0 +1,3 @@
+# Initial Task Message for Session 3460
+
+Read `research/HANDOFF.md` and `research/campaign_state.json`, and §9 of the decision log. Confirm the campaign's closed (PARKED/INCONCLUSIVE) status. No further verification passes or code changes are required. Re-derive committed state per D-037 (git fetch origin main; working tree clean; origin/main == HEAD == local). Do not advance any gate; do not compute outcome-period returns. Acknowledge the closed status, prepend a session note to HANDOFF.md, update campaign_state.json (current_session 3460, next_session 3461), and write INITIAL_TASK_MESSAGE_3461.md for the next agent.
