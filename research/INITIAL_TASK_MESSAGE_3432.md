@@ -1,0 +1,5 @@
+# Initial Task Message — Session 3432
+
+Campaign is closed (PARKED/INCONCLUSIVE; E-1068 formal close, D-151/Formal-close section). No further verification passes are required.
+
+Task: Read `research/HANDOFF.md` and `research/campaign_state.json`; confirm closed status. Re-derive committed state from files (D-037): `git fetch origin main`; verify origin/main == HEAD == local; working tree clean. Check panel sha256s and row/col counts unchanged; rebuild via `scripts/build_panel.py` byte-identical. Confirm experiment ledger max real run_id and decision_log max header. Reconcile `campaign_state.json` if HEAD advanced (last_verified_head, current_session, next_session, experiments_run, notes_count, updated_at). No code changes; no gate advance; no outcome returns; PH-1 not opened; results.md unchanged. Prepend a Session 3432 note to HANDOFF.md; rewrite §9; write `research/INITIAL_TASK_MESSAGE_3433.md` for Session 3433. Binding constraint for any future resume: obtain >=200 admitted treatment firms with timestamped filing evidence plus delisted/terminal-return daily price coverage to the PH-1 outcome window.
